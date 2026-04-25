@@ -1,5 +1,6 @@
-const CACHE_NAME = 'pe-safety-v2';
-const ASSETS = [
+// Service Worker — PE Safety v3 (2026-04-26 강제갱신)
+const CACHE_NAME = 'pe-safety-v3-ts20260426-143000';
+const URLS = [
   './',
   './index.html',
   './forest.html',
@@ -14,35 +15,40 @@ const ASSETS = [
   './manifest.json'
 ];
 
-// 설치 — 모든 파일 캐시
-self.addEventListener('install', e => {
+self.addEventListener('install', function(e) {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.addAll(URLS);
+    }).catch(function() {})
   );
   self.skipWaiting();
 });
 
-// 활성화 — 구버전 캐시 삭제
-self.addEventListener('activate', e => {
+self.addEventListener('activate', function(e) {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(name) {
+          return name.indexOf('pe-safety') === 0 && name !== CACHE_NAME;
+        }).map(function(name) {
+          return caches.delete(name);
+        })
+      );
+    })
   );
-  self.clients.claim();
+  self.clients.matchAll().then(function(clients) {
+    clients.forEach(function(client) {
+      client.postMessage({type: 'CACHE_UPDATED'});
+    });
+  });
 });
 
-// 요청 — 캐시 우선, 없으면 네트워크
-self.addEventListener('fetch', e => {
+self.addEventListener('fetch', function(e) {
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request).then(res => {
-        if (!res || res.status !== 200) return res;
-        const clone = res.clone();
-        caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
-        return res;
-      }).catch(() => caches.match('./index.html'));
+    caches.match(e.request).then(function(response) {
+      return response || fetch(e.request);
+    }).catch(function() {
+      return caches.match('./index.html');
     })
   );
 });
