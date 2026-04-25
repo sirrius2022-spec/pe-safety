@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0d1117">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="건설안전PE">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>건설안전기술사 — 학습 장판지</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --card: #161b27;
+    --card2: #1c2235;
+    --border: #252d42;
+    --gold: #ffd54f;
+    --text: #dde3ee;
+    --muted: #6b7a99;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text);
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding-bottom: 32px;
+  }
+
+  /* ── 헤더 ── */
+  .header {
+    background: linear-gradient(160deg, #111827 0%, #1a2235 100%);
+    padding: 36px 20px 28px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,213,79,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header .icon-wrap {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, #1e2d4a, #252d42);
+    border: 2px solid rgba(255,213,79,0.4);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 36px;
+    box-shadow: 0 0 30px rgba(255,213,79,0.12);
+  }
+  .header .badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px; font-weight: 700; color: #fff;
+    letter-spacing: -0.5px; margin-bottom: 6px;
+  }
+  .header .sub {
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+  }
+  .header .sub span { color: var(--gold); font-weight: 700; }
+
+  /* ── 전체숲 버튼 ── */
+  .forest-btn {
+    display: flex; align-items: center; gap: 12px;
+    margin: 16px 16px 0;
+    background: linear-gradient(135deg, rgba(255,213,79,0.12), rgba(255,213,79,0.06));
+    border: 1.5px solid rgba(255,213,79,0.4);
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .forest-btn:active { transform: scale(0.98); }
+  .forest-btn .fb-icon { font-size: 28px; flex-shrink: 0; }
+  .forest-btn .fb-content { flex: 1; }
+  .forest-btn .fb-title {
+    font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 2px;
+  }
+  .forest-btn .fb-sub { font-size: 11px; color: var(--muted); }
+  .forest-btn .fb-arrow { font-size: 16px; color: var(--gold); opacity: 0.6; }
+
+  /* ── 섹션 레이블 ── */
+  .sec-label {
+    padding: 20px 16px 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    color: var(--muted); text-transform: uppercase;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sec-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── 도메인 카드 ── */
+  .domain-list {
+    padding: 0 16px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .domain-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-left: 4px solid;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .domain-card:active { transform: scale(0.98); opacity: 0.9; }
+
+  .domain-card.d1 { border-left-color: #4fc3f7; }
+  .domain-card.d2 { border-left-color: #ff8a65; }
+  .domain-card.d3 { border-left-color: #ffb74d; }
+  .domain-card.d4 { border-left-color: #ef5350; }
+  .domain-card.d5 { border-left-color: #ce93d8; }
+  .domain-card.d6 { border-left-color: #4fc3f7; }
+  .domain-card.d7 { border-left-color: #ce93d8; }
+  .domain-card.d8 { border-left-color: #ef5350; }
+
+  .dc-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    padding: 4px 8px; border-radius: 8px;
+    flex-shrink: 0; text-align: center; min-width: 36px;
+  }
+  .d1 .dc-num { background: rgba(79,195,247,0.15); color: #4fc3f7; }
+  .d2 .dc-num { background: rgba(255,138,101,0.15); color: #ff8a65; }
+  .d3 .dc-num { background: rgba(255,183,77,0.15); color: #ffb74d; }
+  .d4 .dc-num { background: rgba(239,83,80,0.15); color: #ef5350; }
+  .d5 .dc-num { background: rgba(206,147,216,0.15); color: #ce93d8; }
+  .d6 .dc-num { background: rgba(79,195,247,0.15); color: #4fc3f7; }
+  .d7 .dc-num { background: rgba(206,147,216,0.15); color: #ce93d8; }
+  .d8 .dc-num { background: rgba(239,83,80,0.15); color: #ef5350; }
+
+  .dc-icon { font-size: 26px; flex-shrink: 0; }
+
+  .dc-content { flex: 1; min-width: 0; }
+  .dc-title {
+    font-size: 14px; font-weight: 700; color: var(--text);
+    margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .dc-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .dc-keys {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px;
+  }
+  .dc-key {
+    font-size: 10px; font-weight: 700; padding: 2px 6px;
+    border-radius: 6px; background: rgba(255,255,255,0.06);
+    color: var(--muted);
+  }
+
+  .dc-arrow {
+    font-size: 14px; color: var(--muted); opacity: 0.5; flex-shrink: 0;
+  }
+
+  /* ── 진도 표시 ── */
+  .progress-section {
+    margin: 20px 16px 0;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+  .ps-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px;
+  }
+  .ps-title { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+  .ps-count { font-size: 12px; font-weight: 700; color: var(--gold); }
+  .ps-bar-bg {
+    height: 6px; background: rgba(255,255,255,0.06);
+    border-radius: 10px; overflow: hidden;
+  }
+  .ps-bar {
+    height: 100%; border-radius: 10px;
+    background: linear-gradient(90deg, #4fc3f7, var(--gold));
+    width: 0%; transition: width 1s ease;
+  }
+  .ps-domains {
+    display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;
+  }
+  .ps-dot {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; border: 1px solid var(--border);
+    color: var(--muted); background: var(--card2);
+  }
+  .ps-dot.done { background: rgba(102,187,106,0.2); border-color: #66bb6a; color: #66bb6a; }
+  .ps-dot.active { background: rgba(255,213,79,0.15); border-color: var(--gold); color: var(--gold); }
+
+  /* ── 설치 안내 ── */
+  .install-tip {
+    margin: 16px 16px 0;
+    background: rgba(79,195,247,0.06);
+    border: 1px solid rgba(79,195,247,0.25);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+  }
+  .install-tip strong { color: #4fc3f7; }
+
+  /* ── 푸터 ── */
+  .footer {
+    text-align: center; padding: 24px 16px 8px;
+    font-size: 11px; color: var(--muted); line-height: 1.7;
+  }
+  .footer span { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<div class="header">
+  <div class="icon-wrap">🏗️</div>
+  <div class="badge">Professional Engineer · Construction Safety</div>
+  <h1>건설안전기술사</h1>
+  <div class="sub">
+    8대 핵심영역 학습 장판지<br>
+    <span>모바일 최적화</span> · 두문자 암기법 · 최신법령 반영
+  </div>
+</div>
+
+<!-- 전체 숲 -->
+<a class="forest-btn" href="forest.html">
+  <span class="fb-icon">🌲</span>
+  <div class="fb-content">
+    <div class="fb-title">전체 숲 구조 보기</div>
+    <div class="fb-sub">8대 영역 한눈에 · 출제비중 · 로드맵</div>
+  </div>
+  <span class="fb-arrow">›</span>
+</a>
+
+<!-- 8대 도메인 -->
+<div class="sec-label">8대 핵심 영역</div>
+<div class="domain-list">
+
+  <a class="domain-card d1" href="d01.html">
+    <div class="dc-num">D01</div>
+    <div class="dc-icon">⚖️</div>
+    <div class="dc-content">
+      <div class="dc-title">법령체계</div>
+      <div class="dc-sub">산안법 · 중처법 · 건진법</div>
+      <div class="dc-keys">
+        <span class="dc-key">체법인전</span>
+        <span class="dc-key">1·2·3법칙</span>
+        <span class="dc-key">500억·200억</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+  <a class="domain-card d2" href="d02.html">
+    <div class="dc-num">D02</div>
+    <div class="dc-icon">🧠</div>
+    <div class="dc-content">
+      <div class="dc-title">안전이론·재해이론</div>
+      <div class="dc-sub">하인리히 · 버드 · 스위스치즈</div>
+      <div class="dc-keys">
+        <span class="dc-key">유결불사재</span>
+        <span class="dc-key">관기직접재</span>
+        <span class="dc-key">1:29:300</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+  <a class="domain-card d3" href="d03.html">
+    <div class="dc-num">D03</div>
+    <div class="dc-icon">🔍</div>
+    <div class="dc-content">
+      <div class="dc-title">위험성평가</div>
+      <div class="dc-sub">2023 개정 · FMEA · FTA · HAZOP</div>
+      <div class="dc-keys">
+        <span class="dc-key">사파결감공기</span>
+        <span class="dc-key">최정수상</span>
+        <span class="dc-key">제대격관보</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+  <a class="domain-card d4" href="d04.html">
+    <div class="dc-num">D04</div>
+    <div class="dc-icon">📊</div>
+    <div class="dc-content">
+      <div class="dc-title">재해유형·통계</div>
+      <div class="dc-sub">4대 재해 · 재해율 · 재해코스트</div>
+      <div class="dc-keys">
+        <span class="dc-key">추낙붕감</span>
+        <span class="dc-key">재도강종</span>
+        <span class="dc-key">1:4 빙산</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+  <a class="domain-card d5" href="d05.html">
+    <div class="dc-num">D05</div>
+    <div class="dc-icon">🏗️</div>
+    <div class="dc-content">
+      <div class="dc-title">공종별 안전관리</div>
+      <div class="dc-sub">3대사고·8대위험 · 가설·굴착·터널</div>
+      <div class="dc-keys">
+        <span class="dc-key">추끼부</span>
+        <span class="dc-key">8대위험요인</span>
+        <span class="dc-key">지하수침간균</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+  <a class="domain-card d6" href="d06.html">
+    <div class="dc-num">D06</div>
+    <div class="dc-icon">🗼</div>
+    <div class="dc-content">
+      <div class="dc-title">건설기계·양중</div>
+      <div class="dc-sub">타워크레인 · 이동식크레인 · 와이어</div>
+      <div class="dc-keys">
+        <span class="dc-key">크이리곤승</span>
+        <span class="dc-key">10·15·30m/s</span>
+        <span class="dc-key">소선10%·지름7%</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+  <a class="domain-card d7" href="d07.html">
+    <div class="dc-num">D07</div>
+    <div class="dc-icon">👥</div>
+    <div class="dc-content">
+      <div class="dc-title">안전관리계획·조직</div>
+      <div class="dc-sub">안전교육 · 안전관리비 · TBM · PTW</div>
+      <div class="dc-keys">
+        <span class="dc-key">목조위교점개</span>
+        <span class="dc-key">집작위대서</span>
+        <span class="dc-key">안보교건스</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+  <a class="domain-card d8" href="d08.html">
+    <div class="dc-num">D08</div>
+    <div class="dc-icon">🔥</div>
+    <div class="dc-content">
+      <div class="dc-title">최신사고사례·전기화재</div>
+      <div class="dc-sub">중대재해 사례 · 감전 · 밀폐공간</div>
+      <div class="dc-keys">
+        <span class="dc-key">누접절정우잠캡</span>
+        <span class="dc-key">허측환감보구</span>
+        <span class="dc-key">산18일30황10</span>
+      </div>
+    </div>
+    <div class="dc-arrow">›</div>
+  </a>
+
+</div>
+
+<!-- 학습 진도 -->
+<div class="progress-section">
+  <div class="ps-head">
+    <div class="ps-title">학습 진도</div>
+    <div class="ps-count" id="doneCount">0 / 8 완료</div>
+  </div>
+  <div class="ps-bar-bg"><div class="ps-bar" id="progressBar"></div></div>
+  <div class="ps-domains">
+    <div class="ps-dot" id="dot1" onclick="toggleDone(1)">D1</div>
+    <div class="ps-dot" id="dot2" onclick="toggleDone(2)">D2</div>
+    <div class="ps-dot" id="dot3" onclick="toggleDone(3)">D3</div>
+    <div class="ps-dot" id="dot4" onclick="toggleDone(4)">D4</div>
+    <div class="ps-dot" id="dot5" onclick="toggleDone(5)">D5</div>
+    <div class="ps-dot" id="dot6" onclick="toggleDone(6)">D6</div>
+    <div class="ps-dot" id="dot7" onclick="toggleDone(7)">D7</div>
+    <div class="ps-dot" id="dot8" onclick="toggleDone(8)">D8</div>
+  </div>
+</div>
+
+<!-- 설치 안내 -->
+<div class="install-tip">
+  📱 <strong>바탕화면에 설치하기</strong><br>
+  iPhone — Safari → 공유버튼 → "홈 화면에 추가"<br>
+  Android — Chrome → 메뉴(⋮) → "홈 화면에 추가"
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  건설안전기술사 학습 장판지<br>
+  <span>산안법·건진법·중처법 최신 기준 반영</span>
+</div>
+
+<script>
+  // 학습 진도 관리 (localStorage)
+  const STORAGE_KEY = 'pe_safety_done';
+
+  function loadDone() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    } catch(e) { return []; }
+  }
+
+  function saveDone(arr) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); } catch(e) {}
+  }
+
+  function updateUI() {
+    const done = loadDone();
+    let count = 0;
+    for (let i = 1; i <= 8; i++) {
+      const dot = document.getElementById('dot' + i);
+      if (done.includes(i)) {
+        dot.classList.add('done');
+        dot.classList.remove('active');
+        count++;
+      } else {
+        dot.classList.remove('done');
+      }
+    }
+    document.getElementById('doneCount').textContent = count + ' / 8 완료';
+    document.getElementById('progressBar').style.width = (count / 8 * 100) + '%';
+  }
+
+  function toggleDone(n) {
+    const done = loadDone();
+    const idx = done.indexOf(n);
+    if (idx === -1) done.push(n);
+    else done.splice(idx, 1);
+    saveDone(done);
+    updateUI();
+  }
+
+  updateUI();
+
+  // PWA 서비스워커 등록
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+</script>
+</body>
+</html>

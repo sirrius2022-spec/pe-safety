@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>건설안전기술사 D04 — 재해유형·통계</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+  :root {
+    --bg:#0d1117; --card:#161b27; --card2:#1c2235; --border:#252d42;
+    --a:#ef5350; --b:#ffb74d; --c:#4fc3f7; --d:#66bb6a; --e:#ce93d8;
+    --gold:#ffd54f; --text:#dde3ee; --muted:#6b7a99;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);max-width:600px;margin:0 auto;padding:0 0 40px;}
+  .progress-bar{height:3px;background:var(--border);position:sticky;top:0;z-index:200;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--d));width:0%;transition:width 0.3s;}
+  .top-header{background:linear-gradient(135deg,#111827,#1a2235);padding:18px 16px 14px;border-bottom:1px solid var(--border);position:sticky;top:3px;z-index:100;}
+  .top-header .badge{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--a);text-transform:uppercase;margin-bottom:4px;}
+  .top-header h1{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
+  .top-header .sub{font-size:11px;color:var(--muted);margin-top:3px;}
+  .tab-nav{display:flex;gap:6px;margin-top:12px;overflow-x:auto;scrollbar-width:none;}
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid;white-space:nowrap;cursor:pointer;background:transparent;transition:all 0.2s;}
+  .tab-btn.ta{color:var(--a);border-color:var(--a);}
+  .tab-btn.tb{color:var(--b);border-color:var(--b);}
+  .tab-btn.tc{color:var(--c);border-color:var(--c);}
+  .tab-btn.td{color:var(--d);border-color:var(--d);}
+  .tab-btn.tg{color:var(--gold);border-color:var(--gold);}
+  .tab-btn.active.ta{background:rgba(239,83,80,0.15);}
+  .tab-btn.active.tb{background:rgba(255,183,77,0.15);}
+  .tab-btn.active.tc{background:rgba(79,195,247,0.15);}
+  .tab-btn.active.td{background:rgba(102,187,106,0.15);}
+  .tab-btn.active.tg{background:rgba(255,213,79,0.15);}
+  .section{padding:0 12px;margin-top:12px;}
+  .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:10px;cursor:pointer;user-select:none;background:var(--card);border-left:4px solid;margin-bottom:2px;}
+  .sec-header.ca{border-color:var(--a);}.sec-header.cb{border-color:var(--b);}.sec-header.cc{border-color:var(--c);}.sec-header.cd{border-color:var(--d);}.sec-header.cg{border-color:var(--gold);}
+  .sh-left{display:flex;align-items:center;gap:10px;}
+  .sh-icon{font-size:18px;}
+  .sh-title{font-size:14px;font-weight:700;}
+  .sh-title.ca{color:var(--a);}.sh-title.cb{color:var(--b);}.sh-title.cc{color:var(--c);}.sh-title.cd{color:var(--d);}.sh-title.cg{color:var(--gold);}
+  .sh-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+  .sh-arrow{font-size:12px;color:var(--muted);transition:transform 0.25s;}
+  .sh-arrow.open{transform:rotate(180deg);}
+  .sec-body{display:none;flex-direction:column;gap:8px;padding:8px 0 4px;}
+  .sec-body.open{display:flex;}
+  .card{background:var(--card);border-radius:10px;padding:13px 14px;}
+  .card-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .item-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .item-list li{font-size:13px;color:#b0bec5;padding-left:13px;position:relative;line-height:1.55;}
+  .item-list li::before{content:'▸';position:absolute;left:0;opacity:0.4;}
+  .item-list li strong{color:var(--text);font-weight:700;}
+  .memo-block{border-radius:10px;padding:12px 14px;border:1px solid;}
+  .memo-block.ma{background:rgba(239,83,80,0.06);border-color:rgba(239,83,80,0.28);}
+  .memo-block.mb{background:rgba(255,183,77,0.06);border-color:rgba(255,183,77,0.28);}
+  .memo-block.mc{background:rgba(79,195,247,0.06);border-color:rgba(79,195,247,0.28);}
+  .memo-block.md{background:rgba(102,187,106,0.06);border-color:rgba(102,187,106,0.28);}
+  .memo-block.mg{background:rgba(255,213,79,0.06);border-color:rgba(255,213,79,0.28);}
+  .memo-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+  .memo-type.ma{color:var(--a);}.memo-type.mb{color:var(--b);}.memo-type.mc{color:var(--c);}.memo-type.md{color:var(--d);}.memo-type.mg{color:var(--gold);}
+  .acro-list{display:flex;flex-direction:column;gap:4px;}
+  .acro-item{display:flex;align-items:baseline;gap:8px;}
+  .acro-char{font-size:20px;font-weight:900;min-width:22px;line-height:1;}
+  .acro-char.ca{color:var(--a);}.acro-char.cb{color:var(--b);}.acro-char.cc{color:var(--c);}.acro-char.cd{color:var(--d);}
+  .acro-text{font-size:13px;color:var(--text);line-height:1.4;}
+  .acro-text em{font-style:normal;color:var(--gold);font-weight:700;}
+  .acro-key{margin-top:8px;padding:7px 10px;background:rgba(255,213,79,0.1);border-radius:6px;font-size:13px;font-weight:700;color:var(--gold);text-align:center;letter-spacing:1px;}
+  .story{background:var(--card2);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.7;}
+  .flow-wrap{display:flex;flex-direction:column;gap:5px;}
+  .flow-step{background:var(--card2);border-radius:8px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;}
+  .fs-num{font-size:15px;font-weight:900;min-width:26px;text-align:center;line-height:1.4;flex-shrink:0;}
+  .fs-num.ca{color:var(--a);}.fs-num.cb{color:var(--b);}.fs-num.cc{color:var(--c);}.fs-num.cd{color:var(--d);}
+  .fs-content{font-size:12.5px;color:var(--text);line-height:1.5;flex:1;}
+  .fs-content .fc-title{font-weight:700;margin-bottom:2px;}
+  .fs-content .fc-sub{font-size:11px;color:var(--muted);}
+  .flow-arrow-down{text-align:center;font-size:13px;color:var(--muted);}
+  .qa-item{margin-bottom:10px;}
+  .qa-q{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:5px;display:flex;gap:6px;}
+  .qa-q::before{content:'Q.';opacity:0.6;}
+  .qa-a{background:var(--card2);border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.65;color:var(--text);border-left:3px solid var(--gold);}
+  .qa-a .key{color:var(--gold);font-weight:700;}
+
+  /* 4대 재해 카드 */
+  .hazard-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .hazard-card{border-radius:10px;padding:13px 12px;border:1px solid;position:relative;}
+  .hazard-card.h1{border-color:rgba(239,83,80,0.5);background:rgba(239,83,80,0.07);}
+  .hazard-card.h2{border-color:rgba(255,183,77,0.5);background:rgba(255,183,77,0.07);}
+  .hazard-card.h3{border-color:rgba(79,195,247,0.5);background:rgba(79,195,247,0.07);}
+  .hazard-card.h4{border-color:rgba(206,147,216,0.5);background:rgba(206,147,216,0.07);}
+  .hc-rank{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;}
+  .h1 .hc-rank{background:rgba(239,83,80,0.2);color:#ef5350;}
+  .h2 .hc-rank{background:rgba(255,183,77,0.2);color:var(--b);}
+  .h3 .hc-rank{background:rgba(79,195,247,0.2);color:var(--c);}
+  .h4 .hc-rank{background:rgba(206,147,216,0.2);color:var(--e);}
+  .hc-icon{font-size:26px;margin-bottom:6px;display:block;}
+  .hc-name{font-size:14px;font-weight:700;margin-bottom:4px;}
+  .h1 .hc-name{color:#ef5350;} .h2 .hc-name{color:var(--b);} .h3 .hc-name{color:var(--c);} .h4 .hc-name{color:var(--e);}
+  .hc-cause{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:6px;}
+  .hc-key{font-size:11px;color:#b0bec5;font-weight:500;}
+
+  /* 원인 분류 */
+  .cause-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cause-card{border-radius:8px;padding:11px 12px;border:1px solid;}
+  .cause-card.direct{border-color:rgba(239,83,80,0.35);background:rgba(239,83,80,0.06);}
+  .cause-card.indirect{border-color:rgba(102,187,106,0.35);background:rgba(102,187,106,0.06);}
+  .cc-title{font-size:12px;font-weight:700;margin-bottom:6px;}
+  .direct .cc-title{color:#ef5350;} .indirect .cc-title{color:var(--d);}
+  .cc-body{font-size:11.5px;color:#b0bec5;line-height:1.6;}
+
+  /* 재해율 공식 */
+  .formula-card{background:var(--card);border-radius:10px;padding:13px 14px;border:1px solid rgba(255,213,79,0.25);}
+  .formula-title{font-size:11px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:1px;}
+  .formula-eq{background:var(--card2);border-radius:8px;padding:10px 12px;font-size:13px;text-align:center;line-height:1.8;}
+  .formula-eq .eq-main{font-size:14px;font-weight:700;color:var(--gold);}
+  .formula-eq .eq-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+
+  /* 비용 빙산 */
+  .iceberg-wrap{display:flex;flex-direction:column;gap:6px;}
+  .ice-above{background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.35);border-radius:8px;padding:11px 13px;}
+  .ice-below{background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.3);border-radius:8px;padding:11px 13px;}
+  .ice-label{font-size:10px;font-weight:700;letter-spacing:2px;margin-bottom:5px;}
+  .ice-above .ice-label{color:var(--c);}
+  .ice-below .ice-label{color:var(--a);}
+  .ice-content{font-size:12px;color:#b0bec5;line-height:1.6;}
+  .ice-content strong{color:var(--text);}
+
+  /* 재해조사 절차 */
+  .invest-step{background:var(--card2);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .is-num{font-size:14px;font-weight:900;color:var(--b);min-width:24px;text-align:center;}
+  .is-content{font-size:12.5px;line-height:1.45;}
+  .is-content strong{color:var(--text);font-weight:700;}
+  .is-content span{font-size:11px;color:var(--muted);}
+
+  /* 통계 바 */
+  .stat-row{display:flex;flex-direction:column;gap:6px;}
+  .stat-item{display:flex;align-items:center;gap:8px;}
+  .stat-label{font-size:12px;color:var(--text);width:80px;flex-shrink:0;}
+  .stat-bar-bg{flex:1;height:10px;background:rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;}
+  .stat-bar{height:100%;border-radius:10px;}
+  .stat-val{font-size:11px;font-weight:700;width:36px;text-align:right;flex-shrink:0;}
+
+  .compare-table{width:100%;border-collapse:collapse;font-size:11.5px;}
+  .compare-table th{padding:8px 6px;text-align:center;font-weight:700;border-bottom:2px solid var(--border);font-size:10px;}
+  .compare-table td{padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;line-height:1.5;vertical-align:top;}
+  .compare-table td:first-child{color:var(--muted);font-weight:500;white-space:nowrap;font-size:10px;}
+  .compare-table tr:last-child td{border-bottom:none;}
+  .va{color:var(--a)!important;font-weight:700;} .vb{color:var(--b)!important;font-weight:700;} .vc{color:var(--c)!important;font-weight:700;} .vd{color:var(--d)!important;font-weight:700;} .vg{color:var(--gold)!important;font-weight:700;}
+
+  .page-section{display:none;}
+  .page-section.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+
+<div class="top-header">
+  <div class="badge">Domain 04 · 재해유형·통계</div>
+  <h1>재해유형·원인·통계 완전정복</h1>
+  <div class="sub">4대 재해 · 원인분류 · 재해율 · 비용 · 조사절차 · 답안</div>
+  <div class="tab-nav">
+    <button class="tab-btn ta active" onclick="showTab('ta',this)">🚨 4대 재해</button>
+    <button class="tab-btn tb" onclick="showTab('tb',this)">🔍 원인분류</button>
+    <button class="tab-btn tc" onclick="showTab('tc',this)">📊 재해통계</button>
+    <button class="tab-btn td" onclick="showTab('td',this)">🔎 재해조사</button>
+    <button class="tab-btn tg" onclick="showTab('tg',this)">✍️ 비교·답안</button>
+  </div>
+</div>
+
+
+<!-- TAB 1: 4대 재해 -->
+<div id="ta" class="page-section active">
+
+  <div class="section">
+    <div class="sec-header ca" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🚨</span>
+        <div><div class="sh-title ca">건설업 4대 재해유형</div>
+          <div class="sh-sub">"추낙붕감" — 전체 재해의 80%↑</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="hazard-grid">
+        <div class="hazard-card h1">
+          <span class="hc-rank">1위</span>
+          <span class="hc-icon">🪂</span>
+          <div class="hc-name">추락</div>
+          <div class="hc-cause">고소작업·비계·개구부·사다리</div>
+          <div class="hc-key">사망재해 40%↑<br>안전대·안전망 핵심</div>
+        </div>
+        <div class="hazard-card h2">
+          <span class="hc-rank">2위</span>
+          <span class="hc-icon">🧱</span>
+          <div class="hc-name">낙하·비래</div>
+          <div class="hc-cause">자재·공구 낙하<br>비래물 충격</div>
+          <div class="hc-key">안전망·낙하물 방지망<br>안전모 착용</div>
+        </div>
+        <div class="hazard-card h3">
+          <span class="hc-rank">3위</span>
+          <span class="hc-icon">🏚️</span>
+          <div class="hc-name">붕괴·도괴</div>
+          <div class="hc-cause">거푸집·흙막이·터널<br>가설구조물</div>
+          <div class="hc-key">대형사고로 이어짐<br>구조계산 필수</div>
+        </div>
+        <div class="hazard-card h4">
+          <span class="hc-rank">4위</span>
+          <span class="hc-icon">⚡</span>
+          <div class="hc-name">감전</div>
+          <div class="hc-cause">가설전기·활선접촉<br>누전·지락</div>
+          <div class="hc-key">치사율 매우 높음<br>절연·접지 필수</div>
+        </div>
+      </div>
+      <div class="memo-block ma">
+        <div class="memo-type ma">🔤 두문자 암기</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char ca">추</span><span class="acro-text"><em>추</em>락 — 1위 (사망 40%↑)</span></div>
+          <div class="acro-item"><span class="acro-char cb">낙</span><span class="acro-text"><em>낙</em>하·비래 — 2위</span></div>
+          <div class="acro-item"><span class="acro-char cc">붕</span><span class="acro-text"><em>붕</em>괴·도괴 — 3위</span></div>
+          <div class="acro-item"><span class="acro-char cd">감</span><span class="acro-text"><em>감</em>전 — 4위 (치사율 최고)</span></div>
+        </div>
+        <div class="acro-key">→ "추낙붕감" 으로 외우자!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 추락 세부 -->
+  <div class="section">
+    <div class="sec-header ca" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🪂</span>
+        <div><div class="sh-title ca">추락 — 세부 원인·대책</div>
+          <div class="sh-sub">1위 재해 · 가장 중요</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <div class="card-label" style="color:var(--a);">주요 발생 장소</div>
+        <ul class="item-list">
+          <li>비계·작업발판 위</li>
+          <li>개구부·슬래브 단부</li>
+          <li>사다리·이동식 비계</li>
+          <li>철골·지붕 작업</li>
+          <li>굴착면·사면</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label" style="color:var(--d);">핵심 예방대책 — "안전방개"</div>
+        <ul class="item-list">
+          <li><strong>안</strong>전대 착용 — 2m↑ 고소작업 필수</li>
+          <li><strong>전</strong>용 작업발판 설치 — 폭 40cm↑</li>
+          <li><strong>방</strong>호울타리·난간 설치 — 높이 90cm↑</li>
+          <li><strong>개</strong>구부 덮개·표지 설치</li>
+          <li>안전<strong>망</strong> 설치 — 10m↑ 시 의무</li>
+        </ul>
+      </div>
+      <div class="memo-block ma">
+        <div class="memo-type ma">🔢 핵심 숫자</div>
+        <div class="story">
+          <strong style="color:var(--a);">2m</strong> — 안전대 착용 기준<br>
+          <strong style="color:var(--a);">10m</strong> — 안전망 설치 의무<br>
+          <strong style="color:var(--a);">90cm</strong> — 난간 높이 기준<br>
+          <strong style="color:var(--a);">40cm</strong> — 작업발판 최소 폭<br>
+          <span style="color:var(--muted);">→ "2·10·90·40" 4개 숫자 암기!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 붕괴 세부 -->
+  <div class="section">
+    <div class="sec-header cc" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🏚️</span>
+        <div><div class="sh-title cc">붕괴·도괴 — 세부 원인·대책</div>
+          <div class="sh-sub">3위지만 대형사고 위험 최고</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <div class="card-label" style="color:var(--c);">유형별 원인</div>
+        <ul class="item-list">
+          <li><strong>거푸집 동바리</strong> — 조기 해체·과재하</li>
+          <li><strong>흙막이</strong> — 버팀대 부족·지하수 과다</li>
+          <li><strong>터널</strong> — 지반 불량·계측 미흡</li>
+          <li><strong>비계</strong> — 벽이음 불량·과재하</li>
+          <li><strong>건물 해체</strong> — 순서 미준수</li>
+        </ul>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">💡 토목시공 연계</div>
+        <div class="story">
+          <strong style="color:var(--c);">흙막이·거푸집 붕괴</strong> — 토목시공 경험 최대 활용<br>
+          <span style="color:var(--muted);">→ 공법별 안전관리 = D05 공종별 안전과 연결<br>
+          → 계측관리·구조계산·사전검토 강조</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 감전 세부 -->
+  <div class="section">
+    <div class="sec-header ca" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">⚡</span>
+        <div><div class="sh-title ca">감전 — 세부 원인·대책</div>
+          <div class="sh-sub">치사율 가장 높음 — 절대 주의</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <div class="card-label" style="color:var(--a);">주요 원인</div>
+        <ul class="item-list">
+          <li>가설전기 <strong>절연 불량</strong></li>
+          <li>활선 상태에서 작업 (정전 미실시)</li>
+          <li>접지 미설치·누전차단기 미설치</li>
+          <li>전선 피복 손상 방치</li>
+          <li>우천 시 전기작업</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label" style="color:var(--d);">핵심 예방대책</div>
+        <ul class="item-list">
+          <li><strong>정전작업</strong> — 활선 절대 금지</li>
+          <li><strong>누전차단기</strong> 설치 (30mA, 0.03초)</li>
+          <li><strong>접지</strong> 실시 — 전기기계·기구</li>
+          <li>절연용 <strong>보호구</strong> 착용</li>
+          <li>전선 피복 주기적 점검·교체</li>
+        </ul>
+      </div>
+      <div class="memo-block ma">
+        <div class="memo-type ma">🔢 감전 핵심 숫자</div>
+        <div class="story">
+          <strong style="color:var(--a);">30mA</strong> — 누전차단기 감도<br>
+          <strong style="color:var(--a);">0.03초</strong> — 동작 시간 (30ms)<br>
+          <strong style="color:var(--a);">50V</strong> — 안전전압 기준<br>
+          <span style="color:var(--muted);">→ "삼십·영점삼·오십" 3개 암기!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 2: 원인분류 -->
+<div id="tb" class="page-section">
+
+  <div class="section">
+    <div class="sec-header cb" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🔍</span>
+        <div><div class="sh-title cb">재해 원인 분류체계</div>
+          <div class="sh-sub">직접원인 vs 간접원인(4M)</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="cause-row">
+        <div class="cause-card direct">
+          <div class="cc-title">🔴 직접원인</div>
+          <div class="cc-body">
+            <strong>불안전 행동</strong> 88%<br>
+            (인적 원인)<br><br>
+            <strong>불안전 상태</strong> 10%<br>
+            (물적 원인)<br><br>
+            천재지변 2%
+          </div>
+        </div>
+        <div class="cause-card indirect">
+          <div class="cc-title">🟢 간접원인 (4M)</div>
+          <div class="cc-body">
+            <strong>Man</strong><br>지식·기능·태도 부족<br><br>
+            <strong>Machine</strong><br>기계·설비 결함<br><br>
+            <strong>Media</strong><br>작업환경·방법 불량<br><br>
+            <strong>Management</strong><br>관리적 요인
+          </div>
+        </div>
+      </div>
+      <div class="memo-block mb">
+        <div class="memo-type mb">💡 4M 암기</div>
+        <div class="story">
+          <strong style="color:var(--b);">"사람·기계·환경·관리" = 4M</strong><br>
+          <span style="color:var(--muted);">Man / Machine / Media / Management<br>
+          → 위험성평가 원인 분석 시 4M으로 분류<br>
+          → 답안에서 대책도 4M별로 제시하면 고득점!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 불안전 행동 세부 -->
+  <div class="section">
+    <div class="sec-header cb" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">⚠️</span>
+        <div><div class="sh-title cb">불안전 행동 vs 불안전 상태</div>
+          <div class="sh-sub">88% vs 10% — 하인리히 기준</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <div class="card-label" style="color:var(--a);">불안전 행동 (88%) — 인적 원인</div>
+        <ul class="item-list">
+          <li>안전장치 무효화·제거</li>
+          <li>보호구 미착용</li>
+          <li>위험장소 무단 접근</li>
+          <li>불안전한 속도·자세로 작업</li>
+          <li>안전절차 미준수</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label" style="color:var(--c);">불안전 상태 (10%) — 물적 원인</div>
+        <ul class="item-list">
+          <li>방호장치 결함·미설치</li>
+          <li>작업환경 불량 (조명·환기·소음)</li>
+          <li>보호구 결함·미지급</li>
+          <li>정리정돈 미흡</li>
+          <li>기계·설비 노후화</li>
+        </ul>
+      </div>
+      <div class="memo-block mb">
+        <div class="memo-type mb">🔢 암기</div>
+        <div class="story">
+          <strong style="color:var(--a);">88% 행동</strong> + <strong style="color:var(--c);">10% 상태</strong> + 2% 천재 = 100%<br>
+          <span style="color:var(--muted);">→ "팔팔한 사람(행동)이 문제의 대부분!"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 재해 발생 메커니즘 -->
+  <div class="section">
+    <div class="sec-header cb" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">⚙️</span>
+        <div><div class="sh-title cb">재해 발생 메커니즘</div>
+          <div class="sh-sub">원인 → 사고 → 재해 연쇄</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="flow-wrap">
+        <div class="flow-step"><div class="fs-num cb">간접</div><div class="fs-content"><div class="fc-title">간접원인 (4M)</div><div class="fc-sub">관리·교육·설비·환경 결함</div></div></div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step"><div class="fs-num ca">직접</div><div class="fs-content"><div class="fc-title">직접원인 (불안전 행동·상태)</div><div class="fc-sub">위험요인이 현장에 존재</div></div></div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step" style="border:1px solid rgba(255,213,79,0.3);background:rgba(255,213,79,0.05);"><div class="fs-num" style="color:var(--gold);">사고</div><div class="fs-content"><div class="fc-title">사고 발생 (Accident)</div><div class="fc-sub">에너지·유해물질과 접촉</div></div></div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step" style="border:1px solid rgba(239,83,80,0.3);background:rgba(239,83,80,0.06);"><div class="fs-num ca">재해</div><div class="fs-content"><div class="fc-title">재해 발생 (Injury)</div><div class="fc-sub">인명·재산 피해 확정</div></div></div>
+      </div>
+      <div class="memo-block mb">
+        <div class="memo-type mb">💡 예방 포인트</div>
+        <div class="story">
+          <strong style="color:var(--b);">어느 단계에서든 차단하면 재해 예방!</strong><br>
+          <span style="color:var(--muted);">간접원인 → 4M 개선 (근본 예방)<br>
+          직접원인 → 위험성평가·안전조치<br>
+          사고 후 → 비상대응·응급처치</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 3: 재해통계 -->
+<div id="tc" class="page-section">
+
+  <!-- 재해율 공식 -->
+  <div class="section">
+    <div class="sec-header cc" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📊</span>
+        <div><div class="sh-title cc">재해율 산정 공식</div>
+          <div class="sh-sub">4가지 지표 — 시험 단골 계산</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="formula-card">
+        <div class="formula-title">① 재해율 (災害率)</div>
+        <div class="formula-eq">
+          <div class="eq-main">재해율 = (재해자수 / 근로자수) × 100</div>
+          <div class="eq-sub">단위: % · 근로자 100명당 재해자 수</div>
+        </div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-title">② 도수율 (頻度率, Frequency Rate)</div>
+        <div class="formula-eq">
+          <div class="eq-main">도수율 = (재해건수 / 연근로시간수) × 10⁶</div>
+          <div class="eq-sub">100만 근로시간당 재해 건수</div>
+        </div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-title">③ 강도율 (强度率, Severity Rate)</div>
+        <div class="formula-eq">
+          <div class="eq-main">강도율 = (근로손실일수 / 연근로시간수) × 1,000</div>
+          <div class="eq-sub">1,000 근로시간당 손실일수</div>
+        </div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-title">④ 종합재해지수 (FSI)</div>
+        <div class="formula-eq">
+          <div class="eq-main">FSI = √(도수율 × 강도율)</div>
+          <div class="eq-sub">빈도와 강도를 종합한 지수</div>
+        </div>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">🔤 암기법 "재도강종"</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char cc">재</span><span class="acro-text"><em>재</em>해율 = 재해자/근로자 × 100</span></div>
+          <div class="acro-item"><span class="acro-char cc">도</span><span class="acro-text"><em>도</em>수율 = 건수/시간 × 10⁶</span></div>
+          <div class="acro-item"><span class="acro-char cc">강</span><span class="acro-text"><em>강</em>도율 = 손실일수/시간 × 1,000</span></div>
+          <div class="acro-item"><span class="acro-char cc">종</span><span class="acro-text"><em>종</em>합(FSI) = √(도수율×강도율)</span></div>
+        </div>
+        <div class="acro-key">→ "재도강종" 으로 외우자!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 재해코스트 빙산 -->
+  <div class="section">
+    <div class="sec-header cc" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🧊</span>
+        <div><div class="sh-title cc">재해코스트 — 빙산이론</div>
+          <div class="sh-sub">직접비 1 : 간접비 4</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="iceberg-wrap">
+        <div class="ice-above">
+          <div class="ice-label">수면 위 — 직접비 (1)</div>
+          <div class="ice-content">
+            <strong>치료비·보상금</strong><br>
+            재해보상보험료<br>
+            → 눈에 보이는 비용
+          </div>
+        </div>
+        <div style="text-align:center;font-size:20px;color:var(--muted);margin:4px 0;">≈≈≈ 수면 ≈≈≈</div>
+        <div class="ice-below">
+          <div class="ice-label">수면 아래 — 간접비 (4) ← 훨씬 크다!</div>
+          <div class="ice-content">
+            <strong>생산 손실·시간 손실</strong><br>
+            기계·설비 손상<br>
+            작업 중단·공기 지연<br>
+            신규 인력 채용·훈련비<br>
+            사기 저하·이미지 손실
+          </div>
+        </div>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">🔢 공식 암기</div>
+        <div class="story">
+          <strong style="color:var(--c);">직접비 1 : 간접비 4</strong><br>
+          <strong style="color:var(--gold);">총재해코스트 = 직접비 × 5</strong><br>
+          <span style="color:var(--muted);">→ "빙산처럼 숨겨진 비용이 4배 크다"<br>
+          → 재해 1건의 실제 비용은 보상금의 5배!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 근로손실일수 -->
+  <div class="section">
+    <div class="sec-header cc" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📅</span>
+        <div><div class="sh-title cc">근로손실일수 환산기준</div>
+          <div class="sh-sub">강도율 계산 시 필수</div></div>
+      </div><span class="sh-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="card">
+        <ul class="item-list">
+          <li>사망·영구 전노동 불능 — <strong>7,500일</strong></li>
+          <li>영구 일부 노동 불능 — 장해등급별 (50~5,500일)</li>
+          <li>일시 전노동 불능 — <strong>실 휴업일수 × 300/365</strong></li>
+        </ul>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">🔢 핵심 숫자</div>
+        <div class="story">
+          <strong style="color:var(--c);">사망 = 7,500일</strong><br>
+          <span style="color:var(--muted);">→ 연간 300일 기준 × 25년 = 7,500일<br>
+          → "사망은 7500" 절대 암기!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 4: 재해조사 -->
+<div id="td" class="page-section">
+
+  <div class="section">
+    <div class="sec-header cd" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🔎</span>
+        <div><div class="sh-title cd">재해조사 목적·원칙</div>
+          <div class="sh-sub">처벌이 아닌 재발방지!</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <ul class="item-list">
+          <li>목적 — <strong>재발방지</strong> (처벌·책임 추궁 아님)</li>
+          <li>원인 규명 → 대책 수립 → 유사재해 예방</li>
+          <li>즉시 착수 — 현장 보존 상태에서 실시</li>
+          <li>객관적·과학적 방법으로 실시</li>
+        </ul>
+      </div>
+      <div class="memo-block md">
+        <div class="memo-type md">💡 핵심</div>
+        <div class="story">
+          <strong style="color:var(--d);">"Why? → 왜 일어났나 (원인)"</strong><br>
+          <strong style="color:var(--d);">"How? → 어떻게 막나 (대책)"</strong><br>
+          <span style="color:var(--muted);">→ 시험 답안에서 항상 재발방지 강조!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 재해조사 절차 -->
+  <div class="section">
+    <div class="sec-header cd" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📋</span>
+        <div><div class="sh-title cd">재해조사 절차</div>
+          <div class="sh-sub">두문자 "현원목분대재"</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="flow-wrap">
+        <div class="invest-step"><div class="is-num">①</div><div class="is-content"><strong>현장 보존</strong><span> — 증거 훼손 방지, 2차 재해 방지</span></div></div>
+        <div class="invest-step"><div class="is-num">②</div><div class="is-content"><strong>원인 수집</strong><span> — 목격자 진술, 사진·동영상</span></div></div>
+        <div class="invest-step"><div class="is-num">③</div><div class="is-content"><strong>목격자 면담</strong><span> — 개별 면담, 진술서 작성</span></div></div>
+        <div class="invest-step"><div class="is-num">④</div><div class="is-content"><strong>분석·판단</strong><span> — 직·간접 원인 규명, 4M 분석</span></div></div>
+        <div class="invest-step"><div class="is-num">⑤</div><div class="is-content"><strong>대책 수립</strong><span> — 즉시·단기·장기 대책</span></div></div>
+        <div class="invest-step"><div class="is-num">⑥</div><div class="is-content"><strong>재발방지 교육</strong><span> — 전 근로자 공유·교육</span></div></div>
+      </div>
+      <div class="memo-block md">
+        <div class="memo-type md">🔤 두문자 암기</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char cd">현</span><span class="acro-text"><em>현</em>장 보존</span></div>
+          <div class="acro-item"><span class="acro-char cd">원</span><span class="acro-text"><em>원</em>인 수집</span></div>
+          <div class="acro-item"><span class="acro-char cd">목</span><span class="acro-text"><em>목</em>격자 면담</span></div>
+          <div class="acro-item"><span class="acro-char cd">분</span><span class="acro-text"><em>분</em>석·판단</span></div>
+          <div class="acro-item"><span class="acro-char cd">대</span><span class="acro-text"><em>대</em>책 수립</span></div>
+          <div class="acro-item"><span class="acro-char cd">재</span><span class="acro-text"><em>재</em>발방지 교육</span></div>
+        </div>
+        <div class="acro-key">→ "현원목분대재" 로 외우자!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 중대재해 보고 -->
+  <div class="section">
+    <div class="sec-header cd" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📞</span>
+        <div><div class="sh-title cd">중대재해 보고 의무</div>
+          <div class="sh-sub">산안법 제54조 — 즉시보고</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <div class="card-label" style="color:var(--d);">중대재해 정의 (산안법)</div>
+        <ul class="item-list">
+          <li>사망자 <strong>1명 이상</strong></li>
+          <li>3개월 이상 요양 부상 <strong>2명 이상</strong></li>
+          <li>부상자 또는 직업성 질병자 <strong>10명 이상</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label" style="color:var(--d);">보고 절차</div>
+        <ul class="item-list">
+          <li><strong>즉시</strong> — 고용노동부 지청 신고</li>
+          <li><strong>1개월 이내</strong> — 재해조사표 제출</li>
+          <li>현장 <strong>보존 의무</strong> — 임의 변경 금지</li>
+        </ul>
+      </div>
+      <div class="memo-block md">
+        <div class="memo-type md">⚠️ 산안법 vs 중처법 비교</div>
+        <div class="story">
+          <span style="color:var(--a);font-weight:700;">산안법 중대재해</span><br>
+          사망1 / 3개월부상2 / 질병10<br><br>
+          <span style="color:var(--c);font-weight:700;">중처법 중대산업재해</span><br>
+          사망1 / 6개월부상2 / 1년질병3<br><br>
+          <span style="color:var(--muted);font-size:11px;">→ 숫자 다름! 시험에 자주 비교 출제</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 5: 비교·답안 -->
+<div id="tg" class="page-section">
+
+  <div class="section">
+    <div class="sec-header cg" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📊</span>
+        <div><div class="sh-title cg">재해 원인분류 비교표</div>
+          <div class="sh-sub">시험 단골 — 원인 분류 구조</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card" style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="color:var(--muted);">구분</th>
+              <th class="va">직접원인</th>
+              <th class="vd">간접원인(4M)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>내용</td><td>불안전 행동·상태</td><td>Man·Machine·Media·Management</td></tr>
+            <tr><td>비율</td><td class="va">88%+10%</td><td>근본 원인</td></tr>
+            <tr><td>예방</td><td>안전조치·위험성평가</td><td class="vd">교육·설비·환경·관리 개선</td></tr>
+            <tr><td>이론</td><td>하인리히 도미노</td><td>버드·스위스치즈</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header cg" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">✍️</span>
+        <div><div class="sh-title cg">시험 빈출 Q&A</div>
+          <div class="sh-sub">답안 핵심 정리</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="qa-item">
+        <div class="qa-q">건설업 4대 재해유형을 순서대로 쓰시오</div>
+        <div class="qa-a">
+          <span class="key">"추낙붕감"</span><br>
+          ①추락(1위·사망 40%) ②낙하·비래 ③붕괴·도괴 ④감전<br>
+          <span style="font-size:11px;color:var(--muted);">→ 전체 재해의 80% 이상 차지</span>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">추락재해 예방을 위한 핵심 숫자</div>
+        <div class="qa-a">
+          <span class="key">2·10·90·40</span><br>
+          2m↑ 안전대 착용 / 10m↑ 안전망<br>
+          90cm↑ 난간 높이 / 40cm↑ 발판 폭
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">재해율·도수율·강도율 공식</div>
+        <div class="qa-a">
+          <span class="key">"재도강종"</span><br>
+          재해율 = 재해자/근로자 × 100<br>
+          도수율 = 건수/시간 × 10⁶<br>
+          강도율 = 손실일수/시간 × 1,000<br>
+          FSI = √(도수율 × 강도율)
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">재해코스트 직·간접비 비율</div>
+        <div class="qa-a">
+          <span class="key">직접비 1 : 간접비 4</span><br>
+          총재해코스트 = 직접비 × 5<br>
+          <span style="font-size:11px;color:var(--muted);">→ 빙산이론 — 숨겨진 간접비가 4배 크다</span>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">산안법과 중처법의 중대재해 정의 차이</div>
+        <div class="qa-a">
+          <span class="key">산안법</span> — 사망1·3개월부상2·질병10<br>
+          <span class="key">중처법</span> — 사망1·6개월부상2·1년질병3<br>
+          <span style="font-size:11px;color:var(--muted);">→ 부상기준(3개월 vs 6개월), 질병숫자(10 vs 3) 다름!</span>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">재해조사 목적과 절차</div>
+        <div class="qa-a">
+          목적 — <span class="key">재발방지</span> (처벌·책임추궁 아님)<br>
+          절차 — <span class="key">"현원목분대재"</span><br>
+          현장보존→원인수집→목격자면담→분석→대책→교육
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 답안 작성 공식 -->
+  <div class="section">
+    <div class="sec-header cg" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📝</span>
+        <div><div class="sh-title cg">재해유형 문제 답안 공식</div>
+          <div class="sh-sub">공종별 재해 문제 공통 구조</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="flow-wrap">
+        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">①</div><div class="fs-content"><div class="fc-title">개요·정의</div><div class="fc-sub">재해 유형 정의, 발생 현황</div></div></div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">②</div><div class="fs-content"><div class="fc-title">발생 원인 (4M 분류)</div><div class="fc-sub">Man·Machine·Media·Management별 원인</div></div></div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">③</div><div class="fs-content"><div class="fc-title">재해 유형별 특징</div><div class="fc-sub">발생 장소·메커니즘·통계</div></div></div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">④</div><div class="fs-content"><div class="fc-title">예방대책 (제대격관보)</div><div class="fc-sub">우선순위에 따른 대책 서술</div></div></div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">⑤</div><div class="fs-content"><div class="fc-title">사례 연계·시사점</div><div class="fc-sub">최근 중대재해 사례, 법적 근거</div></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showTab(id,btn){
+    document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function toggleSec(header){
+    const body=header.nextElementSibling;
+    const arrow=header.querySelector('.sh-arrow');
+    const isOpen=body.classList.contains('open');
+    body.classList.toggle('open',!isOpen);
+    arrow.classList.toggle('open',!isOpen);
+  }
+  window.addEventListener('scroll',()=>{
+    const doc=document.documentElement;
+    const pct=doc.scrollTop/(doc.scrollHeight-doc.clientHeight)*100;
+    document.getElementById('prog').style.width=pct+'%';
+  });
+</script>
+</body>
+</html>

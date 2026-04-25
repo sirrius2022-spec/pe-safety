@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>건설안전기술사 D03 — 위험성평가 (2023 개정)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+  :root {
+    --bg:#0d1117; --card:#161b27; --card2:#1c2235; --border:#252d42;
+    --a:#ffb74d; --b:#4fc3f7; --c:#ef5350; --d:#66bb6a; --e:#ce93d8;
+    --gold:#ffd54f; --text:#dde3ee; --muted:#6b7a99;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);max-width:600px;margin:0 auto;padding:0 0 40px;}
+  .progress-bar{height:3px;background:var(--border);position:sticky;top:0;z-index:200;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--d));width:0%;transition:width 0.3s;}
+  .top-header{background:linear-gradient(135deg,#111827,#1a2235);padding:18px 16px 14px;border-bottom:1px solid var(--border);position:sticky;top:3px;z-index:100;}
+  .top-header .badge{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--a);text-transform:uppercase;margin-bottom:4px;}
+  .top-header h1{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
+  .top-header .sub{font-size:11px;color:var(--muted);margin-top:3px;}
+  .revised-badge{display:inline-block;margin-top:6px;background:rgba(239,83,80,0.18);border:1px solid rgba(239,83,80,0.5);color:#ef5350;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;}
+  .tab-nav{display:flex;gap:6px;margin-top:12px;overflow-x:auto;scrollbar-width:none;}
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid;white-space:nowrap;cursor:pointer;background:transparent;transition:all 0.2s;}
+  .tab-btn.ta{color:var(--a);border-color:var(--a);}
+  .tab-btn.tb{color:var(--b);border-color:var(--b);}
+  .tab-btn.tc{color:var(--c);border-color:var(--c);}
+  .tab-btn.td{color:var(--d);border-color:var(--d);}
+  .tab-btn.tg{color:var(--gold);border-color:var(--gold);}
+  .tab-btn.active.ta{background:rgba(255,183,77,0.15);}
+  .tab-btn.active.tb{background:rgba(79,195,247,0.15);}
+  .tab-btn.active.tc{background:rgba(239,83,80,0.15);}
+  .tab-btn.active.td{background:rgba(102,187,106,0.15);}
+  .tab-btn.active.tg{background:rgba(255,213,79,0.15);}
+  .section{padding:0 12px;margin-top:12px;}
+  .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:10px;cursor:pointer;user-select:none;background:var(--card);border-left:4px solid;margin-bottom:2px;}
+  .sec-header.ca{border-color:var(--a);} .sec-header.cb{border-color:var(--b);} .sec-header.cc{border-color:var(--c);} .sec-header.cd{border-color:var(--d);} .sec-header.cg{border-color:var(--gold);}
+  .sh-left{display:flex;align-items:center;gap:10px;}
+  .sh-icon{font-size:18px;}
+  .sh-title{font-size:14px;font-weight:700;}
+  .sh-title.ca{color:var(--a);} .sh-title.cb{color:var(--b);} .sh-title.cc{color:var(--c);} .sh-title.cd{color:var(--d);} .sh-title.cg{color:var(--gold);}
+  .sh-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+  .sh-arrow{font-size:12px;color:var(--muted);transition:transform 0.25s;}
+  .sh-arrow.open{transform:rotate(180deg);}
+  .sec-body{display:none;flex-direction:column;gap:8px;padding:8px 0 4px;}
+  .sec-body.open{display:flex;}
+  .card{background:var(--card);border-radius:10px;padding:13px 14px;}
+  .card-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .item-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .item-list li{font-size:13px;color:#b0bec5;padding-left:13px;position:relative;line-height:1.55;}
+  .item-list li::before{content:'▸';position:absolute;left:0;opacity:0.4;}
+  .item-list li strong{color:var(--text);font-weight:700;}
+  .memo-block{border-radius:10px;padding:12px 14px;border:1px solid;}
+  .memo-block.ma{background:rgba(255,183,77,0.06);border-color:rgba(255,183,77,0.28);}
+  .memo-block.mb{background:rgba(79,195,247,0.06);border-color:rgba(79,195,247,0.28);}
+  .memo-block.mc{background:rgba(239,83,80,0.06);border-color:rgba(239,83,80,0.28);}
+  .memo-block.md{background:rgba(102,187,106,0.06);border-color:rgba(102,187,106,0.28);}
+  .memo-block.mg{background:rgba(255,213,79,0.06);border-color:rgba(255,213,79,0.28);}
+  .memo-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+  .memo-type.ma{color:var(--a);} .memo-type.mb{color:var(--b);} .memo-type.mc{color:var(--c);} .memo-type.md{color:var(--d);} .memo-type.mg{color:var(--gold);}
+  .acro-list{display:flex;flex-direction:column;gap:4px;}
+  .acro-item{display:flex;align-items:baseline;gap:8px;}
+  .acro-char{font-size:20px;font-weight:900;min-width:22px;line-height:1;}
+  .acro-char.ca{color:var(--a);} .acro-char.cb{color:var(--b);} .acro-char.cc{color:var(--c);} .acro-char.cd{color:var(--d);}
+  .acro-text{font-size:13px;color:var(--text);line-height:1.4;}
+  .acro-text em{font-style:normal;color:var(--gold);font-weight:700;}
+  .acro-key{margin-top:8px;padding:7px 10px;background:rgba(255,213,79,0.1);border-radius:6px;font-size:13px;font-weight:700;color:var(--gold);text-align:center;letter-spacing:1px;}
+  .flow-wrap{display:flex;flex-direction:column;gap:5px;}
+  .flow-step{background:var(--card2);border-radius:8px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;}
+  .flow-step.highlight{border:1px solid rgba(255,213,79,0.4);background:rgba(255,213,79,0.06);}
+  .flow-step.newstep{border:1px solid rgba(239,83,80,0.4);background:rgba(239,83,80,0.05);}
+  .fs-num{font-size:15px;font-weight:900;min-width:26px;text-align:center;line-height:1.4;flex-shrink:0;}
+  .fs-num.ca{color:var(--a);} .fs-num.cb{color:var(--b);} .fs-num.cc{color:var(--c);} .fs-num.cd{color:var(--d);}
+  .fs-content{font-size:12.5px;color:var(--text);line-height:1.5;flex:1;}
+  .fs-content .fc-title{font-weight:700;margin-bottom:2px;}
+  .fs-content .fc-sub{font-size:11px;color:var(--muted);}
+  .fc-new{font-size:10px;font-weight:700;color:#ef5350;background:rgba(239,83,80,0.12);padding:1px 6px;border-radius:10px;margin-left:5px;}
+  .flow-arrow-down{text-align:center;font-size:13px;color:var(--muted);}
+  .diff-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .diff-card{border-radius:8px;padding:10px 12px;}
+  .diff-card.old{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);}
+  .diff-card.new{background:rgba(239,83,80,0.07);border:1px solid rgba(239,83,80,0.3);}
+  .diff-label{font-size:9px;font-weight:700;letter-spacing:2px;margin-bottom:6px;}
+  .diff-label.old{color:var(--muted);} .diff-label.new{color:#ef5350;}
+  .diff-content{font-size:12px;color:#b0bec5;line-height:1.7;}
+  .diff-content strong{color:var(--text);}
+  .diff-content .strike{text-decoration:line-through;color:var(--muted);font-size:11px;}
+  .timing-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .timing-card{border-radius:8px;padding:11px 12px;border:1px solid;}
+  .timing-card.t1{border-color:rgba(255,183,77,0.4);background:rgba(255,183,77,0.07);}
+  .timing-card.t2{border-color:rgba(79,195,247,0.4);background:rgba(79,195,247,0.07);}
+  .timing-card.t3{border-color:rgba(102,187,106,0.4);background:rgba(102,187,106,0.07);}
+  .timing-card.t4{border-color:rgba(239,83,80,0.5);background:rgba(239,83,80,0.08);}
+  .tc-head{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .tc-head.t1{color:var(--a);} .tc-head.t2{color:var(--b);} .tc-head.t3{color:var(--d);} .tc-head.t4{color:#ef5350;}
+  .tc-body{font-size:11px;color:var(--muted);line-height:1.6;}
+  .tc-body strong{color:#b0bec5;}
+  .new-tag{font-size:9px;font-weight:700;color:#ef5350;background:rgba(239,83,80,0.15);padding:1px 6px;border-radius:10px;margin-left:4px;}
+  .priority-wrap{display:flex;flex-direction:column;gap:5px;}
+  .priority-step{display:flex;align-items:center;gap:10px;border-radius:8px;padding:9px 12px;}
+  .ps-rank{font-size:11px;font-weight:900;width:48px;text-align:center;padding:4px 0;border-radius:6px;flex-shrink:0;}
+  .ps-content .ps-title{font-weight:700;color:var(--text);font-size:13px;}
+  .ps-content .ps-desc{font-size:11px;color:var(--muted);margin-top:2px;}
+  .method-item{background:var(--card);border-radius:10px;padding:13px 14px;border-left:4px solid;}
+  .method-item.mb{border-color:var(--b);} .method-item.mc{border-color:var(--c);} .method-item.md{border-color:var(--d);}
+  .mi-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .mi-name{font-size:14px;font-weight:700;}
+  .mi-name.cb{color:var(--b);} .mi-name.cc{color:var(--c);} .mi-name.cd{color:var(--d);}
+  .mi-tag{font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;}
+  .mi-tag.newlaw{background:rgba(239,83,80,0.15);color:#ef5350;}
+  .mi-tag.existing{background:rgba(79,195,247,0.12);color:var(--b);}
+  .matrix-wrap{overflow-x:auto;}
+  .matrix-table{width:100%;border-collapse:collapse;font-size:11.5px;text-align:center;}
+  .matrix-table th{padding:7px 6px;font-weight:700;font-size:10px;border:1px solid var(--border);color:var(--muted);}
+  .matrix-table td{padding:8px 4px;border:1px solid var(--border);font-weight:700;font-size:12px;}
+  .risk-h{background:rgba(239,83,80,0.25);color:#ef5350;}
+  .risk-m{background:rgba(255,183,77,0.2);color:#ffb74d;}
+  .risk-l{background:rgba(102,187,106,0.2);color:#66bb6a;}
+  .gate-row{display:flex;gap:8px;}
+  .gate-box{flex:1;background:var(--card2);border-radius:8px;padding:8px 10px;text-align:center;border:1px solid var(--border);}
+  .gate-box .gb-symbol{font-size:22px;margin-bottom:4px;}
+  .gate-box .gb-name{font-size:11px;font-weight:700;color:var(--c);}
+  .gate-box .gb-desc{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4;}
+  .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+  .guide-item{background:var(--card2);border-radius:7px;padding:8px 10px;}
+  .gi-word{font-size:13px;font-weight:700;color:var(--d);margin-bottom:2px;}
+  .gi-mean{font-size:11px;color:var(--muted);}
+  .compare-table{width:100%;border-collapse:collapse;font-size:11px;}
+  .compare-table th{padding:8px 5px;text-align:center;font-weight:700;border-bottom:2px solid var(--border);font-size:10px;}
+  .compare-table td{padding:7px 5px;border-bottom:1px solid var(--border);color:#b0bec5;line-height:1.5;vertical-align:top;}
+  .compare-table td:first-child{color:var(--muted);font-weight:500;white-space:nowrap;font-size:10px;}
+  .compare-table tr:last-child td{border-bottom:none;}
+  .va{color:var(--a)!important;font-weight:700;} .vb{color:var(--b)!important;font-weight:700;} .vc{color:var(--c)!important;font-weight:700;} .vd{color:var(--d)!important;font-weight:700;} .vg{color:var(--gold)!important;font-weight:700;}
+  .story{background:var(--card2);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.7;}
+  .qa-item{margin-bottom:10px;}
+  .qa-q{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:5px;display:flex;gap:6px;}
+  .qa-q::before{content:'Q.';opacity:0.6;}
+  .qa-a{background:var(--card2);border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.65;color:var(--text);border-left:3px solid var(--gold);}
+  .qa-a .key{color:var(--gold);font-weight:700;}
+  .page-section{display:none;}
+  .page-section.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+
+<div class="top-header">
+  <div class="badge">Domain 03 · 위험성평가</div>
+  <h1>위험성평가 기법 완전정복</h1>
+  <div class="sub">절차·기법·시기·FTA·FMEA·HAZOP·JSA</div>
+  <span class="revised-badge">⚡ 2023년 개정 고시 최신 기준</span>
+  <div class="tab-nav">
+    <button class="tab-btn ta active" onclick="showTab('ta',this)">📋 절차·시기</button>
+    <button class="tab-btn tb" onclick="showTab('tb',this)">🔧 신설기법</button>
+    <button class="tab-btn tc" onclick="showTab('tc',this)">🌲 FTA·FMEA</button>
+    <button class="tab-btn td" onclick="showTab('td',this)">🔬 HAZOP·JSA</button>
+    <button class="tab-btn tg" onclick="showTab('tg',this)">📊 비교·답안</button>
+  </div>
+</div>
+
+
+<!-- TAB 1: 절차·시기 -->
+<div id="ta" class="page-section active">
+
+  <div class="section">
+    <div class="sec-header cc" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">⚡</span>
+        <div><div class="sh-title cc">2023 개정 핵심 변경사항</div>
+          <div class="sh-sub">구법과 절대 혼동 금지!</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="diff-row">
+        <div class="diff-card old">
+          <div class="diff-label old">❌ 구법 (구버전)</div>
+          <div class="diff-content">
+            ①사전준비<br>②파악<br>③<span class="strike">위험성 추정</span><br>④위험성 결정<br>⑤기록<br><br>
+            시기: 최초·정기·수시
+          </div>
+        </div>
+        <div class="diff-card new">
+          <div class="diff-label new">✅ 신법 (2023 개정)</div>
+          <div class="diff-content">
+            ①사전준비<br>②파악<br>③<strong>위험성 결정</strong><br>④<strong>감소대책</strong><br>⑤<strong>공유</strong><br>⑥<strong>기록</strong><br><br>
+            시기: 최초·정기·수시·<strong>상시</strong>
+          </div>
+        </div>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">⚠️ 시험 주의</div>
+        <div class="story">
+          <strong style="color:#ef5350;">"위험성 추정" 단계 삭제!</strong><br>
+          <span style="color:var(--muted);">구법대로 쓰면 감점 → 반드시 신법으로 암기<br>
+          신법 두문자: <strong style="color:var(--gold);">"사파결감공기"</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header ca" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🔄</span>
+        <div><div class="sh-title ca">위험성평가 절차 — 2023 신법</div>
+          <div class="sh-sub">두문자 "사파결감공기" (6단계)</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="flow-wrap">
+        <div class="flow-step">
+          <div class="fs-num ca">①</div>
+          <div class="fs-content">
+            <div class="fc-title">사전준비</div>
+            <div class="fc-sub">평가 대상·방법·담당자 결정, 안전보건 정보 수집, 근로자 참여 계획</div>
+          </div>
+        </div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step">
+          <div class="fs-num ca">②</div>
+          <div class="fs-content">
+            <div class="fc-title">유해·위험요인 파악</div>
+            <div class="fc-sub">순회점검, 근로자 의견 청취, 업무 흐름 분석</div>
+          </div>
+        </div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step highlight">
+          <div class="fs-num" style="color:var(--gold);">③</div>
+          <div class="fs-content">
+            <div class="fc-title">위험성 결정 <span class="fc-new">추정 흡수·통합</span></div>
+            <div class="fc-sub">허용 가능 여부 판단<br>체크리스트·3단계법·매트릭스 등 활용</div>
+          </div>
+        </div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step newstep">
+          <div class="fs-num" style="color:#ef5350;">④</div>
+          <div class="fs-content">
+            <div class="fc-title">위험성 감소대책 수립·실행 <span class="fc-new">신설</span></div>
+            <div class="fc-sub">제거→대체→격리→관리→보호구 우선순위 적용</div>
+          </div>
+        </div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step newstep">
+          <div class="fs-num" style="color:#ef5350;">⑤</div>
+          <div class="fs-content">
+            <div class="fc-title">위험성평가 결과 공유 <span class="fc-new">신설</span></div>
+            <div class="fc-sub">근로자에게 결과 공유 의무화, TBM 연계</div>
+          </div>
+        </div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-step">
+          <div class="fs-num ca">⑥</div>
+          <div class="fs-content">
+            <div class="fc-title">기록·보존</div>
+            <div class="fc-sub">평가 결과 문서화, <strong>3년 보존</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="memo-block ma">
+        <div class="memo-type ma">🔤 두문자 암기</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char ca">사</span><span class="acro-text"><em>사</em>전준비</span></div>
+          <div class="acro-item"><span class="acro-char ca">파</span><span class="acro-text"><em>파</em>악 — 유해위험요인</span></div>
+          <div class="acro-item"><span class="acro-char ca">결</span><span class="acro-text"><em>결</em>정 — 위험성 결정</span></div>
+          <div class="acro-item"><span class="acro-char ca">감</span><span class="acro-text"><em>감</em>소 — 감소대책 수립·실행 ★</span></div>
+          <div class="acro-item"><span class="acro-char ca">공</span><span class="acro-text"><em>공</em>유 — 결과 공유 ★</span></div>
+          <div class="acro-item"><span class="acro-char ca">기</span><span class="acro-text"><em>기</em>록·보존 (3년)</span></div>
+        </div>
+        <div class="acro-key">→ "사파결감공기" 로 외우자!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header ca" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📅</span>
+        <div><div class="sh-title ca">실시시기 4가지 — 2023 신법</div>
+          <div class="sh-sub">두문자 "최정수상" — 상시 신설 ★</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="timing-grid">
+        <div class="timing-card t1">
+          <div class="tc-head t1">① 최초평가</div>
+          <div class="tc-body">사업 개시 후<br><strong>1개월 이내</strong><br>전체 작업 대상</div>
+        </div>
+        <div class="timing-card t2">
+          <div class="tc-head t2">② 정기평가</div>
+          <div class="tc-body">매년<br><strong>연 1회 이상</strong><br>전체 작업 대상</div>
+        </div>
+        <div class="timing-card t3">
+          <div class="tc-head t3">③ 수시평가</div>
+          <div class="tc-body"><strong>변경 시마다</strong><br>공정·기계·설비 변경<br>재해 발생 후</div>
+        </div>
+        <div class="timing-card t4">
+          <div class="tc-head t4">④ 상시평가 <span class="new-tag">신설</span></div>
+          <div class="tc-body"><strong>작업 전 매일</strong><br>TBM 연계<br>일상적 위험 관리</div>
+        </div>
+      </div>
+      <div class="memo-block ma">
+        <div class="memo-type ma">🔤 두문자 암기</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char ca">최</span><span class="acro-text"><em>최</em>초 — 1개월 이내</span></div>
+          <div class="acro-item"><span class="acro-char ca">정</span><span class="acro-text"><em>정</em>기 — 연 1회</span></div>
+          <div class="acro-item"><span class="acro-char ca">수</span><span class="acro-text"><em>수</em>시 — 변경 시</span></div>
+          <div class="acro-item"><span class="acro-char ca">상</span><span class="acro-text"><em>상</em>시 — 매일 TBM 연계 ★신설</span></div>
+        </div>
+        <div class="acro-key">→ "최정수상" 으로 외우자!</div>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">💡 상시평가 핵심</div>
+        <div class="story">
+          <strong style="color:#ef5350;">"매일 아침 TBM = 상시평가"</strong><br>
+          <span style="color:var(--muted);">TBM 일지가 상시평가 기록 역할<br>
+          체크리스트법·OPS를 TBM 자료로 활용</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header ca" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🛡️</span>
+        <div><div class="sh-title ca">위험성 감소 우선순위 5단계</div>
+          <div class="sh-sub">두문자 "제대격관보"</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="priority-wrap">
+        <div class="priority-step" style="background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.25);">
+          <div class="ps-rank" style="background:rgba(239,83,80,0.2);color:#ef5350;">1순위</div>
+          <div class="ps-content"><div class="ps-title">제거 (Elimination)</div><div class="ps-desc">위험요인 자체 제거 — 가장 효과적</div></div>
+        </div>
+        <div class="priority-step" style="background:rgba(255,183,77,0.07);border:1px solid rgba(255,183,77,0.25);">
+          <div class="ps-rank" style="background:rgba(255,183,77,0.2);color:var(--a);">2순위</div>
+          <div class="ps-content"><div class="ps-title">대체 (Substitution)</div><div class="ps-desc">덜 위험한 것으로 교체</div></div>
+        </div>
+        <div class="priority-step" style="background:rgba(79,195,247,0.07);border:1px solid rgba(79,195,247,0.25);">
+          <div class="ps-rank" style="background:rgba(79,195,247,0.2);color:var(--b);">3순위</div>
+          <div class="ps-content"><div class="ps-title">격리 (Engineering)</div><div class="ps-desc">방호장치·방벽·안전장치 설치</div></div>
+        </div>
+        <div class="priority-step" style="background:rgba(102,187,106,0.07);border:1px solid rgba(102,187,106,0.25);">
+          <div class="ps-rank" style="background:rgba(102,187,106,0.2);color:var(--d);">4순위</div>
+          <div class="ps-content"><div class="ps-title">관리적 대책 (Administrative)</div><div class="ps-desc">절차·교육·표지·작업허가·순환근무</div></div>
+        </div>
+        <div class="priority-step" style="background:rgba(206,147,216,0.07);border:1px solid rgba(206,147,216,0.25);">
+          <div class="ps-rank" style="background:rgba(206,147,216,0.2);color:var(--e);">5순위</div>
+          <div class="ps-content"><div class="ps-title">보호구 (PPE)</div><div class="ps-desc">개인보호구 착용 — 마지막 수단</div></div>
+        </div>
+      </div>
+      <div class="acro-key" style="margin-top:8px;">"제대격관보" — 위로 갈수록 효과 ↑</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 2: 신설기법 -->
+<div id="tb" class="page-section">
+
+  <div class="section">
+    <div class="sec-header cb" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">✅</span>
+        <div><div class="sh-title cb">① 체크리스트법</div>
+          <div class="sh-sub">2023 신설 · 가장 간단·신속</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="method-item mb">
+        <div class="mi-head"><div class="mi-name cb">체크리스트법</div><div class="mi-tag newlaw">2023 신설</div></div>
+        <ul class="item-list">
+          <li>사전 작성된 <strong>점검항목 목록</strong> 활용</li>
+          <li>예/아니오 방식 <strong>신속 확인</strong></li>
+          <li>소규모 현장·TBM 연계에 적합</li>
+          <li>장점 — 간단·신속·누구나 가능</li>
+          <li>단점 — 목록 외 위험 누락 가능</li>
+        </ul>
+      </div>
+      <div class="memo-block mb">
+        <div class="memo-type mb">💡 연상</div>
+        <div class="story">
+          <strong style="color:var(--b);">"마트 장보기 목록처럼 하나씩 체크"</strong><br>
+          <span style="color:var(--muted);">→ 빠르지만 목록 밖은 못 봄</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header cc" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📝</span>
+        <div><div class="sh-title cc">② 핵심요인기술법 (OPS)</div>
+          <div class="sh-sub">2023 신설 · One Point Sheet</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="method-item mc">
+        <div class="mi-head"><div class="mi-name cc">핵심요인기술법 (OPS)</div><div class="mi-tag newlaw">2023 신설</div></div>
+        <ul class="item-list">
+          <li>작업별 <strong>핵심 위험요인 1~3가지</strong>만 집중</li>
+          <li>사진·그림 활용 <strong>시각적 표현</strong></li>
+          <li>한 장(One Sheet)에 표현 — 현장 게시 효과적</li>
+          <li>TBM 자료·안전교육 자료로 바로 활용</li>
+        </ul>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">💡 연상</div>
+        <div class="story">
+          <strong style="color:var(--c);">"One Point — 딱 하나만 집중!"</strong><br>
+          <span style="color:var(--muted);">→ 복잡한 분석 대신 가장 중요한 위험 집중<br>
+          → 그림+글로 한 장에 — 누구나 이해 가능</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header cd" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🚦</span>
+        <div><div class="sh-title cd">③ 위험수준 3단계 판단법</div>
+          <div class="sh-sub">2023 신설 · 신호등 방식</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="method-item md">
+        <div class="mi-head"><div class="mi-name cd">위험수준 3단계 판단법</div><div class="mi-tag newlaw">2023 신설</div></div>
+        <ul class="item-list">
+          <li>위험성을 <strong>3단계</strong>로 단순 판단</li>
+          <li>복잡한 수치 계산 없이 직관적 적용</li>
+          <li>소규모 현장에서도 쉽게 활용</li>
+        </ul>
+      </div>
+      <div class="priority-wrap" style="margin-top:8px;">
+        <div class="priority-step" style="background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.3);">
+          <div class="ps-rank" style="background:rgba(239,83,80,0.2);color:#ef5350;font-size:18px;">🔴</div>
+          <div class="ps-content"><div class="ps-title" style="color:#ef5350;">높음 (High)</div><div class="ps-desc">즉시 작업 중지 → 개선 후 재개</div></div>
+        </div>
+        <div class="priority-step" style="background:rgba(255,183,77,0.07);border:1px solid rgba(255,183,77,0.3);">
+          <div class="ps-rank" style="background:rgba(255,183,77,0.2);color:var(--a);font-size:18px;">🟡</div>
+          <div class="ps-content"><div class="ps-title" style="color:var(--a);">중간 (Medium)</div><div class="ps-desc">단기간 내 개선 조치 수립·실행</div></div>
+        </div>
+        <div class="priority-step" style="background:rgba(102,187,106,0.07);border:1px solid rgba(102,187,106,0.3);">
+          <div class="ps-rank" style="background:rgba(102,187,106,0.2);color:var(--d);font-size:18px;">🟢</div>
+          <div class="ps-content"><div class="ps-title" style="color:var(--d);">낮음 (Low)</div><div class="ps-desc">허용 가능 → 지속 모니터링</div></div>
+        </div>
+      </div>
+      <div class="memo-block md">
+        <div class="memo-type md">💡 3단계법 vs 매트릭스</div>
+        <div class="story">
+          <span style="color:var(--c);font-weight:700;">3단계법</span> — 간단·직관·소규모<br>
+          <span style="color:var(--b);font-weight:700;">매트릭스</span> — 정교·수치화·중대규모<br>
+          <span style="color:var(--muted);">→ 현장 규모·복잡성에 따라 선택</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header cb" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📊</span>
+        <div><div class="sh-title cb">위험성 매트릭스 (기존)</div>
+          <div class="sh-sub">가능성 × 중대성 = 위험성</div></div>
+      </div><span class="sh-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead><tr><th>가능성↓/중대성→</th><th>경미</th><th>보통</th><th>중대</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--muted);">거의없음</td><td class="risk-l">1</td><td class="risk-l">2</td><td class="risk-m">3</td></tr>
+            <tr><td style="color:var(--muted);">가끔</td><td class="risk-l">2</td><td class="risk-m">4</td><td class="risk-h">6</td></tr>
+            <tr><td style="color:var(--muted);">빈번</td><td class="risk-m">3</td><td class="risk-h">6</td><td class="risk-h">9</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 3: FTA·FMEA -->
+<div id="tc" class="page-section">
+
+  <div class="section">
+    <div class="sec-header cc" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🌲</span>
+        <div><div class="sh-title cc">FTA — 결함수 분석</div>
+          <div class="sh-sub">연역적 · 위→아래 · 정상사상 출발</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <ul class="item-list">
+          <li>연역적 — <strong>시스템→부품</strong> (위→아래)</li>
+          <li>정상사상(재해) 먼저 설정 후 원인 분해</li>
+          <li>AND·OR 게이트로 논리 연결, 확률 계산 가능</li>
+        </ul>
+      </div>
+      <div class="gate-row" style="margin-top:8px;">
+        <div class="gate-box"><div class="gb-symbol">⊓</div><div class="gb-name">AND 게이트</div><div class="gb-desc">모두 동시 발생 시<br>확률 곱(×)</div></div>
+        <div class="gate-box"><div class="gb-symbol">⊔</div><div class="gb-name">OR 게이트</div><div class="gb-desc">하나만 발생해도<br>확률 합(+)</div></div>
+      </div>
+      <div class="memo-block mc">
+        <div class="memo-type mc">🔤 절차 "정분정정개"</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char cc">정</span><span class="acro-text"><em>정</em>상사상 정의</span></div>
+          <div class="acro-item"><span class="acro-char cc">분</span><span class="acro-text"><em>분</em>해 — FT 작성</span></div>
+          <div class="acro-item"><span class="acro-char cc">정</span><span class="acro-text"><em>정</em>성적 분석 (최소컷셋)</span></div>
+          <div class="acro-item"><span class="acro-char cc">정</span><span class="acro-text"><em>정</em>량적 분석 (확률)</span></div>
+          <div class="acro-item"><span class="acro-char cc">개</span><span class="acro-text"><em>개</em>선 대책</span></div>
+        </div>
+        <div class="acro-key">→ "정분정정개" 로 외우자!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header cb" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🔷</span>
+        <div><div class="sh-title cb">FMEA — 고장형태 영향분석</div>
+          <div class="sh-sub">귀납적 · 아래→위 · 부품 출발</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <ul class="item-list">
+          <li>귀납적 — <strong>부품→시스템</strong> (아래→위)</li>
+          <li>각 부품 고장형태 → 상위 시스템 영향 분석</li>
+          <li>RPN = <strong>심각도(S) × 발생도(O) × 검출도(D)</strong></li>
+        </ul>
+      </div>
+      <div class="memo-block mb">
+        <div class="memo-type mb">🔤 절차 "시고영위개" + RPN=SOD</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char cb">시</span><span class="acro-text"><em>시</em>스템 정의</span></div>
+          <div class="acro-item"><span class="acro-char cb">고</span><span class="acro-text"><em>고</em>장형태 파악</span></div>
+          <div class="acro-item"><span class="acro-char cb">영</span><span class="acro-text"><em>영</em>향 분석</span></div>
+          <div class="acro-item"><span class="acro-char cb">위</span><span class="acro-text"><em>위</em>험도(RPN) 평가</span></div>
+          <div class="acro-item"><span class="acro-char cb">개</span><span class="acro-text"><em>개</em>선 대책</span></div>
+        </div>
+        <div class="acro-key">→ "시고영위개" / RPN = SOD 곱!</div>
+      </div>
+      <div class="memo-block mb">
+        <div class="memo-type mb">💡 FTA vs FMEA 핵심</div>
+        <div class="story">
+          <span style="color:var(--c);font-weight:700;">FTA</span> — From Top ↓ 연역적 (재해→원인)<br>
+          <span style="color:var(--b);font-weight:700;">FMEA</span> — From bottom ↑ 귀납적 (고장→영향)<br>
+          <span style="color:var(--muted);font-size:11px;">둘 다 F로 시작 → 방향은 정반대!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 4: HAZOP·JSA -->
+<div id="td" class="page-section">
+
+  <div class="section">
+    <div class="sec-header cd" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🔬</span>
+        <div><div class="sh-title cd">HAZOP — 위험 및 운전분석</div>
+          <div class="sh-sub">이탈어 활용 · 전문가 팀 기법</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <ul class="item-list">
+          <li>이탈어(Guide Word)로 이탈 상황 도출</li>
+          <li>다학제 <strong>전문가 팀</strong> 브레인스토밍</li>
+          <li>주로 <strong>화학·플랜트</strong> 공정에 적용</li>
+        </ul>
+      </div>
+      <div class="guide-grid" style="margin-top:8px;">
+        <div class="guide-item"><div class="gi-word">NO/NONE</div><div class="gi-mean">흐름 없음</div></div>
+        <div class="guide-item"><div class="gi-word">MORE</div><div class="gi-mean">정량적 증가</div></div>
+        <div class="guide-item"><div class="gi-word">LESS</div><div class="gi-mean">정량적 감소</div></div>
+        <div class="guide-item"><div class="gi-word">AS WELL AS</div><div class="gi-mean">추가요소 존재</div></div>
+        <div class="guide-item"><div class="gi-word">PART OF</div><div class="gi-mean">일부만 발생</div></div>
+        <div class="guide-item"><div class="gi-word">REVERSE</div><div class="gi-mean">반대 방향</div></div>
+        <div class="guide-item"><div class="gi-word">OTHER THAN</div><div class="gi-mean">완전히 다른 것</div></div>
+        <div class="guide-item"><div class="gi-word">EARLY/LATE</div><div class="gi-mean">시간적 이탈</div></div>
+      </div>
+      <div class="memo-block md">
+        <div class="memo-type md">💡 이탈어 암기</div>
+        <div class="story"><strong style="color:var(--d);">"없·많·적·추·부·반·다·때"</strong><br>
+          <span style="color:var(--muted);">없음·많음·적음·추가·부분·반대·다른것·때(시간)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header cd" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">👷</span>
+        <div><div class="sh-title cd">JSA — 작업안전분석</div>
+          <div class="sh-sub">건설현장 최다 활용 · 상시평가 연계</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <ul class="item-list">
+          <li>작업을 <strong>단계별로 분해</strong></li>
+          <li>각 단계 <strong>위험요인 파악</strong></li>
+          <li>위험요인별 <strong>안전대책 수립</strong></li>
+          <li>TBM·<strong>상시평가</strong>와 직결 — 매일 활용</li>
+        </ul>
+      </div>
+      <div class="memo-block md">
+        <div class="memo-type md">🔤 절차 "선분파대"</div>
+        <div class="acro-list">
+          <div class="acro-item"><span class="acro-char cd">선</span><span class="acro-text"><em>선</em>정 — 작업 선정</span></div>
+          <div class="acro-item"><span class="acro-char cd">분</span><span class="acro-text"><em>분</em>해 — 작업단계 분해</span></div>
+          <div class="acro-item"><span class="acro-char cd">파</span><span class="acro-text"><em>파</em>악 — 위험요인 파악</span></div>
+          <div class="acro-item"><span class="acro-char cd">대</span><span class="acro-text"><em>대</em>책 — 안전대책 수립</span></div>
+        </div>
+        <div class="acro-key">→ "선분파대" 로 외우자!</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 5: 비교·답안 -->
+<div id="tg" class="page-section">
+
+  <div class="section">
+    <div class="sec-header cg" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📊</span>
+        <div><div class="sh-title cg">전체 기법 비교표</div>
+          <div class="sh-sub">2023 신설 3가지 포함</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card" style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="color:var(--muted);">구분</th>
+              <th style="color:#ef5350;">체크<br>리스트</th>
+              <th style="color:#ef5350;">OPS<br>(핵심요인)</th>
+              <th style="color:#ef5350;">3단계<br>판단</th>
+              <th class="vb">FMEA</th>
+              <th class="vc">FTA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>구분</td><td style="color:#ef5350;font-weight:700;" colspan="3">2023 신설</td><td colspan="2" style="color:var(--muted);">기존</td></tr>
+            <tr><td>난이도</td><td>쉬움</td><td>쉬움</td><td>쉬움</td><td class="vb">중간</td><td class="vc">어려움</td></tr>
+            <tr><td>정량화</td><td>불가</td><td>불가</td><td>불가</td><td class="vb">RPN</td><td class="vc">확률</td></tr>
+            <tr><td>규모</td><td>소규모</td><td>소규모</td><td>모두</td><td>중대규모</td><td>대규모</td></tr>
+            <tr><td>TBM연계</td><td class="vd">◎</td><td class="vd">◎</td><td class="vd">○</td><td>△</td><td>△</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-header cg" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">✍️</span>
+        <div><div class="sh-title cg">시험 빈출 Q&A</div>
+          <div class="sh-sub">2023 개정 최신 답안</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="qa-item">
+        <div class="qa-q">위험성평가 절차를 쓰시오 (2023 개정)</div>
+        <div class="qa-a">
+          <span class="key">"사파결감공기" (6단계)</span><br>
+          ①사전준비 ②유해위험요인 파악 ③위험성 결정<br>
+          ④감소대책 수립·실행 ⑤결과 공유 ⑥기록·보존(3년)<br>
+          <span style="font-size:11px;color:var(--muted);">※ 위험성 추정 삭제 (2023 개정)</span>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">위험성평가 실시시기 4가지</div>
+        <div class="qa-a">
+          <span class="key">"최정수상"</span><br>
+          ①최초(1개월 이내) ②정기(연 1회)<br>
+          ③수시(변경 시) ④<strong>상시(매일 TBM 연계)</strong><br>
+          <span style="font-size:11px;color:var(--muted);">※ 상시평가 2023 신설</span>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">2023 개정 신설 위험성평가 기법 3가지</div>
+        <div class="qa-a">
+          ①<span class="key">체크리스트법</span> — 목록 기반 간편 점검<br>
+          ②<span class="key">핵심요인기술법(OPS)</span> — 핵심위험 한 장 기술<br>
+          ③<span class="key">위험수준 3단계 판단법</span> — 🔴🟡🟢 신호등 방식
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">위험성 감소대책 우선순위 5단계</div>
+        <div class="qa-a">
+          <span class="key">"제대격관보"</span><br>
+          ①제거 ②대체 ③격리(공학적) ④관리적 대책 ⑤보호구<br>
+          <span style="font-size:11px;color:var(--muted);">→ 보호구는 마지막 수단!</span>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">FMEA와 FTA의 차이점</div>
+        <div class="qa-a">
+          <span class="key">분석 방향 반대</span><br>
+          FMEA — 귀납적(부품→시스템), RPN=SOD<br>
+          FTA — 연역적(시스템→부품), AND/OR 게이트
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">상시평가와 TBM의 관계</div>
+        <div class="qa-a">
+          <span class="key">TBM = 상시평가의 실질적 수단</span><br>
+          매일 작업 전 위험요인 파악·공유·기록<br>
+          체크리스트법·OPS를 TBM 자료로 활용
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showTab(id,btn){
+    document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function toggleSec(header){
+    const body=header.nextElementSibling;
+    const arrow=header.querySelector('.sh-arrow');
+    const isOpen=body.classList.contains('open');
+    body.classList.toggle('open',!isOpen);
+    arrow.classList.toggle('open',!isOpen);
+  }
+  window.addEventListener('scroll',()=>{
+    const doc=document.documentElement;
+    const pct=doc.scrollTop/(doc.scrollHeight-doc.clientHeight)*100;
+    document.getElementById('prog').style.width=pct+'%';
+  });
+</script>
+</body>
+</html>
