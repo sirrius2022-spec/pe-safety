@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pe-safety-v1';
+const CACHE_NAME = 'pe-safety-v2';
 const ASSETS = [
   './',
   './index.html',
