@@ -27,19 +27,21 @@
   .tab-btn.tb{color:var(--b);border-color:var(--b);}
   .tab-btn.tc{color:var(--c);border-color:var(--c);}
   .tab-btn.td{color:var(--d);border-color:var(--d);}
+  .tab-btn.te{color:var(--e);border-color:var(--e);}
   .tab-btn.tg{color:var(--gold);border-color:var(--gold);}
   .tab-btn.active.ta{background:rgba(255,183,77,0.15);}
   .tab-btn.active.tb{background:rgba(79,195,247,0.15);}
   .tab-btn.active.tc{background:rgba(239,83,80,0.15);}
   .tab-btn.active.td{background:rgba(102,187,106,0.15);}
+  .tab-btn.active.te{background:rgba(206,147,216,0.15);}
   .tab-btn.active.tg{background:rgba(255,213,79,0.15);}
   .section{padding:0 12px;margin-top:12px;}
   .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:10px;cursor:pointer;user-select:none;background:var(--card);border-left:4px solid;margin-bottom:2px;}
-  .sec-header.ca{border-color:var(--a);} .sec-header.cb{border-color:var(--b);} .sec-header.cc{border-color:var(--c);} .sec-header.cd{border-color:var(--d);} .sec-header.cg{border-color:var(--gold);}
+  .sec-header.ca{border-color:var(--a);} .sec-header.cb{border-color:var(--b);} .sec-header.cc{border-color:var(--c);} .sec-header.cd{border-color:var(--d);} .sec-header.ce{border-color:var(--e);} .sec-header.cg{border-color:var(--gold);}
   .sh-left{display:flex;align-items:center;gap:10px;}
   .sh-icon{font-size:18px;}
   .sh-title{font-size:14px;font-weight:700;}
-  .sh-title.ca{color:var(--a);} .sh-title.cb{color:var(--b);} .sh-title.cc{color:var(--c);} .sh-title.cd{color:var(--d);} .sh-title.cg{color:var(--gold);}
+  .sh-title.ca{color:var(--a);} .sh-title.cb{color:var(--b);} .sh-title.cc{color:var(--c);} .sh-title.cd{color:var(--d);} .sh-title.ce{color:var(--e);} .sh-title.cg{color:var(--gold);}
   .sh-sub{font-size:10px;color:var(--muted);margin-top:1px;}
   .sh-arrow{font-size:12px;color:var(--muted);transition:transform 0.25s;}
   .sh-arrow.open{transform:rotate(180deg);}
@@ -156,6 +158,7 @@
     <button class="tab-btn tb" onclick="showTab('tb',this)">🔧 신설기법</button>
     <button class="tab-btn tc" onclick="showTab('tc',this)">🌲 FTA·FMEA</button>
     <button class="tab-btn td" onclick="showTab('td',this)">🔬 HAZOP·JSA</button>
+    <button class="tab-btn te" onclick="showTab('te',this)">🏗️ 실무적용</button>
     <button class="tab-btn tg" onclick="showTab('tg',this)">📊 비교·답안</button>
   </div>
 </div>
@@ -624,14 +627,261 @@
 </div>
 
 
-<!-- TAB 5: 비교·답안 -->
+<!-- TAB 5: 실무적용 -->
+<div id="te" class="page-section">
+
+  <!-- 위험성평가 시기·세부실행방법 상세 -->
+  <div class="section">
+    <div class="sec-header ce" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📅</span>
+        <div><div class="sh-title ce">위험성평가 시기 — 세부 실행방법</div>
+          <div class="sh-sub">최초·정기·수시·상시 단계별 실시법</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+
+      <!-- 최초평가 -->
+      <div class="card" style="border-left:3px solid var(--a);">
+        <div class="card-label" style="color:var(--a);">① 최초평가 — 사업 개시 1개월 이내</div>
+        <ul class="item-list">
+          <li><strong>대상</strong> — 사업 개시 또는 신규 작업 시작 시</li>
+          <li><strong>시기</strong> — 사업 개시 후 <strong>1개월 이내</strong></li>
+          <li><strong>방법</strong> — 모든 작업·공정 대상 <strong>전수평가</strong></li>
+          <li><strong>실시자</strong> — 안전보건관리책임자 + 관리감독자</li>
+          <li><strong>참여</strong> — 해당 작업 근로자 의견 청취 의무</li>
+          <li><strong>기록</strong> — 평가표·감소대책서 작성·보존</li>
+        </ul>
+      </div>
+
+      <!-- 정기평가 -->
+      <div class="card" style="border-left:3px solid var(--b);">
+        <div class="card-label" style="color:var(--b);">② 정기평가 — 매년 1회 이상</div>
+        <ul class="item-list">
+          <li><strong>주기</strong> — 매년 <strong>1회 이상</strong></li>
+          <li><strong>방법</strong> — 최초평가 결과 <strong>유효성 검토</strong></li>
+          <li><strong>중점</strong> — 기계·설비 <strong>노후화</strong>·근로자 변경·법령 개정 반영</li>
+          <li><strong>점검사항</strong> — 위험요인 변동·감소대책 이행률·잔류위험성</li>
+          <li><strong>결과</strong> — 평가표 갱신·신규 위험요인 등록</li>
+        </ul>
+      </div>
+
+      <!-- 수시평가 -->
+      <div class="card" style="border-left:3px solid var(--c);">
+        <div class="card-label" style="color:var(--c);">③ 수시평가 — 변경 시 그때마다</div>
+        <ul class="item-list">
+          <li><strong>실시 사유 7가지</strong>:</li>
+          <li>• 사업장 <strong>건설·이전·변경·증설</strong></li>
+          <li>• 기계·기구·설비·물질 <strong>신규 도입·변경</strong></li>
+          <li>• 건설물·기계 <strong>정비·보수</strong></li>
+          <li>• 작업방법·작업절차 <strong>신규·변경</strong></li>
+          <li>• <strong>중대재해</strong> 발생 후</li>
+          <li>• <strong>아차사고</strong> 발생 후</li>
+          <li>• 그 밖에 사업주가 필요하다고 판단</li>
+        </ul>
+      </div>
+
+      <!-- 상시평가 (강조) -->
+      <div class="card" style="border-left:3px solid var(--e);background:rgba(206,147,216,0.05);">
+        <div class="card-label" style="color:var(--e);">④ 상시평가 — 매일 작업 전 (2023 신설) ★</div>
+        <ul class="item-list">
+          <li><strong>주기</strong> — <strong>매일 작업 시작 전</strong></li>
+          <li><strong>실질적 수단</strong> — <strong>TBM (Tool Box Meeting)</strong></li>
+          <li><strong>방법</strong> — 체크리스트법·OPS·3단계판단법 활용</li>
+          <li><strong>대상</strong> — 당일 작업 전 위험요인</li>
+          <li><strong>참여</strong> — 작업조 전원 (10~15분)</li>
+          <li><strong>기록</strong> — TBM 일지 = 상시평가 기록 인정</li>
+        </ul>
+      </div>
+
+      <div class="memo-block me">
+        <div class="memo-type me">💡 시기별 핵심 키워드</div>
+        <div class="story">
+          <strong style="color:var(--a);">최초</strong> = 1개월·전수<br>
+          <strong style="color:var(--b);">정기</strong> = 연1회·유효성 검토<br>
+          <strong style="color:var(--c);">수시</strong> = 변경·재해 후<br>
+          <strong style="color:var(--e);">상시</strong> = 매일·TBM<br>
+          <span style="color:var(--muted);font-size:11.5px;">→ 4가지가 유기적으로 연결되어야 진정한 위험성평가</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 위험성평가 세부 실행 절차 -->
+  <div class="section">
+    <div class="sec-header ce" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">⚙️</span>
+        <div><div class="sh-title ce">현장 적용 — 세부 실행방법</div>
+          <div class="sh-sub">실무 단계별 체크포인트</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+
+      <div class="card">
+        <div class="card-label" style="color:var(--a);">STEP 1 · 사전준비</div>
+        <ul class="item-list">
+          <li>위험성평가 <strong>실시규정</strong> 작성 (사업주 결재)</li>
+          <li>평가팀 구성 — 안전관리자·관리감독자·근로자</li>
+          <li>안전보건정보 수집 — MSDS·작업표준·재해이력</li>
+          <li>평가대상 <strong>공정·작업 분류</strong> 작성</li>
+          <li>평가기법 결정 — 체크리스트·OPS·3단계법·매트릭스</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--b);">STEP 2 · 유해위험요인 파악</div>
+        <ul class="item-list">
+          <li><strong>4가지 파악 방법</strong>:</li>
+          <li>• <strong>순회점검</strong> — 현장 직접 관찰</li>
+          <li>• <strong>청취조사</strong> — 근로자 의견 청취</li>
+          <li>• <strong>안전보건자료</strong> — 재해사례·MSDS·작업표준</li>
+          <li>• <strong>안전보건체크리스트</strong> — 표준 체크리스트</li>
+          <li>요인별 <strong>발생 가능성·중대성</strong> 사전 검토</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--gold);">STEP 3 · 위험성 결정 ★ 핵심</div>
+        <ul class="item-list">
+          <li>가능성 × 중대성 = <strong>위험성</strong></li>
+          <li><strong>허용 가능 여부</strong> 판단 (사업장 자체 기준)</li>
+          <li>판정 기준 사전 수립 (예: 매트릭스 6점 이상 = 허용불가)</li>
+          <li>모든 위험요인을 <strong>높음·중간·낮음</strong>으로 분류</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--c);">STEP 4 · 감소대책 수립·실행 ★ 신설</div>
+        <ul class="item-list">
+          <li><strong>"제대격관보"</strong> 우선순위 적용</li>
+          <li>대책별 <strong>이행기한·담당자</strong> 명시</li>
+          <li>잔류위험성 평가 — 대책 후에도 위험 잔존 여부</li>
+          <li>안전관리비 사용 계획 연계</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--d);">STEP 5 · 결과 공유 ★ 신설</div>
+        <ul class="item-list">
+          <li>평가 결과 <strong>전 근로자 공유</strong> (의무)</li>
+          <li>공유 방법 — TBM·게시·교육·문서</li>
+          <li>위험요인·감소대책·잔류위험성 모두 공유</li>
+          <li>외국인 근로자 — <strong>모국어 자료</strong> 제공 권장</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--muted);">STEP 6 · 기록·보존</div>
+        <ul class="item-list">
+          <li>평가표·감소대책서 <strong>3년 보존</strong></li>
+          <li>중대재해 발생 시 — 평가 적정성 검토 자료</li>
+          <li>고용노동부 점검 시 제출 자료</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 소규모 현장 안전관리계획 -->
+  <div class="section">
+    <div class="sec-header ce" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">🏘️</span>
+        <div><div class="sh-title ce">소규모 현장 안전관리계획</div>
+          <div class="sh-sub">중소·소규모 건설현장 특화 관리</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+
+      <div class="memo-block mc">
+        <div class="memo-type mc">⚡ 소규모 현장 정의</div>
+        <div class="story">
+          <strong>공사금액 50억 미만 + 상시근로자 50명 미만</strong><br>
+          <span style="color:var(--muted);font-size:11.5px;">전체 건설현장의 약 80% 차지<br>
+          전체 사망재해의 60% 이상 발생 → 집중 관리 필요</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--a);">소규모 현장 특성·문제점</div>
+        <ul class="item-list">
+          <li>안전관리자 <strong>전담배치 곤란</strong></li>
+          <li>안전관리비 <strong>예산 제약</strong></li>
+          <li>근로자 <strong>고령화·외국인 비율</strong> 높음</li>
+          <li>안전교육·점검 <strong>형식적 운영</strong></li>
+          <li>전문장비·시설 부족</li>
+          <li>원·하청 안전관리 <strong>책임 모호</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--d);">소규모 현장 안전관리계획 핵심 내용</div>
+        <ul class="item-list">
+          <li>① <strong>현장소장 안전책임</strong> 명확화</li>
+          <li>② 위험성평가 — <strong>간소화 기법</strong> 활용 (체크리스트·OPS·3단계법)</li>
+          <li>③ <strong>매일 TBM</strong> — 상시평가 의무 이행</li>
+          <li>④ <strong>고위험 작업 작업허가제(PTW)</strong> 운영</li>
+          <li>⑤ 외국인 근로자 — <strong>모국어 안전교육</strong></li>
+          <li>⑥ 안전관리비 — <strong>스마트 안전장비</strong> 우선 투자</li>
+          <li>⑦ 비상연락망 — 119·산재병원·발주청</li>
+          <li>⑧ 분기별 <strong>외부 전문가 점검</strong> 활용</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label" style="color:var(--c);">소규모 현장 핵심 위험요인 (집중관리)</div>
+        <ul class="item-list">
+          <li><strong>추락</strong> — 사다리·비계·개구부 (사망 1위)</li>
+          <li><strong>끼임</strong> — 굴삭기·차량 (소규모 빈발)</li>
+          <li><strong>부딪힘</strong> — 후진 차량·중장비</li>
+          <li><strong>전도·낙하</strong> — 자재 적재·이동</li>
+          <li><strong>감전</strong> — 가설전기 부실 관리</li>
+        </ul>
+      </div>
+
+      <div class="memo-block me">
+        <div class="memo-type me">💡 정부 지원사업 연계</div>
+        <div class="story">
+          <strong>클린사업장 지원</strong> — 안전시설 설치비 지원<br>
+          <strong>안전보건 컨설팅</strong> — 무료 전문가 지원<br>
+          <strong>스마트 안전장비 지원</strong> — AI CCTV·웨어러블<br>
+          <span style="color:var(--muted);font-size:11.5px;">→ 안전보건공단·고용노동부 지원 적극 활용</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 답안 작성 공식 -->
+  <div class="section">
+    <div class="sec-header ce" onclick="toggleSec(this)">
+      <div class="sh-left"><span class="sh-icon">📝</span>
+        <div><div class="sh-title ce">위험성평가 답안 공식</div>
+          <div class="sh-sub">시험 출제 시 답안 흐름</div></div>
+      </div><span class="sh-arrow open">▼</span>
+    </div>
+    <div class="sec-body open">
+      <div class="card">
+        <ul class="item-list">
+          <li><strong>① 개요</strong> — 정의·법적근거(2023 개정)</li>
+          <li><strong>② 절차</strong> — "사파결감공기" 6단계</li>
+          <li><strong>③ 시기</strong> — "최정수상" 4시기</li>
+          <li><strong>④ 기법</strong> — 신설 3기법 + 기존 FMEA·FTA·HAZOP</li>
+          <li><strong>⑤ 감소대책</strong> — "제대격관보" 우선순위</li>
+          <li><strong>⑥ 실무적용</strong> — TBM·소규모현장 특화</li>
+          <li><strong>⑦ 시사점</strong> — 중대재해감축로드맵 연계</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TAB 6: 비교·답안 -->
 <div id="tg" class="page-section">
 
   <div class="section">
     <div class="sec-header cg" onclick="toggleSec(this)">
       <div class="sh-left"><span class="sh-icon">📊</span>
         <div><div class="sh-title cg">전체 기법 비교표</div>
-          <div class="sh-sub">2023 신설 3가지 포함</div></div>
+          <div class="sh-sub">2023 신설 3가지 포함</div></div></div>
       </div><span class="sh-arrow open">▼</span>
     </div>
     <div class="sec-body open">
