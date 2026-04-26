@@ -2,1241 +2,1106 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#0d1117">
-<title>건설안전기술사 D02 — 재해이론·산업심리</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#090c14">
+<title>D02 안전·재해이론 — 건설안전기술사</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-  :root {
-    --bg:#0d1117; --card:#161b27; --card2:#1c2235; --border:#252d42;
-    --a:#ff8a65;    /* 하인리히 */
-    --b:#4fc3f7;    /* 버드 */
-    --c:#ce93d8;    /* 스위스치즈 */
-    --d:#66bb6a;    /* 재해유형·예방 */
-    --e:#ffb74d;    /* 산업심리 */
-    --f:#ef5350;    /* 안전공학 */
-    --gold:#ffd54f; --purple:#ce93d8;
-    --text:#dde3ee; --muted:#6b7a99;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);max-width:600px;margin:0 auto;padding:0 0 40px;}
-  .progress-bar{height:3px;background:var(--border);position:sticky;top:0;z-index:200;}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--d));width:0%;transition:width 0.3s;}
-  .top-header{background:linear-gradient(135deg,#111827,#1a2235);padding:18px 16px 14px;border-bottom:1px solid var(--border);position:sticky;top:3px;z-index:100;}
-  .top-header .badge{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--a);text-transform:uppercase;margin-bottom:4px;}
-  .top-header h1{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
-  .top-header .sub{font-size:11px;color:var(--muted);margin-top:3px;}
-  .law-badge{display:inline-block;margin-top:6px;background:rgba(79,195,247,0.15);border:1px solid rgba(79,195,247,0.4);color:var(--b);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;}
-  .tab-nav{display:flex;gap:6px;margin-top:12px;overflow-x:auto;scrollbar-width:none;}
-  .tab-nav::-webkit-scrollbar{display:none;}
-  .tab-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid;white-space:nowrap;cursor:pointer;background:transparent;transition:all 0.2s;}
-  .tab-btn.ta{color:var(--a);border-color:var(--a);}
-  .tab-btn.tb{color:var(--b);border-color:var(--b);}
-  .tab-btn.tc{color:var(--c);border-color:var(--c);}
-  .tab-btn.td{color:var(--d);border-color:var(--d);}
-  .tab-btn.te{color:var(--e);border-color:var(--e);}
-  .tab-btn.tf{color:var(--f);border-color:var(--f);}
-  .tab-btn.tg{color:var(--gold);border-color:var(--gold);}
-  .tab-btn.active.ta{background:rgba(255,138,101,0.15);}
-  .tab-btn.active.tb{background:rgba(79,195,247,0.15);}
-  .tab-btn.active.tc{background:rgba(206,147,216,0.15);}
-  .tab-btn.active.td{background:rgba(102,187,106,0.15);}
-  .tab-btn.active.te{background:rgba(255,183,77,0.15);}
-  .tab-btn.active.tf{background:rgba(239,83,80,0.15);}
-  .tab-btn.active.tg{background:rgba(255,213,79,0.15);}
-  .section{padding:0 12px;margin-top:12px;}
-  .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:10px;cursor:pointer;user-select:none;background:var(--card);border-left:4px solid;margin-bottom:2px;}
-  .sec-header.ca{border-color:var(--a);}.sec-header.cb{border-color:var(--b);}.sec-header.cc{border-color:var(--c);}.sec-header.cd{border-color:var(--d);}.sec-header.ce{border-color:var(--e);}.sec-header.cf{border-color:var(--f);}.sec-header.cg{border-color:var(--gold);}
-  .sh-left{display:flex;align-items:center;gap:10px;}
-  .sh-icon{font-size:18px;}
-  .sh-title{font-size:14px;font-weight:700;}
-  .sh-title.ca{color:var(--a);}.sh-title.cb{color:var(--b);}.sh-title.cc{color:var(--c);}.sh-title.cd{color:var(--d);}.sh-title.ce{color:var(--e);}.sh-title.cf{color:var(--f);}.sh-title.cg{color:var(--gold);}
-  .sh-sub{font-size:10px;color:var(--muted);margin-top:1px;}
-  .sh-arrow{font-size:12px;color:var(--muted);transition:transform 0.25s;}
-  .sh-arrow.open{transform:rotate(180deg);}
-  .sec-body{display:none;flex-direction:column;gap:8px;padding:8px 0 4px;}
-  .sec-body.open{display:flex;}
-  .card{background:var(--card);border-radius:10px;padding:13px 14px;}
-  .card-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-  .item-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
-  .item-list li{font-size:13px;color:#b0bec5;padding-left:13px;position:relative;line-height:1.55;}
-  .item-list li::before{content:'▸';position:absolute;left:0;opacity:0.4;}
-  .item-list li strong{color:var(--text);font-weight:700;}
-  .law-ref{font-size:10px;color:rgba(79,195,247,0.7);font-weight:600;margin-left:4px;background:rgba(79,195,247,0.08);padding:1px 5px;border-radius:6px;}
-  .memo-block{border-radius:10px;padding:12px 14px;border:1px solid;}
-  .memo-block.ma{background:rgba(255,138,101,0.06);border-color:rgba(255,138,101,0.28);}
-  .memo-block.mb{background:rgba(79,195,247,0.06);border-color:rgba(79,195,247,0.28);}
-  .memo-block.mc{background:rgba(206,147,216,0.06);border-color:rgba(206,147,216,0.28);}
-  .memo-block.md{background:rgba(102,187,106,0.06);border-color:rgba(102,187,106,0.28);}
-  .memo-block.me{background:rgba(255,183,77,0.06);border-color:rgba(255,183,77,0.28);}
-  .memo-block.mf{background:rgba(239,83,80,0.06);border-color:rgba(239,83,80,0.28);}
-  .memo-block.mg{background:rgba(255,213,79,0.06);border-color:rgba(255,213,79,0.28);}
-  .memo-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
-  .memo-type.ma{color:var(--a);}.memo-type.mb{color:var(--b);}.memo-type.mc{color:var(--c);}.memo-type.md{color:var(--d);}.memo-type.me{color:var(--e);}.memo-type.mf{color:var(--f);}.memo-type.mg{color:var(--gold);}
-  .acro-list{display:flex;flex-direction:column;gap:4px;}
-  .acro-item{display:flex;align-items:baseline;gap:8px;}
-  .acro-char{font-size:20px;font-weight:900;min-width:22px;line-height:1;}
-  .acro-char.ca{color:var(--a);}.acro-char.cb{color:var(--b);}.acro-char.cc{color:var(--c);}.acro-char.cd{color:var(--d);}.acro-char.ce{color:var(--e);}.acro-char.cf{color:var(--f);}
-  .acro-text{font-size:13px;color:var(--text);line-height:1.4;}
-  .acro-text em{font-style:normal;color:var(--gold);font-weight:700;}
-  .acro-key{margin-top:8px;padding:7px 10px;background:rgba(255,213,79,0.1);border-radius:6px;font-size:13px;font-weight:700;color:var(--gold);text-align:center;letter-spacing:1px;}
-  .story{background:var(--card2);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.7;}
-  .story strong{color:var(--gold);}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@700;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
-  /* 도미노 */
-  .domino-wrap{display:flex;flex-direction:column;gap:5px;}
-  .domino-step{border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;border:1px solid;}
-  .domino-step.da{background:rgba(255,138,101,0.07);border-color:rgba(255,138,101,0.25);}
-  .domino-step.db{background:rgba(79,195,247,0.07);border-color:rgba(79,195,247,0.25);}
-  .domino-num{font-size:18px;font-weight:900;min-width:28px;text-align:center;line-height:1;}
-  .domino-num.ca{color:var(--a);}.domino-num.cb{color:var(--b);}
-  .domino-content{font-size:13px;line-height:1.45;}
-  .domino-content .dc-title{font-weight:700;color:var(--text);}
-  .domino-content .dc-sub{font-size:11px;color:var(--muted);margin-top:2px;}
-  .domino-arrow{text-align:center;font-size:13px;color:var(--muted);}
+:root {
+  --bg:      #090c14;
+  --surface: #111827;
+  --surface2:#0d1a12;
+  --border:  #1e2a40;
+  --border2: #1e3a28;
 
-  /* 스위스치즈 */
-  .cheese-wrap{display:flex;flex-direction:column;gap:6px;}
-  .cheese-layer{border-radius:8px;padding:9px 12px;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;gap:10px;}
-  .cheese-icon{font-size:20px;}
-  .cheese-content{font-size:12.5px;line-height:1.45;}
-  .cheese-content strong{color:var(--c);}
-  .cheese-arrow{text-align:center;font-size:13px;color:var(--muted);}
+  --green:   #34d399;
+  --green2:  #6ee7b7;
+  --green-d: rgba(52,211,153,0.10);
+  --green-b: rgba(52,211,153,0.22);
 
-  /* 재해유형 */
-  .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .type-card{background:var(--card2);border-radius:8px;padding:10px 12px;border:1px solid var(--border);}
-  .type-card .tc-icon{font-size:22px;margin-bottom:4px;}
-  .type-card .tc-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
-  .type-card .tc-pct{font-size:18px;font-weight:900;color:var(--a);}
-  .type-card .tc-desc{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+  --gold:    #f5c842;
+  --gold-d:  rgba(245,200,66,0.10);
+  --red:     #f87171;
+  --amber:   #fbbf24;
+  --blue:    #60a5fa;
+  --purple:  #a78bfa;
+  --teal:    #2dd4bf;
+  --orange:  #fb923c;
 
-  /* 숫자 뱃지 */
-  .num-row{display:flex;flex-wrap:wrap;gap:7px;}
-  .num-badge{display:flex;flex-direction:column;align-items:center;border-radius:9px;padding:9px 10px;min-width:60px;border:1px solid;flex:1;}
-  .nb-num{font-size:17px;font-weight:900;line-height:1.1;}
-  .nb-label{font-size:10px;color:var(--muted);margin-top:3px;text-align:center;line-height:1.4;}
-  .na{border-color:rgba(255,138,101,0.35);background:rgba(255,138,101,0.07);} .na .nb-num{color:var(--a);}
-  .nb_{border-color:rgba(79,195,247,0.35);background:rgba(79,195,247,0.07);} .nb_ .nb-num{color:var(--b);}
-  .ne_{border-color:rgba(255,183,77,0.35);background:rgba(255,183,77,0.07);} .ne_ .nb-num{color:var(--e);}
-  .nf_{border-color:rgba(239,83,80,0.35);background:rgba(239,83,80,0.07);} .nf_ .nb-num{color:var(--f);}
+  --text:    #e2e8f5;
+  --muted:   #64748b;
+  --muted2:  #94a3b8;
+  --r: 13px; --r-sm: 8px;
+}
 
-  /* 흐름 */
-  .flow-wrap{display:flex;flex-direction:column;gap:5px;}
-  .flow-step{background:var(--card2);border-radius:8px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;}
-  .fs-num{font-size:14px;font-weight:900;min-width:26px;text-align:center;line-height:1.4;flex-shrink:0;}
-  .fs-num.ca{color:var(--a);}.fs-num.cb{color:var(--b);}.fs-num.cc{color:var(--c);}.fs-num.cd{color:var(--d);}.fs-num.ce{color:var(--e);}.fs-num.cf{color:var(--f);}
-  .fs-content{font-size:12.5px;color:var(--text);line-height:1.5;flex:1;}
-  .fs-content .fc-title{font-weight:700;margin-bottom:2px;}
-  .fs-content .fc-sub{font-size:11px;color:var(--muted);}
-  .flow-arrow-down{text-align:center;font-size:13px;color:var(--muted);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);padding-bottom:56px;min-height:100vh}
 
-  /* 비교표 */
-  .compare-table{width:100%;border-collapse:collapse;font-size:11.5px;}
-  .compare-table th{padding:8px 6px;text-align:center;font-weight:700;border-bottom:2px solid var(--border);font-size:10px;}
-  .compare-table td{padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;line-height:1.5;vertical-align:top;}
-  .compare-table td:first-child{color:var(--muted);font-weight:500;white-space:nowrap;font-size:10px;}
-  .compare-table tr:last-child td{border-bottom:none;}
-  .va{color:var(--a)!important;font-weight:700;}.vb{color:var(--b)!important;font-weight:700;}.vc{color:var(--c)!important;font-weight:700;}.vd{color:var(--d)!important;font-weight:700;}.ve{color:var(--e)!important;font-weight:700;}.vf{color:var(--f)!important;font-weight:700;}.vg{color:var(--gold)!important;font-weight:700;}
+body::before{
+  content:'';position:fixed;top:0;left:0;right:0;height:280px;
+  background:radial-gradient(ellipse 70% 50% at 70% -5%,rgba(52,211,153,0.09) 0%,transparent 70%);
+  pointer-events:none;z-index:0;
+}
 
-  .qa-item{margin-bottom:10px;}
-  .qa-q{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:5px;display:flex;gap:6px;}
-  .qa-q::before{content:'Q.';opacity:0.6;}
-  .qa-a{background:var(--card2);border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.65;color:var(--text);border-left:3px solid var(--gold);}
-  .qa-a .key{color:var(--gold);font-weight:700;}
+/* ── 헤더 ── */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(9,12,20,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 14px 10px}
+.hdr-row{display:flex;align-items:center;gap:10px}
+.back-btn{display:flex;align-items:center;gap:4px;color:var(--muted2);font-size:12px;font-weight:600;text-decoration:none;padding:5px 10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;flex-shrink:0;transition:all .18s}
+.back-btn:active{opacity:.7;transform:scale(.95)}
+.hdr-info{flex:1;min-width:0}
+.hdr-code{font-size:9px;font-weight:800;letter-spacing:2.5px;color:var(--green);text-transform:uppercase;margin-bottom:1px}
+.hdr-title{font-size:15px;font-weight:900;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-  .keyfact{background:rgba(255,138,101,0.08);border:1px solid rgba(255,138,101,0.3);border-radius:8px;padding:9px 11px;margin:6px 0;}
-  .keyfact-title{font-size:10px;font-weight:700;color:var(--a);letter-spacing:1px;margin-bottom:4px;}
-  .keyfact-body{font-size:12px;color:var(--text);line-height:1.6;}
-  .keyfact-body strong{color:var(--gold);}
+/* ── 탭 ── */
+.tab-nav{display:flex;overflow-x:auto;background:rgba(0,0,0,0.25);border-bottom:1px solid var(--border);scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:9px 14px;font-size:11.5px;font-weight:700;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .18s}
+.tab-btn.on{color:var(--green);border-bottom-color:var(--green)}
 
-  .new-item{position:relative;}
-  .new-item::after{content:'NEW';position:absolute;top:0;right:0;font-size:8px;font-weight:700;color:var(--f);background:rgba(239,83,80,0.15);padding:1px 5px;border-radius:6px;letter-spacing:1px;}
+/* ── 본문 ── */
+.body{padding:14px 14px 0}
+.section{display:none}
+.section.on{display:block}
 
-  .page-section{display:none;}
-  .page-section.active{display:block;}
+/* ── 공통 ── */
+.sec-hdr{display:flex;align-items:center;gap:8px;margin:18px 0 10px}
+.sec-hdr:first-child{margin-top:0}
+.sec-hdr-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.sec-hdr-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.card-title{font-size:12px;font-weight:800;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+
+/* ── 이론 카드 (메인) ── */
+.theory-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px;border-top:3px solid}
+.tc-green{border-top-color:var(--green)}
+.tc-blue{border-top-color:var(--blue)}
+.tc-amber{border-top-color:var(--amber)}
+.tc-purple{border-top-color:var(--purple)}
+.tc-teal{border-top-color:var(--teal)}
+.tc-orange{border-top-color:var(--orange)}
+.tc-red{border-top-color:var(--red)}
+
+.theory-head{padding:11px 13px 9px;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
+.th-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.th-meta{flex:1;min-width:0}
+.th-label{font-size:9px;font-weight:800;letter-spacing:1.5px;margin-bottom:2px}
+.tc-green .th-label{color:var(--green)}
+.tc-blue .th-label{color:var(--blue)}
+.tc-amber .th-label{color:var(--amber)}
+.tc-purple .th-label{color:var(--purple)}
+.tc-teal .th-label{color:var(--teal)}
+.tc-orange .th-label{color:var(--orange)}
+.tc-red .th-label{color:var(--red)}
+.th-name{font-size:14px;font-weight:900;color:#fff;margin-bottom:2px;line-height:1.25}
+.th-sub{font-size:10px;color:var(--muted2)}
+.th-badge{font-size:9px;font-weight:800;padding:3px 8px;border-radius:6px;flex-shrink:0;white-space:nowrap;align-self:flex-start;margin-top:2px}
+.badge-star{background:rgba(245,200,66,0.15);color:var(--gold)}
+.badge-key{background:rgba(248,113,113,0.15);color:var(--red)}
+.badge-new{background:rgba(96,165,250,0.15);color:var(--blue)}
+
+.theory-body{padding:12px 13px}
+
+/* ── 단계 플로우 ── */
+.chain{display:flex;flex-direction:column;gap:0;margin-bottom:10px}
+.chain-step{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px dashed var(--border)}
+.chain-step:last-child{border-bottom:none}
+.chain-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0}
+.cn-green{background:rgba(52,211,153,0.15);border:1.5px solid rgba(52,211,153,0.35);color:var(--green)}
+.cn-blue{background:rgba(96,165,250,0.12);border:1.5px solid rgba(96,165,250,0.3);color:var(--blue)}
+.cn-amber{background:rgba(251,191,36,0.12);border:1.5px solid rgba(251,191,36,0.3);color:var(--amber)}
+.cn-purple{background:rgba(167,139,250,0.12);border:1.5px solid rgba(167,139,250,0.3);color:var(--purple)}
+.cn-red{background:rgba(248,113,113,0.12);border:1.5px solid rgba(248,113,113,0.3);color:var(--red)}
+.cn-orange{background:rgba(251,146,60,0.12);border:1.5px solid rgba(251,146,60,0.3);color:var(--orange)}
+.chain-body{flex:1;min-width:0;padding-top:4px}
+.chain-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px}
+.chain-desc{font-size:10px;color:var(--muted2);line-height:1.65}
+.chain-desc em{color:var(--gold);font-style:normal;font-weight:700}
+.chain-desc strong{color:var(--text);font-weight:700}
+
+/* ── 비율 시각화 ── */
+.ratio-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px;margin-bottom:10px}
+.ratio-title{font-size:10px;font-weight:800;color:var(--muted2);margin-bottom:8px}
+.ratio-bars{display:flex;flex-direction:column;gap:5px}
+.ratio-row{display:flex;align-items:center;gap:8px}
+.ratio-label{font-size:10px;font-weight:700;color:var(--muted2);width:56px;flex-shrink:0;text-align:right}
+.ratio-bar-bg{flex:1;height:14px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative}
+.ratio-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.ratio-val{font-size:9px;font-weight:800;color:#fff}
+.ratio-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;width:32px;flex-shrink:0}
+
+/* ── 비교 테이블 ── */
+.cmp-table{width:100%;border-collapse:collapse;font-size:10.5px}
+.cmp-table th{background:rgba(52,211,153,0.1);color:var(--green2);font-size:10px;font-weight:800;text-align:center;padding:7px 6px;border-bottom:1px solid var(--border2)}
+.cmp-table th:first-child{text-align:left;width:26%}
+.cmp-table td{padding:7px 6px;border-bottom:1px solid var(--border);color:var(--muted2);vertical-align:top;line-height:1.55;text-align:center}
+.cmp-table td:first-child{color:var(--text);font-weight:700;text-align:left}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table .hl{color:var(--text);font-weight:700}
+.cmp-table .gn{color:var(--green);font-weight:700}
+.cmp-table .am{color:var(--amber);font-weight:700}
+.cmp-table .rd{color:var(--red);font-weight:700}
+
+/* ── 키포인트 박스 ── */
+.kp-box{background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.18);border-radius:var(--r-sm);padding:9px 11px;margin-top:8px}
+.kp-box.kp-gold{background:var(--gold-d);border-color:rgba(245,200,66,0.2)}
+.kp-box.kp-blue{background:rgba(96,165,250,0.06);border-color:rgba(96,165,250,0.18)}
+.kp-box.kp-red{background:rgba(248,113,113,0.06);border-color:rgba(248,113,113,0.2)}
+.kp-title{font-size:10px;font-weight:800;color:var(--green);margin-bottom:4px}
+.kp-box.kp-gold .kp-title{color:var(--gold)}
+.kp-box.kp-blue .kp-title{color:var(--blue)}
+.kp-box.kp-red .kp-title{color:var(--red)}
+.kp-desc{font-size:10.5px;color:var(--muted2);line-height:1.7}
+.kp-desc strong{color:var(--text)}
+.kp-desc em{color:var(--gold);font-style:normal}
+
+/* ── 암기법 카드 ── */
+.mn-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:12px 13px;margin-bottom:8px}
+.mn-card.mn-blue{border-left-color:var(--blue)}
+.mn-card.mn-amber{border-left-color:var(--amber)}
+.mn-card.mn-purple{border-left-color:var(--purple)}
+.mn-card.mn-teal{border-left-color:var(--teal)}
+.mn-card.mn-orange{border-left-color:var(--orange)}
+.mn-card.mn-red{border-left-color:var(--red)}
+.mn-domain{font-size:9px;font-weight:800;color:var(--green);letter-spacing:1px;margin-bottom:3px}
+.mn-card.mn-blue .mn-domain{color:var(--blue)}
+.mn-card.mn-amber .mn-domain{color:var(--amber)}
+.mn-card.mn-purple .mn-domain{color:var(--purple)}
+.mn-card.mn-teal .mn-domain{color:var(--teal)}
+.mn-card.mn-orange .mn-domain{color:var(--orange)}
+.mn-card.mn-red .mn-domain{color:var(--red)}
+.mn-key{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:900;color:#fff;margin-bottom:5px;letter-spacing:1px}
+.mn-expand{font-size:10.5px;color:var(--muted2);line-height:1.75;margin-bottom:6px}
+.mn-expand span{color:var(--text);font-weight:700}
+.mn-tip{font-size:10px;color:var(--gold);background:var(--gold-d);border:1px solid rgba(245,200,66,0.2);border-radius:var(--r-sm);padding:5px 9px;line-height:1.6}
+
+/* ── 기출 카드 ── */
+.exam-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:8px}
+.exam-head{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.exam-round{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:var(--green-d);color:var(--green);border-radius:5px;padding:2px 7px}
+.exam-type{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px}
+.et-short{background:rgba(52,211,153,0.12);color:var(--green)}
+.et-long{background:rgba(251,191,36,0.12);color:var(--amber)}
+.exam-year{font-size:10px;color:var(--muted);margin-left:auto}
+.exam-q{padding:9px 12px;font-size:11px;color:var(--text);line-height:1.65}
+.exam-q strong{color:var(--green2)}
+
+/* ── 4원칙·4단계 그리드 ── */
+.principle-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.pg-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px;text-align:center}
+.pg-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--green);margin-bottom:3px}
+.pg-title{font-size:12px;font-weight:800;color:var(--text);margin-bottom:3px}
+.pg-desc{font-size:9.5px;color:var(--muted2);line-height:1.5}
+
+/* ── 인간 에러 유형표 ── */
+.error-row{display:flex;gap:7px;margin-bottom:7px;flex-wrap:wrap}
+.error-chip{flex:1;min-width:calc(50% - 4px);background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);border-radius:var(--r-sm);padding:9px 10px}
+.ec-type{font-size:9px;font-weight:800;color:var(--red);margin-bottom:3px}
+.ec-name{font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px}
+.ec-desc{font-size:9.5px;color:var(--muted2);line-height:1.5}
+
+/* ── 수치 그리드 ── */
+.num-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.num-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px 12px;text-align:center}
+.num-val{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;color:var(--green);margin-bottom:2px;line-height:1}
+.num-unit{font-size:9px;color:var(--muted2);margin-bottom:5px}
+.num-label{font-size:11px;font-weight:800;color:var(--text);margin-bottom:2px}
+.num-desc{font-size:9.5px;color:var(--muted2);line-height:1.5}
+
+@media(max-width:360px){
+  .principle-grid{grid-template-columns:1fr 1fr}
+  .mn-key{font-size:17px}
+  .num-val{font-size:17px}
+}
 </style>
 </head>
 <body>
 
-<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
-
-<div class="top-header">
-  <div class="badge">Domain 02 · 재해이론·산업심리</div>
-  <h1>안전이론·재해이론 완전정복</h1>
-  <div class="sub">하인리히·버드·스위스치즈 + 산업심리·안전공학</div>
-  <span class="law-badge">⚖️ 산안기준규칙 2026.03 반영</span>
-  <div class="tab-nav">
-    <button class="tab-btn ta active" onclick="showTab('ta',this)">🔶 하인리히</button>
-    <button class="tab-btn tb" onclick="showTab('tb',this)">🔷 버드</button>
-    <button class="tab-btn tc" onclick="showTab('tc',this)">🧀 스위스치즈</button>
-    <button class="tab-btn td" onclick="showTab('td',this)">📊 재해유형·예방</button>
-    <button class="tab-btn te" onclick="showTab('te',this)">🧠 산업심리</button>
-    <button class="tab-btn tf" onclick="showTab('tf',this)">⚙️ 안전공학</button>
-    <button class="tab-btn tg" onclick="showTab('tg',this)">✍️ 비교·답안</button>
+<div class="hdr">
+  <div class="hdr-row">
+    <a class="back-btn" href="forest.html">← 숲</a>
+    <div class="hdr-info">
+      <div class="hdr-code">Domain 02</div>
+      <div class="hdr-title">🧠 안전·재해이론</div>
+    </div>
   </div>
 </div>
 
-
-<!-- ══════════════════════
-     TAB 1 : 하인리히
-══════════════════════ -->
-<div id="ta" class="page-section active">
-
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔶</span>
-        <div><div class="sh-title ca">하인리히 도미노이론</div>
-          <div class="sh-sub">1931년 · 산업재해 예방의 고전</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>미국 하인리히(H.W. Heinrich) 제창</li>
-          <li>재해는 <strong>연쇄적 사건</strong>의 결과</li>
-          <li>핵심 — <strong>불안전 행동·상태 제거</strong>로 재해 예방</li>
-        </ul>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">💡 연상</div>
-        <div class="story">
-          <strong>"도미노 5개가 쓰러지면 재해 발생"</strong><br>
-          <span style="color:var(--muted)">→ 3번째 도미노(불안전)만 제거하면 연쇄 차단!</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🀱</span>
-        <div><div class="sh-title ca">5단계 도미노 — 암기</div>
-          <div class="sh-sub">두문자 "유결불사재"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="domino-wrap">
-        <div class="domino-step da">
-          <div class="domino-num ca">①</div>
-          <div class="domino-content">
-            <div class="dc-title">유전적·사회적 환경</div>
-            <div class="dc-sub">선천적 결함, 사회환경적 요인</div>
-          </div>
-        </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step da">
-          <div class="domino-num ca">②</div>
-          <div class="domino-content">
-            <div class="dc-title">개인적 결함</div>
-            <div class="dc-sub">무모함, 신경과민, 지식 부족</div>
-          </div>
-        </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step da" style="border-color:rgba(255,213,79,0.5);background:rgba(255,213,79,0.08);">
-          <div class="domino-num" style="color:var(--gold);">③</div>
-          <div class="domino-content">
-            <div class="dc-title" style="color:var(--gold);">불안전 행동·상태 ⭐ 핵심 제거</div>
-            <div class="dc-sub">불안전 행동 88% / 불안전 상태 10%</div>
-          </div>
-        </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step da">
-          <div class="domino-num ca">④</div>
-          <div class="domino-content">
-            <div class="dc-title">사고 (Accident)</div>
-          </div>
-        </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step da">
-          <div class="domino-num ca">⑤</div>
-          <div class="domino-content">
-            <div class="dc-title">재해 (Injury)</div>
-          </div>
-        </div>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">🔤 두문자 암기</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char ca">유</span><span class="acro-text"><em>유</em>전·환경</span></div>
-          <div class="acro-item"><span class="acro-char ca">결</span><span class="acro-text"><em>결</em>함</span></div>
-          <div class="acro-item"><span class="acro-char ca">불</span><span class="acro-text"><em>불</em>안전 ★</span></div>
-          <div class="acro-item"><span class="acro-char ca">사</span><span class="acro-text"><em>사</em>고</span></div>
-          <div class="acro-item"><span class="acro-char ca">재</span><span class="acro-text"><em>재</em>해</span></div>
-        </div>
-        <div class="acro-key">→ "유결불사재"!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 1:29:300 법칙 -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔢</span>
-        <div><div class="sh-title ca">1 : 29 : 300 법칙</div>
-          <div class="sh-sub">하인리히 재해구성 비율 (손실우연)</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="num-row">
-        <div class="num-badge na"><span class="nb-num">1</span><span class="nb-label">중상<br>(사망)</span></div>
-        <div class="num-badge na"><span class="nb-num">29</span><span class="nb-label">경상<br>(부상)</span></div>
-        <div class="num-badge na"><span class="nb-num">300</span><span class="nb-label">무상해<br>아차사고</span></div>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">💡 핵심 메시지</div>
-        <div class="story">
-          <strong>"300번의 아차사고를 무시하면 결국 중상 1명"</strong><br>
-          <span style="color:var(--muted)">→ 아차사고(Near Miss) 관리가 핵심 예방 전략</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 재해예방 4원칙 (NEW) -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🛡️</span>
-        <div><div class="sh-title ca new-item">재해예방 4원칙 — 하인리히</div>
-          <div class="sh-sub">★ 시험 핵심 — 두문자 "손원예대"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          하인리히가 제시한 산업재해 예방의 <strong>4대 기본 원칙</strong>
-        </div>
-      </div>
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>① 손실우연의 원칙</strong> — 재해의 손실은 우연적, 사고의 결과<br><span style="font-size:11px;color:var(--muted);">→ 1:29:300 법칙</span></li>
-          <li><strong>② 원인계기의 원칙</strong> — 재해는 반드시 원인이 있다 (필연성)<br><span style="font-size:11px;color:var(--muted);">→ 직접·간접 원인 규명</span></li>
-          <li><strong>③ 예방가능의 원칙</strong> — 모든 재해는 예방 가능<br><span style="font-size:11px;color:var(--muted);">→ 천재지변 제외</span></li>
-          <li><strong>④ 대책선정의 원칙</strong> — 재해는 적절한 대책이 반드시 있다<br><span style="font-size:11px;color:var(--muted);">→ 3E (Engineering·Education·Enforcement)</span></li>
-        </ul>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">🔤 두문자 암기</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char ca">손</span><span class="acro-text"><em>손</em>실우연 — 우연적 손실</span></div>
-          <div class="acro-item"><span class="acro-char ca">원</span><span class="acro-text"><em>원</em>인계기 — 필연적 원인</span></div>
-          <div class="acro-item"><span class="acro-char ca">예</span><span class="acro-text"><em>예</em>방가능 — 모두 예방 가능</span></div>
-          <div class="acro-item"><span class="acro-char ca">대</span><span class="acro-text"><em>대</em>책선정 — 적절한 대책</span></div>
-        </div>
-        <div class="acro-key">→ "손원예대" 4원칙!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 재해예방 5단계 (NEW) -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📋</span>
-        <div><div class="sh-title ca new-item">재해예방 5단계 — 하인리히</div>
-          <div class="sh-sub">두문자 "조사분개시"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="flow-wrap">
-        <div class="flow-step"><div class="fs-num ca">①</div><div class="fs-content"><div class="fc-title">안전조직 구성</div><div class="fc-sub">조직 편성 및 책임 부여</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num ca">②</div><div class="fs-content"><div class="fc-title">사실 발견 (조사)</div><div class="fc-sub">자료수집·점검·관찰</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num ca">③</div><div class="fs-content"><div class="fc-title">분석·평가</div><div class="fc-sub">원인 규명 및 분석</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num ca">④</div><div class="fs-content"><div class="fc-title">대책 선정 (3E)</div><div class="fc-sub">Engineering·Education·Enforcement</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num ca">⑤</div><div class="fs-content"><div class="fc-title">대책 적용·시정</div><div class="fc-sub">대책 실시 및 평가</div></div></div>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">🔤 두문자</div>
-        <div class="acro-key">조사분개시 — 조직·사실·분석·개선·시정</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3E (NEW - Harvey) -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">3️⃣</span>
-        <div><div class="sh-title ca new-item">3E 이론 — Harvey</div>
-          <div class="sh-sub">재해예방 3대 대책 + 4E·4M 확장</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          하비(Harvey)가 제시한 재해예방 <strong>3대 기본 대책</strong><br>
-          하인리히 4원칙 ④ 대책선정과 직결
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">3E (기본)</div>
-        <ul class="item-list">
-          <li><strong>① Engineering (기술)</strong> — 안전설계·방호장치·기계화<br><span style="font-size:11px;color:var(--muted);">→ Fail Safe · Fool Proof · DFS</span></li>
-          <li><strong>② Education (교육)</strong> — 안전보건교육·훈련<br><span style="font-size:11px;color:var(--muted);">→ TBM·정기·특별·기초안전</span></li>
-          <li><strong>③ Enforcement (규제)</strong> — 법규·기준·관리<br><span style="font-size:11px;color:var(--muted);">→ 산안법·작업허가제·작업중지</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">4E (확장) — 환경 추가</div>
-        <ul class="item-list">
-          <li>3E + <strong>④ Environment (환경)</strong> — 작업환경 개선</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--e);">4M (재해 간접원인 분류)</div>
-        <ul class="item-list">
-          <li><strong>Man</strong> — 인적 요인 (지식·기능·태도)</li>
-          <li><strong>Machine</strong> — 기계·설비 결함</li>
-          <li><strong>Media</strong> — 작업환경·방법 불량</li>
-          <li><strong>Management</strong> — 관리적 요인</li>
-        </ul>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">💡 시험 답안 활용</div>
-        <div class="story">
-          공종별 안전 대책 서술 시 <strong>3E·4M 분류로 정리</strong>하면 고득점!<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 기술적·교육적·관리적 + 환경적 대책 구조화</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 적극 안전 (NEW) -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🎯</span>
-        <div><div class="sh-title ca new-item">적극 안전 (Active Safety)</div>
-          <div class="sh-sub">안전을 유지하는 능동적 방법</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>위험을 <strong>사전에 발견·제거</strong>하는 능동적 안전 활동</li>
-          <li>소극안전(사고 후 대응) ↔ <strong>적극안전(사전 예방)</strong></li>
-          <li>공식 — <strong>안전관리 = 안전교육 + 안전활동 + 안전점검</strong></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+<div class="tab-nav">
+  <button class="tab-btn on" onclick="goTab('domino',this)">재해이론</button>
+  <button class="tab-btn" onclick="goTab('principles',this)">원칙·단계</button>
+  <button class="tab-btn" onclick="goTab('human',this)">인간공학</button>
+  <button class="tab-btn" onclick="goTab('compare',this)">이론 비교</button>
+  <button class="tab-btn" onclick="goTab('mnemonics',this)">암기법</button>
+  <button class="tab-btn" onclick="goTab('exams',this)">기출문제</button>
 </div>
 
+<div class="body">
 
-<!-- ══════════════════════
-     TAB 2 : 버드
-══════════════════════ -->
-<div id="tb" class="page-section">
+<!-- ══════════════════
+     탭1: 재해이론 (도미노·버드·스위스치즈)
+══════════════════ -->
+<div id="domino" class="section on">
 
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔷</span>
-        <div><div class="sh-title cb">버드 수정 도미노이론</div>
-          <div class="sh-sub">1969년 · 경영 관점으로 수정</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>미국 버드(Frank Bird) 제창</li>
-          <li>재해 원인을 <strong>관리 실패</strong>로 봄</li>
-          <li>핵심 — <strong>경영자·관리자 책임</strong> 강조</li>
-        </ul>
+  <div class="sec-hdr"><span class="sec-hdr-label">재해 연쇄이론</span><div class="sec-hdr-line"></div></div>
+
+  <!-- 하인리히 도미노 5단계 -->
+  <div class="theory-card tc-green">
+    <div class="theory-head">
+      <span class="th-icon">🁣</span>
+      <div class="th-meta">
+        <div class="th-label">HEINRICH · 1931</div>
+        <div class="th-name">도미노 이론 (5단계)</div>
+        <div class="th-sub">산업재해 예방 교과서의 출발점</div>
       </div>
+      <span class="th-badge badge-star">★★★★★</span>
     </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🀱</span>
-        <div><div class="sh-title cb">버드 5단계 — 암기</div>
-          <div class="sh-sub">두문자 "관기직접재"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="domino-wrap">
-        <div class="domino-step db" style="border-color:rgba(255,213,79,0.5);background:rgba(255,213,79,0.08);">
-          <div class="domino-num" style="color:var(--gold);">①</div>
-          <div class="domino-content">
-            <div class="dc-title" style="color:var(--gold);">관리 부족 ⭐ 핵심</div>
-            <div class="dc-sub">안전관리시스템 결함</div>
+    <div class="theory-body">
+      <div class="chain">
+        <div class="chain-step">
+          <div class="chain-num cn-green">1</div>
+          <div class="chain-body">
+            <div class="chain-title">유전적·사회적 환경</div>
+            <div class="chain-desc">선천적 기질, 사회환경의 영향 → 결함의 씨앗. <em>암기: 유</em></div>
           </div>
         </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step db">
-          <div class="domino-num cb">②</div>
-          <div class="domino-content">
-            <div class="dc-title">기본 원인 (4M)</div>
-            <div class="dc-sub">개인·작업적 요인</div>
+        <div class="chain-step">
+          <div class="chain-num cn-green">2</div>
+          <div class="chain-body">
+            <div class="chain-title">개인적 결함</div>
+            <div class="chain-desc">무지·기능 부족·부주의 등 개인 특성. <em>암기: 결</em></div>
           </div>
         </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step db">
-          <div class="domino-num cb">③</div>
-          <div class="domino-content">
-            <div class="dc-title">직접 원인</div>
-            <div class="dc-sub">불안전 행동 + 상태</div>
+        <div class="chain-step">
+          <div class="chain-num cn-green">3</div>
+          <div class="chain-body">
+            <div class="chain-title">불안전한 행동·상태 <span style="color:var(--red);font-size:9px;font-weight:800;background:rgba(248,113,113,0.15);border-radius:3px;padding:1px 5px;margin-left:3px;">핵심</span></div>
+            <div class="chain-desc"><strong>제거 가능한 유일한 단계</strong> — 하인리히 이론의 핵심 메시지. 불안전 행동 88%, 불안전 상태 10%, 천재 2%. <em>암기: 불</em></div>
           </div>
         </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step db">
-          <div class="domino-num cb">④</div>
-          <div class="domino-content"><div class="dc-title">접촉 (사고)</div></div>
+        <div class="chain-step">
+          <div class="chain-num cn-green">4</div>
+          <div class="chain-body">
+            <div class="chain-title">사고</div>
+            <div class="chain-desc">에너지의 비예기적 방출 또는 접촉. <em>암기: 사</em></div>
+          </div>
         </div>
-        <div class="domino-arrow">↓</div>
-        <div class="domino-step db">
-          <div class="domino-num cb">⑤</div>
-          <div class="domino-content"><div class="dc-title">재해·손실</div></div>
+        <div class="chain-step">
+          <div class="chain-num cn-green">5</div>
+          <div class="chain-body">
+            <div class="chain-title">재해 (손실)</div>
+            <div class="chain-desc">사람의 상해 또는 재산의 손실 발생. <em>암기: 재</em></div>
+          </div>
         </div>
       </div>
-      <div class="memo-block mb">
-        <div class="memo-type mb">🔤 두문자</div>
-        <div class="acro-key">→ "관기직접재"!</div>
+      <div class="kp-box">
+        <div class="kp-title">⚡ 핵심 포인트</div>
+        <div class="kp-desc"><strong>1:29:300 법칙</strong> — 중상 1 : 경상 29 : 무상해사고 300. <strong>3번 도미노(불안전 행동·상태)를 제거</strong>하면 연쇄가 끊어져 재해 예방 가능. 불안전 행동이 88%를 차지한다는 점이 핵심 논리</div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔢</span>
-        <div><div class="sh-title cb">1 : 10 : 30 : 600 법칙</div>
-          <div class="sh-sub">버드 재해구성 비율</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="num-row">
-        <div class="num-badge nb_"><span class="nb-num">1</span><span class="nb-label">중상</span></div>
-        <div class="num-badge nb_"><span class="nb-num">10</span><span class="nb-label">경상</span></div>
-        <div class="num-badge nb_"><span class="nb-num">30</span><span class="nb-label">물적<br>손실</span></div>
-        <div class="num-badge nb_"><span class="nb-num">600</span><span class="nb-label">아차<br>사고</span></div>
+  <!-- 버드 수정이론 -->
+  <div class="theory-card tc-blue">
+    <div class="theory-head">
+      <span class="th-icon">🐦</span>
+      <div class="th-meta">
+        <div class="th-label">BIRD · 1966 수정이론</div>
+        <div class="th-name">버드의 신도미노 이론 (5단계)</div>
+        <div class="th-sub">관리 실패를 근본 원인으로 본 현대적 이론</div>
       </div>
-      <div class="memo-block mb">
-        <div class="memo-type mb">💡 하인리히 vs 버드</div>
-        <div class="story">
-          <span style="color:var(--a);font-weight:700;">하인리히</span> 1:29:300<br>
-          <span style="color:var(--b);font-weight:700;">버드</span> 1:10:30:600<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 버드는 <strong>물적손실(30)</strong> 추가</span>
+      <span class="th-badge badge-star">★★★★★</span>
+    </div>
+    <div class="theory-body">
+      <div class="chain">
+        <div class="chain-step">
+          <div class="chain-num cn-blue">1</div>
+          <div class="chain-body">
+            <div class="chain-title">제어의 부족 (관리의 실패)</div>
+            <div class="chain-desc"><strong>경영자·관리자의 안전관리 체계 미흡</strong>이 근본 원인. 하인리히 이론과 가장 큰 차이점. <em>암기: 제</em></div>
+          </div>
         </div>
+        <div class="chain-step">
+          <div class="chain-num cn-blue">2</div>
+          <div class="chain-body">
+            <div class="chain-title">기본 원인 (기원)</div>
+            <div class="chain-desc">개인적 요인(지식·기능 부족) + 직업적 요인(설계 불량·기준 미비). <em>암기: 기</em></div>
+          </div>
+        </div>
+        <div class="chain-step">
+          <div class="chain-num cn-blue">3</div>
+          <div class="chain-body">
+            <div class="chain-title">직접 원인 (징후)</div>
+            <div class="chain-desc">불안전 행동 + 불안전 상태. <em>암기: 직</em></div>
+          </div>
+        </div>
+        <div class="chain-step">
+          <div class="chain-num cn-blue">4</div>
+          <div class="chain-body">
+            <div class="chain-title">사고 (접촉)</div>
+            <div class="chain-desc">에너지·물질과의 위험한 접촉. <em>암기: 사</em></div>
+          </div>
+        </div>
+        <div class="chain-step">
+          <div class="chain-num cn-blue">5</div>
+          <div class="chain-body">
+            <div class="chain-title">상해·손해</div>
+            <div class="chain-desc">인적·물적·환경적 손실 발생. <em>암기: 상</em></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1:10:30:600 비율 -->
+      <div class="ratio-box">
+        <div class="ratio-title">📊 버드의 사고 비율 (1:10:30:600)</div>
+        <div class="ratio-bars">
+          <div class="ratio-row">
+            <div class="ratio-label">중상해</div>
+            <div class="ratio-bar-bg"><div class="ratio-bar-fill" style="width:0.6%;background:var(--red);min-width:28px"><span class="ratio-val">1</span></div></div>
+            <div class="ratio-num" style="color:var(--red)">1</div>
+          </div>
+          <div class="ratio-row">
+            <div class="ratio-label">경상해</div>
+            <div class="ratio-bar-bg"><div class="ratio-bar-fill" style="width:6%;background:var(--amber);min-width:36px"><span class="ratio-val">10</span></div></div>
+            <div class="ratio-num" style="color:var(--amber)">10</div>
+          </div>
+          <div class="ratio-row">
+            <div class="ratio-label">물적손실</div>
+            <div class="ratio-bar-bg"><div class="ratio-bar-fill" style="width:18%;background:var(--blue)"><span class="ratio-val">30</span></div></div>
+            <div class="ratio-num" style="color:var(--blue)">30</div>
+          </div>
+          <div class="ratio-row">
+            <div class="ratio-label">무상해사고</div>
+            <div class="ratio-bar-bg"><div class="ratio-bar-fill" style="width:100%;background:var(--green)"><span class="ratio-val">600</span></div></div>
+            <div class="ratio-num" style="color:var(--green)">600</div>
+          </div>
+        </div>
+      </div>
+      <div class="kp-box kp-blue">
+        <div class="kp-title">⚡ 핵심 포인트</div>
+        <div class="kp-desc">하인리히(1:29:300)와 <strong>비율이 다름</strong>에 주의. 버드는 <em>무상해사고 600건</em>을 강조 → 아차사고(Near-Miss) 관리의 중요성. 관리의 실패(1단계)가 근본 원인</div>
       </div>
     </div>
   </div>
 
-</div>
-
-
-<!-- ══════════════════════
-     TAB 3 : 스위스치즈
-══════════════════════ -->
-<div id="tc" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🧀</span>
-        <div><div class="sh-title cc">스위스치즈 모델</div>
-          <div class="sh-sub">Reason 1990년 · 시스템 안전</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>영국 리즌(James Reason) 제창</li>
-          <li>방어막(치즈)에 구멍이 뚫려있음</li>
-          <li>구멍이 <strong>일직선 정렬</strong>될 때 재해</li>
-          <li>핵심 — <strong>다층 방어체계</strong> 구축</li>
-        </ul>
+  <!-- 아담스 이론 -->
+  <div class="theory-card tc-amber">
+    <div class="theory-head">
+      <span class="th-icon">⚙️</span>
+      <div class="th-meta">
+        <div class="th-label">ADAMS · 작전적 에러이론</div>
+        <div class="th-name">아담스의 사고연쇄반응 이론</div>
+        <div class="th-sub">관리구조·전술적·작전적 에러 강조</div>
       </div>
+      <span class="th-badge badge-star">★★★☆</span>
     </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🛡️</span>
-        <div><div class="sh-title cc">4개 방어층 — "조불작방"</div>
-          <div class="sh-sub">시스템 안전</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="cheese-wrap">
-        <div class="cheese-layer">
-          <span class="cheese-icon">🧀</span>
-          <div class="cheese-content"><strong>① 조직적 영향</strong><br><span style="color:var(--muted);font-size:11px;">경영방침·안전문화·예산</span></div>
+    <div class="theory-body">
+      <div class="chain">
+        <div class="chain-step">
+          <div class="chain-num cn-amber">1</div>
+          <div class="chain-body">
+            <div class="chain-title">관리구조</div>
+            <div class="chain-desc">조직의 안전관리 체계·방침 → <strong>작전적 에러</strong>의 근원</div>
+          </div>
         </div>
-        <div class="cheese-arrow">↓</div>
-        <div class="cheese-layer">
-          <span class="cheese-icon">🧀</span>
-          <div class="cheese-content"><strong>② 불안전한 감독</strong><br><span style="color:var(--muted);font-size:11px;">관리자 지도부족</span></div>
+        <div class="chain-step">
+          <div class="chain-num cn-amber">2</div>
+          <div class="chain-body">
+            <div class="chain-title">작전적 에러 (Operational Error)</div>
+            <div class="chain-desc">관리자·감독자의 의사결정·행동 오류 → <em>하인리히의 불안전 행동에 해당</em></div>
+          </div>
         </div>
-        <div class="cheese-arrow">↓</div>
-        <div class="cheese-layer">
-          <span class="cheese-icon">🧀</span>
-          <div class="cheese-content"><strong>③ 작업자 행동</strong><br><span style="color:var(--muted);font-size:11px;">불안전 행동·실수</span></div>
+        <div class="chain-step">
+          <div class="chain-num cn-amber">3</div>
+          <div class="chain-body">
+            <div class="chain-title">전술적 에러 (Tactical Error)</div>
+            <div class="chain-desc">작업자의 불안전 행동·상태</div>
+          </div>
         </div>
-        <div class="cheese-arrow">↓</div>
-        <div class="cheese-layer">
-          <span class="cheese-icon">🧀</span>
-          <div class="cheese-content"><strong>④ 방어 실패</strong><br><span style="color:var(--muted);font-size:11px;">안전장치 결함</span></div>
-        </div>
-        <div class="cheese-arrow">↓</div>
-        <div class="cheese-layer" style="border-color:rgba(239,83,80,0.4);background:rgba(239,83,80,0.07);">
-          <span class="cheese-icon">💥</span>
-          <div class="cheese-content"><strong style="color:#ef5350;">재해 발생</strong></div>
-        </div>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">🔤 두문자</div>
-        <div class="acro-key">→ "조불작방"!</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⚡</span>
-        <div><div class="sh-title cc">활성 실패 vs 잠재 실패</div>
-          <div class="sh-sub">시험 단골</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:#ef5350;">활성 실패 (Active)</div>
-        <ul class="item-list">
-          <li>현장 작업자의 <strong>즉각적 행동</strong></li>
-          <li>예) 안전장치 해제, 보호구 미착용</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--c);">잠재 실패 (Latent)</div>
-        <ul class="item-list">
-          <li>조직·관리 수준 <strong>숨겨진 결함</strong></li>
-          <li>예) 부실한 안전교육, 과도한 업무량</li>
-        </ul>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">💡 핵심</div>
-        <div class="story">
-          <strong>잠재 실패가 더 위험!</strong><br>
-          <span style="color:var(--muted);">→ 중처법 경영책임자 의무와 직결</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- ══════════════════════
-     TAB 4 : 재해유형·예방
-══════════════════════ -->
-<div id="td" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📊</span>
-        <div><div class="sh-title cd">건설업 4대 재해</div>
-          <div class="sh-sub">"추낙붕감" — 전체 80%↑</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="type-grid">
-        <div class="type-card"><div class="tc-icon">🪂</div><div class="tc-title">추락</div><div class="tc-pct">1위</div><div class="tc-desc">사망 40%↑</div></div>
-        <div class="type-card"><div class="tc-icon">🧱</div><div class="tc-title">낙하·비래</div><div class="tc-pct">2위</div><div class="tc-desc">자재·공구 낙하</div></div>
-        <div class="type-card"><div class="tc-icon">🏚️</div><div class="tc-title">붕괴·도괴</div><div class="tc-pct">3위</div><div class="tc-desc">대형사고 위험</div></div>
-        <div class="type-card"><div class="tc-icon">⚡</div><div class="tc-title">감전</div><div class="tc-pct">4위</div><div class="tc-desc">치사율 최고</div></div>
-      </div>
-      <div class="memo-block md">
-        <div class="memo-type md">🔤 두문자</div>
-        <div class="acro-key">→ "추낙붕감"!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 재해발생 4형태 (NEW) -->
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⚡</span>
-        <div><div class="sh-title cd new-item">재해발생 4형태 — 에너지 형태별</div>
-          <div class="sh-sub">두문자 "운위전화"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>① 운동 에너지</strong> — 추락·낙하·충돌·전도</li>
-          <li><strong>② 위치 에너지</strong> — 붕괴·도괴 (중력)</li>
-          <li><strong>③ 전기 에너지</strong> — 감전·정전기</li>
-          <li><strong>④ 화학 에너지</strong> — 화재·폭발·중독·질식</li>
-        </ul>
-      </div>
-      <div class="memo-block md">
-        <div class="memo-type md">🔤 두문자</div>
-        <div class="acro-key">→ "운위전화"!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 재해 등가성(등치성) 이론 (NEW) -->
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⚖️</span>
-        <div><div class="sh-title cd new-item">재해요인 등가성 이론</div>
-          <div class="sh-sub">3형태 — 집중·연쇄·복합</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          재해 원인이 <strong>같은 가치(등가성)</strong>로 작용 — 발생 형태 분류
-        </div>
-      </div>
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>① 집중형</strong> — 여러 원인이 한 시점에 동시 작용 → 재해<br><span style="font-size:11px;color:var(--muted);">예) 폭우·지진·폭발</span></li>
-          <li><strong>② 연쇄형</strong> — 원인이 시간차로 연쇄 작용 → 재해<br><span style="font-size:11px;color:var(--muted);">예) 도미노·버드 5단계 연쇄</span></li>
-          <li><strong>③ 복합형</strong> — 집중 + 연쇄가 결합<br><span style="font-size:11px;color:var(--muted);">→ 대부분의 산업재해 형태</span></li>
-        </ul>
-      </div>
-      <div class="memo-block md">
-        <div class="memo-type md">🔤 두문자</div>
-        <div class="acro-key">집중·연쇄·복합 — "집연복"!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 재해코스트 -->
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">💰</span>
-        <div><div class="sh-title cd">재해코스트 — 빙산이론</div>
-          <div class="sh-sub">직접비 1 : 간접비 4</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>직접비 (1)</strong> — 치료비·보상금·보험료</li>
-          <li><strong>간접비 (4)</strong> — 생산손실·기계손상·공기지연·이미지</li>
-          <li><strong>총재해코스트 = 직접비 × 5</strong></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- ══════════════════════
-     TAB 5 : 산업심리 (NEW)
-══════════════════════ -->
-<div id="te" class="page-section">
-
-  <!-- 안전심리 5요소 (NEW) -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🧠</span>
-        <div><div class="sh-title ce new-item">안전심리 5대 요소 — 인적요소 결함</div>
-          <div class="sh-sub">★ 두문자 "동기기성습"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          인간의 행동에 영향을 주는 <strong>5가지 심리 요소</strong><br>
-          불안전 행동의 근본 원인 분석
-        </div>
-      </div>
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>① 동기 (Motive)</strong> — 행동을 일으키는 원동력<br><span style="font-size:11px;color:var(--muted);">→ 보상·처벌·자기실현</span></li>
-          <li><strong>② 기질 (Temper)</strong> — 선천적 성격·기분<br><span style="font-size:11px;color:var(--muted);">→ 다혈질·점액질·우울질·담즙질</span></li>
-          <li><strong>③ 기억 (Memory)</strong> — 과거 경험의 저장·재생<br><span style="font-size:11px;color:var(--muted);">→ 안전교육 효과와 직결</span></li>
-          <li><strong>④ 성격 (Personality)</strong> — 지속적 행동 경향<br><span style="font-size:11px;color:var(--muted);">→ 외향·내향·신중·충동</span></li>
-          <li><strong>⑤ 습관 (Habit)</strong> — 반복된 행동 패턴<br><span style="font-size:11px;color:var(--muted);">→ 안전수칙 습관화 중요</span></li>
-        </ul>
-      </div>
-      <div class="memo-block me">
-        <div class="memo-type me">🔤 두문자</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char ce">동</span><span class="acro-text"><em>동</em>기</span></div>
-          <div class="acro-item"><span class="acro-char ce">기</span><span class="acro-text"><em>기</em>질</span></div>
-          <div class="acro-item"><span class="acro-char ce">기</span><span class="acro-text"><em>기</em>억</span></div>
-          <div class="acro-item"><span class="acro-char ce">성</span><span class="acro-text"><em>성</em>격</span></div>
-          <div class="acro-item"><span class="acro-char ce">습</span><span class="acro-text"><em>습</em>관</span></div>
-        </div>
-        <div class="acro-key" style="background:rgba(255,183,77,0.12);color:var(--e);">→ "동기기성습"!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 산업심리 어둠의 3요소 (NEW) -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🌑</span>
-        <div><div class="sh-title ce new-item">산업심리 어둠의 3요소</div>
-          <div class="sh-sub">두문자 "피단권"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>① 피로 (Fatigue)</strong> — 신체적·정신적 피로 누적</li>
-          <li><strong>② 단조감 (Monotony)</strong> — 반복 작업의 지루함</li>
-          <li><strong>③ 권태감 (Boredom)</strong> — 흥미 상실·집중력 저하</li>
-        </ul>
-      </div>
-      <div class="memo-block me">
-        <div class="memo-type me">💡 대책</div>
-        <div class="story">
-          작업 다양화·휴식·동기부여·환경 개선<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 휴게시설 설치 의무 (산안법) 연계</span>
+        <div class="chain-step">
+          <div class="chain-num cn-amber">4</div>
+          <div class="chain-body">
+            <div class="chain-title">사고 → 상해·손실</div>
+            <div class="chain-desc">에너지 방출 → 재해 발생</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Human Error (NEW) -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">❌</span>
-        <div><div class="sh-title ce new-item">Human Error — 인간의 오류</div>
-          <div class="sh-sub">착오요인 3단계 + 분류</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 스위스치즈 모델 -->
+  <div class="theory-card tc-teal">
+    <div class="theory-head">
+      <span class="th-icon">🧀</span>
+      <div class="th-meta">
+        <div class="th-label">REASON · 1990 스위스치즈 모델</div>
+        <div class="th-name">조직사고 이론</div>
+        <div class="th-sub">다중 방어층 구멍이 일직선으로 정렬될 때 재해 발생</div>
+      </div>
+      <span class="th-badge badge-star">★★★★</span>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--e);">착오요인 3단계 (정보처리)</div>
-        <ul class="item-list">
-          <li><strong>① 인지 단계</strong> — 정보 받아들임 오류 (잘못 봄·들음)</li>
-          <li><strong>② 판단 단계</strong> — 의사결정 오류 (잘못된 판단)</li>
-          <li><strong>③ 조작 단계</strong> — 행동 실행 오류 (실수·망설임)</li>
-        </ul>
+    <div class="theory-body">
+      <div style="display:flex;align-items:center;gap:6px;padding:10px;background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.2);border-radius:var(--r-sm);margin-bottom:10px;overflow-x:auto;">
+        <div style="text-align:center;flex-shrink:0;">
+          <div style="font-size:24px;">🧀</div>
+          <div style="font-size:8px;color:var(--teal);font-weight:700;margin-top:2px;">설계</div>
+        </div>
+        <div style="color:var(--teal);font-size:14px;flex-shrink:0;">→</div>
+        <div style="text-align:center;flex-shrink:0;">
+          <div style="font-size:24px;">🧀</div>
+          <div style="font-size:8px;color:var(--teal);font-weight:700;margin-top:2px;">절차</div>
+        </div>
+        <div style="color:var(--teal);font-size:14px;flex-shrink:0;">→</div>
+        <div style="text-align:center;flex-shrink:0;">
+          <div style="font-size:24px;">🧀</div>
+          <div style="font-size:8px;color:var(--teal);font-weight:700;margin-top:2px;">교육</div>
+        </div>
+        <div style="color:var(--teal);font-size:14px;flex-shrink:0;">→</div>
+        <div style="text-align:center;flex-shrink:0;">
+          <div style="font-size:24px;">🧀</div>
+          <div style="font-size:8px;color:var(--teal);font-weight:700;margin-top:2px;">감독</div>
+        </div>
+        <div style="color:var(--red);font-size:14px;flex-shrink:0;">→</div>
+        <div style="text-align:center;flex-shrink:0;">
+          <div style="font-size:20px;">💥</div>
+          <div style="font-size:8px;color:var(--red);font-weight:700;margin-top:2px;">재해</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--f);">Swain·Gattman 분류 (심리적)</div>
-        <ul class="item-list">
-          <li><strong>Omission Error</strong> — 누락 (해야 할 일 안 함)</li>
-          <li><strong>Commission Error</strong> — 작위 (잘못된 행위)</li>
-          <li><strong>Sequential Error</strong> — 순서 오류</li>
-          <li><strong>Time Error</strong> — 시간 오류 (너무 빠름·늦음)</li>
-          <li><strong>Extraneous Error</strong> — 불필요한 행위</li>
-        </ul>
+      <div style="display:grid;gap:5px;margin-bottom:10px;">
+        <div class="chain-step" style="border:none;padding:5px 0;">
+          <div class="chain-num cn-green" style="width:22px;height:22px;font-size:9px;">잠</div>
+          <div class="chain-body">
+            <div class="chain-title">잠재적 오류 (Latent Failure)</div>
+            <div class="chain-desc">경영진 의사결정, 설계 결함, 교육 미비 등 — <strong>치즈 구멍의 원인</strong></div>
+          </div>
+        </div>
+        <div class="chain-step" style="border:none;padding:5px 0;">
+          <div class="chain-num cn-red" style="width:22px;height:22px;font-size:9px;">능</div>
+          <div class="chain-body">
+            <div class="chain-title">능동적 오류 (Active Failure)</div>
+            <div class="chain-desc">작업자의 직접적 불안전 행동 — <strong>구멍이 정렬되는 순간</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--c);">James Reason 분류 (원인적)</div>
-        <ul class="item-list">
-          <li><strong>Slip</strong> — 의도와 다른 행동 (실수)</li>
-          <li><strong>Lapse</strong> — 망각·기억 실수</li>
-          <li><strong>Mistake</strong> — 잘못된 의사결정</li>
-          <li><strong>Violation</strong> — 의도적 위반</li>
-        </ul>
+      <div class="kp-box" style="background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.2)">
+        <div class="kp-title" style="color:var(--teal)">⚡ 핵심 포인트</div>
+        <div class="kp-desc">각 방어층(치즈)에 구멍이 있어도 층이 겹치면 재해 차단. <strong>구멍이 일직선으로 정렬될 때만 재해 발생</strong>. 이천 물류창고·세월호 사고 분석에 자주 인용. 다중 방어체계 구축의 근거</div>
       </div>
-      <div class="memo-block me">
-        <div class="memo-type me">💡 시험 포인트</div>
-        <div class="story">
-          Reason의 분류 — <strong>스위스치즈 모델과 연결</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ Slip·Lapse = 활성실패 / Violation = 잠재실패</span>
+    </div>
+  </div>
+
+  <!-- 에너지 이론 -->
+  <div class="theory-card tc-orange">
+    <div class="theory-head">
+      <span class="th-icon">⚡</span>
+      <div class="th-meta">
+        <div class="th-label">GIBSON·HADDON · 에너지이론</div>
+        <div class="th-name">에너지 전이이론</div>
+        <div class="th-sub">재해 = 에너지의 비정상적 방출</div>
+      </div>
+      <span class="th-badge badge-star">★★★☆</span>
+    </div>
+    <div class="theory-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;">
+        <div style="background:rgba(251,146,60,0.07);border:1px solid rgba(251,146,60,0.2);border-radius:var(--r-sm);padding:9px;">
+          <div style="font-size:10px;font-weight:800;color:var(--orange);margin-bottom:4px;">에너지 종류</div>
+          <div style="font-size:10px;color:var(--muted2);line-height:1.7;">기계적·전기적·열적·화학적·방사선·음향 에너지</div>
+        </div>
+        <div style="background:rgba(251,146,60,0.07);border:1px solid rgba(251,146,60,0.2);border-radius:var(--r-sm);padding:9px;">
+          <div style="font-size:10px;font-weight:800;color:var(--orange);margin-bottom:4px;">예방 원칙</div>
+          <div style="font-size:10px;color:var(--muted2);line-height:1.7;">에너지 발생 억제 / 차단·격리 / 방호장치 설치</div>
+        </div>
+      </div>
+      <div class="kp-box" style="background:rgba(251,146,60,0.06);border-color:rgba(251,146,60,0.2);">
+        <div class="kp-title" style="color:var(--orange)">⚡ 핵심 포인트</div>
+        <div class="kp-desc"><strong>Haddon Matrix</strong>: 사전(Pre-Event)·사고시(Event)·사후(Post-Event) × 숙주·에너지·환경 → 9개 셀 분석. LOTO(잠금장치·태그아웃) 근거 이론</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /domino -->
+
+<!-- ══════════════════
+     탭2: 원칙·단계
+══════════════════ -->
+<div id="principles" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">재해예방 4원칙</span><div class="sec-hdr-line"></div></div>
+
+  <div class="principle-grid">
+    <div class="pg-item">
+      <div class="pg-num">원칙①</div>
+      <div class="pg-title">손실우연의 원칙</div>
+      <div class="pg-desc">사고 결과는 우연이나 사고 발생은 필연적 원인에 의함</div>
+    </div>
+    <div class="pg-item">
+      <div class="pg-num">원칙②</div>
+      <div class="pg-title">원인계기의 원칙</div>
+      <div class="pg-desc">재해는 반드시 원인이 있고 원인은 연쇄적으로 연결됨</div>
+    </div>
+    <div class="pg-item">
+      <div class="pg-num">원칙③</div>
+      <div class="pg-title">예방가능의 원칙</div>
+      <div class="pg-desc">천재지변 외 모든 재해는 예방 가능. 안전활동의 근거</div>
+    </div>
+    <div class="pg-item">
+      <div class="pg-num">원칙④</div>
+      <div class="pg-title">대책선정의 원칙</div>
+      <div class="pg-desc">원인에 따른 적절한 대책 선정 — 기술·교육·규제 우선순위</div>
+    </div>
+  </div>
+  <div class="kp-box">
+    <div class="kp-title">💡 암기법: 손원예대</div>
+    <div class="kp-desc"><strong>손</strong>실우연 · <strong>원</strong>인계기 · <strong>예</strong>방가능 · <strong>대</strong>책선정</div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">재해예방 4단계 (Harvey)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div class="chain">
+      <div class="chain-step">
+        <div class="chain-num cn-green">1</div>
+        <div class="chain-body">
+          <div class="chain-title">안전조직 구성</div>
+          <div class="chain-desc">경영자 안전방침 확립 → 안전관리 조직 구성 → 책임·권한 부여. <em>암기: 조</em></div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-num cn-green">2</div>
+        <div class="chain-body">
+          <div class="chain-title">사실 발견 (현상 파악)</div>
+          <div class="chain-desc">재해통계 분석·안전점검·관찰·면담·검사를 통한 불안전 상태·행동 파악. <em>암기: 사</em></div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-num cn-green">3</div>
+        <div class="chain-body">
+          <div class="chain-title">원인 분석·평가</div>
+          <div class="chain-desc">수집된 사실을 분석하여 직접·간접 원인 파악. 위험성 평가. <em>암기: 원</em></div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-num cn-green">4</div>
+        <div class="chain-body">
+          <div class="chain-title">대책 적용 (시정 방법 선정)</div>
+          <div class="chain-desc"><strong>3E 원칙</strong>으로 대책 수립·실시: 기술(Engineering)·교육(Education)·규제(Enforcement). <em>암기: 대</em></div>
+        </div>
+      </div>
+    </div>
+    <div class="kp-box">
+      <div class="kp-title">💡 암기법: 조사원대</div>
+      <div class="kp-desc"><strong>조</strong>직 → <strong>사</strong>실발견 → <strong>원</strong>인분석 → <strong>대</strong>책적용. 마지막 단계는 <em>3E(기교규)</em>로 연결</div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">3E 원칙 (Harvey)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="display:grid;gap:7px;">
+      <div style="display:flex;gap:9px;align-items:flex-start;">
+        <div style="background:rgba(52,211,153,0.15);border:1.5px solid rgba(52,211,153,0.3);border-radius:6px;padding:5px 8px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--green);flex-shrink:0;">E1</div>
+        <div>
+          <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px;">Engineering (기술적 대책)</div>
+          <div style="font-size:10px;color:var(--muted2);line-height:1.6;">기계·설비의 안전화, 방호장치, 환경 개선. <strong>가장 우선적으로 적용</strong></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;">
+        <div style="background:rgba(96,165,250,0.12);border:1.5px solid rgba(96,165,250,0.3);border-radius:6px;padding:5px 8px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--blue);flex-shrink:0;">E2</div>
+        <div>
+          <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px;">Education (교육적 대책)</div>
+          <div style="font-size:10px;color:var(--muted2);line-height:1.6;">안전교육·훈련, 안전의식 향상, 기능 습득</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;">
+        <div style="background:rgba(251,191,36,0.12);border:1.5px solid rgba(251,191,36,0.3);border-radius:6px;padding:5px 8px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--amber);flex-shrink:0;">E3</div>
+        <div>
+          <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px;">Enforcement (규제적 대책)</div>
+          <div style="font-size:10px;color:var(--muted2);line-height:1.6;">법령·규정·기준 준수, 작업수칙 확립, 감독 강화</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 바이오리듬 (NEW) -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📈</span>
-        <div><div class="sh-title ce new-item">바이오리듬 (Biorhythm)</div>
-          <div class="sh-sub">3대 주기 + 위험일</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">재해 형태 4분류</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="overflow-x:auto;">
+      <table class="cmp-table">
+        <tr><th>형태</th><th>정의</th><th>예시</th></tr>
+        <tr><td>기인물</td><td class="hl" style="text-align:left;">재해를 일으킨 <strong>근원이 된 기계·장치</strong></td><td style="text-align:left;">컨베이어, 비계, 굴착기</td></tr>
+        <tr><td>가해물</td><td style="text-align:left;">직접 상해를 입힌 물체</td><td style="text-align:left;">추락 시 바닥·구조물</td></tr>
+        <tr><td>불안전한 상태</td><td style="text-align:left;">물적·환경적 결함 상태</td><td style="text-align:left;">방호장치 미설치, 정리정돈 불량</td></tr>
+        <tr><td>불안전한 행동</td><td class="hl" style="text-align:left;"><strong>88%</strong> — 재해의 주된 원인</td><td style="text-align:left;">안전장치 무효화, 보호구 미착용</td></tr>
+      </table>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>P (Physical) 신체</strong> — <strong>23일</strong> 주기</li>
-          <li><strong>S (Sensitivity) 감성</strong> — <strong>28일</strong> 주기</li>
-          <li><strong>I (Intellectual) 지성</strong> — <strong>33일</strong> 주기</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--f);">위험일 (Critical Day)</div>
-        <ul class="item-list">
-          <li><strong>(+)에서 (-)로 전환되는 날</strong> — 가장 위험</li>
-          <li>3대 리듬이 <strong>0(영점)을 통과</strong>할 때</li>
-          <li>전환일 — <strong>사고 발생률 약 20%↑</strong></li>
-        </ul>
-      </div>
-      <div class="memo-block me">
-        <div class="memo-type me">🔢 핵심 숫자</div>
-        <div class="story">
-          <strong>"23·28·33"</strong> — 신체·감성·지성 주기<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ "이삼·이팔·삼삼"으로 암기</span>
-        </div>
-      </div>
+    <div class="kp-box kp-gold" style="margin-top:8px">
+      <div class="kp-title">💡 불안전 행동 vs 불안전 상태</div>
+      <div class="kp-desc">불안전 행동(88%) > 불안전 상태(10%) > 불가항력(2%). 서술형에서 원인 분석 시 반드시 이 비율 언급. <strong>예방 대책 = 불안전 행동 제거가 최우선</strong></div>
     </div>
   </div>
 
-  <!-- 인간 의식 수준 (NEW) -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">💭</span>
-        <div><div class="sh-title ce new-item">인간의 의식 수준 5단계</div>
-          <div class="sh-sub">Phase 0 ~ IV</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">Fail Safe · Fool Proof</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="display:grid;gap:8px;">
+      <div style="background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2);border-radius:var(--r-sm);padding:11px 12px;">
+        <div style="font-size:10px;font-weight:800;color:var(--green);margin-bottom:3px;">Fail Safe (안전설계)</div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;">기계가 고장 나도 안전한 상태 유지</div>
+        <div style="font-size:10px;color:var(--muted2);line-height:1.65;">예: 프레스 양손조작기구, 비상정지버튼, 안전밸브. <strong>기계적 신뢰성 접근</strong></div>
+      </div>
+      <div style="background:rgba(96,165,250,0.07);border:1px solid rgba(96,165,250,0.2);border-radius:var(--r-sm);padding:11px 12px;">
+        <div style="font-size:10px;font-weight:800;color:var(--blue);margin-bottom:3px;">Fool Proof (오용방지설계)</div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;">작업자가 실수해도 안전한 구조 설계</div>
+        <div style="font-size:10px;color:var(--muted2);line-height:1.65;">예: 방호덮개 개방 시 기계 정지, 역방향 삽입 불가 소켓. <strong>인간의 실수를 설계로 차단</strong></div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>Phase 0</strong> — 무의식·실신 (위험 0%)</li>
-          <li><strong>Phase Ⅰ</strong> — 의식 둔화 (피로·졸림)</li>
-          <li><strong>Phase Ⅱ</strong> — 정상상태 (이완·휴식)</li>
-          <li><strong>Phase Ⅲ</strong> — 정상·명쾌 (★ 작업 최적상태)</li>
-          <li><strong>Phase Ⅳ</strong> — 과긴장 (당황·흥분 → 오류↑)</li>
-        </ul>
-      </div>
-      <div class="memo-block me">
-        <div class="memo-type me">💡 시험 포인트</div>
-        <div class="story">
-          작업 최적은 <strong>Phase Ⅲ</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ Phase Ⅰ·Ⅳ에서 사고 발생률 최고</span>
-        </div>
-      </div>
+    <div class="kp-box kp-blue" style="margin-top:8px">
+      <div class="kp-title">⚡ 구분 포인트</div>
+      <div class="kp-desc">Fail Safe = <em>기계 고장</em> 대비 / Fool Proof = <em>인간 실수</em> 대비. 둘 다 <strong>원천적 안전(Inherent Safety)</strong> 개념. 위험성평가 감소대책 1순위와 연결</div>
     </div>
   </div>
 
-</div>
+</div><!-- /principles -->
 
+<!-- ══════════════════
+     탭3: 인간공학·Human Error
+══════════════════ -->
+<div id="human" class="section">
 
-<!-- ══════════════════════
-     TAB 6 : 안전공학 (NEW)
-══════════════════════ -->
-<div id="tf" class="page-section">
+  <div class="sec-hdr"><span class="sec-hdr-label">Human Error 분류</span><div class="sec-hdr-line"></div></div>
 
-  <!-- Fail Safe (NEW - 핵심) -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🛟</span>
-        <div><div class="sh-title cf new-item">Fail Safe — 페일 세이프</div>
-          <div class="sh-sub">★ 시험 핵심 — 고장이 나도 안전</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="card">
+    <div class="card-title"><span>🧩</span> Rasmussen의 SRK 모델 (수준별 분류)</div>
+    <div style="display:grid;gap:7px;margin-bottom:10px;">
+      <div style="background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.18);border-radius:var(--r-sm);padding:10px 12px;">
+        <div style="font-size:9px;font-weight:800;color:var(--green);margin-bottom:2px;">Skill-based (기능 기반)</div>
+        <div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">숙련 행동 중 발생하는 실수 (Slip·Lapse)</div>
+        <div style="font-size:10px;color:var(--muted2);">예: 습관적 행동의 착오, 주의력 분산 → 암기실수</div>
+      </div>
+      <div style="background:rgba(96,165,250,0.07);border:1px solid rgba(96,165,250,0.18);border-radius:var(--r-sm);padding:10px 12px;">
+        <div style="font-size:9px;font-weight:800;color:var(--blue);margin-bottom:2px;">Rule-based (규칙 기반)</div>
+        <div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">잘못된 규칙 적용 실수 (Mistake)</div>
+        <div style="font-size:10px;color:var(--muted2);">예: 비상상황에서 잘못된 절차 선택</div>
+      </div>
+      <div style="background:rgba(167,139,250,0.07);border:1px solid rgba(167,139,250,0.18);border-radius:var(--r-sm);padding:10px 12px;">
+        <div style="font-size:9px;font-weight:800;color:var(--purple);margin-bottom:2px;">Knowledge-based (지식 기반)</div>
+        <div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">지식 부족으로 인한 잘못된 판단</div>
+        <div style="font-size:10px;color:var(--muted2);">예: 신기술·신설비에서의 오판</div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          기계·시스템이 <strong>고장 나도 안전한 상태로 자동 전환</strong><br>
-          → "고장이 일어나도 안전이 유지된다"
-        </div>
+
+    <div class="card-title" style="margin-top:4px;"><span>🔴</span> Reason의 행동 기반 분류</div>
+    <div class="error-row">
+      <div class="error-chip">
+        <div class="ec-type">의도하지 않은 행동</div>
+        <div class="ec-name">Slip (실수)</div>
+        <div class="ec-desc">의도는 맞으나 실행 오류. 주의 집중 부족</div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--f);">Fail Safe 3단계 (기능적 분류)</div>
-        <ul class="item-list">
-          <li><strong>① Fail Passive</strong> — 고장 시 정지 (가장 기본)<br><span style="font-size:11px;color:var(--muted);">예) 신호기 고장 시 빨간불 점등</span></li>
-          <li><strong>② Fail Active</strong> — 고장 시 경보 후 단시간 운전<br><span style="font-size:11px;color:var(--muted);">예) 가스 누출 시 경보 후 차단</span></li>
-          <li><strong>③ Fail Operational</strong> — 고장 시 다음 점검까지 안전 운전<br><span style="font-size:11px;color:var(--muted);">예) 비행기 다중 시스템</span></li>
-        </ul>
+      <div class="error-chip">
+        <div class="ec-type">의도하지 않은 행동</div>
+        <div class="ec-name">Lapse (건망)</div>
+        <div class="ec-desc">기억 실패. 단계 생략·순서 착오</div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">건설현장 적용 사례</div>
-        <ul class="item-list">
-          <li>승강기 — 와이어 절단 시 자동 정지</li>
-          <li>크레인 — 과부하 시 자동 정지</li>
-          <li>가스 검지기 — 누출 시 자동 차단</li>
-          <li>전기 — 누전차단기 자동 작동</li>
-        </ul>
+      <div class="error-chip">
+        <div class="ec-type">의도한 행동</div>
+        <div class="ec-name">Mistake (착오)</div>
+        <div class="ec-desc">잘못된 계획·판단. 의도 자체가 틀림</div>
       </div>
-      <div class="memo-block mf">
-        <div class="memo-type mf">💡 연상</div>
-        <div class="story">
-          <strong>"Fail = 고장, Safe = 안전"</strong><br>
-          <span style="color:var(--muted);">→ 고장(Fail) 나도 안전(Safe) 보장!</span>
-        </div>
+      <div class="error-chip">
+        <div class="ec-type">의도한 행동</div>
+        <div class="ec-name">Violation (위반)</div>
+        <div class="ec-desc">규칙을 알면서 의도적으로 어김</div>
       </div>
+    </div>
+    <div class="kp-box kp-red">
+      <div class="kp-title">⚡ 핵심 구분</div>
+      <div class="kp-desc">Slip·Lapse = <em>의도치 않은 오류</em> (교육·체크리스트로 예방) / Mistake·Violation = <em>의도적 행동</em> (시스템·감독 강화). Violation은 <strong>처벌보다 문화 개선</strong>이 효과적</div>
     </div>
   </div>
 
-  <!-- Fool Proof (NEW - 핵심) -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🚫</span>
-        <div><div class="sh-title cf new-item">Fool Proof — 풀 프루프</div>
-          <div class="sh-sub">★ 시험 핵심 — 잘못 사용해도 안전</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 안전심리 5요소 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">안전심리 5요소</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="display:grid;gap:6px;margin-bottom:10px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;"></div>
+        <div><span style="font-size:12px;font-weight:700;color:var(--text);">동기 (Motivation)</span><span style="font-size:10px;color:var(--muted2);margin-left:6px;">안전 행동의 원동력 — 욕구·보상 체계</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;"></div>
+        <div><span style="font-size:12px;font-weight:700;color:var(--text);">지능 (Intelligence)</span><span style="font-size:10px;color:var(--muted2);margin-left:6px;">위험 인지·판단 능력</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;"></div>
+        <div><span style="font-size:12px;font-weight:700;color:var(--text);">감정 (Emotion)</span><span style="font-size:10px;color:var(--muted2);margin-left:6px;">공포·불안·스트레스가 판단력에 영향</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;"></div>
+        <div><span style="font-size:12px;font-weight:700;color:var(--text);">습관 (Habit)</span><span style="font-size:10px;color:var(--muted2);margin-left:6px;">반복 행동 패턴 — 위험 습관 형성 위험</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+        <div><span style="font-size:12px;font-weight:700;color:var(--text);">피로 (Fatigue)</span><span style="font-size:10px;color:var(--muted2);margin-left:6px;">육체·정신 피로 → 주의력·반응 저하</span></div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          작업자가 <strong>실수해도 사고가 일어나지 않도록</strong> 설계<br>
-          → "바보(Fool)도 못 망가뜨리는(Proof) 설계"
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--f);">Fool Proof 5대 기능</div>
-        <ul class="item-list">
-          <li><strong>① 격리 (Isolation)</strong> — 위험원과 분리<br><span style="font-size:11px;color:var(--muted);">예) 회전체 덮개</span></li>
-          <li><strong>② 인터록 (Interlock)</strong> — 조건 미충족 시 동작 불가<br><span style="font-size:11px;color:var(--muted);">예) 출입문 닫혀야 작동</span></li>
-          <li><strong>③ 자물쇠 (Lockout)</strong> — 위험 조작 잠금<br><span style="font-size:11px;color:var(--muted);">예) 정비 중 전원 잠금</span></li>
-          <li><strong>④ 트립 (Trip)</strong> — 위험 시 자동 차단<br><span style="font-size:11px;color:var(--muted);">예) 누전차단기</span></li>
-          <li><strong>⑤ 오버런 (Overrun)</strong> — 정지 후 잔류 동작 방지<br><span style="font-size:11px;color:var(--muted);">예) 회전체 완전 정지 후 개방</span></li>
-        </ul>
-      </div>
-      <div class="memo-block mf">
-        <div class="memo-type mf">🔤 두문자 "격인자트오"</div>
-        <div class="acro-key" style="background:rgba(239,83,80,0.12);color:var(--f);">격리·인터록·자물쇠·트립·오버런</div>
-      </div>
+    <div class="kp-box">
+      <div class="kp-title">💡 암기법: 동지감습피</div>
+      <div class="kp-desc"><strong>동</strong>기 · <strong>지</strong>능 · <strong>감</strong>정 · <strong>습</strong>관 · <strong>피</strong>로. 바이오리듬 이론과 연계 — 신체·감성·지성 리듬이 저조기일 때 사고율 증가</div>
     </div>
   </div>
 
-  <!-- Fail Safe vs Fool Proof 비교 (NEW) -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📊</span>
-        <div><div class="sh-title cf new-item">Fail Safe vs Fool Proof 비교</div>
-          <div class="sh-sub">★ 시험 단골 비교 출제</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 바이오리듬 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">바이오리듬 이론</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div class="num-grid" style="margin-bottom:8px;">
+      <div class="num-card">
+        <div class="num-val" style="color:var(--red);">23일</div>
+        <div class="num-unit">주기</div>
+        <div class="num-label">신체 리듬 (P)</div>
+        <div class="num-desc">체력·근력·신체 협응 능력</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val" style="color:var(--green);">28일</div>
+        <div class="num-unit">주기</div>
+        <div class="num-label">감성 리듬 (S)</div>
+        <div class="num-desc">감정·직관·창의성</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val" style="color:var(--blue);">33일</div>
+        <div class="num-unit">주기</div>
+        <div class="num-label">지성 리듬 (I)</div>
+        <div class="num-desc">사고·판단·집중력</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val" style="color:var(--amber);">위험일</div>
+        <div class="num-unit">임계점</div>
+        <div class="num-label">고저 전환점</div>
+        <div class="num-desc">리듬이 양(+)→음(-) 전환 시 사고위험 최고</div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="card" style="overflow-x:auto;">
-        <table class="compare-table">
-          <thead>
-            <tr><th style="color:var(--muted);">구분</th><th class="vf">Fail Safe</th><th class="vd">Fool Proof</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>대상</td><td class="vf">기계·설비 고장</td><td class="vd">작업자 실수</td></tr>
-            <tr><td>의미</td><td>고장 나도 안전</td><td>잘못 써도 안전</td></tr>
-            <tr><td>설계</td><td>자동 안전상태 전환</td><td>실수 방지 구조</td></tr>
-            <tr><td>예시</td><td>누전차단기·과부하장치</td><td>인터록·덮개·잠금</td></tr>
-            <tr><td>관점</td><td class="vf">기계적 신뢰성</td><td class="vd">인적 오류 방지</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="memo-block mf">
-        <div class="memo-type mf">💡 핵심 차이</div>
-        <div class="story">
-          <strong style="color:var(--f);">Fail Safe</strong> — "기계가 고장 나도 안전"<br>
-          <strong style="color:var(--d);">Fool Proof</strong> — "사람이 실수해도 안전"<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 둘 다 적용되어야 진정한 안전</span>
-        </div>
-      </div>
+    <div class="kp-box kp-gold">
+      <div class="kp-title">💡 암기법: 신23 감28 지33</div>
+      <div class="kp-desc">신체(23) < 감성(28) < 지성(33) 순서로 길어짐. <strong>3가지 모두 저조기 겹칠 때 최고 위험</strong>. 서술형에서 정신적 피로 + 바이오리듬 연계 가능</div>
     </div>
   </div>
 
-  <!-- 근원적 안전설계 DFS (NEW) -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🎨</span>
-        <div><div class="sh-title cf new-item">근원적 안전설계 — DFS</div>
-          <div class="sh-sub">Design For Safety — 설계단계 안전</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>설계 단계에서 <strong>위험요소 사전 도출·제거</strong></li>
-          <li>건진법 §75조의2 — 설계안전성검토 의무화</li>
-          <li>토목 500억↑·건축 200억↑ 공사 대상</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--f);">근원적 안전설계 기법 4가지</div>
-        <ul class="item-list">
-          <li><strong>① 위험원 제거</strong> — 가장 효과적</li>
-          <li><strong>② 위험원 대체</strong> — 덜 위험한 것으로</li>
-          <li><strong>③ 위험원 격리</strong> — 방호장치·차단</li>
-          <li><strong>④ 위험원 통제</strong> — 관리적 대책</li>
-        </ul>
-      </div>
-      <div class="memo-block mf">
-        <div class="memo-type mf">💡 D03·D07 연계</div>
-        <div class="story">
-          위험성 감소 우선순위 <strong>"제대격관보"</strong>와 동일 흐름<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 제거 &gt; 대체 &gt; 격리 &gt; 관리적 &gt; 보호구</span>
-        </div>
-      </div>
+</div><!-- /human -->
+
+<!-- ══════════════════
+     탭4: 이론 비교
+══════════════════ -->
+<div id="compare" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">재해이론 종합 비교</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="overflow-x:auto;">
+      <table class="cmp-table">
+        <tr>
+          <th>이론</th>
+          <th>학자</th>
+          <th>핵심 개념</th>
+          <th>단계수</th>
+        </tr>
+        <tr>
+          <td>도미노</td>
+          <td class="gn">Heinrich</td>
+          <td style="text-align:left;">불안전 행동 제거 (3단계)</td>
+          <td class="hl">5단계</td>
+        </tr>
+        <tr>
+          <td>수정도미노</td>
+          <td class="am">Bird</td>
+          <td style="text-align:left;">관리의 실패가 근본</td>
+          <td class="hl">5단계</td>
+        </tr>
+        <tr>
+          <td>작전에러</td>
+          <td>Adams</td>
+          <td style="text-align:left;">작전적·전술적 에러</td>
+          <td>4단계</td>
+        </tr>
+        <tr>
+          <td>스위스치즈</td>
+          <td class="gn">Reason</td>
+          <td style="text-align:left;">다중 방어층 구멍 정렬</td>
+          <td>4층</td>
+        </tr>
+        <tr>
+          <td>에너지이론</td>
+          <td>Gibson<br>Haddon</td>
+          <td style="text-align:left;">에너지 비정상 방출</td>
+          <td>-</td>
+        </tr>
+      </table>
     </div>
   </div>
 
-  <!-- 작업 동기 이론 (NEW) -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🎯</span>
-        <div><div class="sh-title cf new-item">작업 동기 이론</div>
-          <div class="sh-sub">동기 부여 이론 정리</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">하인리히 vs 버드 핵심 차이</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="overflow-x:auto;">
+      <table class="cmp-table">
+        <tr>
+          <th>구분</th>
+          <th>하인리히</th>
+          <th>버드</th>
+        </tr>
+        <tr><td>근본원인</td><td>유전·환경</td><td class="rd">관리의 실패</td></tr>
+        <tr><td>핵심단계</td><td class="gn">3단계(불안전)</td><td>1단계(제어부족)</td></tr>
+        <tr><td>사고비율</td><td>1:29:300</td><td class="am">1:10:30:600</td></tr>
+        <tr><td>예방초점</td><td>불안전 행동 제거</td><td class="rd">관리시스템 구축</td></tr>
+        <tr><td>책임주체</td><td>근로자</td><td class="rd">경영자·관리자</td></tr>
+        <tr><td>시대배경</td><td>1931년</td><td>1966년</td></tr>
+      </table>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--f);">대표 이론 4가지</div>
-        <ul class="item-list">
-          <li><strong>매슬로우 욕구 5단계</strong> — 생리·안전·사회·존경·자아실현</li>
-          <li><strong>허즈버그 2요인</strong> — 위생요인·동기요인</li>
-          <li><strong>맥그리거 X·Y이론</strong> — X(통제)·Y(자율)</li>
-          <li><strong>알더퍼 ERG</strong> — 존재·관계·성장</li>
-        </ul>
-      </div>
-      <div class="memo-block mf">
-        <div class="memo-type mf">💡 안전관리 적용</div>
-        <div class="story">
-          매슬로우 <strong>2단계 = 안전 욕구</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 생리(임금) 다음으로 중요한 욕구가 안전</span>
-        </div>
-      </div>
+    <div class="kp-box kp-red" style="margin-top:8px">
+      <div class="kp-title">⚡ 시험 빈출 포인트</div>
+      <div class="kp-desc">버드 이론이 하인리히를 <strong>어떻게 수정·발전</strong>시켰는지가 핵심. 중처법(경영책임자 처벌)의 이론적 근거 = <em>버드의 관리 실패이론</em>. 서술형에서 두 이론 비교 후 중처법 연계 전개 가능</div>
     </div>
   </div>
 
-</div>
+  <div class="sec-hdr"><span class="sec-hdr-label">산업재해 코스트 이론</span><div class="sec-hdr-line"></div></div>
 
-
-<!-- ══════════════════════
-     TAB 7 : 비교·답안
-══════════════════════ -->
-<div id="tg" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📊</span>
-        <div><div class="sh-title cg">3대 이론 핵심 비교</div>
-          <div class="sh-sub">시험 단골</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="card">
+    <div class="card-title"><span>💰</span> 하인리히 1:4 법칙 (빙산이론)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div style="background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);border-radius:var(--r-sm);padding:10px;text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--red);">1</div>
+        <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;">직접비용</div>
+        <div style="font-size:9.5px;color:var(--muted2);">치료비·보상금·보험료</div>
+      </div>
+      <div style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);border-radius:var(--r-sm);padding:10px;text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--amber);">4</div>
+        <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;">간접비용</div>
+        <div style="font-size:9.5px;color:var(--muted2);">생산손실·기계손실·행정비용</div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="card" style="overflow-x:auto;">
-        <table class="compare-table">
-          <thead>
-            <tr><th style="color:var(--muted);">구분</th><th class="va">하인리히</th><th class="vb">버드</th><th class="vc">스위스치즈</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>연도</td><td class="va">1931</td><td class="vb">1969</td><td class="vc">1990</td></tr>
-            <tr><td>핵심관점</td><td>불안전 행동·상태</td><td>관리 실패</td><td>시스템 방어</td></tr>
-            <tr><td>책임주체</td><td class="va">근로자</td><td class="vb">경영자</td><td class="vc">조직 시스템</td></tr>
-            <tr><td>비율</td><td class="va">1:29:300</td><td class="vb">1:10:30:600</td><td class="vc">활성·잠재</td></tr>
-            <tr><td>핵심제거</td><td>③번째</td><td>①번째</td><td>구멍 정렬차단</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="memo-block mg">
-        <div class="memo-type mg">💡 흐름</div>
-        <div class="story">
-          <strong>현장 → 경영 → 조직</strong>으로 시야 확장<br>
-          <span style="color:var(--muted);font-size:11.5px;">시대가 갈수록 원인을 더 위로 본다!</span>
-        </div>
-      </div>
+    <div style="font-size:10.5px;color:var(--muted2);line-height:1.7;margin-bottom:8px;">
+      <strong style="color:var(--text);">간접비용 4배:</strong> 인원 교육·훈련비, 생산 차질손실, 사고조사 시간, 설비 수리비, 이미지 손실, 행정 처리 비용 등
+    </div>
+    <div class="kp-box kp-gold">
+      <div class="kp-title">💡 시뮬렌베크 이론 (1:8 법칙)</div>
+      <div class="kp-desc">직접비:간접비 = <strong>1:8</strong>. 하인리히(1:4)보다 간접비 비중 더 높게 봄. 두 이론 모두 <em>안전투자의 경제성</em> 강조에 활용</div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">✍️</span>
-        <div><div class="sh-title cg">시험 빈출 Q&A</div>
-          <div class="sh-sub">최신 출제 경향</div></div>
-      </div><span class="sh-arrow open">▼</span>
+</div><!-- /compare -->
+
+<!-- ══════════════════
+     탭5: 암기법
+══════════════════ -->
+<div id="mnemonics" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">D02 핵심 암기법</span><div class="sec-hdr-line"></div></div>
+
+  <div class="mn-card">
+    <div class="mn-domain">하인리히 도미노 5단계</div>
+    <div class="mn-key">유결불사재</div>
+    <div class="mn-expand">
+      <span>유</span>전적환경 → <span>결</span>함 → <span>불</span>안전 행동·상태 → <span>사</span>고 → <span>재</span>해
     </div>
-    <div class="sec-body open">
-      <div class="qa-item">
-        <div class="qa-q">하인리히 재해예방 4원칙</div>
-        <div class="qa-a">
-          <span class="key">"손원예대"</span><br>
-          ①손실우연 ②원인계기 ③예방가능 ④대책선정<br>
-          <span style="font-size:11px;color:var(--muted);">→ 4번째 = 3E(Engineering·Education·Enforcement)</span>
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">3E 이론(Harvey)과 4M</div>
-        <div class="qa-a">
-          <span class="key">3E</span> — Engineering·Education·Enforcement<br>
-          <span class="key">4M</span> — Man·Machine·Media·Management<br>
-          → 4E = 3E + Environment
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">안전심리 5대 요소</div>
-        <div class="qa-a">
-          <span class="key">"동기기성습"</span><br>
-          동기·기질·기억·성격·습관
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">Fail Safe vs Fool Proof 차이</div>
-        <div class="qa-a">
-          <span class="key">Fail Safe</span> — 기계 고장 시 자동 안전 (3단계: Passive·Active·Operational)<br>
-          <span class="key">Fool Proof</span> — 작업자 실수 방지 (5기능: 격인자트오)
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">Human Error 분류 (Reason)</div>
-        <div class="qa-a">
-          <span class="key">Slip·Lapse·Mistake·Violation</span><br>
-          실수·망각·오판·위반<br>
-          → 스위스치즈 모델의 활성·잠재 실패와 연결
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">바이오리듬 3대 주기와 위험일</div>
-        <div class="qa-a">
-          <span class="key">P 23일·S 28일·I 33일</span><br>
-          신체·감성·지성<br>
-          위험일 — (+)→(-) 전환되는 0점 통과일
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">재해발생 4형태 (에너지별)</div>
-        <div class="qa-a">
-          <span class="key">"운위전화"</span><br>
-          운동·위치·전기·화학 에너지
-        </div>
-      </div>
-    </div>
+    <div class="mn-tip">💡 "유결불사재" — 3번 '불'이 핵심. 1:29:300 비율 함께 암기</div>
   </div>
 
-  <!-- 답안 작성 공식 -->
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📝</span>
-        <div><div class="sh-title cg">재해이론 답안 공식</div>
-          <div class="sh-sub">이론·심리·공학 통합</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="mn-card mn-blue">
+    <div class="mn-domain">버드 수정도미노 5단계</div>
+    <div class="mn-key">제기직사상</div>
+    <div class="mn-expand">
+      <span>제</span>어부족(관리실패) → <span>기</span>본원인 → <span>직</span>접원인 → <span>사</span>고 → <span>상</span>해·손해
     </div>
-    <div class="sec-body open">
-      <div class="flow-wrap">
-        <div class="flow-step"><div class="fs-num cg">①</div><div class="fs-content"><div class="fc-title">개요·정의</div><div class="fc-sub">제창자·연도·핵심개념</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num cg">②</div><div class="fs-content"><div class="fc-title">단계·내용</div><div class="fc-sub">두문자로 정리</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num cg">③</div><div class="fs-content"><div class="fc-title">핵심 제거점</div><div class="fc-sub">어디서 막을 것인가</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num cg">④</div><div class="fs-content"><div class="fc-title">타 이론과 비교</div><div class="fc-sub">차이점·발전방향</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num cg">⑤</div><div class="fs-content"><div class="fc-title">현장 적용</div><div class="fc-sub">3E·4M·Fail Safe·Fool Proof</div></div></div>
-      </div>
-    </div>
+    <div class="mn-tip">💡 "제기직사상" — 1단계 '관리 실패'가 하인리히와 핵심 차이. 1:10:30:600 비율 세트</div>
   </div>
 
-</div>
+  <div class="mn-card mn-amber">
+    <div class="mn-domain">버드 사고 비율</div>
+    <div class="mn-key">1 · 10 · 30 · 600</div>
+    <div class="mn-expand">
+      <span>1</span>중상해 : <span>10</span>경상해 : <span>30</span>물적손실 : <span>600</span>무상해사고
+    </div>
+    <div class="mn-tip">💡 하인리히(1:29:300)와 혼동 주의. 600 → Near-Miss 관리 강조</div>
+  </div>
+
+  <div class="mn-card mn-amber">
+    <div class="mn-domain">재해예방 4원칙</div>
+    <div class="mn-key">손원예대</div>
+    <div class="mn-expand">
+      <span>손</span>실우연 · <span>원</span>인계기 · <span>예</span>방가능 · <span>대</span>책선정
+    </div>
+    <div class="mn-tip">💡 "손원예대" — 4원칙은 순서보다 내용 이해가 중요</div>
+  </div>
+
+  <div class="mn-card mn-teal">
+    <div class="mn-domain">재해예방 4단계 (Harvey)</div>
+    <div class="mn-key">조사원대</div>
+    <div class="mn-expand">
+      <span>조</span>직 → <span>사</span>실발견 → <span>원</span>인분석 → <span>대</span>책적용(3E)
+    </div>
+    <div class="mn-tip">💡 마지막 '대책'은 3E(기교규)로 연결 — 답안 전개 시 세트로 사용</div>
+  </div>
+
+  <div class="mn-card mn-orange">
+    <div class="mn-domain">3E 원칙 (Harvey)</div>
+    <div class="mn-key">기교규</div>
+    <div class="mn-expand">
+      <span>기</span>술(Engineering) · <span>교</span>육(Education) · <span>규</span>제(Enforcement)
+    </div>
+    <div class="mn-tip">💡 우선순위: 기술 > 교육 > 규제. 위험성평가 감소대책 순서와 동일한 맥락</div>
+  </div>
+
+  <div class="mn-card mn-purple">
+    <div class="mn-domain">안전심리 5요소</div>
+    <div class="mn-key">동지감습피</div>
+    <div class="mn-expand">
+      <span>동</span>기 · <span>지</span>능 · <span>감</span>정 · <span>습</span>관 · <span>피</span>로
+    </div>
+    <div class="mn-tip">💡 "동지감습피" — 바이오리듬(신23·감28·지33)과 연계해서 답안 전개</div>
+  </div>
+
+  <div class="mn-card mn-red">
+    <div class="mn-domain">바이오리듬 주기</div>
+    <div class="mn-key">신23 · 감28 · 지33</div>
+    <div class="mn-expand">
+      <span>신</span>체 23일 · <span>감</span>성 28일 · <span>지</span>성 33일 — 저조기 겹침 = 최고위험
+    </div>
+    <div class="mn-tip">💡 숫자가 커질수록 뇌(지성). 23 < 28 < 33 오름차순으로 암기</div>
+  </div>
+
+  <div class="mn-card mn-blue">
+    <div class="mn-domain">Human Error 4분류 (Reason)</div>
+    <div class="mn-key">슬랩스미바</div>
+    <div class="mn-expand">
+      <span>슬</span>립(Slip) · <span>랩</span>스(Lapse) · <span>미</span>스테이크(Mistake) · <span>바</span>이올레이션(Violation)
+    </div>
+    <div class="mn-tip">💡 Slip·Lapse = 비의도적 / Mistake·Violation = 의도적 구분이 핵심</div>
+  </div>
+
+  <div class="mn-card">
+    <div class="mn-domain">Fail Safe vs Fool Proof</div>
+    <div class="mn-key">기계고장↔인간실수</div>
+    <div class="mn-expand">
+      Fail <span>Safe</span> = <span>기계</span> 고장 나도 안전 / Fool <span>Proof</span> = <span>사람</span> 실수해도 안전
+    </div>
+    <div class="mn-tip">💡 Safe(기계) / Proof(사람) — 위험성평가 감소대책 1순위 연결</div>
+  </div>
+
+</div><!-- /mnemonics -->
+
+<!-- ══════════════════
+     탭6: 기출문제
+══════════════════ -->
+<div id="exams" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">서술형 기출 (25점)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제134회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q">하인리히의 도미노이론과 버드의 수정 도미노이론을 비교하고, <strong>두 이론의 시사점</strong>을 현장 안전관리에 적용하는 방법을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제131회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q">Reason의 <strong>스위스치즈 모델</strong>을 설명하고 건설현장 다중 방어체계 구축 방안을 기술하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제128회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q">건설재해의 <strong>Human Error 유형(Slip·Lapse·Mistake·Violation)</strong>을 분류하고 각각의 예방대책을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제125회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2021</span>
+    </div>
+    <div class="exam-q">산업재해 예방을 위한 <strong>재해예방 4원칙과 Harvey의 4단계</strong>를 설명하고 3E 원칙과의 관계를 기술하시오</div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">단답형 기출 (10점)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제136회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q">버드(Bird)의 <strong>사고비율 1:10:30:600</strong>에서 각 숫자의 의미와 아차사고(Near-Miss) 관리의 중요성을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제133회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q"><strong>Fail Safe와 Fool Proof</strong>의 차이를 설명하고 건설현장 적용 사례를 각각 2가지씩 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제130회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q"><strong>바이오리듬(Biorhythm)</strong> 3가지 주기를 쓰고 건설현장 안전관리에의 활용방법을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제127회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q">하인리히 <strong>1:29:300 법칙</strong>과 버드 1:10:30:600 법칙을 비교 설명하시오</div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">8월 시험 예상문제</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3)">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06)">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red)">8월 예상</span>
+      <span class="exam-type et-long">서술형</span>
+    </div>
+    <div class="exam-q">중대재해처벌법에서 <strong>경영책임자 처벌의 이론적 근거</strong>를 버드(Bird)의 수정 도미노이론(관리의 실패)과 연계하여 설명하고, 재해 예방을 위한 경영자의 역할을 기술하시오</div>
+  </div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3)">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06)">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red)">8월 예상</span>
+      <span class="exam-type et-short">단답형</span>
+    </div>
+    <div class="exam-q">Reason의 <strong>Human Error 4유형(Slip·Lapse·Mistake·Violation)</strong>을 분류 기준과 함께 쓰고 각각의 예방 방법을 간략히 설명하시오</div>
+  </div>
+
+</div><!-- /exams -->
+
+</div><!-- /body -->
 
 <script>
-  function showTab(id,btn){
-    document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function toggleSec(header){
-    const body=header.nextElementSibling;
-    const arrow=header.querySelector('.sh-arrow');
-    const isOpen=body.classList.contains('open');
-    body.classList.toggle('open',!isOpen);
-    arrow.classList.toggle('open',!isOpen);
-  }
-  window.addEventListener('scroll',()=>{
-    const doc=document.documentElement;
-    const pct=doc.scrollTop/(doc.scrollHeight-doc.clientHeight)*100;
-    document.getElementById('prog').style.width=pct+'%';
-  });
+function goTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
