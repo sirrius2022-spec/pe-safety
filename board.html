@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#090c14">
+<title>건설안전기술사 게시판</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+:root {
+  --bg:      #090c14;
+  --bg2:     #0d1120;
+  --surface: #111827;
+  --surface2:#161e30;
+  --border:  #1e2a40;
+  --border2: #2a3655;
+  --gold:    #f5c842;
+  --gold2:   #fde68a;
+  --gold-d:  rgba(245,200,66,0.10);
+  --gold-b:  rgba(245,200,66,0.18);
+  --red:     #f87171;
+  --red-d:   rgba(248,113,113,0.10);
+  --blue:    #60a5fa;
+  --blue-d:  rgba(96,165,250,0.10);
+  --green:   #34d399;
+  --green-d: rgba(52,211,153,0.10);
+  --muted:   #64748b;
+  --muted2:  #94a3b8;
+  --text:    #e2e8f5;
+  --r:12px; --r-sm:8px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);min-height:100vh;padding-bottom:60px}
+
+body::before{
+  content:'';position:fixed;top:0;left:0;right:0;height:250px;
+  background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(245,200,66,0.07) 0%,transparent 70%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── 헤더 ── */
+.hdr{
+  position:sticky;top:0;z-index:100;
+  background:rgba(9,12,20,0.95);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:12px 14px 10px;
+}
+.hdr-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hdr-back{text-decoration:none;color:var(--muted2);font-size:12px;font-weight:600;padding:5px 10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;flex-shrink:0;white-space:nowrap}
+.hdr-back:active{opacity:.7}
+.hdr-title-wrap{flex:1;min-width:0}
+.hdr-eyebrow{font-size:9px;font-weight:800;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
+.hdr-title{font-size:16px;font-weight:900;color:#fff}
+
+/* 탭 */
+.tab-nav{display:flex;gap:0;scrollbar-width:none;overflow-x:auto;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.2)}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:8px 16px;font-size:12px;font-weight:700;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
+.tab-btn.on{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── 본문 ── */
+.body{padding:14px;position:relative;z-index:1}
+.pane{display:none}
+.pane.on{display:block}
+
+/* ── 공통 ── */
+.sec-label{font-size:9.5px;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* ── 게시물 카드 ── */
+.post-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+  padding:12px 13px;margin-bottom:8px;cursor:pointer;
+  transition:border-color .15s,transform .12s;position:relative;
+  animation:fadeUp .25s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.post-card:active{transform:scale(.98)}
+.post-card:hover{border-color:var(--border2)}
+
+/* 공지 카드 */
+.post-card.notice{border-left:3px solid var(--gold);background:linear-gradient(135deg,rgba(245,200,66,0.05),var(--surface))}
+.post-card.notice .pc-type{background:var(--gold-d);color:var(--gold)}
+
+/* 일반 카드 */
+.post-card.general .pc-type{background:var(--blue-d);color:var(--blue)}
+
+/* Q&A */
+.post-card.qa .pc-type{background:var(--green-d);color:var(--green)}
+
+.pc-row1{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.pc-type{font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:6px;flex-shrink:0;letter-spacing:.5px}
+.pc-title{font-size:13px;font-weight:700;color:var(--text);flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.pc-new{font-size:8px;font-weight:800;color:var(--red);background:var(--red-d);border-radius:4px;padding:2px 5px;flex-shrink:0}
+.pc-preview{font-size:11px;color:var(--muted2);line-height:1.5;margin-bottom:7px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pc-meta{display:flex;align-items:center;gap:10px;font-size:10px;color:var(--muted)}
+.pc-author{font-weight:700;color:var(--muted2)}
+.pc-author.admin{color:var(--gold);font-weight:800}
+.pc-date{margin-left:auto}
+.pc-views{display:flex;align-items:center;gap:3px}
+
+/* ── 빈 상태 ── */
+.empty-state{text-align:center;padding:40px 20px;color:var(--muted2)}
+.empty-icon{font-size:40px;margin-bottom:10px;opacity:.5}
+.empty-text{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.empty-sub{font-size:11px;color:var(--muted)}
+
+/* ── 글쓰기 폼 ── */
+.write-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.write-box label{display:block;font-size:10px;font-weight:800;color:var(--muted2);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.write-box input,.write-box textarea,.write-box select{
+  width:100%;background:var(--bg2);border:1px solid var(--border);
+  color:var(--text);border-radius:var(--r-sm);font-family:'Noto Sans KR',sans-serif;
+  font-size:13px;padding:10px 12px;margin-bottom:10px;
+  outline:none;transition:border-color .15s;
+}
+.write-box input:focus,.write-box textarea:focus,.write-box select:focus{border-color:var(--gold)}
+.write-box select{-webkit-appearance:none;appearance:none;cursor:pointer}
+.write-box select option{background:var(--surface);color:var(--text)}
+.write-box textarea{resize:vertical;min-height:120px;line-height:1.65}
+
+/* 관리자 암호 토글 */
+.admin-toggle{display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer}
+.admin-toggle input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--gold)}
+.admin-toggle span{font-size:12px;color:var(--muted2);font-weight:700}
+.admin-pw-wrap{display:none;margin-bottom:10px}
+.admin-pw-wrap.show{display:block}
+
+/* 버튼 */
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;border-radius:var(--r-sm);font-size:13px;font-weight:800;border:none;cursor:pointer;transition:all .15s}
+.btn-gold{background:var(--gold);color:#090c14}
+.btn-gold:active{transform:scale(.97);background:var(--gold2)}
+.btn-ghost{background:rgba(255,255,255,0.05);color:var(--muted2);border:1px solid var(--border)}
+.btn-ghost:active{transform:scale(.97)}
+.btn-red{background:rgba(248,113,113,0.15);color:var(--red);border:1px solid rgba(248,113,113,0.3)}
+.btn-sm{padding:7px 14px;font-size:11.5px;width:auto}
+
+.btn-row{display:flex;gap:8px;margin-top:4px}
+
+/* ── 상세 뷰 ── */
+.detail-view{display:none}
+.detail-view.on{display:block}
+.list-view{display:block}
+.list-view.hidden{display:none}
+
+.dv-header{margin-bottom:14px}
+.dv-type-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.dv-type{font-size:10px;font-weight:800;padding:3px 10px;border-radius:8px}
+.dv-type.notice{background:var(--gold-d);color:var(--gold)}
+.dv-type.general{background:var(--blue-d);color:var(--blue)}
+.dv-type.qa{background:var(--green-d);color:var(--green)}
+.dv-title{font-size:18px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:10px}
+.dv-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--muted2);padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:14px}
+.dv-author{font-weight:800}
+.dv-author.admin{color:var(--gold)}
+.dv-content{font-size:13px;color:var(--text);line-height:1.85;white-space:pre-wrap;word-break:break-word;min-height:80px;margin-bottom:16px}
+
+/* 댓글 */
+.comments-section{border-top:1px solid var(--border);padding-top:14px}
+.comments-title{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.comment-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px;margin-bottom:7px;animation:fadeUp .2s ease}
+.cc-meta{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.cc-author{font-size:11px;font-weight:800;color:var(--muted2)}
+.cc-author.admin{color:var(--gold)}
+.cc-date{font-size:10px;color:var(--muted);margin-left:auto}
+.cc-text{font-size:12px;color:var(--text);line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.cc-del{font-size:10px;color:var(--red);background:none;border:none;cursor:pointer;padding:2px 6px;margin-left:6px}
+
+.comment-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;margin-top:10px}
+.cf-row{display:flex;gap:8px;margin-bottom:8px}
+.cf-input{flex:1;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:var(--r-sm);font-family:'Noto Sans KR',sans-serif;font-size:12px;padding:8px 10px;outline:none;transition:border-color .15s}
+.cf-input:focus{border-color:var(--gold)}
+.cf-ta{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:var(--r-sm);font-family:'Noto Sans KR',sans-serif;font-size:12px;padding:9px 10px;outline:none;resize:none;min-height:64px;line-height:1.6;margin-bottom:8px;transition:border-color .15s}
+.cf-ta:focus{border-color:var(--gold)}
+
+/* 토스트 */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:9px 18px;font-size:12px;font-weight:700;color:var(--text);
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+  opacity:0;transition:all .3s;pointer-events:none;z-index:999;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* 로딩 */
+.loading{text-align:center;padding:30px;color:var(--muted)}
+.loading-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bounce .8s ease infinite}
+.loading-dot:nth-child(2){animation-delay:.15s}
+.loading-dot:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,80%,100%{transform:scale(0.8);opacity:.5}40%{transform:scale(1.2);opacity:1}}
+
+/* 카운트 배지 */
+.cnt-badge{background:var(--red-d);color:var(--red);font-size:10px;font-weight:800;border-radius:10px;padding:2px 7px;margin-left:5px}
+
+@media(max-width:360px){.dv-title{font-size:16px}}
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<div class="hdr">
+  <div class="hdr-top">
+    <a class="hdr-back" href="index.html">← 홈</a>
+    <div class="hdr-title-wrap">
+      <div class="hdr-eyebrow">건설안전기술사</div>
+      <div class="hdr-title">📋 수험생 게시판</div>
+    </div>
+  </div>
+  <div class="tab-nav">
+    <button class="tab-btn on" onclick="switchTab('all',this)">전체</button>
+    <button class="tab-btn" onclick="switchTab('notice',this)">📌 공지</button>
+    <button class="tab-btn" onclick="switchTab('general',this)">💬 자유</button>
+    <button class="tab-btn" onclick="switchTab('qa',this)">❓ Q&amp;A</button>
+    <button class="tab-btn" onclick="switchTab('write',this)">✏️ 글쓰기</button>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- 목록 뷰 -->
+  <div class="list-view" id="listView">
+
+    <!-- 전체 탭 -->
+    <div class="pane on" id="pane-all">
+      <div class="sec-label">최신 글</div>
+      <div id="list-all"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div></div>
+    </div>
+
+    <!-- 공지 탭 -->
+    <div class="pane" id="pane-notice">
+      <div class="sec-label">공지사항</div>
+      <div id="list-notice"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div></div>
+    </div>
+
+    <!-- 자유 탭 -->
+    <div class="pane" id="pane-general">
+      <div class="sec-label">자유 게시판</div>
+      <div id="list-general"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div></div>
+    </div>
+
+    <!-- Q&A 탭 -->
+    <div class="pane" id="pane-qa">
+      <div class="sec-label">질문 &amp; 답변</div>
+      <div id="list-qa"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div></div>
+    </div>
+
+    <!-- 글쓰기 탭 -->
+    <div class="pane" id="pane-write">
+      <div class="sec-label">새 글 작성</div>
+      <div class="write-box">
+        <label>카테고리</label>
+        <select id="wCategory">
+          <option value="general">💬 자유</option>
+          <option value="qa">❓ Q&amp;A</option>
+          <option value="notice">📌 공지 (관리자 전용)</option>
+        </select>
+
+        <label>닉네임</label>
+        <input type="text" id="wNick" placeholder="닉네임 (예: 수험생A)" maxlength="12">
+
+        <label>제목</label>
+        <input type="text" id="wTitle" placeholder="제목을 입력하세요" maxlength="60">
+
+        <label>내용</label>
+        <textarea id="wContent" placeholder="내용을 입력하세요&#10;&#10;법령 조문, 암기법, 질문 등 자유롭게!"></textarea>
+
+        <!-- 관리자 옵션 -->
+        <div class="admin-toggle" onclick="toggleAdmin()">
+          <input type="checkbox" id="isAdmin" onchange="toggleAdminPw()" onclick="event.stopPropagation()">
+          <span>🔐 관리자로 작성</span>
+        </div>
+        <div class="admin-pw-wrap" id="adminPwWrap">
+          <label>관리자 암호</label>
+          <input type="password" id="wAdminPw" placeholder="관리자 암호 입력">
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-ghost btn-sm" onclick="clearForm()">초기화</button>
+          <button class="btn btn-gold" style="flex:1" onclick="submitPost()">✏️ 게시하기</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- /list-view -->
+
+  <!-- 상세 뷰 -->
+  <div class="detail-view" id="detailView">
+    <div style="margin-bottom:12px;">
+      <button class="btn btn-ghost btn-sm" onclick="closeDetail()">← 목록으로</button>
+    </div>
+    <div class="dv-header">
+      <div class="dv-type-row">
+        <span class="dv-type" id="dvType"></span>
+        <span id="dvNew" class="pc-new" style="display:none">NEW</span>
+      </div>
+      <div class="dv-title" id="dvTitle"></div>
+      <div class="dv-meta">
+        <span class="dv-author" id="dvAuthor"></span>
+        <span id="dvDate"></span>
+        <span>조회 <span id="dvViews"></span></span>
+      </div>
+    </div>
+    <div class="dv-content" id="dvContent"></div>
+
+    <!-- 삭제 버튼 (관리자) -->
+    <div id="dvDeleteWrap" style="margin-bottom:16px;display:none;">
+      <button class="btn btn-red btn-sm" onclick="deletePost()">🗑️ 게시물 삭제</button>
+    </div>
+
+    <!-- 댓글 -->
+    <div class="comments-section">
+      <div class="comments-title">댓글 <span id="commentCount" class="cnt-badge">0</span></div>
+      <div id="commentList"></div>
+      <div class="comment-form">
+        <div class="cf-row">
+          <input class="cf-input" id="cNick" placeholder="닉네임" maxlength="12" style="max-width:110px;">
+          <input class="cf-input" id="cAdminPw" placeholder="관리자 암호(선택)" type="password" style="flex:1;">
+        </div>
+        <textarea class="cf-ta" id="cText" placeholder="댓글을 입력하세요..."></textarea>
+        <button class="btn btn-gold" onclick="submitComment()">댓글 달기</button>
+      </div>
+    </div>
+  </div><!-- /detail-view -->
+
+</div><!-- /body -->
+
+<!-- 토스트 -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══ 설정 ══ */
+const ADMIN_PW   = 'safe2026';   // 관리자 암호 — 필요 시 변경
+const STORAGE_KEY = 'board_posts';
+const COMMENT_KEY = 'board_comments';
+
+/* ══ 상태 ══ */
+let posts    = [];
+let comments = {};
+let curTab   = 'all';
+let curPostId = null;
+
+/* ══ 유틸 ══ */
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+function fmt(ts){
+  const d = new Date(ts);
+  const now = new Date();
+  const diff = (now - d) / 1000;
+  if(diff < 60) return '방금';
+  if(diff < 3600) return Math.floor(diff/60) + '분 전';
+  if(diff < 86400) return Math.floor(diff/3600) + '시간 전';
+  return `${d.getMonth()+1}.${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+function toast(msg, dur=2200){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), dur);
+}
+function isNew(ts){ return (Date.now()-ts) < 24*60*60*1000; }
+
+/* ══ Storage ══ */
+async function loadAll(){
+  try{
+    const r = await window.storage.get(STORAGE_KEY, true);
+    posts = r ? JSON.parse(r.value) : [];
+  }catch(e){ posts = []; }
+  try{
+    const r = await window.storage.get(COMMENT_KEY, true);
+    comments = r ? JSON.parse(r.value) : {};
+  }catch(e){ comments = {}; }
+}
+async function savePosts(){
+  await window.storage.set(STORAGE_KEY, JSON.stringify(posts), true);
+}
+async function saveComments(){
+  await window.storage.set(COMMENT_KEY, JSON.stringify(comments), true);
+}
+
+/* ══ 렌더 ══ */
+function typeLabel(t){
+  if(t==='notice') return '📌 공지';
+  if(t==='qa')     return '❓ Q&A';
+  return '💬 자유';
+}
+function renderList(containerId, filtered){
+  const el = document.getElementById(containerId);
+  if(!filtered.length){
+    el.innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">아직 게시물이 없습니다</div><div class="empty-sub">첫 번째 글을 작성해 보세요!</div></div>`;
+    return;
+  }
+  // 공지 먼저, 나머지 최신순
+  const notices = filtered.filter(p=>p.type==='notice');
+  const others  = filtered.filter(p=>p.type!=='notice').sort((a,b)=>b.ts-a.ts);
+  const sorted  = [...notices, ...others];
+
+  el.innerHTML = sorted.map(p=>{
+    const cCnt = (comments[p.id]||[]).length;
+    return `
+    <div class="post-card ${p.type}" onclick="openPost('${p.id}')">
+      <div class="pc-row1">
+        <span class="pc-type">${typeLabel(p.type)}</span>
+        <span class="pc-title">${esc(p.title)}</span>
+        ${isNew(p.ts)?'<span class="pc-new">NEW</span>':''}
+      </div>
+      <div class="pc-preview">${esc(p.content)}</div>
+      <div class="pc-meta">
+        <span class="pc-author ${p.isAdmin?'admin':''}">${p.isAdmin?'👑 관리자':esc(p.nick)}</span>
+        <span class="pc-views">💬${cCnt}</span>
+        <span class="pc-views">👁 ${p.views||0}</span>
+        <span class="pc-date">${fmt(p.ts)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderAll(){
+  renderList('list-all', [...posts]);
+  renderList('list-notice', posts.filter(p=>p.type==='notice'));
+  renderList('list-general', posts.filter(p=>p.type==='general'));
+  renderList('list-qa', posts.filter(p=>p.type==='qa'));
+}
+
+/* ══ 상세 ══ */
+async function openPost(id){
+  const idx = posts.findIndex(p=>p.id===id);
+  if(idx<0) return;
+  posts[idx].views = (posts[idx].views||0)+1;
+  await savePosts();
+  curPostId = id;
+  const p = posts[idx];
+
+  // 헤더 숨기고 상세 표시
+  document.getElementById('listView').classList.add('hidden');
+  document.getElementById('detailView').classList.add('on');
+
+  // 타입 뱃지
+  const dvType = document.getElementById('dvType');
+  dvType.textContent = typeLabel(p.type);
+  dvType.className = 'dv-type ' + p.type;
+
+  // NEW 뱃지
+  document.getElementById('dvNew').style.display = isNew(p.ts)?'':'none';
+
+  document.getElementById('dvTitle').textContent = p.title;
+  document.getElementById('dvAuthor').textContent = p.isAdmin ? '👑 관리자' : p.nick;
+  document.getElementById('dvAuthor').className = 'dv-author' + (p.isAdmin?' admin':'');
+  document.getElementById('dvDate').textContent = fmt(p.ts);
+  document.getElementById('dvViews').textContent = p.views||0;
+  document.getElementById('dvContent').textContent = p.content;
+
+  // 관리자 삭제 버튼
+  document.getElementById('dvDeleteWrap').style.display = p.isAdmin ? 'block' : 'none';
+
+  renderComments(id);
+  window.scrollTo(0,0);
+}
+
+function closeDetail(){
+  curPostId = null;
+  document.getElementById('listView').classList.remove('hidden');
+  document.getElementById('detailView').classList.remove('on');
+  renderAll();
+}
+
+/* ══ 댓글 렌더 ══ */
+function renderComments(postId){
+  const list = comments[postId] || [];
+  document.getElementById('commentCount').textContent = list.length;
+  const el = document.getElementById('commentList');
+  if(!list.length){ el.innerHTML = '<div style="color:var(--muted);font-size:11px;text-align:center;padding:12px 0;">아직 댓글이 없습니다</div>'; return; }
+  el.innerHTML = list.map((c,i)=>`
+    <div class="comment-card">
+      <div class="cc-meta">
+        <span class="cc-author ${c.isAdmin?'admin':''}">${c.isAdmin?'👑 관리자':esc(c.nick)}</span>
+        <button class="cc-del" onclick="deleteComment('${postId}',${i})">삭제</button>
+        <span class="cc-date">${fmt(c.ts)}</span>
+      </div>
+      <div class="cc-text">${esc(c.text)}</div>
+    </div>`).join('');
+}
+
+/* ══ 글쓰기 ══ */
+function toggleAdmin(){ document.getElementById('isAdmin').checked = !document.getElementById('isAdmin').checked; toggleAdminPw(); }
+function toggleAdminPw(){
+  const checked = document.getElementById('isAdmin').checked;
+  document.getElementById('adminPwWrap').className = 'admin-pw-wrap' + (checked?' show':'');
+}
+function clearForm(){
+  ['wNick','wTitle','wContent','wAdminPw'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('isAdmin').checked = false;
+  document.getElementById('adminPwWrap').className = 'admin-pw-wrap';
+  document.getElementById('wCategory').value = 'general';
+}
+
+async function submitPost(){
+  const cat   = document.getElementById('wCategory').value;
+  const nick  = document.getElementById('wNick').value.trim();
+  const title = document.getElementById('wTitle').value.trim();
+  const content = document.getElementById('wContent').value.trim();
+  const isAdm = document.getElementById('isAdmin').checked;
+  const pw    = document.getElementById('wAdminPw').value;
+
+  if(!nick){ toast('⚠️ 닉네임을 입력해 주세요'); return; }
+  if(!title){ toast('⚠️ 제목을 입력해 주세요'); return; }
+  if(!content){ toast('⚠️ 내용을 입력해 주세요'); return; }
+  if(cat==='notice' && !isAdm){ toast('⚠️ 공지는 관리자만 작성 가능합니다'); return; }
+  if(isAdm && pw !== ADMIN_PW){ toast('🔐 관리자 암호가 틀렸습니다'); return; }
+
+  const post = { id:uid(), type:cat, nick, title, content, isAdmin:isAdm, ts:Date.now(), views:0 };
+  posts.unshift(post);
+  await savePosts();
+  clearForm();
+  toast('✅ 게시물이 등록되었습니다!');
+  switchTab('all', document.querySelector('.tab-btn'));
+}
+
+/* ══ 댓글 달기 ══ */
+async function submitComment(){
+  const nick = document.getElementById('cNick').value.trim();
+  const text = document.getElementById('cText').value.trim();
+  const pw   = document.getElementById('cAdminPw').value;
+  const isAdm = pw === ADMIN_PW;
+
+  if(!nick){ toast('⚠️ 닉네임을 입력해 주세요'); return; }
+  if(!text){ toast('⚠️ 댓글 내용을 입력해 주세요'); return; }
+
+  if(!comments[curPostId]) comments[curPostId] = [];
+  comments[curPostId].push({ nick, text, isAdmin:isAdm, ts:Date.now() });
+  await saveComments();
+  document.getElementById('cText').value = '';
+  renderComments(curPostId);
+  toast('💬 댓글이 등록되었습니다');
+}
+
+/* ══ 삭제 ══ */
+async function deletePost(){
+  const pw = prompt('관리자 암호를 입력하세요:');
+  if(pw !== ADMIN_PW){ toast('🔐 암호가 틀렸습니다'); return; }
+  posts = posts.filter(p=>p.id !== curPostId);
+  delete comments[curPostId];
+  await savePosts();
+  await saveComments();
+  toast('🗑️ 게시물이 삭제되었습니다');
+  closeDetail();
+}
+
+async function deleteComment(postId, idx){
+  const pw = prompt('삭제하려면 관리자 암호 또는 본인 확인:\n(관리자 암호 입력 시 즉시 삭제)');
+  if(pw !== ADMIN_PW){ toast('🔐 관리자만 댓글을 삭제할 수 있습니다'); return; }
+  comments[postId].splice(idx, 1);
+  await saveComments();
+  renderComments(postId);
+  toast('🗑️ 댓글이 삭제되었습니다');
+}
+
+/* ══ 탭 전환 ══ */
+function switchTab(tab, btn){
+  curTab = tab;
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pane-'+tab).classList.add('on');
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+
+  // 상세 뷰에서 탭 전환 시 목록으로
+  if(curPostId){
+    document.getElementById('listView').classList.remove('hidden');
+    document.getElementById('detailView').classList.remove('on');
+    curPostId = null;
+  }
+}
+
+/* ══ 초기화 ══ */
+(async()=>{
+  await loadAll();
+  renderAll();
+})();
+</script>
+</body>
+</html>
