@@ -2,1114 +2,899 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>건설안전기술사 D05 — 공종별 안전관리</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#090c14">
+<title>D05 공종별 안전관리 — 건설안전기술사</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-  :root {
-    --bg:#0d1117; --card:#161b27; --card2:#1c2235; --border:#252d42;
-    --a:#ef5350; --b:#ffb74d; --c:#4fc3f7; --d:#66bb6a; --e:#ce93d8; --f:#ff8a65;
-    --gold:#ffd54f; --text:#dde3ee; --muted:#6b7a99;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);max-width:600px;margin:0 auto;padding:0 0 40px;}
-  .progress-bar{height:3px;background:var(--border);position:sticky;top:0;z-index:200;}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--d));width:0%;transition:width 0.3s;}
-  .top-header{background:linear-gradient(135deg,#111827,#1a2235);padding:18px 16px 14px;border-bottom:1px solid var(--border);position:sticky;top:3px;z-index:100;}
-  .top-header .badge{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--f);text-transform:uppercase;margin-bottom:4px;}
-  .top-header h1{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
-  .top-header .sub{font-size:11px;color:var(--muted);margin-top:3px;}
-  .new-badge{display:inline-block;margin-top:6px;background:rgba(239,83,80,0.18);border:1px solid rgba(239,83,80,0.5);color:#ef5350;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;}
-  .tab-nav{display:flex;gap:6px;margin-top:12px;overflow-x:auto;scrollbar-width:none;}
-  .tab-nav::-webkit-scrollbar{display:none;}
-  .tab-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid;white-space:nowrap;cursor:pointer;background:transparent;transition:all 0.2s;}
-  .tab-btn.ta{color:var(--a);border-color:var(--a);}
-  .tab-btn.tb{color:var(--b);border-color:var(--b);}
-  .tab-btn.tc{color:var(--c);border-color:var(--c);}
-  .tab-btn.td{color:var(--d);border-color:var(--d);}
-  .tab-btn.te{color:var(--e);border-color:var(--e);}
-  .tab-btn.tf{color:var(--f);border-color:var(--f);}
-  .tab-btn.tg{color:var(--gold);border-color:var(--gold);}
-  .tab-btn.active.ta{background:rgba(239,83,80,0.15);}
-  .tab-btn.active.tb{background:rgba(255,183,77,0.15);}
-  .tab-btn.active.tc{background:rgba(79,195,247,0.15);}
-  .tab-btn.active.td{background:rgba(102,187,106,0.15);}
-  .tab-btn.active.te{background:rgba(206,147,216,0.15);}
-  .tab-btn.active.tf{background:rgba(255,138,101,0.15);}
-  .tab-btn.active.tg{background:rgba(255,213,79,0.15);}
-  .section{padding:0 12px;margin-top:12px;}
-  .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:10px;cursor:pointer;user-select:none;background:var(--card);border-left:4px solid;margin-bottom:2px;}
-  .sec-header.ca{border-color:var(--a);}.sec-header.cb{border-color:var(--b);}.sec-header.cc{border-color:var(--c);}.sec-header.cd{border-color:var(--d);}.sec-header.ce{border-color:var(--e);}.sec-header.cf{border-color:var(--f);}.sec-header.cg{border-color:var(--gold);}
-  .sh-left{display:flex;align-items:center;gap:10px;}
-  .sh-icon{font-size:18px;}
-  .sh-title{font-size:14px;font-weight:700;}
-  .sh-title.ca{color:var(--a);}.sh-title.cb{color:var(--b);}.sh-title.cc{color:var(--c);}.sh-title.cd{color:var(--d);}.sh-title.ce{color:var(--e);}.sh-title.cf{color:var(--f);}.sh-title.cg{color:var(--gold);}
-  .sh-sub{font-size:10px;color:var(--muted);margin-top:1px;}
-  .sh-arrow{font-size:12px;color:var(--muted);transition:transform 0.25s;}
-  .sh-arrow.open{transform:rotate(180deg);}
-  .sec-body{display:none;flex-direction:column;gap:8px;padding:8px 0 4px;}
-  .sec-body.open{display:flex;}
-  .card{background:var(--card);border-radius:10px;padding:13px 14px;}
-  .card-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-  .item-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
-  .item-list li{font-size:13px;color:#b0bec5;padding-left:13px;position:relative;line-height:1.55;}
-  .item-list li::before{content:'▸';position:absolute;left:0;opacity:0.4;}
-  .item-list li strong{color:var(--text);font-weight:700;}
-  .memo-block{border-radius:10px;padding:12px 14px;border:1px solid;}
-  .memo-block.ma{background:rgba(239,83,80,0.06);border-color:rgba(239,83,80,0.28);}
-  .memo-block.mb{background:rgba(255,183,77,0.06);border-color:rgba(255,183,77,0.28);}
-  .memo-block.mc{background:rgba(79,195,247,0.06);border-color:rgba(79,195,247,0.28);}
-  .memo-block.md{background:rgba(102,187,106,0.06);border-color:rgba(102,187,106,0.28);}
-  .memo-block.me{background:rgba(206,147,216,0.06);border-color:rgba(206,147,216,0.28);}
-  .memo-block.mf{background:rgba(255,138,101,0.06);border-color:rgba(255,138,101,0.28);}
-  .memo-block.mg{background:rgba(255,213,79,0.06);border-color:rgba(255,213,79,0.28);}
-  .memo-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:5px;}
-  .memo-type.ma{color:var(--a);}.memo-type.mb{color:var(--b);}.memo-type.mc{color:var(--c);}.memo-type.md{color:var(--d);}.memo-type.me{color:var(--e);}.memo-type.mf{color:var(--f);}.memo-type.mg{color:var(--gold);}
-  .acro-list{display:flex;flex-direction:column;gap:4px;}
-  .acro-item{display:flex;align-items:baseline;gap:8px;}
-  .acro-char{font-size:20px;font-weight:900;min-width:22px;line-height:1;}
-  .acro-char.ca{color:var(--a);}.acro-char.cb{color:var(--b);}.acro-char.cc{color:var(--c);}.acro-char.cd{color:var(--d);}.acro-char.ce{color:var(--e);}
-  .acro-text{font-size:13px;color:var(--text);line-height:1.4;}
-  .acro-text em{font-style:normal;color:var(--gold);font-weight:700;}
-  .acro-key{margin-top:8px;padding:7px 10px;background:rgba(255,213,79,0.1);border-radius:6px;font-size:13px;font-weight:700;color:var(--gold);text-align:center;letter-spacing:1px;}
-  .story{background:var(--card2);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.7;}
-  .flow-wrap{display:flex;flex-direction:column;gap:5px;}
-  .flow-step{background:var(--card2);border-radius:8px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;}
-  .fs-num{font-size:14px;font-weight:900;min-width:26px;text-align:center;line-height:1.4;flex-shrink:0;}
-  .fs-num.ca{color:var(--a);}.fs-num.cb{color:var(--b);}.fs-num.cc{color:var(--c);}.fs-num.cd{color:var(--d);}
-  .fs-content{font-size:12.5px;color:var(--text);line-height:1.5;flex:1;}
-  .fs-content .fc-title{font-weight:700;margin-bottom:2px;}
-  .fs-content .fc-sub{font-size:11px;color:var(--muted);}
-  .flow-arrow-down{text-align:center;font-size:13px;color:var(--muted);}
-  .qa-item{margin-bottom:10px;}
-  .qa-q{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:5px;display:flex;gap:6px;}
-  .qa-q::before{content:'Q.';opacity:0.6;}
-  .qa-a{background:var(--card2);border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.65;color:var(--text);border-left:3px solid var(--gold);}
-  .qa-a .key{color:var(--gold);font-weight:700;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@700;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
-  /* 로드맵 3대 사고유형 */
-  .roadmap-box{background:linear-gradient(135deg,rgba(239,83,80,0.08),rgba(255,183,77,0.08));border:1px solid rgba(239,83,80,0.3);border-radius:10px;padding:13px 14px;}
-  .roadmap-title{font-size:12px;font-weight:700;color:#ef5350;margin-bottom:10px;letter-spacing:0.5px;}
-  .type3-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
-  .type3-card{border-radius:8px;padding:10px 8px;text-align:center;border:1px solid;}
-  .type3-card.t1{border-color:rgba(239,83,80,0.4);background:rgba(239,83,80,0.08);}
-  .type3-card.t2{border-color:rgba(255,183,77,0.4);background:rgba(255,183,77,0.08);}
-  .type3-card.t3{border-color:rgba(79,195,247,0.4);background:rgba(79,195,247,0.08);}
-  .t3-icon{font-size:22px;margin-bottom:4px;}
-  .t3-name{font-size:12px;font-weight:700;}
-  .t1 .t3-name{color:#ef5350;}.t2 .t3-name{color:var(--b);}.t3 .t3-name{color:var(--c);}
-  .t3-pct{font-size:10px;color:var(--muted);margin-top:2px;}
+:root {
+  --bg:#090c14; --surface:#111827; --border:#1e2a40;
+  --purple:#a78bfa; --purple2:#c4b5fd; --pur-d:rgba(167,139,250,0.10);
+  --gold:#f5c842; --gold-d:rgba(245,200,66,0.10);
+  --green:#34d399; --red:#f87171; --amber:#fbbf24;
+  --blue:#60a5fa; --orange:#fb923c; --teal:#2dd4bf; --pink:#f472b6;
+  --text:#e2e8f5; --muted:#64748b; --muted2:#94a3b8;
+  --r:13px; --r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);padding-bottom:56px;min-height:100vh}
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:280px;background:radial-gradient(ellipse 70% 50% at 50% -5%,rgba(167,139,250,0.09) 0%,transparent 70%);pointer-events:none;z-index:0}
 
-  /* 8대 위험요인 */
-  .risk8-wrap{display:flex;flex-direction:column;gap:6px;}
-  .risk8-item{background:var(--card2);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:10px;}
-  .r8-num{font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .r8-num.n1{background:rgba(239,83,80,0.2);color:#ef5350;}
-  .r8-num.n2{background:rgba(239,83,80,0.2);color:#ef5350;}
-  .r8-num.n3{background:rgba(239,83,80,0.15);color:#ef5350;}
-  .r8-num.n4{background:rgba(255,183,77,0.2);color:var(--b);}
-  .r8-num.n5{background:rgba(255,183,77,0.2);color:var(--b);}
-  .r8-num.n6{background:rgba(79,195,247,0.2);color:var(--c);}
-  .r8-num.n7{background:rgba(79,195,247,0.2);color:var(--c);}
-  .r8-num.n8{background:rgba(102,187,106,0.2);color:var(--d);}
-  .r8-content{font-size:12.5px;line-height:1.45;}
-  .r8-content .r8-title{font-weight:700;color:var(--text);}
-  .r8-content .r8-sub{font-size:11px;color:var(--muted);margin-top:2px;}
-  .r8-tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;margin-left:5px;}
-  .tag-fall{background:rgba(239,83,80,0.15);color:#ef5350;}
-  .tag-crush{background:rgba(255,183,77,0.15);color:var(--b);}
-  .tag-hit{background:rgba(79,195,247,0.15);color:var(--c);}
+/* 헤더 */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(9,12,20,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 14px 10px}
+.hdr-row{display:flex;align-items:center;gap:10px}
+.back-btn{display:flex;align-items:center;gap:4px;color:var(--muted2);font-size:12px;font-weight:600;text-decoration:none;padding:5px 10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;flex-shrink:0}
+.back-btn:active{opacity:.7;transform:scale(.95)}
+.hdr-info{flex:1;min-width:0}
+.hdr-code{font-size:9px;font-weight:800;letter-spacing:2.5px;color:var(--purple);text-transform:uppercase;margin-bottom:1px}
+.hdr-title{font-size:15px;font-weight:900;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-badge{flex-shrink:0;background:rgba(245,200,66,0.15);color:var(--gold);border:1px solid rgba(245,200,66,0.3);border-radius:8px;font-size:9px;font-weight:800;padding:3px 8px}
 
-  /* 공종 세부 카드 */
-  .work-section{background:var(--card);border-radius:10px;padding:13px 14px;border-top:3px solid;}
-  .work-section.wa{border-color:var(--a);}.work-section.wb{border-color:var(--b);}.work-section.wc{border-color:var(--c);}.work-section.wd{border-color:var(--d);}.work-section.we{border-color:var(--e);}
-  .ws-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
-  .ws-icon{font-size:20px;}
-  .ws-name{font-size:14px;font-weight:700;}
-  .wa .ws-name{color:var(--a);}.wb .ws-name{color:var(--b);}.wc .ws-name{color:var(--c);}.wd .ws-name{color:var(--d);}.we .ws-name{color:var(--e);}
-  .ws-sub{font-size:10px;color:var(--muted);margin-top:1px;}
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .col-box{background:var(--card2);border-radius:8px;padding:9px 10px;}
-  .col-label{font-size:9px;font-weight:700;letter-spacing:1px;margin-bottom:5px;text-transform:uppercase;}
-  .col-list{list-style:none;}
-  .col-list li{font-size:11.5px;color:#b0bec5;padding-left:10px;position:relative;line-height:1.55;}
-  .col-list li::before{content:'·';position:absolute;left:2px;}
-  .col-list li strong{color:var(--text);}
+/* 탭 */
+.tab-nav{display:flex;overflow-x:auto;background:rgba(0,0,0,0.25);border-bottom:1px solid var(--border);scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:9px 14px;font-size:11.5px;font-weight:700;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .18s}
+.tab-btn.on{color:var(--purple);border-bottom-color:var(--purple)}
 
-  /* 숫자 뱃지 */
-  .num-row{display:flex;flex-wrap:wrap;gap:7px;}
-  .num-badge{display:flex;flex-direction:column;align-items:center;border-radius:9px;padding:8px 10px;min-width:58px;border:1px solid;flex:1;}
-  .nb-num{font-size:18px;font-weight:900;line-height:1;}
-  .nb-label{font-size:10px;color:var(--muted);margin-top:3px;text-align:center;line-height:1.4;}
-  .na .nb-num{color:var(--a);} .na{border-color:rgba(239,83,80,0.35);background:rgba(239,83,80,0.07);}
-  .nb .nb-num{color:var(--b);} .nb{border-color:rgba(255,183,77,0.35);background:rgba(255,183,77,0.07);}
-  .nc .nb-num{color:var(--c);} .nc{border-color:rgba(79,195,247,0.35);background:rgba(79,195,247,0.07);}
-  .nd .nb-num{color:var(--d);} .nd{border-color:rgba(102,187,106,0.35);background:rgba(102,187,106,0.07);}
+/* 본문 */
+.body{padding:14px 14px 0}
+.section{display:none}
+.section.on{display:block}
 
-  .compare-table{width:100%;border-collapse:collapse;font-size:11.5px;}
-  .compare-table th{padding:8px 6px;text-align:center;font-weight:700;border-bottom:2px solid var(--border);font-size:10px;}
-  .compare-table td{padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;line-height:1.5;vertical-align:top;}
-  .compare-table td:first-child{color:var(--muted);font-weight:500;white-space:nowrap;font-size:10px;}
-  .compare-table tr:last-child td{border-bottom:none;}
-  .va{color:var(--a)!important;font-weight:700;}.vb{color:var(--b)!important;font-weight:700;}.vc{color:var(--c)!important;font-weight:700;}.vd{color:var(--d)!important;font-weight:700;}.vg{color:var(--gold)!important;font-weight:700;}
+/* 공통 */
+.sec-hdr{display:flex;align-items:center;gap:8px;margin:18px 0 10px}
+.sec-hdr:first-child{margin-top:0}
+.sec-hdr-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.sec-hdr-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(167,139,250,0.3),transparent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.card-title{font-size:12px;font-weight:800;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 
-  .page-section{display:none;}
-  .page-section.active{display:block;}
+/* 공종 카드 */
+.work-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px;border-top:3px solid}
+.wc-fall{border-top-color:var(--red)} .wc-exc{border-top-color:var(--amber)}
+.wc-con{border-top-color:var(--blue)} .wc-steel{border-top-color:var(--orange)}
+.wc-tun{border-top-color:var(--teal)} .wc-demo{border-top-color:var(--pink)}
+.wc-smart{border-top-color:var(--green)}
+
+.work-head{padding:10px 13px 9px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:9px;background:rgba(255,255,255,0.02)}
+.wh-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.wh-meta{flex:1}
+.wh-label{font-size:9px;font-weight:800;letter-spacing:1.5px;margin-bottom:2px}
+.wc-fall .wh-label{color:var(--red)} .wc-exc .wh-label{color:var(--amber)}
+.wc-con .wh-label{color:var(--blue)} .wc-steel .wh-label{color:var(--orange)}
+.wc-tun .wh-label{color:var(--teal)} .wc-demo .wh-label{color:var(--pink)}
+.wc-smart .wh-label{color:var(--green)}
+.wh-name{font-size:13px;font-weight:900;color:#fff;margin-bottom:2px}
+.wh-sub{font-size:10px;color:var(--muted2)}
+.wh-badge{font-size:9px;font-weight:800;padding:3px 8px;border-radius:6px;flex-shrink:0;align-self:flex-start;margin-top:2px}
+.badge-star{background:rgba(245,200,66,0.15);color:var(--gold)}
+.badge-hot{background:rgba(248,113,113,0.15);color:var(--red)}
+
+.work-body{padding:11px 13px}
+.wb-list{list-style:none;margin-bottom:9px}
+.wb-list li{font-size:10.5px;color:var(--muted2);line-height:1.75;padding-left:12px;position:relative;margin-bottom:1px}
+.wb-list li::before{content:'▸';position:absolute;left:0;opacity:.45;font-size:9px}
+.wb-list li strong{color:var(--text);font-weight:700}
+.wb-list li em{color:var(--gold);font-style:normal;font-weight:700}
+
+.kp-box{background:var(--pur-d);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r-sm);padding:9px 11px;margin-top:8px}
+.kp-box.kp-gold{background:var(--gold-d);border-color:rgba(245,200,66,0.2)}
+.kp-box.kp-red{background:rgba(248,113,113,0.06);border-color:rgba(248,113,113,0.18)}
+.kp-box.kp-blue{background:rgba(96,165,250,0.06);border-color:rgba(96,165,250,0.18)}
+.kp-box.kp-green{background:rgba(52,211,153,0.06);border-color:rgba(52,211,153,0.18)}
+.kp-box.kp-amber{background:rgba(251,191,36,0.07);border-color:rgba(251,191,36,0.2)}
+.kp-title{font-size:10px;font-weight:800;color:var(--purple);margin-bottom:4px}
+.kp-box.kp-gold .kp-title{color:var(--gold)} .kp-box.kp-red .kp-title{color:var(--red)}
+.kp-box.kp-blue .kp-title{color:var(--blue)} .kp-box.kp-green .kp-title{color:var(--green)}
+.kp-box.kp-amber .kp-title{color:var(--amber)}
+.kp-desc{font-size:10.5px;color:var(--muted2);line-height:1.7}
+.kp-desc strong{color:var(--text)} .kp-desc em{color:var(--gold);font-style:normal;font-weight:700}
+
+/* 수치 그리드 */
+.num-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.num-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px 12px;text-align:center}
+.num-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--purple);margin-bottom:2px;line-height:1}
+.num-unit{font-size:9px;color:var(--muted2);margin-bottom:5px}
+.num-label{font-size:11px;font-weight:800;color:var(--text);margin-bottom:2px}
+.num-desc{font-size:9.5px;color:var(--muted2);line-height:1.5}
+
+/* 비교표 */
+.cmp-table{width:100%;border-collapse:collapse;font-size:10.5px}
+.cmp-table th{background:rgba(167,139,250,0.10);color:var(--purple2);font-size:10px;font-weight:800;text-align:center;padding:7px 5px;border-bottom:1px solid rgba(167,139,250,0.2)}
+.cmp-table th:first-child{text-align:left;width:28%}
+.cmp-table td{padding:7px 5px;border-bottom:1px solid var(--border);color:var(--muted2);vertical-align:top;line-height:1.55;text-align:center}
+.cmp-table td:first-child{color:var(--text);font-weight:700;text-align:left}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table .hl{color:var(--text);font-weight:700}
+.cmp-table .rd{color:var(--red);font-weight:700}
+.cmp-table .am{color:var(--amber);font-weight:700}
+.cmp-table .gn{color:var(--green);font-weight:700}
+
+/* 8대 가시설 그리드 */
+.gasi-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.gasi-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:9px 10px;border-left:3px solid var(--purple)}
+.gasi-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--purple);margin-bottom:3px}
+.gasi-name{font-size:11.5px;font-weight:800;color:var(--text);margin-bottom:2px}
+.gasi-desc{font-size:9.5px;color:var(--muted2);line-height:1.5}
+
+/* 지반현상 카드 */
+.ground-row{display:grid;gap:7px;margin-bottom:10px}
+.gr-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px 13px;border-left:3px solid}
+.gr-boil{border-left-color:var(--blue)}
+.gr-piping{border-left-color:var(--amber)}
+.gr-heave{border-left-color:var(--red)}
+.gr-sink{border-left-color:var(--purple)}
+.gr-head{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.gr-icon{font-size:16px}
+.gr-label{font-size:9px;font-weight:800;letter-spacing:1px}
+.gr-boil .gr-label{color:var(--blue)} .gr-piping .gr-label{color:var(--amber)}
+.gr-heave .gr-label{color:var(--red)} .gr-sink .gr-label{color:var(--purple)}
+.gr-name{font-size:12.5px;font-weight:800;color:var(--text);margin-bottom:4px}
+.gr-def{font-size:10px;color:var(--muted2);line-height:1.65;margin-bottom:4px}
+.gr-def strong{color:var(--text)}
+.gr-cond{font-size:9.5px;color:var(--muted2);background:rgba(255,255,255,0.03);border-radius:var(--r-sm);padding:5px 8px}
+.gr-cond strong{color:var(--gold)}
+
+/* 암기법 */
+.mn-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--purple);border-radius:0 var(--r) var(--r) 0;padding:12px 13px;margin-bottom:8px}
+.mn-card.mn-red{border-left-color:var(--red)} .mn-card.mn-amber{border-left-color:var(--amber)}
+.mn-card.mn-blue{border-left-color:var(--blue)} .mn-card.mn-green{border-left-color:var(--green)}
+.mn-card.mn-orange{border-left-color:var(--orange)} .mn-card.mn-teal{border-left-color:var(--teal)}
+.mn-card.mn-gold{border-left-color:var(--gold)} .mn-card.mn-pink{border-left-color:var(--pink)}
+.mn-domain{font-size:9px;font-weight:800;color:var(--purple);letter-spacing:1px;margin-bottom:3px}
+.mn-card.mn-red .mn-domain{color:var(--red)} .mn-card.mn-amber .mn-domain{color:var(--amber)}
+.mn-card.mn-blue .mn-domain{color:var(--blue)} .mn-card.mn-green .mn-domain{color:var(--green)}
+.mn-card.mn-orange .mn-domain{color:var(--orange)} .mn-card.mn-teal .mn-domain{color:var(--teal)}
+.mn-card.mn-gold .mn-domain{color:var(--gold)} .mn-card.mn-pink .mn-domain{color:var(--pink)}
+.mn-key{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:900;color:#fff;margin-bottom:5px;letter-spacing:1px}
+.mn-expand{font-size:10.5px;color:var(--muted2);line-height:1.75;margin-bottom:6px}
+.mn-expand span{color:var(--text);font-weight:700}
+.mn-tip{font-size:10px;color:var(--gold);background:var(--gold-d);border:1px solid rgba(245,200,66,0.2);border-radius:var(--r-sm);padding:5px 9px;line-height:1.6}
+
+/* 기출 */
+.exam-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:8px}
+.exam-head{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.exam-round{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:var(--pur-d);color:var(--purple);border-radius:5px;padding:2px 7px}
+.exam-type{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px}
+.et-short{background:rgba(52,211,153,0.12);color:var(--green)}
+.et-long{background:rgba(251,191,36,0.12);color:var(--amber)}
+.exam-year{font-size:10px;color:var(--muted);margin-left:auto}
+.exam-q{padding:9px 12px;font-size:11px;color:var(--text);line-height:1.65}
+.exam-q strong{color:var(--purple2)}
+
+@media(max-width:360px){.gasi-grid{grid-template-columns:1fr 1fr}.num-val{font-size:16px}.mn-key{font-size:17px}}
 </style>
 </head>
 <body>
 
-<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
-
-<div class="top-header">
-  <div class="badge">Domain 05 · 공종별 안전관리</div>
-  <h1>공종별 안전관리 완전정복</h1>
-  <div class="sub">3대사고유형·8대위험요인 · 가설·굴착·콘크리트·철골·터널</div>
-  <span class="new-badge">⚡ 중대재해감축로드맵 2022 반영</span>
-  <div class="tab-nav">
-    <button class="tab-btn ta active" onclick="showTab('ta',this)">🎯 로드맵·개요</button>
-    <button class="tab-btn tb" onclick="showTab('tb',this)">🏗️ 가설공사</button>
-    <button class="tab-btn tc" onclick="showTab('tc',this)">⛏️ 굴착·흙막이</button>
-    <button class="tab-btn td" onclick="showTab('td',this)">🏛️ 콘크리트·철골</button>
-    <button class="tab-btn te" onclick="showTab('te',this)">🚇 터널·해체</button>
-    <button class="tab-btn tf" onclick="showTab('tf',this)">🏔️ 사면·지반</button>
-    <button class="tab-btn tg" onclick="showTab('tg',this)">✍️ 답안공식</button>
+<div class="hdr">
+  <div class="hdr-row">
+    <a class="back-btn" href="forest.html">← 숲</a>
+    <div class="hdr-info">
+      <div class="hdr-code">Domain 05</div>
+      <div class="hdr-title">🏗️ 공종별 안전관리</div>
+    </div>
+    <div class="hdr-badge">기출 최다</div>
   </div>
 </div>
 
-
-<!-- TAB 1: 로드맵·개요 -->
-<div id="ta" class="page-section active">
-
-  <!-- 중대재해감축로드맵 -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🎯</span>
-        <div><div class="sh-title ca">중대재해감축로드맵 (2022)</div>
-          <div class="sh-sub">3대 사고유형 · 8대 위험요인</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="roadmap-box">
-        <div class="roadmap-title">⚡ 중대재해감축로드맵 핵심 — 2030년까지 사망사고 절반 감축 목표</div>
-        <div class="type3-grid">
-          <div class="type3-card t1">
-            <div class="t3-icon">🪂</div>
-            <div class="t3-name">추락</div>
-            <div class="t3-pct">사망 1위</div>
-          </div>
-          <div class="type3-card t2">
-            <div class="t3-icon">⚙️</div>
-            <div class="t3-name">끼임</div>
-            <div class="t3-pct">사망 2위</div>
-          </div>
-          <div class="type3-card t3">
-            <div class="t3-icon">🚛</div>
-            <div class="t3-name">부딪힘</div>
-            <div class="t3-pct">사망 3위</div>
-          </div>
-        </div>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">🔤 두문자 암기</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char ca">추</span><span class="acro-text"><em>추</em>락 — 개구부·비계·사다리</span></div>
-          <div class="acro-item"><span class="acro-char cb">끼</span><span class="acro-text"><em>끼</em>임 — 기계·협착·회전체</span></div>
-          <div class="acro-item"><span class="acro-char cc">부</span><span class="acro-text"><em>부</em>딪힘 — 차량·중장비·자재</span></div>
-        </div>
-        <div class="acro-key">→ "추끼부" 3대 사고유형!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 8대 위험요인 -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⚠️</span>
-        <div><div class="sh-title ca">8대 위험요인 — 로드맵 핵심</div>
-          <div class="sh-sub">시험 최신 출제 포인트</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="risk8-wrap">
-        <div class="risk8-item">
-          <div class="r8-num n1">1</div>
-          <div class="r8-content">
-            <div class="r8-title">개구부·단부 추락 <span class="r8-tag tag-fall">추락</span></div>
-            <div class="r8-sub">슬래브 개구부, 외벽 단부, 엘리베이터 피트</div>
-          </div>
-        </div>
-        <div class="risk8-item">
-          <div class="r8-num n2">2</div>
-          <div class="r8-content">
-            <div class="r8-title">비계·작업발판 추락 <span class="r8-tag tag-fall">추락</span></div>
-            <div class="r8-sub">비계 설치 불량, 발판 탈락, 안전대 미착용</div>
-          </div>
-        </div>
-        <div class="risk8-item">
-          <div class="r8-num n3">3</div>
-          <div class="r8-content">
-            <div class="r8-title">지붕·사면 추락 <span class="r8-tag tag-fall">추락</span></div>
-            <div class="r8-sub">채광창·지붕재 밟힘, 사면 미끄러짐</div>
-          </div>
-        </div>
-        <div class="risk8-item">
-          <div class="r8-num n4">4</div>
-          <div class="r8-content">
-            <div class="r8-title">기계·설비 끼임 <span class="r8-tag tag-crush">끼임</span></div>
-            <div class="r8-sub">방호장치 미설치, 정비 중 끼임</div>
-          </div>
-        </div>
-        <div class="risk8-item">
-          <div class="r8-num n5">5</div>
-          <div class="r8-content">
-            <div class="r8-title">굴착·토사 붕괴 매몰 <span class="r8-tag tag-crush">끼임</span></div>
-            <div class="r8-sub">흙막이 미설치, 사면 붕괴, 굴착면 불안정</div>
-          </div>
-        </div>
-        <div class="risk8-item">
-          <div class="r8-num n6">6</div>
-          <div class="r8-content">
-            <div class="r8-title">차량·중장비 부딪힘 <span class="r8-tag tag-hit">부딪힘</span></div>
-            <div class="r8-sub">후방 시야 불량, 유도원 미배치</div>
-          </div>
-        </div>
-        <div class="risk8-item">
-          <div class="r8-num n7">7</div>
-          <div class="r8-content">
-            <div class="r8-title">낙하물 부딪힘 <span class="r8-tag tag-hit">부딪힘</span></div>
-            <div class="r8-sub">자재·공구 낙하, 비래물 충격</div>
-          </div>
-        </div>
-        <div class="risk8-item">
-          <div class="r8-num n8">8</div>
-          <div class="r8-content">
-            <div class="r8-title">화재·폭발·질식</div>
-            <div class="r8-sub">밀폐공간, 인화성 물질, 용접·절단 불꽃</div>
-          </div>
-        </div>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">💡 출제 포인트</div>
-        <div class="story">
-          <strong style="color:var(--gold);">추락 3개 + 끼임 2개 + 부딪힘 2개 + 기타 1개</strong><br>
-          <span style="color:var(--muted);">→ 각 위험요인별 예방대책 세트로 암기<br>
-          → 공종별 안전 문제에서 8대 위험요인 연결하면 고득점</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 핵심 대책: 스마트 안전기술 -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📱</span>
-        <div><div class="sh-title ca">스마트 안전기술 — 최신 트렌드</div>
-          <div class="sh-sub">로드맵 핵심 수단</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>AI CCTV</strong> — 위험행동·미착용 자동 감지</li>
-          <li><strong>스마트 안전모</strong> — 충격·위치·생체신호 감지</li>
-          <li><strong>IoT 가스센서</strong> — 밀폐공간 유해가스 실시간 모니터링</li>
-          <li><strong>드론</strong> — 고위험 구역 점검, 낙하물 탐지</li>
-          <li><strong>BIM 기반 안전관리</strong> — 시공 전 위험요인 시뮬레이션</li>
-          <li><strong>웨어러블 센서</strong> — 근로자 위치·생체 모니터링</li>
-        </ul>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">💡 시험 활용</div>
-        <div class="story">
-          <strong style="color:var(--a);">예방대책 마지막에 스마트기술 1~2개 추가</strong><br>
-          <span style="color:var(--muted);">→ 최신 트렌드 반영 = 차별화 포인트<br>
-          → AI CCTV·스마트안전모 빈출!</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<div class="tab-nav">
+  <button class="tab-btn on" onclick="goTab('fall',this)">추락·가시설</button>
+  <button class="tab-btn" onclick="goTab('excavation',this)">굴착·흙막이</button>
+  <button class="tab-btn" onclick="goTab('concrete',this)">콘크리트·철골</button>
+  <button class="tab-btn" onclick="goTab('tunnel',this)">터널·해체</button>
+  <button class="tab-btn" onclick="goTab('mnemonics',this)">암기법</button>
+  <button class="tab-btn" onclick="goTab('exams',this)">기출문제</button>
 </div>
 
+<div class="body">
 
-<!-- TAB 2: 가설공사 -->
-<div id="tb" class="page-section">
+<!-- ══════════════════════════
+     탭1: 추락·가시설
+══════════════════════════ -->
+<div id="fall" class="section on">
 
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🏗️</span>
-        <div><div class="sh-title cb">비계 안전관리</div>
-          <div class="sh-sub">강관비계·시스템비계 — 추락 1위 예방 핵심</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">추락재해 현황</span><div class="sec-hdr-line"></div></div>
+
+  <div class="num-grid">
+    <div class="num-card">
+      <div class="num-val" style="color:var(--red);">40%</div>
+      <div class="num-unit">사망재해 비중</div>
+      <div class="num-label">추락 — 건설 1위</div>
+      <div class="num-desc">매년 사망재해 원인 1위</div>
     </div>
-    <div class="sec-body open">
-      <div class="work-section wb">
-        <div class="ws-head"><span class="ws-icon">🔧</span><div><div class="ws-name">강관비계 핵심 기준</div><div class="ws-sub">산안법 시행규칙 별표</div></div></div>
-        <div class="num-row">
-          <div class="num-badge nb"><span class="nb-num">1.5m</span><span class="nb-label">띠장 간격<br>(지상1단2m↓)</span></div>
-          <div class="num-badge nb"><span class="nb-num">1.8m</span><span class="nb-label">장선 간격<br>(최대)</span></div>
-          <div class="num-badge nb"><span class="nb-num">45m</span><span class="nb-label">이하<br>비계 높이<br>(강관)</span></div>
-          <div class="num-badge nb"><span class="nb-num">5이하</span><span class="nb-label">수직재<br>간격(m)</span></div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--red);">2m↑</div>
+      <div class="num-unit">추락방호 기준</div>
+      <div class="num-label">안전난간 설치</div>
+      <div class="num-desc">안전보건규칙 제13조</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--amber);">40cm</div>
+      <div class="num-unit">이상</div>
+      <div class="num-label">작업발판 최소 폭</div>
+      <div class="num-desc">비계 작업발판 기준</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--amber);">3m↑</div>
+      <div class="num-unit">투하설비 설치</div>
+      <div class="num-label">낙하물 방지</div>
+      <div class="num-desc">낙하방지망 설치 의무</div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">8대 가시설물 (추락방지)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="gasi-grid">
+    <div class="gasi-item">
+      <div class="gasi-num">①</div>
+      <div class="gasi-name">비계</div>
+      <div class="gasi-desc">강관·틀·달비계. 발판 40cm↑, 벽이음 간격 준수</div>
+    </div>
+    <div class="gasi-item">
+      <div class="gasi-num">②</div>
+      <div class="gasi-name">작업발판</div>
+      <div class="gasi-desc">폭 40cm↑, 틈새 3cm 이하, 걸침 10cm↑</div>
+    </div>
+    <div class="gasi-item">
+      <div class="gasi-num">③</div>
+      <div class="gasi-name">안전난간</div>
+      <div class="gasi-desc">상부 90~120cm, 중간 45~60cm, 발끝막이판 10cm↑</div>
+    </div>
+    <div class="gasi-item">
+      <div class="gasi-num">④</div>
+      <div class="gasi-name">추락방호망</div>
+      <div class="gasi-desc">설치 기준: 작업면으로부터 10m 이내 수평 설치</div>
+    </div>
+    <div class="gasi-item">
+      <div class="gasi-num">⑤</div>
+      <div class="gasi-name">개구부 덮개</div>
+      <div class="gasi-desc">견고한 재료, 뒤집힘·미끄러짐 방지, 표지 부착</div>
+    </div>
+    <div class="gasi-item">
+      <div class="gasi-num">⑥</div>
+      <div class="gasi-name">가설계단·통로</div>
+      <div class="gasi-desc">경사 30° 이하, 높이 3m마다 계참, 폭 1m↑</div>
+    </div>
+    <div class="gasi-item">
+      <div class="gasi-num">⑦</div>
+      <div class="gasi-name">거푸집 동바리</div>
+      <div class="gasi-desc">구조계산서 작성, 침하방지 조치, 수직하중 검토</div>
+    </div>
+    <div class="gasi-item">
+      <div class="gasi-num">⑧</div>
+      <div class="gasi-name">달비계·달대비계</div>
+      <div class="gasi-desc">안전계수 10↑(와이어), 2줄 이상 설치</div>
+    </div>
+  </div>
+  <div class="kp-box kp-gold">
+    <div class="kp-title">💡 암기법: 비작난방개계동달</div>
+    <div class="kp-desc"><strong>비</strong>계·<strong>작</strong>업발판·<strong>난</strong>간·<strong>방</strong>호망·<strong>개</strong>구부·<strong>계</strong>단통로·<strong>동</strong>바리·<strong>달</strong>비계. 서술형 추락방지 대책 항목으로 그대로 사용</div>
+  </div>
+
+  <!-- 안전난간 기준 상세 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">안전난간 설치기준 (안전보건규칙 제13조)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="display:grid;gap:7px;">
+      <div style="display:flex;gap:9px;align-items:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--red);width:70px;flex-shrink:0;text-align:center;">90~120cm</div>
+        <div style="font-size:11px;font-weight:700;color:var(--text);">상부 난간대 — 바닥면으로부터 높이</div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--amber);width:70px;flex-shrink:0;text-align:center;">45~60cm</div>
+        <div style="font-size:11px;font-weight:700;color:var(--text);">중간 난간대</div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--green);width:70px;flex-shrink:0;text-align:center;">10cm↑</div>
+        <div style="font-size:11px;font-weight:700;color:var(--text);">발끝막이판 — 낙하물 방지</div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--blue);width:70px;flex-shrink:0;text-align:center;">100kg</div>
+        <div style="font-size:11px;font-weight:700;color:var(--text);">수평방향 하중 견딜 수 있는 구조</div>
+      </div>
+    </div>
+    <div class="kp-box kp-red" style="margin-top:10px;">
+      <div class="kp-title">⚡ 핵심 암기: 90~120 / 45~60 / 10 / 100</div>
+      <div class="kp-desc">상부(90~120) → 중간(45~60) → 발끝막이(10cm↑) → 하중(100kg). <em>단답형 수치 문제 단골</em></div>
+    </div>
+  </div>
+
+  <!-- 강관비계 기준 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">강관비계 설치기준 핵심 수치</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="overflow-x:auto;">
+      <table class="cmp-table">
+        <tr><th>항목</th><th>단관비계</th><th>틀비계</th></tr>
+        <tr><td>띠장 간격</td><td class="hl">5m 이하</td><td>-</td></tr>
+        <tr><td>장선 간격</td><td class="am">1.5m 이하</td><td class="am">1.8m 이하</td></tr>
+        <tr><td>벽이음 수직</td><td class="hl">5m 이하</td><td class="hl">9m 이하</td></tr>
+        <tr><td>벽이음 수평</td><td class="hl">5.5m 이하</td><td class="hl">8m 이하</td></tr>
+        <tr><td>발판 최소폭</td><td colspan="2" class="rd">40cm 이상</td></tr>
+        <tr><td>발판 최대틈새</td><td colspan="2" class="am">3cm 이하</td></tr>
+      </table>
+    </div>
+    <div class="kp-box kp-gold" style="margin-top:8px;">
+      <div class="kp-title">💡 핵심: 단관 5·5·5.5 / 틀 9·8</div>
+      <div class="kp-desc">단관비계 벽이음: <em>수직 5m·수평 5.5m</em> / 틀비계: <em>수직 9m·수평 8m</em>. 발판 폭 40cm는 공통</div>
+    </div>
+  </div>
+
+</div><!-- /fall -->
+
+<!-- ══════════════════════════
+     탭2: 굴착·흙막이
+══════════════════════════ -->
+<div id="excavation" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">굴착 안전 핵심 수치</span><div class="sec-hdr-line"></div></div>
+
+  <div class="num-grid">
+    <div class="num-card">
+      <div class="num-val" style="color:var(--amber);">1.5m↑</div>
+      <div class="num-unit">굴착 깊이</div>
+      <div class="num-label">흙막이 설치 검토</div>
+      <div class="num-desc">또는 경사면 기준 초과 시</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--amber);">2m↑</div>
+      <div class="num-unit">굴착 깊이</div>
+      <div class="num-label">흙막이 의무 설치</div>
+      <div class="num-desc">안전보건규칙 제338조</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--blue);">1m마다</div>
+      <div class="num-unit">계측 간격</div>
+      <div class="num-label">지하수위 측정</div>
+      <div class="num-desc">굴착 중 계측관리 기준</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--red);">4m↑</div>
+      <div class="num-unit">굴착 깊이</div>
+      <div class="num-label">유해위험방지계획서</div>
+      <div class="num-desc">산안법 제42조 제출 대상</div>
+    </div>
+  </div>
+
+  <!-- 흙막이 붕괴원인 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">흙막이 붕괴원인 (지하수침간균)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="work-card wc-exc">
+    <div class="work-head">
+      <span class="wh-icon">⛏️</span>
+      <div class="wh-meta">
+        <div class="wh-label">EXCAVATION · 기출 33회</div>
+        <div class="wh-name">흙막이 붕괴원인 및 대책</div>
+        <div class="wh-sub">건설재해 굴착 분야 최다 출제</div>
+      </div>
+      <span class="wh-badge badge-star">★★★★★</span>
+    </div>
+    <div class="work-body">
+      <div style="display:grid;gap:6px;margin-bottom:10px;">
+        <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+          <div style="font-family:'Noto Serif KR',serif;font-size:16px;font-weight:900;color:var(--amber);flex-shrink:0;width:20px;">지</div>
+          <div><div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">지하수위 상승</div><div style="font-size:10px;color:var(--muted2);">강우·인근 지하수 유입 → 토압 증가 → 붕괴</div></div>
+        </div>
+        <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+          <div style="font-family:'Noto Serif KR',serif;font-size:16px;font-weight:900;color:var(--amber);flex-shrink:0;width:20px;">하</div>
+          <div><div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">하중 증가</div><div style="font-size:10px;color:var(--muted2);">지표 중장비·자재 재하 → 수동토압 초과</div></div>
+        </div>
+        <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+          <div style="font-family:'Noto Serif KR',serif;font-size:16px;font-weight:900;color:var(--amber);flex-shrink:0;width:20px;">수</div>
+          <div><div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">수침(침수)</div><div style="font-size:10px;color:var(--muted2);">배면 토사 포화 → 지지력 저하</div></div>
+        </div>
+        <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+          <div style="font-family:'Noto Serif KR',serif;font-size:16px;font-weight:900;color:var(--amber);flex-shrink:0;width:20px;">침</div>
+          <div><div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">침식·세굴</div><div style="font-size:10px;color:var(--muted2);">흙막이 하부 세굴 → 파괴</div></div>
+        </div>
+        <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+          <div style="font-family:'Noto Serif KR',serif;font-size:16px;font-weight:900;color:var(--amber);flex-shrink:0;width:20px;">간</div>
+          <div><div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">간극수압 증가</div><div style="font-size:10px;color:var(--muted2);">점성토 흙막이 배면 간극수압 → 유효응력 감소</div></div>
+        </div>
+        <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+          <div style="font-family:'Noto Serif KR',serif;font-size:16px;font-weight:900;color:var(--amber);flex-shrink:0;width:20px;">균</div>
+          <div><div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">균열·결함</div><div style="font-size:10px;color:var(--muted2);">인접 구조물 균열·흙막이 재료 결함</div></div>
         </div>
       </div>
-      <div class="two-col" style="margin-top:8px;">
-        <div class="col-box">
-          <div class="col-label" style="color:var(--a);">주요 위험요인</div>
-          <ul class="col-list">
-            <li>벽이음 불량</li>
-            <li>발판 탈락·미설치</li>
-            <li>과재하</li>
-            <li>안전대 미착용</li>
-            <li>부재 연결 불량</li>
-          </ul>
-        </div>
-        <div class="col-box">
-          <div class="col-label" style="color:var(--d);">예방대책</div>
-          <ul class="col-list">
-            <li><strong>벽이음</strong> 간격 준수</li>
-            <li>발판 폭 <strong>40cm↑</strong></li>
-            <li>안전대 부착설비</li>
-            <li>과재하 금지 표시</li>
-            <li>작업계획서 작성</li>
-          </ul>
-        </div>
-      </div>
-      <div class="memo-block mb">
-        <div class="memo-type mb">🔢 비계 핵심 숫자</div>
-        <div class="story">
-          <strong style="color:var(--b);">벽이음</strong> — 수직 5m, 수평 5m 이하<br>
-          <strong style="color:var(--b);">발판</strong> — 폭 40cm↑, 틈 3cm↓<br>
-          <strong style="color:var(--b);">난간</strong> — 상부 90cm↑, 중간 45cm↑<br>
-          <span style="color:var(--muted);">→ "5·5 / 40·3 / 90·45" 6개 숫자!</span>
-        </div>
+      <div class="kp-box kp-amber">
+        <div class="kp-title">⚡ 대책: 계측관리 6종</div>
+        <div class="kp-desc"><strong>지표침하계·경사계·토압계·수압계·변형률계·하중계</strong>. 계측값이 관리기준치 초과 시 즉시 작업중지 → 원인분석 → 대책 수립</div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔩</span>
-        <div><div class="sh-title cb">거푸집 동바리 안전관리</div>
-          <div class="sh-sub">붕괴사고 최다 — 구조계산 필수</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 지반 현상 4종 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">굴착 지반 현상 4종</span><div class="sec-hdr-line"></div></div>
+
+  <div class="ground-row">
+    <div class="gr-item gr-boil">
+      <div class="gr-head">
+        <span class="gr-icon">💧</span>
+        <span class="gr-label">BOILING</span>
+      </div>
+      <div class="gr-name">보일링 (Boiling)</div>
+      <div class="gr-def"><strong>사질토</strong> 지반에서 지하수위 차이로 상향 침투압이 토립자 유효중량 초과 → 모래가 끓듯 분출</div>
+      <div class="gr-cond"><strong>발생 조건:</strong> 굴착바닥 ~ 지하수위 차 / 투수계수 높은 사질토 / 히빙과 혼동 주의(사질토 vs 점성토)</div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">붕괴 주요 원인</div>
-        <ul class="item-list">
-          <li>콘크리트 <strong>조기 타설 하중</strong> 초과</li>
-          <li>동바리 <strong>조기 해체</strong></li>
-          <li>수평 연결재 <strong>미설치</strong></li>
-          <li>기초 지반 <strong>침하</strong></li>
-          <li>편재하 발생</li>
-        </ul>
+    <div class="gr-item gr-piping">
+      <div class="gr-head">
+        <span class="gr-icon">🌊</span>
+        <span class="gr-label">PIPING</span>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">핵심 예방대책 — "구조검조해"</div>
-        <ul class="item-list">
-          <li><strong>구</strong>조계산서 작성·검토</li>
-          <li><strong>조</strong>립도 작성 후 시공</li>
-          <li>수평 <strong>연결재</strong> 설치 (높이 2m마다)</li>
-          <li>콘크리트 <strong>강도</strong> 확인 후 해체</li>
-          <li>전문가 <strong>해체</strong> 계획서 작성</li>
-        </ul>
-      </div>
-      <div class="memo-block mb">
-        <div class="memo-type mb">🔢 동바리 핵심 숫자</div>
-        <div class="story">
-          <strong style="color:var(--b);">2m</strong> — 수평 연결재 설치 간격<br>
-          <strong style="color:var(--b);">3.5m</strong> — 파이프 서포트 최대 높이<br>
-          <strong style="color:var(--b);">1/100</strong> — 버팀대 수평력 기준<br>
-          <span style="color:var(--muted);">→ "2·3.5·100분의1" 암기!</span>
-        </div>
-      </div>
+      <div class="gr-name">파이핑 (Piping)</div>
+      <div class="gr-def">지하수 침투로 <strong>흙막이 하부 또는 배면</strong>에 수로(파이프)가 형성되어 토사 유출</div>
+      <div class="gr-cond"><strong>대책:</strong> 차수벽 근입 깊이 확보, 그라우팅, 약액주입, 지하수위 저하</div>
     </div>
-  </div>
-
-</div>
-
-
-<!-- TAB 3: 굴착·흙막이 -->
-<div id="tc" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⛏️</span>
-        <div><div class="sh-title cc">굴착공사 안전관리</div>
-          <div class="sh-sub">8대 위험요인 ⑤ 굴착·매몰 — 토목경험 최대 활용</div></div>
-      </div><span class="sh-arrow open">▼</span>
+    <div class="gr-item gr-heave">
+      <div class="gr-head">
+        <span class="gr-icon">⬆️</span>
+        <span class="gr-label">HEAVING</span>
+      </div>
+      <div class="gr-name">히빙 (Heaving)</div>
+      <div class="gr-def"><strong>연약 점성토</strong> 지반에서 굴착면 배면 하중이 지지력 초과 → 굴착저면 융기·흙막이 내측 쏠림</div>
+      <div class="gr-cond"><strong>안전율:</strong> Fs = Nc × Cu / (γH + q) ≥ 1.2. <strong>대책:</strong> 굴착 깊이 단계별 감소, 지반 개량, 스트럿 선행 설치</div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">굴착 사면 기울기 기준 (붕괴위험 없을 때)</div>
-        <div class="num-row">
-          <div class="num-badge nc"><span class="nb-num">1:1</span><span class="nb-label">보통흙<br>건지반</span></div>
-          <div class="num-badge nc"><span class="nb-num">1:1.5</span><span class="nb-label">보통흙<br>습지반</span></div>
-          <div class="num-badge nc"><span class="nb-num">1:0.5</span><span class="nb-label">암반<br>(경암)</span></div>
-          <div class="num-badge nc"><span class="nb-num">2m</span><span class="nb-label">흙막이<br>의무 깊이</span></div>
-        </div>
+    <div class="gr-item gr-sink">
+      <div class="gr-head">
+        <span class="gr-icon">🕳️</span>
+        <span class="gr-label">SINKHOLE</span>
       </div>
-      <div class="two-col" style="margin-top:8px;">
-        <div class="col-box">
-          <div class="col-label" style="color:var(--a);">주요 위험</div>
-          <ul class="col-list">
-            <li>사면 붕괴·활동</li>
-            <li>지하수 과다 유입</li>
-            <li>인접 구조물 침하</li>
-            <li>매설물 손상</li>
-            <li>굴착면 이완</li>
-          </ul>
-        </div>
-        <div class="col-box">
-          <div class="col-label" style="color:var(--d);">예방대책</div>
-          <ul class="col-list">
-            <li>지질조사 실시</li>
-            <li>흙막이 설계</li>
-            <li><strong>계측관리</strong> 필수</li>
-            <li>지하수위 모니터링</li>
-            <li>우기 전 점검 강화</li>
-          </ul>
-        </div>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">💡 토목시공 연계</div>
-        <div class="story">
-          <strong style="color:var(--c);">흙막이 공법 선택 기준</strong><br>
-          굴착깊이·지반조건·인접구조물·지하수<br>
-          → H파일+토류판 / CIP / SCW / 슬러리월<br>
-          <span style="color:var(--muted);">→ 공법별 특성·적용 조건 연결해서 서술!</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📊</span>
-        <div><div class="sh-title cc">계측관리 — 굴착 안전 핵심</div>
-          <div class="sh-sub">지반침하·붕괴 사전 예측</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--c);">주요 계측 항목</div>
-        <ul class="item-list">
-          <li><strong>지중경사계</strong> — 흙막이 벽체 변위 측정</li>
-          <li><strong>하중계</strong> — 버팀대 축력 측정</li>
-          <li><strong>지하수위계</strong> — 지하수위 변화</li>
-          <li><strong>침하계</strong> — 지표면·구조물 침하</li>
-          <li><strong>간극수압계</strong> — 수압 변화</li>
-          <li><strong>균열계</strong> — 인접 건물 균열</li>
-        </ul>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">🔤 두문자 암기</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char cc">지</span><span class="acro-text"><em>지</em>중경사계</span></div>
-          <div class="acro-item"><span class="acro-char cc">하</span><span class="acro-text"><em>하</em>중계</span></div>
-          <div class="acro-item"><span class="acro-char cc">수</span><span class="acro-text"><em>수</em>위계</span></div>
-          <div class="acro-item"><span class="acro-char cc">침</span><span class="acro-text"><em>침</em>하계</span></div>
-          <div class="acro-item"><span class="acro-char cc">간</span><span class="acro-text"><em>간</em>극수압계</span></div>
-          <div class="acro-item"><span class="acro-char cc">균</span><span class="acro-text"><em>균</em>열계</span></div>
-        </div>
-        <div class="acro-key">→ "지하수침간균" 으로 외우자!</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- TAB 4: 콘크리트·철골 -->
-<div id="td" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🏛️</span>
-        <div><div class="sh-title cd">콘크리트 타설 안전</div>
-          <div class="sh-sub">동바리 붕괴·추락 복합 위험</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="two-col">
-        <div class="col-box">
-          <div class="col-label" style="color:var(--a);">주요 위험</div>
-          <ul class="col-list">
-            <li>동바리 붕괴</li>
-            <li>타설 중 추락</li>
-            <li>펌프카 전도</li>
-            <li>콘크리트 비산</li>
-            <li>양생 중 동결</li>
-          </ul>
-        </div>
-        <div class="col-box">
-          <div class="col-label" style="color:var(--d);">예방대책</div>
-          <ul class="col-list">
-            <li>타설 순서 준수</li>
-            <li>편재하 방지</li>
-            <li>펌프카 아웃리거</li>
-            <li>보안경 착용</li>
-            <li>양생온도 관리</li>
-          </ul>
-        </div>
-      </div>
-      <div class="memo-block md">
-        <div class="memo-type md">💡 콘크리트 타설 황금 원칙</div>
-        <div class="story">
-          <strong style="color:var(--d);">"낮은 곳 → 높은 곳, 가운데 → 가장자리"</strong><br>
-          <span style="color:var(--muted);">→ 편재하 방지·동바리 균등 하중 분산<br>
-          → 1회 타설 높이: 슬래브 0.5m↓ 벽 0.45m↓</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔩</span>
-        <div><div class="sh-title cd">철골공사 안전관리</div>
-          <div class="sh-sub">추락·낙하·도괴 복합 고위험</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">위험요인</div>
-        <ul class="item-list">
-          <li>고소 볼트 체결 중 <strong>추락</strong></li>
-          <li>철골 부재 <strong>낙하</strong> — 크레인 인양 중</li>
-          <li>강풍 시 철골 <strong>도괴</strong></li>
-          <li>용접 불꽃 <strong>화재</strong></li>
-          <li>이동 중 <strong>부딪힘</strong></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">핵심 예방대책</div>
-        <ul class="item-list">
-          <li>건립 순서 <strong>계획서</strong> 사전 작성</li>
-          <li>악천후(풍속 10m/s↑) 시 <strong>작업 중지</strong></li>
-          <li>방망·안전대 설치 — <strong>2m↑</strong> 전 의무</li>
-          <li>크레인 인양 시 <strong>신호수</strong> 배치</li>
-          <li>볼트 체결 전 <strong>임시 고정</strong> 2개↑</li>
-        </ul>
-      </div>
-      <div class="memo-block md">
-        <div class="memo-type md">🔢 철골 핵심 숫자</div>
-        <div class="story">
-          <strong style="color:var(--d);">10m/s</strong> — 강풍 작업중지 기준<br>
-          <strong style="color:var(--d);">2개↑</strong> — 임시 고정 볼트 최소 수<br>
-          <strong style="color:var(--d);">30m</strong> — 지상 30m↑ 와이어 추가 보호<br>
-          <span style="color:var(--muted);">→ "10·2·30" 3개 숫자 암기!</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- TAB 5: 터널·해체 -->
-<div id="te" class="page-section">
-
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🚇</span>
-        <div><div class="sh-title ce">터널공사 안전관리</div>
-          <div class="sh-sub">붕괴·질식·폭발 복합 위험</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="two-col">
-        <div class="col-box">
-          <div class="col-label" style="color:var(--a);">주요 위험</div>
-          <ul class="col-list">
-            <li>막장면 붕괴</li>
-            <li>낙반·낙석</li>
-            <li>유해가스 질식</li>
-            <li>발파 진동</li>
-            <li>용출수</li>
-          </ul>
-        </div>
-        <div class="col-box">
-          <div class="col-label" style="color:var(--d);">핵심 대책</div>
-          <ul class="col-list">
-            <li><strong>지질조사</strong> 사전 실시</li>
-            <li>록볼트·숏크리트</li>
-            <li>환기·가스 측정</li>
-            <li>계측 관리</li>
-            <li>대피로 확보</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card" style="margin-top:8px;">
-        <div class="card-label" style="color:var(--e);">NATM 터널 계측 항목</div>
-        <ul class="item-list">
-          <li><strong>내공변위</strong> — 터널 단면 변화 측정</li>
-          <li><strong>천단침하</strong> — 천장부 침하 측정</li>
-          <li><strong>지중변위</strong> — 지반 내부 변위</li>
-          <li><strong>록볼트 축력</strong> — 록볼트 인장력</li>
-          <li><strong>지표침하</strong> — 지상부 침하 모니터링</li>
-        </ul>
-      </div>
-      <div class="memo-block me">
-        <div class="memo-type me">🔤 계측 암기 "내천지록지"</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char ce">내</span><span class="acro-text"><em>내</em>공변위</span></div>
-          <div class="acro-item"><span class="acro-char ce">천</span><span class="acro-text"><em>천</em>단침하</span></div>
-          <div class="acro-item"><span class="acro-char ce">지</span><span class="acro-text"><em>지</em>중변위</span></div>
-          <div class="acro-item"><span class="acro-char ce">록</span><span class="acro-text"><em>록</em>볼트 축력</span></div>
-          <div class="acro-item"><span class="acro-char ce">지</span><span class="acro-text"><em>지</em>표침하</span></div>
-        </div>
-        <div class="acro-key">→ "내천지록지" 로 외우자!</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🏚️</span>
-        <div><div class="sh-title ce">해체공사 안전관리</div>
-          <div class="sh-sub">역시공 순서 · 분진·소음 관리</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">해체 기본 원칙</div>
-        <ul class="item-list">
-          <li>시공 역순으로 해체 — <strong>상→하, 외→내</strong></li>
-          <li>해체계획서 사전 작성·승인</li>
-          <li>인접 건물·지하매설물 사전 조사</li>
-          <li>비산먼지·소음 방지 대책</li>
-          <li>석면 등 <strong>유해물질 사전 제거</strong></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">해체 공법별 특성</div>
-        <ul class="item-list">
-          <li><strong>압쇄공법</strong> — 유압집게, 소음 적음</li>
-          <li><strong>전도공법</strong> — 와이어 당김, 대형 구조물</li>
-          <li><strong>발파공법</strong> — 폭약, 사전 인허가 필수</li>
-          <li><strong>절단공법</strong> — 다이아몬드 와이어, 정밀 해체</li>
-        </ul>
-      </div>
-      <div class="memo-block me">
-        <div class="memo-type me">⚠️ 석면 해체 특별 관리</div>
-        <div class="story">
-          <strong style="color:var(--e);">석면조사 → 제거 → 폐기 → 확인</strong><br>
-          <span style="color:var(--muted);">→ 1급 발암물질 — 전문업체 의무 사용<br>
-          → 석면해체·제거업자 등록 필수</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- TAB 6: 사면·지반 -->
-<div id="tf" class="page-section">
-
-  <!-- 추락재해 8대 가시설물 -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🪂</span>
-        <div><div class="sh-title cf">추락재해 8대 가시설물</div>
-          <div class="sh-sub">산안기준규칙 — 핵심 암기</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--f);">8대 가시설물 — 추락위험 대표 장소</div>
-        <ul class="item-list">
-          <li>① <strong>비계</strong> — 강관·시스템·달비계</li>
-          <li>② <strong>작업발판</strong> — 이동식·고정식</li>
-          <li>③ <strong>개구부</strong> — 슬래브·벽체·바닥</li>
-          <li>④ <strong>가설계단</strong></li>
-          <li>⑤ <strong>가설통로</strong> — 경사로·연결통로</li>
-          <li>⑥ <strong>거푸집 동바리</strong></li>
-          <li>⑦ <strong>철골 구조물</strong></li>
-          <li>⑧ <strong>지붕</strong> — 슬레이트·경량지붕</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">가시설물별 핵심 안전기준</div>
-        <ul class="item-list">
-          <li><strong>비계</strong> — 발판 폭 40cm↑·틈 3cm↓·벽이음 수직5·수평5m</li>
-          <li><strong>개구부</strong> — 덮개·방호울타리·안전망 중 1개↑</li>
-          <li><strong>가설통로</strong> — 폭 90cm↑·경사 30° 이하·미끄럼 방지</li>
-          <li><strong>가설계단</strong> — 난간 높이 90cm↑·계단폭 1m↑</li>
-          <li><strong>지붕</strong> — 안전방망·추락방호망·안전대 부착설비</li>
-        </ul>
-      </div>
-      <div class="memo-block" style="background:rgba(255,138,101,0.06);border-color:rgba(255,138,101,0.28);">
-        <div class="memo-type" style="color:var(--f);">💡 공통 예방대책</div>
-        <div class="story">
-          <strong>2m 이상 고소작업 → 안전대 착용 의무</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 8대 가시설물 = 모두 추락 위험<br>
-          → 작업 전 안전점검일지 작성 의무</span>
-        </div>
-      </div>
+      <div class="gr-name">싱크홀 (Sinkhole)</div>
+      <div class="gr-def">지하 공동 형성 → 지표 갑작스런 함몰. 노후 상하수도 파손·지하수 유출·굴착 진동</div>
+      <div class="gr-cond"><strong>관련법:</strong> 지하안전관리에 관한 특별법 — 굴착 10m↑ 소규모 / 20m↑ 지하안전영향평가</div>
     </div>
   </div>
 
   <!-- 사면안정 -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🏔️</span>
-        <div><div class="sh-title cf">사면안정 — 붕괴원인·대책</div>
-          <div class="sh-sub">토목시공 경험 최대 활용</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">사면안정 굴착경사 기준</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div class="card-title"><span>⛰️</span> 지반 종류별 굴착 경사 기준</div>
+    <div style="overflow-x:auto;">
+      <table class="cmp-table">
+        <tr><th>지반 종류</th><th>굴착 깊이</th><th>기울기</th></tr>
+        <tr><td>암반·견고한 점토</td><td>모든 깊이</td><td class="gn">1:0.5 (63°)</td></tr>
+        <tr><td>그 외 지반</td><td>5m 미만</td><td class="am">1:1.0 (45°)</td></tr>
+        <tr><td>그 외 지반</td><td>5m 이상</td><td class="rd">1:1.5 (34°)</td></tr>
+        <tr><td>모래·사질지반</td><td>모든 깊이</td><td class="rd">1:1.5 (34°)</td></tr>
+      </table>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">사면 붕괴 원인 — "강지진하인"</div>
-        <ul class="item-list">
-          <li><strong>강우·침투수</strong> — 간극수압 증가 → 전단강도 감소</li>
-          <li><strong>지하수위 상승</strong> — 유효응력 감소</li>
-          <li><strong>지진·진동</strong> — 동하중에 의한 불안정</li>
-          <li><strong>하중 증가</strong> — 사면 상부 성토·구조물</li>
-          <li><strong>인위적 절취</strong> — 과도한 굴착·기울기 불량</li>
-        </ul>
+    <div class="kp-box kp-gold" style="margin-top:8px;">
+      <div class="kp-title">💡 암기: 암견0.5 / 기타5m미만1.0 / 기타5m이상·모래1.5</div>
+      <div class="kp-desc">굴착면 기울기 = 수직:수평. 모래는 가장 위험 → 1:1.5(가장 완만하게 굴착). <em>비 온 후·지하수 유입 시 즉시 점검</em></div>
+    </div>
+  </div>
+
+</div><!-- /excavation -->
+
+<!-- ══════════════════════════
+     탭3: 콘크리트·철골
+══════════════════════════ -->
+<div id="concrete" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">거푸집·동바리 안전</span><div class="sec-hdr-line"></div></div>
+
+  <div class="work-card wc-con">
+    <div class="work-head">
+      <span class="wh-icon">🏗️</span>
+      <div class="wh-meta">
+        <div class="wh-label">FORMWORK · 기출 21회</div>
+        <div class="wh-name">거푸집·동바리 붕괴원인 및 대책</div>
+        <div class="wh-sub">콘크리트 타설 시 붕괴사고 최다</div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">사면안정 공법 분류</div>
-        <ul class="item-list">
-          <li><strong>[억지공법]</strong> 원인 제거·저항력 증가<br>
-            <span style="font-size:11px;color:var(--muted);">∙ 사면경사 완화 (기울기 기준 준수)</span><br>
-            <span style="font-size:11px;color:var(--muted);">∙ 앵커·Rock Bolt — 사면 고정</span><br>
-            <span style="font-size:11px;color:var(--muted);">∙ 억지말뚝 — 활동 저항</span><br>
-            <span style="font-size:11px;color:var(--muted);">∙ 배수공 — 지하수 배제</span>
-          </li>
-          <li><strong>[피압공법]</strong> 활동력 감소<br>
-            <span style="font-size:11px;color:var(--muted);">∙ 상부 하중 제거·절취</span><br>
-            <span style="font-size:11px;color:var(--muted);">∙ 압성토 — 사면 선단 보강</span>
-          </li>
-          <li><strong>[표면보호공법]</strong> 풍화·침식 방지<br>
-            <span style="font-size:11px;color:var(--muted);">∙ 숏크리트·식생·돌쌓기</span>
-          </li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--c);">사면 안전관리 기준 — 산안기준규칙 별표11 (2023.11.14)</div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px;">
-            <thead>
-              <tr>
-                <th style="padding:8px;font-weight:700;border-bottom:2px solid var(--border);color:var(--muted);text-align:left;">지반 종류</th>
-                <th style="padding:8px;font-weight:700;border-bottom:2px solid var(--border);color:var(--gold);text-align:center;">기울기</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:#b0bec5;">모래</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);font-weight:700;color:var(--a);text-align:center;">1 : 1.8</td></tr>
-              <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:#b0bec5;">연암 및 풍화암</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);font-weight:700;color:var(--b);text-align:center;">1 : 1.0</td></tr>
-              <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:#b0bec5;">경암</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);font-weight:700;color:var(--d);text-align:center;">1 : 0.5</td></tr>
-              <tr><td style="padding:7px 8px;color:#b0bec5;">그 밖의 흙</td><td style="padding:7px 8px;font-weight:700;color:var(--e);text-align:center;">1 : 1.2</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="memo-block" style="background:rgba(255,138,101,0.06);border-color:rgba(255,138,101,0.28);">
-        <div class="memo-type" style="color:var(--f);">💡 토목시공 연계</div>
-        <div class="story">
-          <strong>사면안정 해석법 — 절편법·원호활동법</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 안전율 F=1.5↑ (정적), 1.2↑ (지진 시)<br>
-          → 계측관리 — 지중경사계·간극수압계 연계</span>
-        </div>
+      <span class="wh-badge badge-star">★★★★★</span>
+    </div>
+    <div class="work-body">
+      <div class="card-title" style="margin-bottom:8px;"><span>⚠️</span> 붕괴 주요 원인</div>
+      <ul class="wb-list">
+        <li><strong>구조계산 미실시</strong> — 콘크리트 측압·수직하중 검토 없이 설치</li>
+        <li><strong>조기 해체</strong> — 콘크리트 압축강도 확인 전 동바리 해체</li>
+        <li><strong>과다 타설속도</strong> — 빠른 타설로 측압 급증</li>
+        <li><strong>동바리 침하</strong> — 지반 지지력 부족·침하방지 미조치</li>
+        <li><strong>이음·연결 불량</strong> — 수평연결재·가새 미설치</li>
+        <li><strong>허용 재사용 횟수 초과</strong> — 손상된 재료 재사용</li>
+      </ul>
+      <div class="kp-box kp-blue">
+        <div class="kp-title">⚡ 거푸집 해체 기준 (콘크리트 압축강도)</div>
+        <div class="kp-desc">슬래브 하부·보 하부: <strong>설계기준강도의 100%</strong> 이상 확인 후 해체. 측면: <strong>5MPa</strong> 이상. <em>조기 해체 = 붕괴 1순위 원인</em></div>
       </div>
     </div>
   </div>
 
-  <!-- 보일링·파이핑·히빙 -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">💧</span>
-        <div><div class="sh-title cf">지반 불안정 현상 3가지</div>
-          <div class="sh-sub">보일링·파이핑·히빙 — 시험 단골 비교</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
+  <!-- 콘크리트 측압 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">콘크리트 측압 영향 요인</span><div class="sec-hdr-line"></div></div>
 
-      <!-- 보일링 -->
-      <div class="card" style="border-left:3px solid var(--a);">
-        <div class="card-label" style="color:var(--a);">① 보일링 (Boiling)</div>
-        <ul class="item-list">
-          <li><strong>정의</strong> — 상향 침투압 > 흙의 유효중량 → 지반 부풀음</li>
-          <li><strong>발생조건</strong> — 투수성 지반 · 굴착 내외 수두차 과다</li>
-          <li><strong>현상</strong> — 굴착 바닥에서 모래가 끓듯 솟아오름</li>
-          <li><strong>판정</strong> — 동수경사(i) ≥ 한계동수경사(ic)</li>
-          <li><strong>대책</strong> — 차수공 설치·웰포인트 배수·굴착 깊이 제한</li>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+      <div style="background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);border-radius:var(--r-sm);padding:9px;">
+        <div style="font-size:10px;font-weight:800;color:var(--red);margin-bottom:4px;">측압 증가 요인</div>
+        <ul style="list-style:none;">
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>타설 속도 빠를수록</li>
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>콘크리트 온도 낮을수록</li>
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>물시멘트비 클수록</li>
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>슬럼프값 클수록</li>
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>다짐(진동기) 사용 시</li>
         </ul>
       </div>
-
-      <!-- 파이핑 -->
-      <div class="card" style="border-left:3px solid var(--b);">
-        <div class="card-label" style="color:var(--b);">② 파이핑 (Piping)</div>
-        <ul class="item-list">
-          <li><strong>정의</strong> — 침투수가 흙 입자를 이동시켜 관 모양 통로 형성</li>
-          <li><strong>발생조건</strong> — 흙막이 배면 지하수 · 불량 지반</li>
-          <li><strong>현상</strong> — 흙막이 틈 사이로 물·모래 분출 → 붕괴</li>
-          <li><strong>대책</strong> — 차수벽 설치 · 그라우팅 · 굴착깊이 제한</li>
-        </ul>
-      </div>
-
-      <!-- 히빙 -->
-      <div class="card" style="border-left:3px solid var(--c);">
-        <div class="card-label" style="color:var(--c);">③ 히빙 (Heaving)</div>
-        <ul class="item-list">
-          <li><strong>정의</strong> — 굴착 외부 토압 > 굴착 저면 지지력 → 바닥 융기</li>
-          <li><strong>발생조건</strong> — 연약 점성토 · 깊은 굴착</li>
-          <li><strong>현상</strong> — 굴착 바닥 부풀어 오르며 흙막이 변형</li>
-          <li><strong>판정</strong> — 안전율 F = cu·Nc / (γH + q) ≥ 1.5</li>
-          <li><strong>대책</strong> — 굴착 면적 분할·지반 개량·흙막이 근입 깊이 증대</li>
-        </ul>
-      </div>
-
-      <div class="card" style="overflow-x:auto;">
-        <div class="card-label" style="color:var(--gold);">3현상 비교 — 시험 단골</div>
-        <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px;">
-          <thead>
-            <tr>
-              <th style="padding:7px 5px;border-bottom:2px solid var(--border);color:var(--muted);font-size:10px;">구분</th>
-              <th style="padding:7px 5px;border-bottom:2px solid var(--border);color:var(--a);">보일링</th>
-              <th style="padding:7px 5px;border-bottom:2px solid var(--border);color:var(--b);">파이핑</th>
-              <th style="padding:7px 5px;border-bottom:2px solid var(--border);color:var(--c);">히빙</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:var(--muted);font-size:10px;">지반</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">사질토</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">사질토</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">점성토</td>
-            </tr>
-            <tr>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:var(--muted);font-size:10px;">원인</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">상향침투압</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">침투경로</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">전단파괴</td>
-            </tr>
-            <tr>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:var(--muted);font-size:10px;">현상</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">모래 솟음</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">통로 형성</td>
-              <td style="padding:6px 5px;border-bottom:1px solid var(--border);color:#b0bec5;">바닥 융기</td>
-            </tr>
-            <tr>
-              <td style="padding:6px 5px;color:var(--muted);font-size:10px;">대책</td>
-              <td style="padding:6px 5px;color:#b0bec5;">차수·배수</td>
-              <td style="padding:6px 5px;color:#b0bec5;">차수·그라우팅</td>
-              <td style="padding:6px 5px;color:#b0bec5;">지반개량·분할굴착</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="memo-block" style="background:rgba(255,138,101,0.06);border-color:rgba(255,138,101,0.28);">
-        <div class="memo-type" style="color:var(--f);">🔤 두문자</div>
-        <div style="background:rgba(255,213,79,0.1);border-radius:6px;padding:7px 10px;font-size:13px;font-weight:700;color:var(--gold);text-align:center;">"보파히" — 사질·사질·점성토!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 싱크홀 -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🕳️</span>
-        <div><div class="sh-title cf">싱크홀 (지반침하)</div>
-          <div class="sh-sub">지안법 제정 배경 — 도심지 대형 위험</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">싱크홀 발생 원인</div>
-        <ul class="item-list">
-          <li><strong>지하매설물 노후화</strong> — 상하수도·지하철 누수</li>
-          <li><strong>도심 굴착공사</strong> — 차수 불량·지하수 유출</li>
-          <li><strong>지하수 과다 양수</strong> — 지반 공동 형성</li>
-          <li><strong>연약지반</strong> — 고결력 부족</li>
-          <li><strong>폭우·집중호우</strong> — 토사 유실</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">예방 및 관리대책</div>
-        <ul class="item-list">
-          <li>공사 전 <strong>지하매설물 조사</strong> 의무 (지안법)</li>
-          <li><strong>지하안전평가</strong> — 굴착 20m↑ (지안법)</li>
-          <li><strong>GPR(지표투과레이더)</strong> 탐사로 공동 사전 탐지</li>
-          <li>굴착공사 중 <strong>계측관리</strong> 강화</li>
-          <li>차수공 품질 관리·지하수위 모니터링</li>
-          <li>노후 지하매설물 <strong>주기적 정밀안전진단</strong></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--c);">서울시 사례 — 지반침하 대응체계</div>
-        <ul class="item-list">
-          <li>싱크홀 위험등급 — 긴급·위험·주의 3단계</li>
-          <li>GPR 탐사 <strong>연간 계획 수립</strong>·실시</li>
-          <li>지반침하 발생 시 <strong>즉시 통보·통제</strong></li>
-          <li>국토안전관리원 — 지하시설물 통합 DB 관리</li>
-        </ul>
-      </div>
-      <div class="memo-block" style="background:rgba(255,138,101,0.06);border-color:rgba(255,138,101,0.28);">
-        <div class="memo-type" style="color:var(--f);">💡 지안법 연계</div>
-        <div class="story">
-          <strong>싱크홀 → 지안법 제정(2018) → 지하안전평가 의무화</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">D01 법령체계의 지안법과 연결해서 서술!</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 흙막이 붕괴 보강 -->
-  <div class="section">
-    <div class="sec-header cf" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🧱</span>
-        <div><div class="sh-title cf">흙막이 붕괴 원인·방지대책</div>
-          <div class="sh-sub">대형 사고 최다 — 철저 관리 필요</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">흙막이 붕괴 주요 원인 — "설시계측재"</div>
-        <ul class="item-list">
-          <li><strong>설계 결함</strong> — 토압·수압 과소 산정, 안전율 부족</li>
-          <li><strong>시공 불량</strong> — 버팀대 간격·근입 깊이 미준수</li>
-          <li><strong>계측 소홀</strong> — 변위 경고 무시·계측 미실시</li>
-          <li><strong>측압 과다</strong> — 배면 성토·중장비 과재하</li>
-          <li><strong>재해 연쇄</strong> — 보일링·파이핑·히빙 복합 발생</li>
-          <li><strong>지하수 관리 실패</strong> — 차수 불량·양수 부족</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">방지대책 — 설계·시공·계측 3단계</div>
-        <ul class="item-list">
-          <li><strong>[설계]</strong> 충분한 안전율 · 지반조사 철저</li>
-          <li><strong>[시공]</strong> 버팀대 동시 설치 · 단계별 굴착</li>
-          <li><strong>[계측]</strong> 지중경사계·하중계 상시 모니터링</li>
-          <li><strong>[비상]</strong> 계측 이상 시 즉시 작업 중지</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--c);">흙막이 공법 선택 기준</div>
-        <ul class="item-list">
-          <li><strong>H파일+토류판</strong> — 비교적 건조, 소규모</li>
-          <li><strong>CIP</strong> — 투수성 지반, 차수 필요 시</li>
-          <li><strong>SCW</strong> — 연약지반, 차수·변위 제어</li>
-          <li><strong>지하연속벽(Slurry Wall)</strong> — 대심도, 도심지 대규모</li>
+      <div style="background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.18);border-radius:var(--r-sm);padding:9px;">
+        <div style="font-size:10px;font-weight:800;color:var(--green);margin-bottom:4px;">측압 감소 요인</div>
+        <ul style="list-style:none;">
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>타설 속도 느릴수록</li>
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>콘크리트 온도 높을수록</li>
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>경화 진행 시</li>
+          <li style="font-size:10px;color:var(--muted2);line-height:1.7;padding-left:9px;position:relative;"><span style="position:absolute;left:0;">·</span>단면 작을수록</li>
         </ul>
       </div>
     </div>
   </div>
 
-</div>
+  <!-- 철골공사 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">철골공사 안전</span><div class="sec-hdr-line"></div></div>
 
-
-<!-- TAB 7: 답안공식 -->
-<div id="tg" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📝</span>
-        <div><div class="sh-title cg">공종별 안전 답안 작성 공식</div>
-          <div class="sh-sub">모든 공종 문제 공통 구조</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="work-card wc-steel">
+    <div class="work-head">
+      <span class="wh-icon">🔩</span>
+      <div class="wh-meta">
+        <div class="wh-label">STEEL STRUCTURE</div>
+        <div class="wh-name">철골공사 안전관리</div>
+        <div class="wh-sub">건립·볼트체결·도장 시 추락·낙하 위험</div>
+      </div>
+      <span class="wh-badge badge-star">★★★★</span>
     </div>
-    <div class="sec-body open">
-      <div class="flow-wrap">
-        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">①</div><div class="fs-content"><div class="fc-title">개요·정의</div><div class="fc-sub">공종 특성, 재해 발생 현황</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">②</div><div class="fs-content"><div class="fc-title">위험요인 (8대 위험요인 연결)</div><div class="fc-sub">추락·끼임·부딪힘 분류 후 서술</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">③</div><div class="fs-content"><div class="fc-title">법적 기준 (산안법·건진법)</div><div class="fc-sub">관련 조문·수치 기준 명시</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">④</div><div class="fs-content"><div class="fc-title">예방대책 (제대격관보 우선순위)</div><div class="fc-sub">공학적→관리적→보호구 순</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">⑤</div><div class="fs-content"><div class="fc-title">스마트 안전기술 (최신)</div><div class="fc-sub">AI CCTV·웨어러블·드론 연계</div></div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><div class="fs-num" style="color:var(--gold);">⑥</div><div class="fs-content"><div class="fc-title">시사점·결론</div><div class="fc-sub">중대재해감축로드맵 연계</div></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">✍️</span>
-        <div><div class="sh-title cg">시험 빈출 Q&A</div>
-          <div class="sh-sub">최신 출제 경향 반영</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="qa-item">
-        <div class="qa-q">중대재해감축로드맵의 3대 사고유형·8대 위험요인</div>
-        <div class="qa-a">
-          <span class="key">3대: "추끼부"</span> — 추락·끼임·부딪힘<br>
-          8대: ①개구부추락 ②비계추락 ③지붕추락<br>
-          ④기계끼임 ⑤굴착매몰 ⑥차량부딪힘<br>
-          ⑦낙하물부딪힘 ⑧화재폭발질식
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">비계 설치 기준 핵심 숫자</div>
-        <div class="qa-a">
-          <span class="key">5·5 / 40·3 / 90·45</span><br>
-          벽이음 수직5·수평5m / 발판 폭40·틈3cm<br>
-          난간 상부90·중간45cm
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">굴착공사 계측 항목 6가지</div>
-        <div class="qa-a">
-          <span class="key">"지하수침간균"</span><br>
-          지중경사계·하중계·지하수위계<br>침하계·간극수압계·균열계
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">터널 NATM 계측 항목</div>
-        <div class="qa-a">
-          <span class="key">"내천지록지"</span><br>
-          내공변위·천단침하·지중변위·록볼트축력·지표침하
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">철골공사 강풍 시 작업중지 기준</div>
-        <div class="qa-a">
-          <span class="key">풍속 10m/s 이상</span><br>
-          임시 고정 볼트 2개 이상<br>
-          지상 30m↑ 와이어 추가 보호
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">거푸집 동바리 붕괴 원인과 대책</div>
-        <div class="qa-a">
-          원인 — 조기해체·과재하·수평연결재 미설치<br>
-          대책 — <span class="key">"구조검조해"</span><br>
-          구조계산·조립도·연결재·강도확인·해체계획
-        </div>
+    <div class="work-body">
+      <ul class="wb-list">
+        <li><strong>건립 순서</strong>: 기둥 → 보 → 가새 순. 한 구획 완성 후 다음 구획</li>
+        <li><strong>볼트 체결</strong>: 고장력볼트 마찰접합 — 토크렌치로 축력 관리. 볼트 체결 순서: 군 중앙 → 외부</li>
+        <li><strong>안전대 부착설비</strong>: 기둥마다 안전대 걸이 설치</li>
+        <li><strong>추락방지</strong>: 수평 안전네트 설치. 개구부 덮개</li>
+        <li><strong>풍속 기준</strong>: 순간풍속 <em>10m/s↑</em> 작업 중지</li>
+        <li><strong>건립 중 도괴</strong>: 가조립 볼트 과다 제거 금지. 가새(브레이싱) 선행 설치</li>
+      </ul>
+      <div class="kp-box kp-red">
+        <div class="kp-title">⚡ 철골공사 재해 3대 유형</div>
+        <div class="kp-desc"><strong>① 추락</strong>(고소 작업) <strong>② 낙하비래</strong>(볼트·공구) <strong>③ 도괴</strong>(건립 중 가조립 불량). 안전대 100% 착용 + 수평안전네트가 핵심 대책</div>
       </div>
     </div>
   </div>
 
-</div>
+</div><!-- /concrete -->
+
+<!-- ══════════════════════════
+     탭4: 터널·해체
+══════════════════════════ -->
+<div id="tunnel" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">터널공사 안전</span><div class="sec-hdr-line"></div></div>
+
+  <div class="work-card wc-tun">
+    <div class="work-head">
+      <span class="wh-icon">🕳️</span>
+      <div class="wh-meta">
+        <div class="wh-label">TUNNEL · NATM</div>
+        <div class="wh-name">터널공사 (NATM) 안전관리</div>
+        <div class="wh-sub">갱내 붕락·질식·발파 3대 위험</div>
+      </div>
+      <span class="wh-badge badge-star">★★★★</span>
+    </div>
+    <div class="work-body">
+      <div class="card-title"><span>🔨</span> NATM 굴착 지보 순서</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;align-items:center;">
+        <div style="background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.25);border-radius:20px;padding:5px 10px;font-size:10.5px;font-weight:700;color:var(--teal);">굴착</div>
+        <div style="color:var(--teal);font-size:12px;">→</div>
+        <div style="background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.25);border-radius:20px;padding:5px 10px;font-size:10.5px;font-weight:700;color:var(--teal);">숏크리트</div>
+        <div style="color:var(--teal);font-size:12px;">→</div>
+        <div style="background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.25);border-radius:20px;padding:5px 10px;font-size:10.5px;font-weight:700;color:var(--teal);">록볼트</div>
+        <div style="color:var(--teal);font-size:12px;">→</div>
+        <div style="background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.25);border-radius:20px;padding:5px 10px;font-size:10.5px;font-weight:700;color:var(--teal);">강지보</div>
+        <div style="color:var(--teal);font-size:12px;">→</div>
+        <div style="background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.25);border-radius:20px;padding:5px 10px;font-size:10.5px;font-weight:700;color:var(--teal);">방수·라이닝</div>
+      </div>
+      <ul class="wb-list">
+        <li><strong>발파 안전</strong>: 발파 전 전원 대피·점화 후 일정시간 경과 후 입갱. 잔류 화약 확인</li>
+        <li><strong>갱내 환기</strong>: 발파 후 <em>30분 이상</em> 환기 후 입갱. 유해가스 측정 의무</li>
+        <li><strong>낙반 방지</strong>: 막장 전방 사전 탐사(포어폴링). 숏크리트 조기 타설</li>
+        <li><strong>계측관리</strong>: 내공변위계·지표침하계·록볼트 축력계·지하수위계</li>
+        <li><strong>막장 붕괴</strong>: 지질 급변 구간 보강. 막장 관찰 일지 작성</li>
+        <li><strong>질식 재해</strong>: 갱내 산소 농도 측정·<em>18% 이상</em> 유지. 국소배기</li>
+      </ul>
+      <div class="kp-box" style="background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.18);">
+        <div class="kp-title" style="color:var(--teal);">⚡ 터널 3대 재해 유형</div>
+        <div class="kp-desc"><strong>① 붕락</strong>(막장·갱구) <strong>② 질식</strong>(발파가스·유해가스) <strong>③ 폭발</strong>(화약류 취급 부주의). <em>밀폐공간(D08)</em>과 연계하여 서술</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 해체공사 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">해체공사 안전</span><div class="sec-hdr-line"></div></div>
+
+  <div class="work-card wc-demo">
+    <div class="work-head">
+      <span class="wh-icon">🔨</span>
+      <div class="wh-meta">
+        <div class="wh-label">DEMOLITION</div>
+        <div class="wh-name">해체공사 안전관리</div>
+        <div class="wh-sub">석면·분진·붕괴·낙하 복합 위험</div>
+      </div>
+      <span class="wh-badge badge-star">★★★☆</span>
+    </div>
+    <div class="work-body">
+      <ul class="wb-list">
+        <li><strong>사전 조사</strong>: 구조물 도면 확인·석면 함유 여부·지하 매설물·인접 건물</li>
+        <li><strong>석면 해체</strong>: 기관석면조사 후 석면해체·제거업자에 위탁 (산안법 제122조). 석면농도 기준 이하 확인 후 철거</li>
+        <li><strong>해체 순서</strong>: <em>상부 → 하부, 내부 → 외부</em>. 비구조재 먼저 해체</li>
+        <li><strong>낙하물 방지</strong>: 방호 울타리·방진막 설치. 낙하물 투하설비(슈트)</li>
+        <li><strong>인접 건물 보호</strong>: 방진·방음 시트. 충격 완충재. 계측 모니터링</li>
+        <li><strong>분진 억제</strong>: 살수·집진. 미세먼지 마스크(방진 2종) 착용</li>
+      </ul>
+      <div class="kp-box" style="background:rgba(244,114,182,0.06);border-color:rgba(244,114,182,0.18);">
+        <div class="kp-title" style="color:var(--pink);">⚡ 석면 해체 핵심</div>
+        <div class="kp-desc">석면 함유 건축물 → <strong>기관석면조사</strong> → <strong>석면해체·제거업자</strong> 위탁 → 해체 후 <strong>공기 중 석면농도 기준 이하</strong> 확인 → 고용노동부장관 제출. 서류 <em>30년 보존</em></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 스마트 안전기술 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">스마트 안전기술 (최신 출제 경향)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="work-card wc-smart">
+    <div class="work-head">
+      <span class="wh-icon">🤖</span>
+      <div class="wh-meta">
+        <div class="wh-label">SMART SAFETY TECH</div>
+        <div class="wh-name">건설현장 스마트 안전관리</div>
+        <div class="wh-sub">2023년 이후 서술형 출제 급증</div>
+      </div>
+      <span class="wh-badge badge-hot">최신 트렌드</span>
+    </div>
+    <div class="work-body">
+      <ul class="wb-list">
+        <li><strong>AI CCTV</strong>: 안전모·안전대 미착용 자동 감지·경보. 침입 감지·위험 구역 진입 알림</li>
+        <li><strong>BIM(건설정보모델링)</strong>: 3D 설계 기반 시공 시뮬레이션. 충돌 감지·공정 안전성 사전 검토</li>
+        <li><strong>IoT 웨어러블</strong>: 작업자 생체신호(심박·체온) 실시간 모니터링. 위치 추적(GPS)</li>
+        <li><strong>드론</strong>: 고위험 구역 점검·사진 측량. 안전점검 대체</li>
+        <li><strong>디지털 트윈</strong>: 실제 현장의 디지털 복제본 → 위험 시뮬레이션·사고 예측</li>
+        <li><strong>스마트 안전모</strong>: IoT 내장. 충격 감지·위험 구역 진입 경보</li>
+      </ul>
+      <div class="kp-box kp-green">
+        <div class="kp-title">⚡ 서술형 답안 활용</div>
+        <div class="kp-desc">전통 안전대책 서술 후 마지막에 <strong>스마트 안전기술 적용</strong> 언급 시 고득점. AI CCTV·BIM·IoT·드론 4가지는 반드시 암기. <em>위험성평가 + 스마트기술 연계 출제 유력</em></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tunnel -->
+
+<!-- ══════════════════════════
+     탭5: 암기법
+══════════════════════════ -->
+<div id="mnemonics" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">D05 핵심 암기법</span><div class="sec-hdr-line"></div></div>
+
+  <div class="mn-card">
+    <div class="mn-domain">건설재해 3대사고</div>
+    <div class="mn-key">추 끼 부</div>
+    <div class="mn-expand">
+      <span>추</span>락 · <span>끼</span>임 · <span>부</span>딪힘 — 공종별 3대 다발 사고 유형
+    </div>
+    <div class="mn-tip">💡 4대재해(추낙붕감)와 다름. 3대사고는 발생 빈도 기준. 서술형 도입부 활용</div>
+  </div>
+
+  <div class="mn-card mn-red">
+    <div class="mn-domain">8대 가시설물 (추락방지)</div>
+    <div class="mn-key">비작난방개계동달</div>
+    <div class="mn-expand">
+      <span>비</span>계·<span>작</span>업발판·<span>난</span>간·<span>방</span>호망·<span>개</span>구부·<span>계</span>단통로·<span>동</span>바리·<span>달</span>비계
+    </div>
+    <div class="mn-tip">💡 서술형 추락방지 대책 열거 시 이 8가지로 구성. 안전난간: 90~120/45~60/10cm</div>
+  </div>
+
+  <div class="mn-card mn-amber">
+    <div class="mn-domain">흙막이 붕괴원인</div>
+    <div class="mn-key">지하수침간균</div>
+    <div class="mn-expand">
+      <span>지</span>하수·<span>하</span>중증가·<span>수</span>침·<span>침</span>식세굴·<span>간</span>극수압·<span>균</span>열결함
+    </div>
+    <div class="mn-tip">💡 대책: 계측관리 6종(지표침하·경사·토압·수압·변형률·하중계)</div>
+  </div>
+
+  <div class="mn-card mn-blue">
+    <div class="mn-domain">지반현상 4종</div>
+    <div class="mn-key">보파히싱</div>
+    <div class="mn-expand">
+      <span>보</span>일링(사질) · <span>파</span>이핑(수로형성) · <span>히</span>빙(점성토 융기) · <span>싱</span>크홀(지표함몰)
+    </div>
+    <div class="mn-tip">💡 보일링·파이핑 = 사질토 / 히빙 = 연약 점성토 — 발생 지반 구분이 핵심</div>
+  </div>
+
+  <div class="mn-card mn-blue">
+    <div class="mn-domain">사면 굴착경사 기준</div>
+    <div class="mn-key">암0.5 / 기타1.0·1.5 / 모래1.5</div>
+    <div class="mn-expand">
+      암반·견고점토: <span>1:0.5</span> / 기타 5m미만: <span>1:1.0</span> / 기타 5m이상·모래: <span>1:1.5</span>
+    </div>
+    <div class="mn-tip">💡 숫자 클수록 완만(더 안전). 모래=가장 위험=가장 완만하게 굴착</div>
+  </div>
+
+  <div class="mn-card mn-green">
+    <div class="mn-domain">거푸집 해체 기준</div>
+    <div class="mn-key">슬래브·보 = 100% / 측면 = 5MPa</div>
+    <div class="mn-expand">
+      슬래브·보 하부: 설계기준강도 <span>100%</span> 이상 / 측면(기둥·벽): <span>5MPa</span> 이상
+    </div>
+    <div class="mn-tip">💡 "조기 해체 = 붕괴 1순위" — 콘크리트 압축강도 시험 의무화 강조</div>
+  </div>
+
+  <div class="mn-card mn-teal">
+    <div class="mn-domain">NATM 터널 지보 순서</div>
+    <div class="mn-key">굴숏록강방</div>
+    <div class="mn-expand">
+      <span>굴</span>착 → <span>숏</span>크리트 → <span>록</span>볼트 → <span>강</span>지보 → <span>방</span>수·라이닝
+    </div>
+    <div class="mn-tip">💡 갱내 발파 후 30분 환기. 산소 18% 이상 유지. 계측 4종 암기</div>
+  </div>
+
+  <div class="mn-card mn-orange">
+    <div class="mn-domain">철골공사 순간풍속 작업중지</div>
+    <div class="mn-key">철골 10m/s ↑ 작업중지</div>
+    <div class="mn-expand">
+      철골 건립 중 순간풍속 <span>10m/s</span> 이상 시 작업 중지 — 타워크레인(15m/s)과 구분
+    </div>
+    <div class="mn-tip">💡 철골(10) < 타워크레인(15) < 태풍(30). 세 수치 비교 암기</div>
+  </div>
+
+  <div class="mn-card mn-pink">
+    <div class="mn-domain">해체공사 순서</div>
+    <div class="mn-key">상하 내외 비구조재 선해체</div>
+    <div class="mn-expand">
+      <span>상부</span>→하부 / <span>내부</span>→외부 / <span>비구조재</span>(마감·설비) 먼저
+    </div>
+    <div class="mn-tip">💡 석면 해체: 기관석면조사→해체업자 위탁→농도기준 이하 확인→서류 30년 보존</div>
+  </div>
+
+  <div class="mn-card mn-gold">
+    <div class="mn-domain">강관비계 벽이음 기준</div>
+    <div class="mn-key">단관 5·5.5 / 틀 9·8</div>
+    <div class="mn-expand">
+      단관비계: 수직 <span>5m</span>·수평 <span>5.5m</span> / 틀비계: 수직 <span>9m</span>·수평 <span>8m</span>
+    </div>
+    <div class="mn-tip">💡 발판 폭 40cm·틈새 3cm 이하는 공통. 단답형 수치 문제 단골</div>
+  </div>
+
+</div><!-- /mnemonics -->
+
+<!-- ══════════════════════════
+     탭6: 기출문제
+══════════════════════════ -->
+<div id="exams" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">서술형 기출 (25점)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제136회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q">건설현장 <strong>흙막이 붕괴원인</strong>을 6가지로 분류하고 계측관리 방법과 붕괴 방지 대책을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제135회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q">건설현장에서 <strong>추락재해 예방을 위한 8대 가시설물</strong>의 종류와 각각의 안전기준을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제133회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q"><strong>거푸집·동바리 붕괴원인</strong>과 안전대책을 설명하고, 콘크리트 측압에 영향을 미치는 요인을 기술하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제131회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q">굴착공사에서 발생하는 <strong>보일링·파이핑·히빙</strong>의 정의, 발생원인, 방지대책을 비교하여 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제129회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q"><strong>NATM 터널공사</strong>의 지보 시스템과 시공 중 발생 가능한 재해유형 및 안전대책을 설명하시오</div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">단답형 기출 (10점)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제136회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q"><strong>안전난간 설치기준</strong>(상부·중간·발끝막이·하중)을 수치와 함께 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제134회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q">지반 종류별 <strong>굴착면 기울기 기준</strong>(암반·기타·모래)을 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제132회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q"><strong>강관 단관비계와 틀비계</strong>의 벽이음 수직·수평 간격을 비교하여 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제130회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q">건설현장 <strong>스마트 안전기술</strong>(AI CCTV·BIM·IoT·드론) 적용 방법을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제128회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q"><strong>싱크홀 발생원인</strong>과 지하안전관리에 관한 특별법의 지하안전영향평가 대상을 설명하시오</div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">8월 시험 예상문제</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3);">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06);">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red);">8월 예상</span>
+      <span class="exam-type et-long">서술형</span>
+    </div>
+    <div class="exam-q">건설현장 <strong>위험성평가(2026 개정)를 공종별 안전관리</strong>에 적용하는 방법을 설명하고, 굴착·거푸집 공종에서 위험성 감소대책 수립 사례를 기술하시오</div>
+  </div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3);">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06);">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red);">8월 예상</span>
+      <span class="exam-type et-short">단답형</span>
+    </div>
+    <div class="exam-q">건설현장 <strong>스마트 안전기술</strong>(AI CCTV·BIM·IoT 웨어러블·디지털 트윈) 4가지를 설명하고 각각의 안전관리 활용 방법을 쓰시오</div>
+  </div>
+
+</div><!-- /exams -->
+
+</div><!-- /body -->
 
 <script>
-  function showTab(id,btn){
-    document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function toggleSec(header){
-    const body=header.nextElementSibling;
-    const arrow=header.querySelector('.sh-arrow');
-    const isOpen=body.classList.contains('open');
-    body.classList.toggle('open',!isOpen);
-    arrow.classList.toggle('open',!isOpen);
-  }
-  window.addEventListener('scroll',()=>{
-    const doc=document.documentElement;
-    const pct=doc.scrollTop/(doc.scrollHeight-doc.clientHeight)*100;
-    document.getElementById('prog').style.width=pct+'%';
-  });
+function goTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
