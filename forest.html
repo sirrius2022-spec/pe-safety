@@ -2,258 +2,867 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#0d1117">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#090c14">
 <title>건설안전기술사 — 전체 숲 구조</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700&display=swap');
-  :root {
-    --bg:#0f1117; --surface:#181c27; --border:#2a2f42;
-    --accent1:#4fc3f7; --accent2:#81c784; --accent3:#ffb74d; --accent4:#f06292;
-    --accent5:#ba68c8; --accent6:#4db6ac; --accent7:#ff8a65; --accent8:#a5d6a7;
-    --text:#e8eaf0; --muted:#8892a4; --gold:#ffd54f;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);padding:16px 12px 40px;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
-  /* 뒤로가기 */
-  .back-btn{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:13px;font-weight:600;margin-bottom:16px;cursor:pointer;text-decoration:none;width:fit-content;}
-  .back-btn:active{opacity:0.7;}
+:root {
+  --bg:       #090c14;
+  --bg2:      #0d1120;
+  --surface:  #111827;
+  --surface2: #161e30;
+  --border:   #1e2a40;
+  --border2:  #2a3655;
 
-  .header{text-align:center;margin-bottom:20px;}
-  .header::after{content:'';display:block;width:240px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:10px auto 0;}
-  .header .badge{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
-  .header h1{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;color:#fff;}
-  .header .sub{margin-top:5px;font-size:12px;color:var(--muted);letter-spacing:1px;}
+  --gold:     #f5c842;
+  --gold2:    #fde68a;
+  --gold-dim: rgba(245,200,66,0.12);
 
-  .core-row{display:flex;justify-content:center;margin-bottom:16px;}
-  .core{background:linear-gradient(135deg,#1e2235,#252b40);border:2px solid var(--gold);border-radius:14px;padding:14px 32px;text-align:center;box-shadow:0 0 30px rgba(255,213,79,0.12);}
-  .core .core-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:3px;}
-  .core h2{font-size:17px;font-weight:900;color:#fff;}
-  .core .core-desc{margin-top:3px;font-size:11px;color:var(--muted);}
+  --d1: #60a5fa;  /* 법령 - 블루 */
+  --d2: #34d399;  /* 이론 - 에메랄드 */
+  --d3: #fb923c;  /* 위험성평가 - 오렌지 */
+  --d4: #f472b6;  /* 통계 - 핑크 */
+  --d5: #a78bfa;  /* 공종 - 보라 */
+  --d6: #2dd4bf;  /* 기계 - 틸 */
+  --d7: #fbbf24;  /* 관리 - 앰버 */
+  --d8: #f87171;  /* 사고 - 레드 */
 
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
-  .domain{background:var(--surface);border-radius:10px;padding:12px;border-top:3px solid;cursor:pointer;text-decoration:none;display:block;transition:transform 0.2s;}
-  .domain:active{transform:scale(0.97);}
-  .domain .d-num{font-size:9px;font-weight:700;letter-spacing:2px;opacity:0.6;margin-bottom:4px;}
-  .domain .d-title{font-size:13px;font-weight:700;margin-bottom:7px;line-height:1.3;}
-  .domain .d-icon{font-size:18px;margin-bottom:4px;display:block;}
-  .domain ul{list-style:none;}
-  .domain ul li{font-size:10.5px;color:#b0b8cc;padding-left:8px;position:relative;line-height:1.5;}
-  .domain ul li::before{content:'▸';position:absolute;left:0;opacity:0.4;}
-  .domain .tag-row{display:flex;flex-wrap:wrap;gap:3px;margin-top:8px;}
-  .tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:12px;opacity:0.85;}
-  .weight-row{display:flex;align-items:center;gap:6px;margin-top:6px;}
-  .weight-bar-bg{flex:1;height:4px;background:rgba(255,255,255,0.07);border-radius:10px;overflow:hidden;}
-  .weight-bar{height:100%;border-radius:10px;}
-  .weight-val{font-size:9px;color:var(--muted);width:24px;text-align:right;}
+  --text:  #e2e8f5;
+  --muted: #64748b;
+  --muted2:#94a3b8;
 
-  .d1{border-color:var(--accent1);} .d1 .d-num,.d1 .d-title{color:var(--accent1);} .d1 .tag{background:rgba(79,195,247,0.15);color:var(--accent1);}
-  .d2{border-color:var(--accent2);} .d2 .d-num,.d2 .d-title{color:var(--accent2);} .d2 .tag{background:rgba(129,199,132,0.15);color:var(--accent2);}
-  .d3{border-color:var(--accent3);} .d3 .d-num,.d3 .d-title{color:var(--accent3);} .d3 .tag{background:rgba(255,183,77,0.15);color:var(--accent3);}
-  .d4{border-color:var(--accent4);} .d4 .d-num,.d4 .d-title{color:var(--accent4);} .d4 .tag{background:rgba(240,98,146,0.15);color:var(--accent4);}
-  .d5{border-color:var(--accent5);} .d5 .d-num,.d5 .d-title{color:var(--accent5);} .d5 .tag{background:rgba(186,104,200,0.15);color:var(--accent5);}
-  .d6{border-color:var(--accent6);} .d6 .d-num,.d6 .d-title{color:var(--accent6);} .d6 .tag{background:rgba(77,182,172,0.15);color:var(--accent6);}
-  .d7{border-color:var(--accent7);} .d7 .d-num,.d7 .d-title{color:var(--accent7);} .d7 .tag{background:rgba(255,138,101,0.15);color:var(--accent7);}
-  .d8{border-color:var(--accent8);} .d8 .d-num,.d8 .d-title{color:var(--accent8);} .d8 .tag{background:rgba(165,214,167,0.15);color:var(--accent8);}
+  --radius: 14px;
+  --radius-sm: 9px;
+}
 
-  .formula-row{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px;}
-  .formula-box{background:var(--surface);border-radius:10px;padding:13px;border-left:3px solid var(--gold);}
-  .formula-box h3{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:8px;}
-  .formula-flow{display:flex;align-items:center;flex-wrap:wrap;gap:5px;}
-  .formula-flow .step{background:rgba(255,213,79,0.1);border:1px solid rgba(255,213,79,0.25);border-radius:6px;padding:5px 8px;font-size:11px;font-weight:500;color:#e8eaf0;white-space:nowrap;}
-  .formula-flow .arrow{color:var(--gold);font-size:13px;opacity:0.6;}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-  .roadmap{background:var(--surface);border-radius:10px;padding:13px;border-left:3px solid #7986cb;}
-  .roadmap h3{font-size:12px;font-weight:700;color:#9fa8da;margin-bottom:10px;}
-  .roadmap-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-  .rs{background:rgba(121,134,203,0.08);border:1px solid rgba(121,134,203,0.2);border-radius:7px;padding:8px 10px;text-align:center;}
-  .rs .phase{font-size:9px;font-weight:700;letter-spacing:1px;color:#9fa8da;margin-bottom:3px;}
-  .rs .period{font-size:11px;font-weight:700;color:#fff;margin-bottom:5px;}
-  .rs .content{font-size:10px;color:var(--muted);line-height:1.5;}
+html { scroll-behavior: smooth; }
 
-  .connector-hint{text-align:center;font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6;}
-  .connector-hint span{color:var(--gold);font-weight:700;}
+body {
+  background: var(--bg);
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--text);
+  padding: 0 0 60px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════
+   배경 장식
+══════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; height: 320px;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(96,165,250,0.08) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ══════════════════════════════
+   헤더
+══════════════════════════════ */
+.hdr {
+  position: relative; z-index: 1;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(13,17,32,0.95) 0%, transparent 100%);
+}
+
+.back-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  color: var(--muted2); font-size: 12px; font-weight: 600;
+  text-decoration: none; margin-bottom: 14px;
+  padding: 5px 10px; border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.back-btn:active { opacity: 0.7; transform: scale(0.96); }
+
+.hdr-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gold-dim); border: 1px solid rgba(245,200,66,0.3);
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 10px; font-weight: 800; color: var(--gold);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
+}
+
+.hdr-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 21px; font-weight: 900; line-height: 1.25;
+  color: #fff; margin-bottom: 4px;
+}
+.hdr-sub {
+  font-size: 11.5px; color: var(--muted2); letter-spacing: 0.3px;
+}
+
+/* 개정 배너 */
+.revision-banner {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: rgba(96,165,250,0.08);
+  border: 1px solid rgba(96,165,250,0.25);
+  border-radius: var(--radius-sm); padding: 10px 12px;
+  margin: 14px 0 0;
+}
+.rev-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--d1); margin-top: 3px; flex-shrink: 0; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.rev-text { font-size: 11px; color: rgba(224,231,255,0.75); line-height: 1.6; }
+.rev-text strong { color: var(--d1); font-weight: 700; }
+
+/* ══════════════════════════════
+   메인 컨텐츠
+══════════════════════════════ */
+.main { padding: 16px 14px 0; position: relative; z-index: 1; }
+
+/* ── CORE 개념 ── */
+.core-box {
+  background: linear-gradient(135deg, #111827 0%, #1a2035 100%);
+  border: 1.5px solid rgba(245,200,66,0.35);
+  border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px;
+  box-shadow: 0 0 40px rgba(245,200,66,0.06);
+  position: relative; overflow: hidden;
+}
+.core-box::before {
+  content: '⚡';
+  position: absolute; right: 16px; top: 12px;
+  font-size: 48px; opacity: 0.06; pointer-events: none;
+}
+.core-label { font-size: 9px; font-weight: 800; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; }
+.core-title { font-family: 'Noto Serif KR', serif; font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+.core-desc { font-size: 11px; color: var(--muted2); line-height: 1.65; }
+.core-flow {
+  display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid rgba(245,200,66,0.15);
+}
+.cf-step {
+  font-size: 10px; font-weight: 700; color: var(--gold);
+  background: rgba(245,200,66,0.1);
+  border: 1px solid rgba(245,200,66,0.2);
+  border-radius: 20px; padding: 3px 8px; white-space: nowrap;
+}
+.cf-arrow { color: var(--gold); opacity: 0.4; font-size: 12px; }
+
+/* ── 섹션 헤더 ── */
+.sec-hdr {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px; margin-top: 20px;
+}
+.sec-hdr-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border2), transparent);
+}
+.sec-hdr-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase;
+}
+
+/* ══════════════════════════════
+   도메인 그리드
+══════════════════════════════ */
+.domain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.domain-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 13px 12px 11px;
+  text-decoration: none; display: block;
+  position: relative; overflow: hidden;
+  transition: transform 0.18s, border-color 0.18s;
+  border-top: 3px solid;
+}
+.domain-card:active { transform: scale(0.96); }
+
+/* 도메인별 색상 */
+.d1-card { border-top-color: var(--d1); }
+.d2-card { border-top-color: var(--d2); }
+.d3-card { border-top-color: var(--d3); }
+.d4-card { border-top-color: var(--d4); }
+.d5-card { border-top-color: var(--d5); }
+.d6-card { border-top-color: var(--d6); }
+.d7-card { border-top-color: var(--d7); }
+.d8-card { border-top-color: var(--d8); }
+
+/* 배경 그라디언트 */
+.d1-card { background: linear-gradient(135deg, #0f1e35, #111827); }
+.d2-card { background: linear-gradient(135deg, #0a1f18, #111827); }
+.d3-card { background: linear-gradient(135deg, #1f1308, #111827); }
+.d4-card { background: linear-gradient(135deg, #1f0d18, #111827); }
+.d5-card { background: linear-gradient(135deg, #150f25, #111827); }
+.d6-card { background: linear-gradient(135deg, #08181a, #111827); }
+.d7-card { background: linear-gradient(135deg, #1a1506, #111827); }
+.d8-card { background: linear-gradient(135deg, #1f0d0d, #111827); }
+
+.dc-head { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.dc-icon { font-size: 18px; }
+.dc-num {
+  font-size: 9px; font-weight: 800; letter-spacing: 2px;
+  padding: 2px 7px; border-radius: 20px; opacity: 0.9;
+  background: rgba(255,255,255,0.08);
+}
+.d1-card .dc-num { color: var(--d1); }
+.d2-card .dc-num { color: var(--d2); }
+.d3-card .dc-num { color: var(--d3); }
+.d4-card .dc-num { color: var(--d4); }
+.d5-card .dc-num { color: var(--d5); }
+.d6-card .dc-num { color: var(--d6); }
+.d7-card .dc-num { color: var(--d7); }
+.d8-card .dc-num { color: var(--d8); }
+
+.dc-title {
+  font-size: 13px; font-weight: 800;
+  line-height: 1.3; margin-bottom: 7px;
+}
+.d1-card .dc-title { color: var(--d1); }
+.d2-card .dc-title { color: var(--d2); }
+.d3-card .dc-title { color: var(--d3); }
+.d4-card .dc-title { color: var(--d4); }
+.d5-card .dc-title { color: var(--d5); }
+.d6-card .dc-title { color: var(--d6); }
+.d7-card .dc-title { color: var(--d7); }
+.d8-card .dc-title { color: var(--d8); }
+
+.dc-items { list-style: none; margin-bottom: 9px; }
+.dc-items li {
+  font-size: 10.5px; color: #94a3b8;
+  padding: 2px 0 2px 10px; position: relative; line-height: 1.5;
+}
+.dc-items li::before { content: '›'; position: absolute; left: 0; opacity: 0.5; }
+.dc-items li.new::after {
+  content: 'NEW'; margin-left: 4px;
+  font-size: 8px; font-weight: 800; color: #f87171;
+  background: rgba(248,113,113,0.15); border-radius: 3px; padding: 1px 4px;
+  vertical-align: middle;
+}
+.dc-items li.hot::after {
+  content: '★'; margin-left: 3px;
+  font-size: 9px; color: var(--gold); vertical-align: middle;
+}
+
+.dc-footer { display: flex; align-items: center; gap: 6px; }
+.dc-stars { font-size: 9px; letter-spacing: -1px; }
+.d1-card .dc-stars, .d5-card .dc-stars { color: #fbbf24; }
+.d2-card .dc-stars, .d3-card .dc-stars,
+.d6-card .dc-stars, .d8-card .dc-stars { color: #94a3b8; }
+.d4-card .dc-stars, .d7-card .dc-stars { color: #94a3b8; }
+
+.dc-freq {
+  font-size: 9px; font-weight: 700;
+  padding: 2px 7px; border-radius: 10px;
+  background: rgba(255,255,255,0.07); color: var(--muted2);
+}
+
+/* NEW 뱃지 */
+.dc-new-badge {
+  position: absolute; top: 10px; right: 10px;
+  background: #f87171; color: #fff;
+  font-size: 8px; font-weight: 900;
+  padding: 2px 6px; border-radius: 6px; letter-spacing: 0.5px;
+}
+
+/* 출제 빈도 바 */
+.dc-bar-wrap { margin-top: 8px; }
+.dc-bar-bg {
+  height: 3px; border-radius: 10px;
+  background: rgba(255,255,255,0.07); overflow: hidden;
+}
+.dc-bar { height: 100%; border-radius: 10px; }
+.d1-card .dc-bar { background: var(--d1); width: 95%; }
+.d2-card .dc-bar { background: var(--d2); width: 75%; }
+.d3-card .dc-bar { background: var(--d3); width: 80%; }
+.d4-card .dc-bar { background: var(--d4); width: 58%; }
+.d5-card .dc-bar { background: var(--d5); width: 95%; }
+.d6-card .dc-bar { background: var(--d6); width: 70%; }
+.d7-card .dc-bar { background: var(--d7); width: 55%; }
+.d8-card .dc-bar { background: var(--d8); width: 62%; }
+
+/* ══════════════════════════════
+   2026 개정 핵심 알림
+══════════════════════════════ */
+.amend-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  margin-bottom: 14px;
+}
+.amend-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 14px;
+  background: rgba(96,165,250,0.08);
+  border-bottom: 1px solid var(--border);
+}
+.amend-header-icon { font-size: 15px; }
+.amend-header-text { font-size: 12px; font-weight: 800; color: var(--d1); }
+.amend-header-badge {
+  margin-left: auto;
+  font-size: 9px; font-weight: 800; padding: 2px 8px;
+  background: rgba(96,165,250,0.2); color: var(--d1);
+  border-radius: 10px;
+}
+.amend-list { padding: 4px 0; }
+.amend-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.amend-item:last-child { border-bottom: none; }
+.amend-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  color: var(--d1); background: rgba(96,165,250,0.12);
+  border-radius: 5px; padding: 3px 6px;
+  white-space: nowrap; flex-shrink: 0; margin-top: 1px;
+}
+.amend-body { flex: 1; min-width: 0; }
+.amend-title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.amend-desc { font-size: 10.5px; color: var(--muted2); line-height: 1.6; }
+.amend-tag {
+  display: inline-block; margin-top: 4px;
+  font-size: 9px; font-weight: 700; padding: 2px 7px;
+  border-radius: 8px;
+}
+.tag-new { background: rgba(248,113,113,0.15); color: #f87171; }
+.tag-amend { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.tag-notice { background: rgba(52,211,153,0.15); color: #34d399; }
+
+/* ══════════════════════════════
+   답안 공식
+══════════════════════════════ */
+.formula-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius); padding: 14px;
+  margin-bottom: 14px;
+}
+.formula-title {
+  font-size: 12px; font-weight: 800;
+  color: var(--gold); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.formula-steps {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 6px;
+  margin-bottom: 10px;
+}
+.fs-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 8px 6px; text-align: center;
+}
+.fs-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 700;
+  color: var(--gold); margin-bottom: 3px;
+}
+.fs-label { font-size: 10px; color: var(--muted2); line-height: 1.4; }
+
+.formula-sub {
+  background: rgba(245,200,66,0.06);
+  border: 1px solid rgba(245,200,66,0.15);
+  border-radius: var(--radius-sm); padding: 9px 11px;
+}
+.formula-sub-title { font-size: 10px; font-weight: 800; color: var(--gold); margin-bottom: 5px; }
+.formula-sub-item { font-size: 10.5px; color: var(--muted2); line-height: 1.7; padding-left: 8px; position: relative; }
+.formula-sub-item::before { content: '→'; position: absolute; left: 0; opacity: 0.5; font-size: 9px; }
+
+/* ══════════════════════════════
+   로드맵
+══════════════════════════════ */
+.roadmap-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px;
+  margin-bottom: 14px;
+}
+.roadmap-title {
+  font-size: 12px; font-weight: 800; color: #9fa8da;
+  margin-bottom: 12px;
+}
+.roadmap-phases {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.rp-item {
+  background: rgba(121,134,203,0.06);
+  border: 1px solid rgba(121,134,203,0.2);
+  border-radius: var(--radius-sm); padding: 10px;
+}
+.rp-phase {
+  font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+  color: #9fa8da; margin-bottom: 2px;
+}
+.rp-period {
+  font-size: 13px; font-weight: 900; color: #fff; margin-bottom: 6px;
+}
+.rp-items { list-style: none; }
+.rp-items li {
+  font-size: 10px; color: var(--muted2); line-height: 1.7;
+  padding-left: 9px; position: relative;
+}
+.rp-items li::before { content: '▸'; position: absolute; left: 0; opacity: 0.4; font-size: 8px; }
+
+/* ══════════════════════════════
+   출제 키워드 박스
+══════════════════════════════ */
+.keyword-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px;
+  margin-bottom: 14px;
+}
+.keyword-title {
+  font-size: 12px; font-weight: 800; color: var(--muted2);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.keyword-grid {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.kw {
+  font-size: 10.5px; font-weight: 600;
+  padding: 4px 10px; border-radius: 20px;
+  border: 1px solid; white-space: nowrap;
+}
+.kw-1 { border-color: rgba(96,165,250,0.4); color: var(--d1); background: rgba(96,165,250,0.08); }
+.kw-2 { border-color: rgba(52,211,153,0.4); color: var(--d2); background: rgba(52,211,153,0.08); }
+.kw-3 { border-color: rgba(251,146,60,0.4); color: var(--d3); background: rgba(251,146,60,0.08); }
+.kw-4 { border-color: rgba(244,114,182,0.4); color: var(--d4); background: rgba(244,114,182,0.08); }
+.kw-5 { border-color: rgba(167,139,250,0.4); color: var(--d5); background: rgba(167,139,250,0.08); }
+.kw-6 { border-color: rgba(45,212,191,0.4); color: var(--d6); background: rgba(45,212,191,0.08); }
+.kw-7 { border-color: rgba(251,191,36,0.4); color: var(--d7); background: rgba(251,191,36,0.08); }
+.kw-8 { border-color: rgba(248,113,113,0.4); color: var(--d8); background: rgba(248,113,113,0.08); }
+
+/* ══════════════════════════════
+   하단 연결 힌트
+══════════════════════════════ */
+.connector {
+  text-align: center;
+  padding: 16px 14px;
+  font-size: 11px; color: var(--muted); line-height: 1.8;
+}
+.connector em { color: var(--gold); font-style: normal; font-weight: 700; }
+
+/* ══════════════════════════════
+   반응형 조정
+══════════════════════════════ */
+@media (max-width: 360px) {
+  .domain-grid { gap: 8px; }
+  .domain-card { padding: 11px 10px 9px; }
+  .dc-title { font-size: 12px; }
+  .dc-items li { font-size: 10px; }
+  .formula-steps { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (min-width: 430px) {
+  .hdr { padding: 24px 20px 18px; }
+  .main { padding: 18px 18px 0; }
+}
 </style>
 </head>
 <body>
 
-<a class="back-btn" href="index.html">← 홈으로</a>
+<!-- 헤더 -->
+<div class="hdr">
+  <a class="back-btn" href="index.html">← 홈으로</a>
 
-<div class="header">
-  <div class="badge">Professional Engineer · Construction Safety</div>
-  <h1>건설안전기술사 — 전체 숲 구조</h1>
-  <div class="sub">8대 핵심 영역 · 답안 공식 · 공부 로드맵</div>
-</div>
+  <div class="hdr-badge">🌲 전체 숲 구조</div>
+  <h1 class="hdr-title">건설안전기술사<br>8대 핵심 영역</h1>
+  <div class="hdr-sub">법령 · 이론 · 공종 · 사례 통합 체계도</div>
 
-<div class="core-row">
-  <div class="core">
-    <div class="core-label">Core Concept</div>
-    <h2>건설재해 Zero — 예방 · 대응 · 관리</h2>
-    <div class="core-desc">법령 → 이론 → 위험성평가 → 공종별 적용 → 사례 연계</div>
-  </div>
-</div>
-
-<div class="grid">
-
-  <!-- D01 법령체계 -->
-  <a class="domain d1" href="d01.html">
-    <span class="d-icon">⚖️</span>
-    <div class="d-num">DOMAIN 01</div>
-    <div class="d-title">법령체계</div>
-    <ul>
-      <li>산안법·중처법·건진법 3법 비교</li>
-      <li>지안법(지하안전) · 시안법(시설물)</li>
-      <li>안전보건조정자 · 사망만인율</li>
-      <li>공정안전보고서(PSM) · DFS</li>
-      <li>화재감시자 · 작업중지 명령해제</li>
-    </ul>
-    <div class="tag-row"><span class="tag">암기 필수</span><span class="tag">출제 ★★★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:95%;background:var(--accent1)"></div></div><span class="weight-val">최상</span></div>
-  </a>
-
-  <!-- D02 안전·재해이론 -->
-  <a class="domain d2" href="d02.html">
-    <span class="d-icon">🧠</span>
-    <div class="d-num">DOMAIN 02</div>
-    <div class="d-title">안전·재해이론</div>
-    <ul>
-      <li>하인리히·버드·스위스치즈</li>
-      <li>재해예방 4원칙·4단계·4형태</li>
-      <li>3E(Harvey) · 재해발생 메카니즘</li>
-      <li>산업심리 — 안전심리 5요소</li>
-      <li>바이오리듬 · Human Error</li>
-      <li>Fail Safe · Fool Proof · 적극안전</li>
-    </ul>
-    <div class="tag-row"><span class="tag">이론 암기</span><span class="tag">출제 ★★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:75%;background:var(--accent2)"></div></div><span class="weight-val">상</span></div>
-  </a>
-
-  <!-- D03 위험성평가 -->
-  <a class="domain d3" href="d03.html">
-    <span class="d-icon">🔍</span>
-    <div class="d-num">DOMAIN 03</div>
-    <div class="d-title">위험성평가</div>
-    <ul>
-      <li>2023 개정 6단계 (사파결감공기)</li>
-      <li>FMEA · FTA · HAZOP · JSA</li>
-      <li>체크리스트 · OPS · 3단계판단법</li>
-      <li>위험성평가 시기·세부실행방법</li>
-      <li>소규모 현장 안전관리계획</li>
-    </ul>
-    <div class="tag-row"><span class="tag">기법 비교</span><span class="tag">출제 ★★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:78%;background:var(--accent3)"></div></div><span class="weight-val">상</span></div>
-  </a>
-
-  <!-- D04 재해유형·통계 -->
-  <a class="domain d4" href="d04.html">
-    <span class="d-icon">📊</span>
-    <div class="d-num">DOMAIN 04</div>
-    <div class="d-title">재해유형·통계</div>
-    <ul>
-      <li>4대 재해 (추낙붕감) · 원인분류</li>
-      <li>재해율·연천인율·도수율·강도율</li>
-      <li>종합재해지수(FSI) · Safe-T-Score</li>
-      <li>안전활동률 · 재해코스트(1:4)</li>
-      <li>재해조사 목적·절차 · CPR·응급처치</li>
-    </ul>
-    <div class="tag-row"><span class="tag">통계 파악</span><span class="tag">출제 ★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:60%;background:var(--accent4)"></div></div><span class="weight-val">중상</span></div>
-  </a>
-
-  <!-- D05 공종별 안전관리 -->
-  <a class="domain d5" href="d05.html">
-    <span class="d-icon">🏗️</span>
-    <div class="d-num">DOMAIN 05</div>
-    <div class="d-title">공종별 안전관리</div>
-    <ul>
-      <li>3대사고(추끼부) · 8대위험요인</li>
-      <li>추락재해 8대 가시설물</li>
-      <li>사면안정 · 보일링·파이핑·히빙</li>
-      <li>흙막이 붕괴원인 · 싱크홀</li>
-      <li>가설·굴착·콘크리트·철골·터널·해체</li>
-      <li>스마트 안전기술 (AI CCTV·BIM)</li>
-    </ul>
-    <div class="tag-row"><span class="tag">토목경험 활용</span><span class="tag">출제 ★★★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:95%;background:var(--accent5)"></div></div><span class="weight-val">최상</span></div>
-  </a>
-
-  <!-- D06 건설기계·양중 -->
-  <a class="domain d6" href="d06.html">
-    <span class="d-icon">🗼</span>
-    <div class="d-num">DOMAIN 06</div>
-    <div class="d-title">건설기계·양중</div>
-    <ul>
-      <li>타워크레인 구성요소 18가지</li>
-      <li>이동식크레인 · 리프트 · 곤돌라</li>
-      <li>와이어로프 안전계수·폐기기준</li>
-      <li>건설기계 재해유형 · 안전대 폐기기준</li>
-      <li>굴삭기 신규규정 (2022) · 유도원</li>
-    </ul>
-    <div class="tag-row"><span class="tag">기준 암기</span><span class="tag">출제 ★★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:72%;background:var(--accent6)"></div></div><span class="weight-val">상</span></div>
-  </a>
-
-  <!-- D07 안전관리계획·조직 -->
-  <a class="domain d7" href="d07.html">
-    <span class="d-icon">👥</span>
-    <div class="d-num">DOMAIN 07</div>
-    <div class="d-title">안전관리계획·조직</div>
-    <ul>
-      <li>안전관리 조직 3형태</li>
-      <li>안전교육 · 안전관리비(CSI)</li>
-      <li>TBM · PTW · 무재해운동 · 5행운동</li>
-      <li>휴게시설 설치기준</li>
-      <li>비상대응계획 · 안전보건협의체</li>
-    </ul>
-    <div class="tag-row"><span class="tag">실무 연계</span><span class="tag">출제 ★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:58%;background:var(--accent7)"></div></div><span class="weight-val">중상</span></div>
-  </a>
-
-  <!-- D08 최신사고·전기화재 -->
-  <a class="domain d8" href="d08.html">
-    <span class="d-icon">🔥</span>
-    <div class="d-num">DOMAIN 08</div>
-    <div class="d-title">최신사고·전기화재</div>
-    <ul>
-      <li>최근 중대재해 사례 연계</li>
-      <li>가설전기·감전재해 원인·방지</li>
-      <li>화재·폭발 예방 · 소화기 종류</li>
-      <li>밀폐공간 질식재해 · 유해가스</li>
-      <li>리튬배터리 화재 (2024 화성)</li>
-    </ul>
-    <div class="tag-row"><span class="tag">시사 반영</span><span class="tag">출제 ★★★</span></div>
-    <div class="weight-row"><div class="weight-bar-bg"><div class="weight-bar" style="width:55%;background:var(--accent8)"></div></div><span class="weight-val">중</span></div>
-  </a>
-
-</div>
-
-<div class="formula-row">
-  <div class="formula-box">
-    <h3>📝 답안 황금 공식 (모든 문제 공통)</h3>
-    <div class="formula-flow">
-      <div class="step">① 개요·정의</div><div class="arrow">→</div>
-      <div class="step">② 법적 근거</div><div class="arrow">→</div>
-      <div class="step">③ 위험요인</div><div class="arrow">→</div>
-      <div class="step">④ 재해유형</div><div class="arrow">→</div>
-      <div class="step">⑤ 안전대책</div><div class="arrow">→</div>
-      <div class="step">⑥ 사례 연계</div>
+  <div class="revision-banner">
+    <div class="rev-dot"></div>
+    <div class="rev-text">
+      <strong>2026.02.19 산안법 개정</strong> 반영 — 위험성평가 의무 강화 (제36조),
+      안전보건 현황 공시 신설 (제10조의2), 재해조사보고서 공개 (제56조의2)
+      <strong>· 8월 시험 반드시 확인</strong>
     </div>
   </div>
 </div>
 
-<div class="roadmap">
-  <h3>📅 단계별 공부 로드맵</h3>
-  <div class="roadmap-steps">
-    <div class="rs"><div class="phase">PHASE 1</div><div class="period">1~2개월</div><div class="content">법령 정독 산안법·중처법·건진법</div></div>
-    <div class="rs"><div class="phase">PHASE 2</div><div class="period">2~3개월</div><div class="content">이론·위험성평가 기법 비교표</div></div>
-    <div class="rs"><div class="phase">PHASE 3</div><div class="period">3~5개월</div><div class="content">공종별 안전 가설·굴착 우선</div></div>
-    <div class="rs"><div class="phase">PHASE 4</div><div class="period">5개월~</div><div class="content">기출 10개년 모범답안 작성</div></div>
-  </div>
-</div>
+<div class="main">
 
-<div class="connector-hint" style="margin-top:12px;">
-  각 영역은 <span>독립된 섬이 아닙니다</span> — 법령→이론→위험성평가→공종→사례로 <span>하나의 흐름</span>
-</div>
+  <!-- CORE 개념 -->
+  <div class="core-box">
+    <div class="core-label">Core Concept</div>
+    <div class="core-title">건설재해 Zero — 예방 · 대응 · 관리</div>
+    <div class="core-desc">법령 기준 확립 → 이론으로 원리 이해 → 위험성평가로 예방 → 공종별 적용 → 사례 연계로 완성</div>
+    <div class="core-flow">
+      <span class="cf-step">법령체계</span>
+      <span class="cf-arrow">→</span>
+      <span class="cf-step">재해이론</span>
+      <span class="cf-arrow">→</span>
+      <span class="cf-step">위험성평가</span>
+      <span class="cf-arrow">→</span>
+      <span class="cf-step">공종별 안전</span>
+      <span class="cf-arrow">→</span>
+      <span class="cf-step">사례·보건</span>
+    </div>
+  </div>
+
+  <!-- 8대 도메인 -->
+  <div class="sec-hdr">
+    <span class="sec-hdr-label">8대 핵심 영역</span>
+    <div class="sec-hdr-line"></div>
+  </div>
+
+  <div class="domain-grid">
+
+    <!-- D01 법령체계 -->
+    <a class="domain-card d1-card" href="d01.html">
+      <div class="dc-new-badge">개정</div>
+      <div class="dc-head">
+        <span class="dc-icon">⚖️</span>
+        <span class="dc-num">D01</span>
+      </div>
+      <div class="dc-title">법령체계</div>
+      <ul class="dc-items">
+        <li class="new">산안법 2026 개정 6조항</li>
+        <li class="hot">중처법 적용범위 전면확대</li>
+        <li>건진법 · 지안법 · 시안법</li>
+        <li>안전보건 현황 공시 신설</li>
+        <li>PSM · DFS · 도급금지</li>
+        <li>재해조사보고서 공개</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars">★★★★★</span>
+        <span class="dc-freq">최우선</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+    <!-- D02 안전·재해이론 -->
+    <a class="domain-card d2-card" href="d02.html">
+      <div class="dc-head">
+        <span class="dc-icon">🧠</span>
+        <span class="dc-num">D02</span>
+      </div>
+      <div class="dc-title">안전·재해이론</div>
+      <ul class="dc-items">
+        <li class="hot">하인리히 5단계 (유결불사재)</li>
+        <li class="hot">버드이론 1:10:30:600</li>
+        <li>스위스치즈 · 3E</li>
+        <li>재해예방 4원칙·4단계·4형태</li>
+        <li>Human Error 유형 분류</li>
+        <li>Fail Safe · Fool Proof</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars" style="color:#fbbf24">★★★★☆</span>
+        <span class="dc-freq">이론 암기</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+    <!-- D03 위험성평가 -->
+    <a class="domain-card d3-card" href="d03.html">
+      <div class="dc-new-badge">개정</div>
+      <div class="dc-head">
+        <span class="dc-icon">🔍</span>
+        <span class="dc-num">D03</span>
+      </div>
+      <div class="dc-title">위험성평가</div>
+      <ul class="dc-items">
+        <li class="new">근로자대표 참여권 신설</li>
+        <li class="new">미실시 시 과태료 신설</li>
+        <li class="hot">6단계 (사파결감공기)</li>
+        <li>FMEA · FTA · HAZOP · JSA</li>
+        <li>체크리스트 · 3단계판단법</li>
+        <li>위험성평가 인정제도</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars" style="color:#fbbf24">★★★★☆</span>
+        <span class="dc-freq">기법 비교</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+    <!-- D04 재해유형·통계 -->
+    <a class="domain-card d4-card" href="d04.html">
+      <div class="dc-head">
+        <span class="dc-icon">📊</span>
+        <span class="dc-num">D04</span>
+      </div>
+      <div class="dc-title">재해유형·통계</div>
+      <ul class="dc-items">
+        <li class="hot">4대재해 (추낙붕감)</li>
+        <li>재해율·연천인율·도수율·강도율</li>
+        <li>FSI · Safe-T-Score</li>
+        <li>재해코스트 1:4 법칙</li>
+        <li>재해조사 목적·절차</li>
+        <li>CPR · 응급처치 원칙</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars" style="color:#fbbf24">★★★☆☆</span>
+        <span class="dc-freq">공식 암기</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+    <!-- D05 공종별 안전관리 -->
+    <a class="domain-card d5-card" href="d05.html">
+      <div class="dc-head">
+        <span class="dc-icon">🏗️</span>
+        <span class="dc-num">D05</span>
+      </div>
+      <div class="dc-title">공종별 안전관리</div>
+      <ul class="dc-items">
+        <li class="hot">3대사고 (추끼부)</li>
+        <li class="hot">8대 가시설물 추락방지</li>
+        <li>보일링·파이핑·히빙·싱크홀</li>
+        <li>흙막이 붕괴원인 (지하수침간균)</li>
+        <li>터널·철골·해체·콘크리트</li>
+        <li>AI CCTV · BIM 스마트안전</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars">★★★★★</span>
+        <span class="dc-freq">최우선</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+    <!-- D06 건설기계·양중 -->
+    <a class="domain-card d6-card" href="d06.html">
+      <div class="dc-head">
+        <span class="dc-icon">🗼</span>
+        <span class="dc-num">D06</span>
+      </div>
+      <div class="dc-title">건설기계·양중</div>
+      <ul class="dc-items">
+        <li class="hot">타워크레인 구성 18가지</li>
+        <li>풍속기준 10·15·30 m/s</li>
+        <li>와이어로프 안전계수·폐기</li>
+        <li>이동식크레인 · 곤돌라</li>
+        <li>굴삭기 2022 신규규정</li>
+        <li>안전대 폐기기준</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars" style="color:#fbbf24">★★★★☆</span>
+        <span class="dc-freq">기준 암기</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+    <!-- D07 안전관리계획·조직 -->
+    <a class="domain-card d7-card" href="d07.html">
+      <div class="dc-head">
+        <span class="dc-icon">👥</span>
+        <span class="dc-num">D07</span>
+      </div>
+      <div class="dc-title">안전관리계획·조직</div>
+      <ul class="dc-items">
+        <li class="hot">안전교육 (목조위교점개)</li>
+        <li class="hot">TBM (집작위대서)</li>
+        <li>안전관리 조직 3형태</li>
+        <li>PTW · 무재해운동 5행</li>
+        <li>안전관리비 CSI</li>
+        <li>휴게시설 설치기준</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars" style="color:#fbbf24">★★★☆☆</span>
+        <span class="dc-freq">실무 연계</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+    <!-- D08 최신사고·전기화재 -->
+    <a class="domain-card d8-card" href="d08.html">
+      <div class="dc-head">
+        <span class="dc-icon">🔥</span>
+        <span class="dc-num">D08</span>
+      </div>
+      <div class="dc-title">최신사고·보건</div>
+      <ul class="dc-items">
+        <li class="new">리튬배터리 화재 (화성 2024)</li>
+        <li class="hot">밀폐공간 (허측환감보구)</li>
+        <li>감전재해 · 누접절정우잠캡</li>
+        <li>유해가스 기준 (산18·CO30·H₂S10)</li>
+        <li>일특배수 4종 건강진단</li>
+        <li>외국인근로자 안전교육</li>
+      </ul>
+      <div class="dc-footer">
+        <span class="dc-stars" style="color:#fbbf24">★★★★☆</span>
+        <span class="dc-freq">시사 반영</span>
+      </div>
+      <div class="dc-bar-wrap"><div class="dc-bar-bg"><div class="dc-bar"></div></div></div>
+    </a>
+
+  </div><!-- /domain-grid -->
+
+  <!-- 2026 개정 핵심 정리 -->
+  <div class="sec-hdr">
+    <span class="sec-hdr-label">2026 법령 개정 핵심</span>
+    <div class="sec-hdr-line"></div>
+  </div>
+
+  <div class="amend-section">
+    <div class="amend-header">
+      <span class="amend-header-icon">⚖️</span>
+      <span class="amend-header-text">산안법 2026.02.19 일부개정 (8월 시험 출제 가능)</span>
+      <span class="amend-header-badge">법률 제21374호</span>
+    </div>
+    <div class="amend-list">
+
+      <div class="amend-item">
+        <span class="amend-num">제10조의2</span>
+        <div class="amend-body">
+          <div class="amend-title">안전보건 현황 공시 신설</div>
+          <div class="amend-desc">일정 규모 이상 사업주·공공기관은 안전보건관리체제, 산재 발생현황, 안전보건 투자 등을 매년 공시 의무화</div>
+          <span class="amend-tag tag-new">신설 조항</span>
+        </div>
+      </div>
+
+      <div class="amend-item">
+        <span class="amend-num">제36조</span>
+        <div class="amend-body">
+          <div class="amend-title">위험성평가 대폭 강화</div>
+          <div class="amend-desc">① 근로자대표 참여권 신설 (제3항) ② 평가결과 근로자 공유 의무 (제4항) ③ 미실시 시 과태료 부과 신설</div>
+          <span class="amend-tag tag-amend">개정 핵심</span>
+        </div>
+      </div>
+
+      <div class="amend-item">
+        <span class="amend-num">제56조</span>
+        <div class="amend-body">
+          <div class="amend-title">원인조사 대상 확대 (중대재해등)</div>
+          <div class="amend-desc">중대재해 외 화재·폭발·붕괴로 인한 산업재해도 원인조사 대상 추가. 공단·관계전문가 별도 조사 가능</div>
+          <span class="amend-tag tag-amend">범위 확대</span>
+        </div>
+      </div>
+
+      <div class="amend-item">
+        <span class="amend-num">제56조의2</span>
+        <div class="amend-body">
+          <div class="amend-title">재해조사보고서 작성·공개 신설</div>
+          <div class="amend-desc">공단 또는 관계전문가가 재해조사보고서 작성 → 장관에 제출 → 공소 제기 후 공개 원칙 (알권리 보장)</div>
+          <span class="amend-tag tag-new">신설 조항</span>
+        </div>
+      </div>
+
+      <div class="amend-item">
+        <span class="amend-num">제23조</span>
+        <div class="amend-body">
+          <div class="amend-title">명예산업안전감독관 활성화</div>
+          <div class="amend-desc">근로자대표 추천 시 장관 의무 위촉. 감독 실시 시 명예감독관 참여 의무화</div>
+          <span class="amend-tag tag-notice">운영 강화</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 답안 황금 공식 -->
+  <div class="sec-hdr">
+    <span class="sec-hdr-label">답안 황금 공식</span>
+    <div class="sec-hdr-line"></div>
+  </div>
+
+  <div class="formula-box">
+    <div class="formula-title">📝 서술형 6단계 답안 구조 (모든 문제 공통)</div>
+    <div class="formula-steps">
+      <div class="fs-item"><div class="fs-num">① 개요</div><div class="fs-label">정의·목적·배경</div></div>
+      <div class="fs-item"><div class="fs-num">② 법 근거</div><div class="fs-label">산안법·중처법·건진법</div></div>
+      <div class="fs-item"><div class="fs-num">③ 위험요인</div><div class="fs-label">유해·위험 분류</div></div>
+      <div class="fs-item"><div class="fs-num">④ 재해유형</div><div class="fs-label">원인·메카니즘</div></div>
+      <div class="fs-item"><div class="fs-num">⑤ 안전대책</div><div class="fs-label">기술·관리·교육</div></div>
+      <div class="fs-item"><div class="fs-num">⑥ 사례연계</div><div class="fs-label">최신 중대재해</div></div>
+    </div>
+    <div class="formula-sub">
+      <div class="formula-sub-title">⚡ 2026 개정 반영 가산점 포인트</div>
+      <div class="formula-sub-item">위험성평가 — 근로자대표 참여권·공유의무·과태료 언급</div>
+      <div class="formula-sub-item">도급안전 — 안전보건 현황 공시 의무 언급</div>
+      <div class="formula-sub-item">재해조사 — 재해조사보고서 공개제도 언급</div>
+    </div>
+  </div>
+
+  <!-- 기출 핵심 키워드 -->
+  <div class="sec-hdr">
+    <span class="sec-hdr-label">기출 핵심 키워드 Top</span>
+    <div class="sec-hdr-line"></div>
+  </div>
+
+  <div class="keyword-box">
+    <div class="keyword-title">🎯 10년 기출 고빈도 용어 (출제 순위)</div>
+    <div class="keyword-grid">
+      <span class="kw kw-1">산안법 ★38회</span>
+      <span class="kw kw-5">굴착·흙막이 ★33회</span>
+      <span class="kw kw-5">거푸집 ★21회</span>
+      <span class="kw kw-1">중처법</span>
+      <span class="kw kw-3">위험성평가</span>
+      <span class="kw kw-5">가설공사</span>
+      <span class="kw kw-2">하인리히 법칙</span>
+      <span class="kw kw-6">타워크레인</span>
+      <span class="kw kw-8">밀폐공간</span>
+      <span class="kw kw-5">사면안정</span>
+      <span class="kw kw-4">재해통계</span>
+      <span class="kw kw-7">TBM</span>
+      <span class="kw kw-5">보일링·히빙</span>
+      <span class="kw kw-8">감전재해</span>
+      <span class="kw kw-1">PSM</span>
+      <span class="kw kw-3">FTA·HAZOP</span>
+      <span class="kw kw-5">철골공사</span>
+      <span class="kw kw-8">리튬배터리</span>
+    </div>
+  </div>
+
+  <!-- 학습 로드맵 -->
+  <div class="sec-hdr">
+    <span class="sec-hdr-label">합격 로드맵</span>
+    <div class="sec-hdr-line"></div>
+  </div>
+
+  <div class="roadmap-box">
+    <div class="roadmap-title">📅 단계별 공부 전략 (8월 시험 기준)</div>
+    <div class="roadmap-phases">
+      <div class="rp-item">
+        <div class="rp-phase">PHASE 1</div>
+        <div class="rp-period">1~2개월</div>
+        <ul class="rp-items">
+          <li>산안법 2026 개정 정독</li>
+          <li>중처법 조문 암기</li>
+          <li>건진법·지안법 체계</li>
+        </ul>
+      </div>
+      <div class="rp-item">
+        <div class="rp-phase">PHASE 2</div>
+        <div class="rp-period">2~3개월</div>
+        <ul class="rp-items">
+          <li>재해이론 비교표</li>
+          <li>위험성평가 6단계</li>
+          <li>평가기법 FMEA·FTA</li>
+        </ul>
+      </div>
+      <div class="rp-item">
+        <div class="rp-phase">PHASE 3</div>
+        <div class="rp-period">3~5개월</div>
+        <ul class="rp-items">
+          <li>가설공사 우선 정리</li>
+          <li>굴착·흙막이 집중</li>
+          <li>기계·양중 기준 암기</li>
+        </ul>
+      </div>
+      <div class="rp-item">
+        <div class="rp-phase">PHASE 4</div>
+        <div class="rp-period">5개월~</div>
+        <ul class="rp-items">
+          <li>기출 10년 분석</li>
+          <li>모범답안 직접 작성</li>
+          <li>최신 사고사례 정리</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">
+    각 영역은 <em>독립된 섬이 아닙니다</em><br>
+    법령 → 이론 → 위험성평가 → 공종 → 사례로 <em>하나의 흐름</em>으로 연결
+  </div>
+
+</div><!-- /main -->
 </body>
 </html>
