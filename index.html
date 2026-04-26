@@ -162,7 +162,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
   <div class="dday-row">
     <div class="dday-item"><div class="dday-val" id="dd-val">-</div><div class="dday-label">D-DAY</div></div>
     <div class="dday-item"><div class="dday-val">8</div><div class="dday-label">도메인</div></div>
-    <div class="dday-item"><div class="dday-val" style="color:var(--d2);">4</div><div class="dday-label">완성</div></div>
+    <div class="dday-item"><div class="dday-val" style="color:var(--d2);">8</div><div class="dday-label">완성</div></div>
     <div class="dday-item"><div class="dday-val" style="font-size:14px;color:var(--d1);">2026</div><div class="dday-label">법령기준</div></div>
   </div>
 </div>
@@ -178,6 +178,23 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
 
 <!-- ===== 홈 탭 ===== -->
 <div id="home" class="section on">
+
+  <a class="forest-card" href="board.html" style="background:linear-gradient(135deg,#0d1a12,#111827);border-color:rgba(52,211,153,0.35);box-shadow:0 4px 24px rgba(52,211,153,0.07);margin-bottom:10px;">
+    <div class="fc-top">
+      <span class="fc-icon">📋</span>
+      <div class="fc-text">
+        <div class="fc-title" style="color:#6ee7b7;">수험생 게시판</div>
+        <div class="fc-desc">공지사항·질문·자유 글쓰기 — 회원가입 없이 이용</div>
+      </div>
+      <span class="fc-arrow" style="color:rgba(52,211,153,0.5);">›</span>
+    </div>
+    <div class="fc-tags">
+      <span class="fc-tag" style="background:rgba(52,211,153,0.15);border-color:rgba(52,211,153,0.25);color:#6ee7b7;">📌 공지</span>
+      <span class="fc-tag" style="background:rgba(52,211,153,0.15);border-color:rgba(52,211,153,0.25);color:#6ee7b7;">💬 자유</span>
+      <span class="fc-tag" style="background:rgba(52,211,153,0.15);border-color:rgba(52,211,153,0.25);color:#6ee7b7;">❓ Q&A</span>
+      <span class="fc-tag" style="background:rgba(52,211,153,0.15);border-color:rgba(52,211,153,0.25);color:#6ee7b7;">댓글</span>
+    </div>
+  </a>
 
   <a class="forest-card" href="forest.html">
     <div class="fc-top">
@@ -243,7 +260,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
       </ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
     </a>
-    <div class="domain-card dc5 dc-ing" style="cursor:default;opacity:.65;">
+    <a class="domain-card dc5 dc-done" href="d05.html">
       <span class="dc-icon">🏗️</span><div class="dc-code">D05</div>
       <div class="dc-title">공종별 안전관리</div>
       <ul class="dc-items">
@@ -252,8 +269,8 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
         <li>터널·철골·거푸집</li>
       </ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
-    </div>
-    <div class="domain-card dc6 dc-ing" style="cursor:default;opacity:.65;">
+    </a>
+    <a class="domain-card dc6 dc-done" href="d06.html">
       <span class="dc-icon">🗼</span><div class="dc-code">D06</div>
       <div class="dc-title">건설기계·양중</div>
       <ul class="dc-items">
@@ -262,8 +279,8 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
         <li>와이어로프 기준</li>
       </ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
-    </div>
-    <div class="domain-card dc7 dc-ing" style="cursor:default;opacity:.65;">
+    </a>
+    <a class="domain-card dc7 dc-done" href="d07.html">
       <span class="dc-icon">👥</span><div class="dc-code">D07</div>
       <div class="dc-title">안전관리계획·조직</div>
       <ul class="dc-items">
@@ -272,8 +289,8 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
         <li>PTW·무재해운동</li>
       </ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
-    </div>
-    <div class="domain-card dc8 dc-ing" style="cursor:default;opacity:.65;">
+    </a>
+    <a class="domain-card dc8 dc-done" href="d08.html">
       <span class="dc-icon">🔥</span><div class="dc-code">D08</div>
       <div class="dc-title">최신사고·보건</div>
       <ul class="dc-items">
@@ -282,7 +299,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
         <li>일특배수 건강진단</li>
       </ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
-    </div>
+    </a>
   </div>
 
   <div class="sec-hdr" style="margin-top:20px;"><span class="sec-hdr-label">서술형 답안 황금 공식</span><div class="sec-hdr-line"></div></div>
@@ -355,27 +372,27 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:320px;backgro
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
     </a>
   </div>
-  <div class="sec-hdr"><span class="sec-hdr-label">준비중</span><div class="sec-hdr-line"></div></div>
+  <div class="sec-hdr"><span class="sec-hdr-label">D05~D08 완성</span><div class="sec-hdr-line"></div></div>
   <div class="domain-grid">
-    <div class="domain-card dc5" style="opacity:.65;cursor:default;">
+    <a class="domain-card dc5 dc-done" href="d05.html">
       <span class="dc-icon">🏗️</span><div class="dc-code">DOMAIN 05</div>
       <div class="dc-title">공종별 안전관리</div>
       <ul class="dc-items"><li>3대사고 추끼부</li><li>8대 가시설물</li><li>굴착·흙막이·터널</li><li>스마트 안전기술</li></ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
     </div>
-    <div class="domain-card dc6" style="opacity:.65;cursor:default;">
+    <a class="domain-card dc6 dc-done" href="d06.html">
       <span class="dc-icon">🗼</span><div class="dc-code">DOMAIN 06</div>
       <div class="dc-title">건설기계·양중</div>
       <ul class="dc-items"><li>타워크레인 18가지</li><li>풍속 10·15·30 m/s</li><li>와이어로프 기준</li><li>굴삭기 2022 규정</li></ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
     </div>
-    <div class="domain-card dc7" style="opacity:.65;cursor:default;">
+    <a class="domain-card dc7 dc-done" href="d07.html">
       <span class="dc-icon">👥</span><div class="dc-code">DOMAIN 07</div>
       <div class="dc-title">안전관리계획·조직</div>
       <ul class="dc-items"><li>TBM 집작위대서</li><li>목조위교점개</li><li>안전관리비 CSI</li><li>PTW·무재해운동</li></ul>
       <div class="dc-bar-bg"><div class="dc-bar"></div></div>
     </div>
-    <div class="domain-card dc8" style="opacity:.65;cursor:default;">
+    <a class="domain-card dc8 dc-done" href="d08.html">
       <span class="dc-icon">🔥</span><div class="dc-code">DOMAIN 08</div>
       <div class="dc-title">최신사고·보건</div>
       <ul class="dc-items"><li>리튬배터리 화성2024</li><li>밀폐공간 허측환감보구</li><li>감전 누접절정우잠캡</li><li>일특배수 건강진단</li></ul>
