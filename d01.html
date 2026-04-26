@@ -2,1134 +2,1290 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#0d1117">
-<title>건설안전기술사 D01 — 법령체계</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#090c14">
+<title>D01 법령체계 — 건설안전기술사</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-  :root {
-    --bg:#0d1117; --card:#161b27; --card2:#1c2235; --border:#252d42;
-    --law1:#4fc3f7; --law2:#ef5350; --law3:#66bb6a; --law4:#ce93d8;
-    --gold:#ffd54f; --purple:#ce93d8; --orange:#ff8a65;
-    --text:#dde3ee; --muted:#6b7a99;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);max-width:600px;margin:0 auto;padding:0 0 40px;}
-  .progress-bar{height:3px;background:var(--border);position:sticky;top:0;z-index:200;}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--law1),var(--law3));width:0%;transition:width 0.3s;}
-  .top-header{background:linear-gradient(135deg,#111827,#1a2235);padding:18px 16px 14px;border-bottom:1px solid var(--border);position:sticky;top:3px;z-index:100;}
-  .top-header .badge{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--law1);text-transform:uppercase;margin-bottom:4px;}
-  .top-header h1{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
-  .top-header .sub{font-size:11px;color:var(--muted);margin-top:3px;}
-  .law-badge{display:inline-block;margin-top:6px;background:rgba(79,195,247,0.15);border:1px solid rgba(79,195,247,0.4);color:var(--law1);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;}
-  .tab-nav{display:flex;gap:6px;margin-top:12px;overflow-x:auto;scrollbar-width:none;}
-  .tab-nav::-webkit-scrollbar{display:none;}
-  .tab-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid;white-space:nowrap;cursor:pointer;background:transparent;transition:all 0.2s;}
-  .tab-btn.t1{color:var(--law1);border-color:var(--law1);}
-  .tab-btn.t2{color:var(--law2);border-color:var(--law2);}
-  .tab-btn.t3{color:var(--law3);border-color:var(--law3);}
-  .tab-btn.t4{color:var(--law4);border-color:var(--law4);}
-  .tab-btn.tg{color:var(--gold);border-color:var(--gold);}
-  .tab-btn.tp{color:var(--purple);border-color:var(--purple);}
-  .tab-btn.active.t1{background:rgba(79,195,247,0.15);}
-  .tab-btn.active.t2{background:rgba(239,83,80,0.15);}
-  .tab-btn.active.t3{background:rgba(102,187,106,0.15);}
-  .tab-btn.active.t4{background:rgba(206,147,216,0.15);}
-  .tab-btn.active.tg{background:rgba(255,213,79,0.15);}
-  .tab-btn.active.tp{background:rgba(206,147,216,0.15);}
-  .section{padding:0 12px;margin-top:12px;}
-  .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:10px;cursor:pointer;user-select:none;background:var(--card);border-left:4px solid;margin-bottom:2px;}
-  .sec-header.c1{border-color:var(--law1);}
-  .sec-header.c2{border-color:var(--law2);}
-  .sec-header.c3{border-color:var(--law3);}
-  .sec-header.c4{border-color:var(--law4);}
-  .sec-header.cg{border-color:var(--gold);}
-  .sec-header.cp{border-color:var(--purple);}
-  .sec-header.co{border-color:var(--orange);}
-  .sh-left{display:flex;align-items:center;gap:10px;}
-  .sh-icon{font-size:18px;}
-  .sh-title{font-size:14px;font-weight:700;}
-  .sh-title.c1{color:var(--law1);}
-  .sh-title.c2{color:var(--law2);}
-  .sh-title.c3{color:var(--law3);}
-  .sh-title.c4{color:var(--law4);}
-  .sh-title.cg{color:var(--gold);}
-  .sh-title.cp{color:var(--purple);}
-  .sh-title.co{color:var(--orange);}
-  .sh-sub{font-size:10px;color:var(--muted);margin-top:1px;}
-  .sh-arrow{font-size:12px;color:var(--muted);transition:transform 0.25s;}
-  .sh-arrow.open{transform:rotate(180deg);}
-  .sec-body{display:none;flex-direction:column;gap:8px;padding:8px 0 4px;}
-  .sec-body.open{display:flex;}
-  .card{background:var(--card);border-radius:10px;padding:13px 14px;}
-  .card-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-  .item-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
-  .item-list li{font-size:13px;color:#b0bec5;padding-left:13px;position:relative;line-height:1.55;}
-  .item-list li::before{content:'▸';position:absolute;left:0;opacity:0.4;}
-  .item-list li strong{color:var(--text);font-weight:700;}
-  .law-ref{font-size:10px;color:rgba(79,195,247,0.7);font-weight:600;margin-left:4px;background:rgba(79,195,247,0.08);padding:1px 5px;border-radius:6px;}
-  .memo-block{border-radius:10px;padding:12px 14px;border:1px solid;}
-  .memo-block.m1{background:rgba(79,195,247,0.06);border-color:rgba(79,195,247,0.28);}
-  .memo-block.m2{background:rgba(239,83,80,0.06);border-color:rgba(239,83,80,0.28);}
-  .memo-block.m3{background:rgba(102,187,106,0.06);border-color:rgba(102,187,106,0.28);}
-  .memo-block.m4{background:rgba(206,147,216,0.06);border-color:rgba(206,147,216,0.28);}
-  .memo-block.mg{background:rgba(255,213,79,0.06);border-color:rgba(255,213,79,0.28);}
-  .memo-block.mo{background:rgba(255,138,101,0.06);border-color:rgba(255,138,101,0.28);}
-  .memo-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
-  .memo-type.m1{color:var(--law1);}
-  .memo-type.m2{color:var(--law2);}
-  .memo-type.m3{color:var(--law3);}
-  .memo-type.m4{color:var(--law4);}
-  .memo-type.mg{color:var(--gold);}
-  .memo-type.mo{color:var(--orange);}
-  .acro-list{display:flex;flex-direction:column;gap:4px;}
-  .acro-item{display:flex;align-items:baseline;gap:8px;}
-  .acro-char{font-size:20px;font-weight:900;min-width:22px;line-height:1;}
-  .acro-char.c1{color:var(--law1);}
-  .acro-char.c2{color:var(--law2);}
-  .acro-char.c3{color:var(--law3);}
-  .acro-char.c4{color:var(--law4);}
-  .acro-text{font-size:13px;color:var(--text);line-height:1.4;}
-  .acro-text em{font-style:normal;color:var(--gold);font-weight:700;}
-  .acro-key{margin-top:8px;padding:7px 10px;background:rgba(255,213,79,0.1);border-radius:6px;font-size:13px;font-weight:700;color:var(--gold);text-align:center;letter-spacing:1px;}
-  .story{background:var(--card2);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.7;}
-  .story strong{color:var(--gold);}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@700;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
-  /* 비교표 */
-  .compare-table{width:100%;border-collapse:collapse;font-size:11.5px;}
-  .compare-table th{padding:8px 6px;text-align:center;font-weight:700;border-bottom:2px solid var(--border);font-size:10px;}
-  .compare-table td{padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;line-height:1.5;vertical-align:top;}
-  .compare-table td:first-child{color:var(--muted);font-weight:500;white-space:nowrap;font-size:10px;}
-  .compare-table tr:last-child td{border-bottom:none;}
-  .v1{color:var(--law1)!important;font-weight:700;}
-  .v2{color:var(--law2)!important;font-weight:700;}
-  .v3{color:var(--law3)!important;font-weight:700;}
-  .vg{color:var(--gold)!important;font-weight:700;}
+:root {
+  --bg:      #090c14;
+  --bg2:     #0d1120;
+  --surface: #111827;
+  --surface2:#161e30;
+  --border:  #1e2a40;
+  --border2: #2a3655;
 
-  /* 숫자 뱃지 */
-  .num-row{display:flex;flex-wrap:wrap;gap:7px;}
-  .num-badge{display:flex;flex-direction:column;align-items:center;border-radius:9px;padding:9px 10px;min-width:62px;border:1px solid;flex:1;}
-  .nb-num{font-size:17px;font-weight:900;line-height:1.1;}
-  .nb-label{font-size:10px;color:var(--muted);margin-top:3px;text-align:center;line-height:1.4;}
-  .n1{border-color:rgba(79,195,247,0.35);background:rgba(79,195,247,0.07);} .n1 .nb-num{color:var(--law1);}
-  .n2{border-color:rgba(239,83,80,0.35);background:rgba(239,83,80,0.07);} .n2 .nb-num{color:var(--law2);}
-  .n3{border-color:rgba(102,187,106,0.35);background:rgba(102,187,106,0.07);} .n3 .nb-num{color:var(--law3);}
-  .n4{border-color:rgba(206,147,216,0.35);background:rgba(206,147,216,0.07);} .n4 .nb-num{color:var(--law4);}
-  .no{border-color:rgba(255,138,101,0.35);background:rgba(255,138,101,0.07);} .no .nb-num{color:var(--orange);}
+  --blue:    #60a5fa;
+  --blue2:   #93c5fd;
+  --blue-d:  rgba(96,165,250,0.12);
+  --blue-b:  rgba(96,165,250,0.25);
 
-  /* 흐름 */
-  .flow-wrap{display:flex;flex-direction:column;gap:5px;}
-  .flow-step{background:var(--card2);border-radius:8px;padding:9px 12px;display:flex;align-items:flex-start;gap:10px;}
-  .fs-tag{font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:10px;white-space:nowrap;flex-shrink:0;}
-  .fs-tag.t1{background:rgba(79,195,247,0.15);color:var(--law1);}
-  .fs-tag.t2{background:rgba(239,83,80,0.15);color:var(--law2);}
-  .fs-tag.t3{background:rgba(102,187,106,0.15);color:var(--law3);}
-  .fs-tag.t4{background:rgba(206,147,216,0.15);color:var(--law4);}
-  .fs-tag.tp{background:rgba(206,147,216,0.15);color:var(--purple);}
-  .fs-content{font-size:12.5px;color:var(--text);line-height:1.45;}
-  .fs-content strong{color:var(--gold);}
-  .fs-content .fs-sub{font-size:10.5px;color:var(--muted);margin-top:1px;}
-  .flow-arrow-down{text-align:center;font-size:13px;color:var(--muted);}
+  --gold:    #f5c842;
+  --gold2:   #fde68a;
+  --gold-d:  rgba(245,200,66,0.12);
 
-  /* 처벌 바 */
-  .punish-item{margin-bottom:10px;}
-  .pi-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
-  .pi-label{font-size:11px;color:var(--muted);width:40px;flex-shrink:0;}
-  .pi-bar-bg{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;}
-  .pi-bar{height:100%;border-radius:10px;}
-  .pi-val{font-size:11px;font-weight:700;width:80px;text-align:right;flex-shrink:0;}
+  --green:   #34d399;
+  --red:     #f87171;
+  --amber:   #fbbf24;
+  --purple:  #a78bfa;
+  --teal:    #2dd4bf;
 
-  /* QA */
-  .qa-item{margin-bottom:10px;}
-  .qa-q{font-size:12px;color:var(--purple);font-weight:700;margin-bottom:5px;display:flex;gap:6px;}
-  .qa-q::before{content:'Q.';opacity:0.6;}
-  .qa-a{background:var(--card2);border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.65;color:var(--text);border-left:3px solid var(--purple);}
-  .qa-a .key{color:var(--gold);font-weight:700;}
+  --text:    #e2e8f5;
+  --muted:   #64748b;
+  --muted2:  #94a3b8;
 
-  /* 핵심 박스 */
-  .keyfact{background:rgba(255,138,101,0.08);border:1px solid rgba(255,138,101,0.3);border-radius:8px;padding:9px 11px;margin:6px 0;}
-  .keyfact-title{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:1px;margin-bottom:4px;}
-  .keyfact-body{font-size:12px;color:var(--text);line-height:1.6;}
-  .keyfact-body strong{color:var(--gold);}
+  --r: 13px;
+  --r-sm: 8px;
+}
 
-  .page-section{display:none;}
-  .page-section.active{display:block;}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--text);
+  padding-bottom: 56px;
+  min-height: 100vh;
+}
 
-  /* 새로 추가된 항목 표시 */
-  .new-item{position:relative;}
-  .new-item::after{content:'NEW';position:absolute;top:0;right:0;font-size:8px;font-weight:700;color:var(--law2);background:rgba(239,83,80,0.15);padding:1px 5px;border-radius:6px;letter-spacing:1px;}
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; height: 280px;
+  background: radial-gradient(ellipse 70% 50% at 30% -5%, rgba(96,165,250,0.10) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ══ 헤더 ══ */
+.hdr {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(9,12,20,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 14px 10px;
+}
+.hdr-row { display: flex; align-items: center; gap: 10px; }
+.back-btn {
+  display: flex; align-items: center; gap: 4px;
+  color: var(--muted2); font-size: 12px; font-weight: 600;
+  text-decoration: none; padding: 5px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border); border-radius: 20px;
+  flex-shrink: 0; transition: all 0.18s;
+}
+.back-btn:active { opacity: 0.7; transform: scale(0.95); }
+.hdr-info { flex: 1; min-width: 0; }
+.hdr-code {
+  font-size: 9px; font-weight: 800; letter-spacing: 2.5px;
+  color: var(--blue); text-transform: uppercase; margin-bottom: 1px;
+}
+.hdr-title {
+  font-size: 15px; font-weight: 900; color: #fff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hdr-badge {
+  flex-shrink: 0;
+  background: rgba(248,113,113,0.18); color: var(--red);
+  border: 1px solid rgba(248,113,113,0.35);
+  border-radius: 8px; font-size: 9px; font-weight: 800;
+  padding: 3px 8px; letter-spacing: 0.5px;
+}
+
+/* ══ 탭 네비 ══ */
+.tab-nav {
+  display: flex; overflow-x: auto;
+  background: rgba(0,0,0,0.25);
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0; padding: 9px 14px;
+  font-size: 11.5px; font-weight: 700;
+  color: var(--muted); background: none; border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.18s;
+}
+.tab-btn.on { color: var(--blue); border-bottom-color: var(--blue); }
+
+/* ══ 본문 ══ */
+.body { padding: 14px 14px 0; }
+.section { display: none; }
+.section.on { display: block; }
+
+/* ══ 공통 컴포넌트 ══ */
+.sec-hdr {
+  display: flex; align-items: center; gap: 8px;
+  margin: 18px 0 10px;
+}
+.sec-hdr:first-child { margin-top: 0; }
+.sec-hdr-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase; white-space: nowrap;
+}
+.sec-hdr-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border2), transparent); }
+
+/* 카드 기본 */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r); padding: 14px;
+  margin-bottom: 10px;
+}
+.card-title {
+  font-size: 12px; font-weight: 800; color: var(--blue);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.card-title .ct-icon { font-size: 14px; }
+
+/* ══ 법령 3법 비교표 ══ */
+.law3-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 10px; }
+
+.law-card {
+  border-radius: var(--r); overflow: hidden;
+  border: 1px solid var(--border);
+}
+.law-card-head {
+  padding: 10px 13px 9px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.law-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  padding: 2px 7px; border-radius: 5px;
+  flex-shrink: 0; margin-top: 2px;
+}
+.law-name { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+.law-sub { font-size: 10px; color: var(--muted2); line-height: 1.5; }
+.law-card-body { padding: 0 13px 11px; }
+
+/* 산안법 */
+.lc-san { background: linear-gradient(135deg, #0f1e35, #111827); border-top: 3px solid var(--blue); }
+.lc-san .law-num { background: rgba(96,165,250,0.15); color: var(--blue); }
+.lc-san .law-name { color: var(--blue); }
+
+/* 중처법 */
+.lc-jung { background: linear-gradient(135deg, #1f0d0d, #111827); border-top: 3px solid var(--red); }
+.lc-jung .law-num { background: rgba(248,113,113,0.15); color: var(--red); }
+.lc-jung .law-name { color: var(--red); }
+
+/* 건진법 */
+.lc-gun { background: linear-gradient(135deg, #0a1f18, #111827); border-top: 3px solid var(--green); }
+.lc-gun .law-num { background: rgba(52,211,153,0.15); color: var(--green); }
+.lc-gun .law-name { color: var(--green); }
+
+.law-points { list-style: none; }
+.law-points li {
+  font-size: 10.5px; color: var(--muted2); line-height: 1.7;
+  padding-left: 12px; position: relative;
+}
+.law-points li::before { content: '▸'; position: absolute; left: 0; opacity: 0.5; font-size: 9px; }
+.law-points li strong { color: var(--text); font-weight: 700; }
+.law-points li.hot { color: var(--text); }
+.law-points li .chip {
+  display: inline-block; font-size: 8.5px; font-weight: 800;
+  padding: 1px 5px; border-radius: 4px; margin-left: 4px;
+  vertical-align: middle;
+}
+.chip-new { background: rgba(248,113,113,0.2); color: var(--red); }
+.chip-key { background: rgba(245,200,66,0.15); color: var(--gold); }
+.chip-amend { background: rgba(96,165,250,0.15); color: var(--blue2); }
+
+/* ══ 비교 테이블 ══ */
+.compare-table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+.compare-table th {
+  background: rgba(96,165,250,0.1); color: var(--blue2);
+  font-size: 10px; font-weight: 800; text-align: center;
+  padding: 7px 6px; border-bottom: 1px solid var(--border2);
+}
+.compare-table th:first-child { text-align: left; width: 28%; }
+.compare-table td {
+  padding: 7px 6px; border-bottom: 1px solid var(--border);
+  color: var(--muted2); vertical-align: top; line-height: 1.55;
+}
+.compare-table td:first-child { color: var(--text); font-weight: 700; font-size: 10px; }
+.compare-table td:not(:first-child) { text-align: center; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table .hl { color: var(--text); font-weight: 700; }
+.compare-table .red { color: var(--red); font-weight: 700; }
+.compare-table .green { color: var(--green); font-weight: 700; }
+.compare-table .gold { color: var(--gold); font-weight: 700; }
+
+/* ══ 암기법 카드 ══ */
+.mnemonic-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 11px 13px; margin-bottom: 8px;
+}
+.mn-domain { font-size: 9px; font-weight: 800; color: var(--blue); letter-spacing: 1px; margin-bottom: 3px; }
+.mn-key {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px; font-weight: 900; color: #fff;
+  margin-bottom: 4px; letter-spacing: 1px;
+}
+.mn-expand { font-size: 10.5px; color: var(--muted2); line-height: 1.7; margin-bottom: 6px; }
+.mn-expand span { color: var(--text); font-weight: 700; }
+.mn-tip {
+  font-size: 10px; color: var(--gold);
+  background: var(--gold-d); border: 1px solid rgba(245,200,66,0.2);
+  border-radius: var(--r-sm); padding: 5px 9px; line-height: 1.6;
+}
+
+/* 암기법 색상 변형 */
+.mn-red { border-left-color: var(--red); }
+.mn-red .mn-domain { color: var(--red); }
+.mn-green { border-left-color: var(--green); }
+.mn-green .mn-domain { color: var(--green); }
+.mn-gold { border-left-color: var(--gold); }
+.mn-gold .mn-domain { color: var(--gold); }
+.mn-purple { border-left-color: var(--purple); }
+.mn-purple .mn-domain { color: var(--purple); }
+.mn-teal { border-left-color: var(--teal); }
+.mn-teal .mn-domain { color: var(--teal); }
+
+/* ══ 조문 상세 카드 ══ */
+.article-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r); overflow: hidden;
+  margin-bottom: 10px;
+}
+.article-head {
+  display: flex; align-items: center; gap: 9px;
+  padding: 10px 13px 9px;
+  background: rgba(96,165,250,0.06);
+  border-bottom: 1px solid var(--border);
+}
+.article-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 700;
+  background: rgba(96,165,250,0.15); color: var(--blue);
+  border-radius: 5px; padding: 3px 8px; flex-shrink: 0;
+}
+.article-name { font-size: 12px; font-weight: 800; color: var(--text); flex: 1; }
+.article-tag {
+  font-size: 8.5px; font-weight: 800; padding: 2px 7px;
+  border-radius: 8px; flex-shrink: 0;
+}
+.article-body { padding: 11px 13px; }
+.article-item {
+  font-size: 10.5px; color: var(--muted2); line-height: 1.75;
+  padding-left: 12px; position: relative; margin-bottom: 3px;
+}
+.article-item::before { content: '①'; position: absolute; left: 0; opacity: 0.4; font-size: 9px; color: var(--blue); }
+.article-item.i2::before { content: '②'; }
+.article-item.i3::before { content: '③'; }
+.article-item.i4::before { content: '④'; }
+.article-item strong { color: var(--text); font-weight: 700; }
+.article-item em { color: var(--gold); font-style: normal; font-weight: 700; }
+.article-item .newbadge {
+  font-size: 8px; font-weight: 800; color: var(--red);
+  background: rgba(248,113,113,0.15); border-radius: 3px;
+  padding: 1px 5px; margin-left: 4px; vertical-align: middle;
+}
+.article-divider { height: 1px; background: var(--border); margin: 8px 0; }
+.article-point {
+  font-size: 10px; background: rgba(96,165,250,0.06);
+  border: 1px solid rgba(96,165,250,0.15);
+  border-radius: var(--r-sm); padding: 7px 10px;
+  color: var(--blue2); line-height: 1.65;
+}
+.article-point strong { color: var(--gold); }
+
+/* ══ 처벌 기준표 ══ */
+.penalty-grid { display: grid; gap: 8px; }
+.penalty-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px 13px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.penalty-level {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 700;
+  padding: 4px 8px; border-radius: 6px;
+  text-align: center; flex-shrink: 0; min-width: 54px;
+}
+.pl-1 { background: rgba(248,113,113,0.2); color: var(--red); }
+.pl-2 { background: rgba(251,191,36,0.2); color: var(--amber); }
+.pl-3 { background: rgba(96,165,250,0.15); color: var(--blue); }
+.pl-4 { background: rgba(107,114,128,0.2); color: var(--muted2); }
+.penalty-body { flex: 1; min-width: 0; }
+.penalty-title { font-size: 11.5px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+.penalty-desc { font-size: 10px; color: var(--muted2); line-height: 1.65; }
+.penalty-desc strong { color: var(--red); }
+
+/* ══ 플로우 차트 ══ */
+.flow-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 13px; margin-bottom: 10px;
+}
+.flow-title { font-size: 11px; font-weight: 800; color: var(--muted2); margin-bottom: 10px; }
+.flow-steps {
+  display: flex; flex-direction: column; gap: 0;
+}
+.flow-step {
+  display: flex; align-items: flex-start; gap: 9px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+  position: relative;
+}
+.flow-step:last-child { border-bottom: none; }
+.flow-circle {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(96,165,250,0.15); border: 1.5px solid rgba(96,165,250,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700; color: var(--blue);
+  flex-shrink: 0;
+}
+.flow-content { flex: 1; min-width: 0; }
+.flow-name { font-size: 11.5px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.flow-note { font-size: 10px; color: var(--muted2); line-height: 1.6; }
+.flow-note em { color: var(--gold); font-style: normal; }
+
+/* ══ 핵심 수치 그리드 ══ */
+.num-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.num-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 11px 12px; text-align: center;
+}
+.num-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px; font-weight: 700; color: var(--blue);
+  margin-bottom: 3px; line-height: 1;
+}
+.num-unit { font-size: 9px; color: var(--muted2); margin-bottom: 6px; }
+.num-label { font-size: 10.5px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.num-desc { font-size: 9.5px; color: var(--muted2); line-height: 1.5; }
+.nv-red { color: var(--red); }
+.nv-gold { color: var(--gold); }
+.nv-green { color: var(--green); }
+
+/* ══ 기출 문제 ══ */
+.exam-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); overflow: hidden; margin-bottom: 8px;
+}
+.exam-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+}
+.exam-round {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  background: var(--blue-d); color: var(--blue);
+  border-radius: 5px; padding: 2px 7px;
+}
+.exam-type {
+  font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 5px;
+}
+.et-short { background: rgba(52,211,153,0.12); color: var(--green); }
+.et-long { background: rgba(251,191,36,0.12); color: var(--amber); }
+.exam-year { font-size: 10px; color: var(--muted); margin-left: auto; }
+.exam-q { padding: 9px 12px; font-size: 11px; color: var(--text); line-height: 1.65; }
+.exam-q strong { color: var(--blue2); }
+
+/* ══ 개정 타임라인 ══ */
+.timeline { padding: 4px 0; }
+.tl-item {
+  display: flex; gap: 12px; padding: 0 0 14px 0;
+  position: relative;
+}
+.tl-item::before {
+  content: '';
+  position: absolute; left: 18px; top: 28px; bottom: 0;
+  width: 1px; background: var(--border2);
+}
+.tl-item:last-child::before { display: none; }
+.tl-dot {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; border: 2px solid;
+}
+.tl-dot.new { background: rgba(248,113,113,0.15); border-color: rgba(248,113,113,0.4); }
+.tl-dot.amend { background: rgba(96,165,250,0.12); border-color: rgba(96,165,250,0.35); }
+.tl-dot.notice { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); }
+.tl-body { flex: 1; padding-top: 6px; }
+.tl-date { font-size: 9px; font-weight: 700; color: var(--muted2); margin-bottom: 2px; }
+.tl-title { font-size: 12px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+.tl-desc { font-size: 10px; color: var(--muted2); line-height: 1.65; }
+.tl-desc strong { color: var(--text); }
+
+/* ══ 반응형 ══ */
+@media (max-width: 360px) {
+  .num-grid { grid-template-columns: 1fr 1fr; }
+  .num-value { font-size: 18px; }
+  .compare-table th, .compare-table td { font-size: 9.5px; padding: 6px 4px; }
+}
 </style>
 </head>
 <body>
 
-<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
-
-<div class="top-header">
-  <div class="badge">Domain 01 · 법령체계</div>
-  <h1>건설안전 법령체계 완전정복</h1>
-  <div class="sub">산안법·중처법·건진법·지안법·시안법 + 핵심제도</div>
-  <span class="law-badge">⚖️ 산안기준규칙 2026.03 최신반영</span>
-  <div class="tab-nav">
-    <button class="tab-btn t1 active" onclick="showTab('t1',this)">⚖️ 산안법</button>
-    <button class="tab-btn t2" onclick="showTab('t2',this)">🔴 중처법</button>
-    <button class="tab-btn t3" onclick="showTab('t3',this)">🏗️ 건진법</button>
-    <button class="tab-btn t4" onclick="showTab('t4',this)">🌍 지안법·시안법</button>
-    <button class="tab-btn tg" onclick="showTab('tg',this)">📋 핵심제도</button>
-    <button class="tab-btn tp" onclick="showTab('tp',this)">✍️ 비교·답안</button>
+<!-- 헤더 -->
+<div class="hdr">
+  <div class="hdr-row">
+    <a class="back-btn" href="forest.html">← 숲</a>
+    <div class="hdr-info">
+      <div class="hdr-code">Domain 01</div>
+      <div class="hdr-title">⚖️ 법령체계</div>
+    </div>
+    <div class="hdr-badge">2026 개정</div>
   </div>
 </div>
 
+<!-- 탭 -->
+<div class="tab-nav">
+  <button class="tab-btn on" onclick="goTab('overview',this)">개요·3법</button>
+  <button class="tab-btn" onclick="goTab('sanlaw',this)">산안법 개정</button>
+  <button class="tab-btn" onclick="goTab('jungcheo',this)">중처법</button>
+  <button class="tab-btn" onclick="goTab('etc',this)">건진·지안·시안</button>
+  <button class="tab-btn" onclick="goTab('mnemonics',this)">암기법</button>
+  <button class="tab-btn" onclick="goTab('exams',this)">기출문제</button>
+</div>
 
-<!-- ══════════════════════
-     TAB 1 : 산안법
-══════════════════════ -->
-<div id="t1" class="page-section active">
+<div class="body">
 
-  <!-- 개요 -->
-  <div class="section">
-    <div class="sec-header c1" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⚖️</span>
-        <div><div class="sh-title c1">산업안전보건법 개요</div>
-          <div class="sh-sub">1981년 제정 · 2020년 전부개정</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>목적 — 산업재해 예방 · 쾌적한 작업환경 조성</li>
-          <li><strong>모든 사업장</strong> 적용 (일부 예외)</li>
-          <li>의무주체 — <strong>사업주·현장소장</strong></li>
-        </ul>
-      </div>
-      <div class="memo-block m1">
-        <div class="memo-type m1">💡 연상</div>
-        <div class="story">
-          <strong style="color:var(--law1)">"산에 올라가면 안전하게 보호받는다"</strong><br>
-          <span style="color:var(--muted)">→ 산안법 = <strong>현장소장</strong>이 주인공, 근로자 보호</span>
+<!-- ══════════════════════════════════════
+     탭1: 개요·3법 비교
+══════════════════════════════════════ -->
+<div id="overview" class="section on">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">법령 체계 개요</span><div class="sec-hdr-line"></div></div>
+
+  <!-- 3법 구성 -->
+  <div class="law3-grid">
+
+    <div class="law-card lc-san">
+      <div class="law-card-head">
+        <span class="law-num">법1</span>
+        <div>
+          <div class="law-name">산업안전보건법 (산안법)</div>
+          <div class="law-sub">법률 제21374호 · 2026.2.19 개정 · 2027.1.1 시행<br>시행령 제34603호 · 시행규칙 제00419호 · 2026.6.26</div>
         </div>
       </div>
+      <div class="law-card-body">
+        <ul class="law-points">
+          <li class="hot"><strong>목적</strong>: 안전·보건 기준 확립 → 산업재해 예방 → 쾌적한 작업환경</li>
+          <li><strong>적용</strong>: 모든 사업에 적용. 예외는 대통령령으로 정함 (제3조)</li>
+          <li><strong>구성</strong>: 12장 175조 (총칙·안전보건관리체제·교육·유해위험방지·도급·기계·물질·보건관리·지도사·감독·보칙·벌칙)</li>
+          <li><strong>2026 개정</strong>: 위험성평가 강화·공시의무·재해조사보고서 신설 <span class="chip chip-new">개정</span></li>
+          <li><strong>벌칙 최고</strong>: 사망 이르게 한 경우 7년 이하 징역 또는 1억원 이하 벌금 (제167조)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="law-card lc-jung">
+      <div class="law-card-head">
+        <span class="law-num">법2</span>
+        <div>
+          <div class="law-name">중대재해처벌법 (중처법)</div>
+          <div class="law-sub">2022.1.27 시행 · 50인 미만 2024.1.27 전면적용</div>
+        </div>
+      </div>
+      <div class="law-card-body">
+        <ul class="law-points">
+          <li class="hot"><strong>적용대상</strong>: 상시 근로자 1인 이상 (5인 미만 사업장은 중대시민재해만 적용)</li>
+          <li><strong>의무주체</strong>: 경영책임자 (대표이사·CEO 직접 처벌)</li>
+          <li><strong>중대산업재해</strong>: ① 사망 1명 이상 ② 동시 6개월 이상 부상 2명 이상 ③ 동시 직업성질병 1년 내 10명 이상</li>
+          <li><strong>처벌</strong>: 사망 시 <strong style="color:var(--red)">1년 이상 징역 또는 10억원 이하 벌금</strong> <span class="chip chip-key">핵심</span></li>
+          <li><strong>법인</strong>: 사망 시 50억원 이하 벌금 (양벌규정)</li>
+          <li><strong>산안법과 차이</strong>: 경영책임자 직접 의무 / 형사처벌 강화</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="law-card lc-gun">
+      <div class="law-card-head">
+        <span class="law-num">법3</span>
+        <div>
+          <div class="law-name">건설기술진흥법 (건진법)</div>
+          <div class="law-sub">건설공사의 안전관리계획 · 건설사고 조사</div>
+        </div>
+      </div>
+      <div class="law-card-body">
+        <ul class="law-points">
+          <li class="hot"><strong>안전관리계획</strong>: 1종·2종 시설물 또는 지하 10m 이상 굴착공사 등 대상</li>
+          <li><strong>DFS</strong>: 설계안전성검토 — 발주자가 기본설계·실시설계 시 안전성 검토 의무</li>
+          <li><strong>안전관리자 배치</strong>: 공사금액 50억 이상 등 (산안법 안전관리자와 구별)</li>
+          <li><strong>건설사고조사위원회</strong>: 사망 2명 이상 등 중대건설사고 시 조사</li>
+          <li><strong>안전보건조정자</strong>: 2개 이상 공사 같은 장소에서 행해지는 경우 (산안법 제68조 연계)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 3법 비교표 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">3법 핵심 비교표</span><div class="sec-hdr-line"></div></div>
+  <div class="card">
+    <div class="card-title"><span class="ct-icon">📊</span> 산안법 vs 중처법 vs 건진법</div>
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <tr>
+          <th>구분</th>
+          <th>산안법</th>
+          <th>중처법</th>
+          <th>건진법</th>
+        </tr>
+        <tr>
+          <td>의무주체</td>
+          <td class="hl">사업주</td>
+          <td class="red">경영책임자</td>
+          <td class="green">건설사업자</td>
+        </tr>
+        <tr>
+          <td>적용범위</td>
+          <td>모든 사업</td>
+          <td>1인 이상</td>
+          <td>건설공사</td>
+        </tr>
+        <tr>
+          <td>사망 처벌</td>
+          <td>7년↓ 징역<br>1억↓ 벌금</td>
+          <td class="red">1년↑ 징역<br>10억↓ 벌금</td>
+          <td>3년↓ 징역<br>3천↓ 벌금</td>
+        </tr>
+        <tr>
+          <td>법인벌금</td>
+          <td>10억↓</td>
+          <td class="red">50억↓</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>핵심 의무</td>
+          <td>안전조치<br>위험성평가</td>
+          <td>안전보건<br>관리체계 구축</td>
+          <td>안전관리계획<br>DFS</td>
+        </tr>
+      </table>
     </div>
   </div>
 
-  <!-- 안전보건관리체계 -->
-  <div class="section">
-    <div class="sec-header c1" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔑</span>
-        <div><div class="sh-title c1">안전보건관리체계 6요소 — 암기</div>
-          <div class="sh-sub">두문자 "목조위교점개"</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 핵심 수치 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">필수 암기 수치</span><div class="sec-hdr-line"></div></div>
+  <div class="num-grid">
+    <div class="num-card">
+      <div class="num-value nv-red">1년↑</div>
+      <div class="num-unit">징역 (하한)</div>
+      <div class="num-label">중처법 사망</div>
+      <div class="num-desc">경영책임자 직접 처벌</div>
     </div>
-    <div class="sec-body open">
-      <div class="memo-block m1">
-        <div class="memo-type m1">🔤 두문자 암기</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char c1">목</span><span class="acro-text"><em>목표·방침</em> 설정</span></div>
-          <div class="acro-item"><span class="acro-char c1">조</span><span class="acro-text"><em>조직</em> 구성·역할 배분</span></div>
-          <div class="acro-item"><span class="acro-char c1">위</span><span class="acro-text"><em>위험성평가</em> 실시</span></div>
-          <div class="acro-item"><span class="acro-char c1">교</span><span class="acro-text"><em>교육·훈련</em> 실시</span></div>
-          <div class="acro-item"><span class="acro-char c1">점</span><span class="acro-text"><em>점검·모니터링</em></span></div>
-          <div class="acro-item"><span class="acro-char c1">개</span><span class="acro-text"><em>개선·환류</em> (PDCA)</span></div>
-        </div>
-        <div class="acro-key">→ "목조위교점개" 로 외우자!</div>
-      </div>
+    <div class="num-card">
+      <div class="num-value nv-red">7년↓</div>
+      <div class="num-unit">징역 (상한)</div>
+      <div class="num-label">산안법 사망</div>
+      <div class="num-desc">재범 시 1/2 가중 (제167조②)</div>
     </div>
-  </div>
-
-  <!-- 안전조직·선임 기준 -->
-  <div class="section">
-    <div class="sec-header c1" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">👥</span>
-        <div><div class="sh-title c1">안전조직 선임기준 핵심숫자</div>
-          <div class="sh-sub">건설업 — 공사금액별</div></div>
-      </div><span class="sh-arrow open">▼</span>
+    <div class="num-card">
+      <div class="num-value nv-gold">50억↓</div>
+      <div class="num-unit">벌금 (법인)</div>
+      <div class="num-label">중처법 양벌</div>
+      <div class="num-desc">사망 발생 시</div>
     </div>
-    <div class="sec-body open">
-      <div class="num-row">
-        <div class="num-badge n1"><span class="nb-num">20억</span><span class="nb-label">↑ 안전보건<br>관리책임자<br>§15</span></div>
-        <div class="num-badge n1"><span class="nb-num">100억</span><span class="nb-label">↑ 안전<br>관리자<br>§17</span></div>
-      </div>
-      <div class="card" style="margin-top:6px;">
-        <ul class="item-list">
-          <li><strong>안전보건관리책임자</strong> <span class="law-ref">§15</span> — 현장소장급 / 공사금액 20억↑</li>
-          <li><strong>안전관리자</strong> <span class="law-ref">§17</span> — 100억↑ (공사규모별 인원 차등)</li>
-          <li><strong>관리감독자</strong> <span class="law-ref">§16</span> — 직장·조장 등 작업 관리·감독자</li>
-          <li><strong>안전보건총괄책임자</strong> <span class="law-ref">§62</span> — 도급 시 원청 선임 (100명↑ 또는 20억↑)</li>
-        </ul>
-      </div>
+    <div class="num-card">
+      <div class="num-value nv-green">3년</div>
+      <div class="num-unit">서류 보존</div>
+      <div class="num-label">산안법 제164조</div>
+      <div class="num-desc">안전조치 관련 서류</div>
     </div>
-  </div>
-
-  <!-- 안전보건조정자 (NEW) -->
-  <div class="section">
-    <div class="sec-header c1" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🤝</span>
-        <div><div class="sh-title c1 new-item">안전보건조정자 <span class="law-ref">§68</span></div>
-          <div class="sh-sub">2개 이상 도급사업 — 조정 의무</div></div>
-      </div><span class="sh-arrow open">▼</span>
+    <div class="num-card">
+      <div class="num-value" style="color:var(--purple)">5년</div>
+      <div class="num-unit">서류 보존</div>
+      <div class="num-label">지도사 업무서류</div>
+      <div class="num-desc">석면해체 30년 별도</div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--law1);">선임 대상 — 분리발주공사</div>
-        <ul class="item-list">
-          <li>같은 장소에서 <strong>2개 이상</strong> 건설공사 분리발주 시</li>
-          <li>총 공사금액 <strong>50억원 이상</strong>인 경우 <span class="law-ref">시행령 §56</span></li>
-          <li>발주자가 선임 — <strong>착공 전</strong>까지</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">조정자 자격</div>
-        <ul class="item-list">
-          <li>해당 공사의 <strong>안전보건관리책임자 자격자</strong></li>
-          <li>건설안전기술사·기사 + 실무경력</li>
-          <li>건설안전 분야 산업안전지도사</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--orange);">조정자 업무 4가지</div>
-        <ul class="item-list">
-          <li>① 작업 시기·내용·안전조치 등 <strong>조정</strong></li>
-          <li>② 각 공사의 <strong>혼재작업 위험성</strong> 파악</li>
-          <li>③ 혼재작업 위험요인 제거 등 <strong>조정사항 이행 점검</strong></li>
-          <li>④ 작업 변경 시 안전보건조치 등 조정</li>
-        </ul>
-      </div>
-      <div class="memo-block m1">
-        <div class="memo-type m1">🔢 핵심 숫자</div>
-        <div class="story">
-          <strong>"2개 이상·50억↑"</strong> — 분리발주 + 50억<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 발주자가 착공 전 선임 의무<br>→ 미선임 시 과태료 500만원↓</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 사전조사 및 작업계획서 (NEW - 핵심!) -->
-  <div class="section">
-    <div class="sec-header co" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📋</span>
-        <div><div class="sh-title co new-item">사전조사 및 작업계획서 <span class="law-ref">§38·별표4</span></div>
-          <div class="sh-sub">★ 시험 핵심 — 대상 공정 암기 필수!</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          위험작업 전 <strong>지형·지반·지층 사전조사</strong> + <strong>작업계획서 작성</strong> 의무<br>
-          <span style="color:var(--muted);font-size:11px;">2023.11.14 개정 반영 · 산안기준규칙 §38</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--orange);">작업계획서 작성 대상 작업 (별표4)</div>
-        <ul class="item-list">
-          <li>① <strong>타워크레인 설치·조립·해체</strong> 작업</li>
-          <li>② 차량계 하역운반기계 사용 작업</li>
-          <li>③ <strong>차량계 건설기계</strong> 사용 작업 (굴삭기·불도저 등)</li>
-          <li>④ <strong>화학설비·특수화학설비</strong> 정비·청소 작업</li>
-          <li>⑤ <strong>제조 등 금지물질·허가대상물질</strong> 취급 작업</li>
-          <li>⑥ <strong>밀폐공간</strong> 작업</li>
-          <li>⑦ <strong>중량물</strong> 취급 작업</li>
-          <li>⑧ <strong>궤도 작업</strong></li>
-          <li>⑨ <strong>전기작업</strong> (전압 50V↑ 또는 전기에너지 250VA↑)</li>
-          <li>⑩ 굴착면 높이 <strong>2m↑ 굴착작업</strong></li>
-          <li>⑪ <strong>터널 굴착</strong> 작업</li>
-          <li>⑫ 교량 — 최대 지간길이 <strong>30m↑</strong></li>
-          <li>⑬ 채석작업</li>
-          <li>⑭ <strong>건물 등의 해체</strong> 작업</li>
-          <li>⑮ <strong>중량물의 취급</strong> 작업</li>
-        </ul>
-      </div>
-      <div class="memo-block mo">
-        <div class="memo-type mo">🔤 두문자 (대표 8가지) "타차화밀중전굴터"</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">타</span><span class="acro-text"><em>타</em>워크레인 설치·해체</span></div>
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">차</span><span class="acro-text"><em>차</em>량계 건설기계</span></div>
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">화</span><span class="acro-text"><em>화</em>학설비 정비</span></div>
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">밀</span><span class="acro-text"><em>밀</em>폐공간</span></div>
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">중</span><span class="acro-text"><em>중</em>량물</span></div>
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">전</span><span class="acro-text"><em>전</em>기작업</span></div>
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">굴</span><span class="acro-text"><em>굴</em>착(2m↑)</span></div>
-          <div class="acro-item"><span class="acro-char" style="color:var(--orange);">터</span><span class="acro-text"><em>터</em>널·교량(30m↑)·해체</span></div>
-        </div>
-        <div class="acro-key" style="background:rgba(255,138,101,0.12);color:var(--orange);">→ "타차화밀중전굴터" 8가지 핵심 작업!</div>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">작업계획서 포함 내용</div>
-        <ul class="item-list">
-          <li><strong>작업방법·순서</strong> — 단계별 작업 절차</li>
-          <li><strong>유해·위험요인</strong> 및 안전조치</li>
-          <li>사용할 <strong>기계·기구·설비</strong></li>
-          <li><strong>작업지휘자</strong> 배치 계획</li>
-          <li><strong>관계 근로자</strong>에게 주지 의무</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- 화재감시자 (NEW - 핵심!) -->
-  <div class="section">
-    <div class="sec-header co" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔥</span>
-        <div><div class="sh-title co new-item">화재감시자 <span class="law-ref">§241조의2</span></div>
-          <div class="sh-sub">★ 시험 핵심 — 배치·지급·점검</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          <strong>용접·용단</strong> 작업 시 화재 위험 장소에 <strong>화재감시자</strong> 배치 의무<br>
-          <span style="color:var(--muted);font-size:11px;">산안기준규칙 §241조의2 (2018 신설)</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-label" style="color:var(--orange);">① 배치 기준 (3가지 장소)</div>
-        <ul class="item-list">
-          <li><strong>가연성 물질</strong>이 <strong>11m 이내</strong>에 있는 장소</li>
-          <li>작업 반경 <strong>11m 이내</strong> 바닥 하부에 가연성 물질 위치 시</li>
-          <li>가연성 물질이 금속 칸막이·벽·천장으로 분리되어 있어도<br><span style="font-size:11px;color:var(--muted);">→ 인접 부위 작업 시 화재 발생 우려가 있는 경우</span></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-label" style="color:var(--law2);">② 사업주의 지급 품목</div>
-        <ul class="item-list">
-          <li><strong>소화설비</strong> — 소화기 등 (작업장 비치)</li>
-          <li><strong>대피용 안전장구</strong></li>
-          <li><strong>방연마스크</strong> 또는 <strong>방진마스크</strong></li>
-          <li><strong>경보용 설비</strong> — 휴대용 확성기·휴대폰 등</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">③ 화재감시자 작업 전 점검사항</div>
-        <ul class="item-list">
-          <li>주변에 <strong>가연성 물질</strong> 존재 여부</li>
-          <li>가연성 물질의 <strong>위치·종류·수량</strong></li>
-          <li><strong>소화설비</strong>의 위치·작동 가능 여부</li>
-          <li><strong>대피경로</strong> 확보 여부</li>
-          <li><strong>경보장치</strong> 정상 작동 확인</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-label" style="color:var(--law4);">④ 화재감시자 작업 중 임무</div>
-        <ul class="item-list">
-          <li>작업 중 <strong>화재 발생 감시</strong></li>
-          <li>화재 발생 시 <strong>즉시 작업 중지</strong> 명령</li>
-          <li><strong>경보 발령</strong> 및 초기소화</li>
-          <li>대피 유도 및 119 신고</li>
-          <li>작업 종료 후 <strong>30분 이상 잔불 감시</strong></li>
-        </ul>
-      </div>
-
-      <div class="memo-block mo">
-        <div class="memo-type mo">🔢 핵심 숫자</div>
-        <div class="story">
-          <strong>"11m·30분"</strong><br>
-          가연물 11m 이내 → 화재감시자 배치<br>
-          작업 종료 후 30분↑ 잔불 감시<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ "11과 30 — 화재감시자의 두 숫자"</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 유해위험방지계획서 -->
-  <div class="section">
-    <div class="sec-header c1" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📄</span>
-        <div><div class="sh-title c1">유해위험방지계획서 (유방) <span class="law-ref">§42·43</span></div>
-          <div class="sh-sub">착공 15일 전 공단 제출</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--law1);">제출대상 — 건설공사</div>
-        <ul class="item-list">
-          <li>지상높이 <strong>31m 이상</strong> 건축물</li>
-          <li>연면적 <strong>3만㎡ 이상</strong> 건축물</li>
-          <li>터널·교량(최대지간 50m↑)·다목적댐</li>
-          <li>굴착깊이 <strong>10m 이상</strong> 굴착공사</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">절차</div>
-        <ul class="item-list">
-          <li>착공 <strong>15일 전</strong> — 산업안전보건공단 제출</li>
-          <li>심사 결과 — 적정 / 조건부적정 / 부적정</li>
-          <li>부적정 — <strong>착공 불가</strong></li>
-        </ul>
-      </div>
-      <div class="memo-block m1">
-        <div class="memo-type m1">🔤 두문자 "공안공비" — 포함내용</div>
-        <div class="acro-key">공사개요·안전관리조직·공정별 위험요인·비상조치</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 작업중지 명령해제 (NEW) -->
-  <div class="section">
-    <div class="sec-header c1" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🛑</span>
-        <div><div class="sh-title c1 new-item">중대재해 작업중지 명령·해제 <span class="law-ref">§55</span></div>
-          <div class="sh-sub">중대재해 발생 시 의무</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--law2);">작업중지 명령 사유</div>
-        <ul class="item-list">
-          <li>중대재해 발생 → <strong>고용노동부 장관</strong> 작업중지 명령</li>
-          <li>중대재해 우려 시 — <strong>전부 또는 일부</strong> 중지 가능</li>
-          <li>위반 시 — <strong>5년 이하 징역 / 5천만원 이하 벌금</strong></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">해제 절차</div>
-        <ul class="item-list">
-          <li>사업주 — <strong>해제 신청서</strong> 제출</li>
-          <li>지방고용노동관서장 — 안전·보건 조치 확인</li>
-          <li><strong>안전보건개선계획</strong> 이행 확인 후 해제</li>
-          <li>해제 심의위원회 운영 가능</li>
-        </ul>
-      </div>
+    <div class="num-card">
+      <div class="num-value" style="color:var(--teal)">30년</div>
+      <div class="num-unit">서류 보존</div>
+      <div class="num-label">석면해체 제거</div>
+      <div class="num-desc">제164조 제6항</div>
     </div>
   </div>
 
 </div>
 
+<!-- ══════════════════════════════════════
+     탭2: 산안법 2026 개정
+══════════════════════════════════════ -->
+<div id="sanlaw" class="section">
 
-<!-- ══════════════════════
-     TAB 2 : 중처법
-══════════════════════ -->
-<div id="t2" class="page-section">
+  <div class="sec-hdr"><span class="sec-hdr-label">2026 개정 타임라인</span><div class="sec-hdr-line"></div></div>
 
-  <div class="section">
-    <div class="sec-header c2" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔴</span>
-        <div><div class="sh-title c2">중대재해처벌법 개요</div>
-          <div class="sh-sub">2021년 제정 · 2024년 5인 이상 전면확대</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>목적 — 경영책임자 <strong>형사처벌</strong> 강화</li>
-          <li>중대산업재해 + 중대시민재해 적용</li>
-          <li>의무주체 — <strong>경영책임자(CEO급)</strong></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header c2" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔢</span>
-        <div><div class="sh-title c2">중대산업재해 정의 — 1·2·3 법칙</div>
-          <div class="sh-sub">암기 필수</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="num-row">
-        <div class="num-badge n2"><span class="nb-num">1명</span><span class="nb-label">사망자<br>이상</span></div>
-        <div class="num-badge n2"><span class="nb-num">2명</span><span class="nb-label">부상자<br>(6개월↑)</span></div>
-        <div class="num-badge n2"><span class="nb-num">3명</span><span class="nb-label">질병자<br>(1년내)</span></div>
-      </div>
-      <div class="acro-key" style="margin-top:8px;background:rgba(239,83,80,0.12);color:var(--law2);">
-        → "사망1·부상2·질병3" 1·2·3 법칙!
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header c2" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔤</span>
-        <div><div class="sh-title c2">경영책임자 4대 의무 — 체법인전</div>
-          <div class="sh-sub">시행령 §4 — 안전보건 확보 의무</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="memo-block m2">
-        <div class="memo-type m2">🔤 두문자 암기</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char c2">체</span><span class="acro-text"><em>체계</em> 구축 — 안전보건관리체계 수립·이행</span></div>
-          <div class="acro-item"><span class="acro-char c2">법</span><span class="acro-text"><em>법령</em> 의무이행 점검</span></div>
-          <div class="acro-item"><span class="acro-char c2">인</span><span class="acro-text"><em>인력·예산</em> 확보</span></div>
-          <div class="acro-item"><span class="acro-char c2">전</span><span class="acro-text"><em>전담조직</em> 구성</span></div>
+  <div class="card">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot new">🆕</div>
+        <div class="tl-body">
+          <div class="tl-date">2026.8.1 시행</div>
+          <div class="tl-title">제10조의2 안전보건 현황 공시 신설</div>
+          <div class="tl-desc">일정 수 이상 사업주·공공기관이 <strong>안전보건관리체제, 산재발생현황, 안전보건투자, 재발방지대책 등을 매년 공시</strong> 의무화</div>
         </div>
-        <div class="acro-key" style="background:rgba(239,83,80,0.12);color:var(--law2);">→ "체법인전" 으로 외우자!</div>
       </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="sec-header c2" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🚨</span>
-        <div><div class="sh-title c2">처벌기준 — 3법 중 최고</div>
-          <div class="sh-sub">"최소 1년 · 최대 50억"</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="memo-block m2">
-        <div class="punish-item">
-          <div class="pi-row">
-            <span class="pi-label">징역</span>
-            <div class="pi-bar-bg"><div class="pi-bar" style="width:100%;background:var(--law2)"></div></div>
-            <span class="pi-val" style="color:var(--law2)">1년 이상 ⚡</span>
-          </div>
-          <div class="pi-row">
-            <span class="pi-label">벌금</span>
-            <div class="pi-bar-bg"><div class="pi-bar" style="width:100%;background:var(--law2)"></div></div>
-            <span class="pi-val" style="color:var(--law2)">10억 이하</span>
-          </div>
-          <div class="pi-row">
-            <span class="pi-label">법인</span>
-            <div class="pi-bar-bg"><div class="pi-bar" style="width:100%;background:var(--law2)"></div></div>
-            <span class="pi-val" style="color:var(--law2)">50억 이하 ⚡</span>
-          </div>
+      <div class="tl-item">
+        <div class="tl-dot amend">📝</div>
+        <div class="tl-body">
+          <div class="tl-date">2026.6.1 시행 (2027.1.1~)</div>
+          <div class="tl-title">제36조 위험성평가 대폭 강화</div>
+          <div class="tl-desc"><strong>근로자대표 참여권 신설</strong> (3항) · <strong>근로자 공유 의무</strong> (4항) · 미실시 과태료 신설 (50인↑: 2027.1.1, 50인↓: 2028.1.1)</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot amend">🔍</div>
+        <div class="tl-body">
+          <div class="tl-date">2026.6.1 시행</div>
+          <div class="tl-title">제56조 원인조사 대상 확대</div>
+          <div class="tl-desc">중대재해 외 <strong>화재·폭발·붕괴 등 산업재해</strong>도 원인조사 대상 추가. 공단·관계전문가 별도 조사 근거 마련</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot new">📋</div>
+        <div class="tl-body">
+          <div class="tl-date">2026.6.1 시행</div>
+          <div class="tl-title">제56조의2 재해조사보고서 공개 신설</div>
+          <div class="tl-desc">공단·관계전문가 재해조사보고서 작성 → 장관 제출 → <strong>공소 제기 후 공개</strong> 원칙 (알권리 보장)</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot notice">👥</div>
+        <div class="tl-body">
+          <div class="tl-date">2026.8.1 시행</div>
+          <div class="tl-title">제23조 명예산업안전감독관 강화</div>
+          <div class="tl-desc">근로자대표 추천 시 장관 <strong>의무 위촉</strong>. 감독 실시 시 명예감독관 <strong>참여 의무화</strong></div>
         </div>
       </div>
     </div>
   </div>
 
-</div>
+  <!-- 개정 조문 상세 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">개정 조문 상세</span><div class="sec-hdr-line"></div></div>
 
-
-<!-- ══════════════════════
-     TAB 3 : 건진법
-══════════════════════ -->
-<div id="t3" class="page-section">
-
-  <div class="section">
-    <div class="sec-header c3" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🏗️</span>
-        <div><div class="sh-title c3">건설기술진흥법 개요</div>
-          <div class="sh-sub">건설공사 전용 법령</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="article-card">
+    <div class="article-head">
+      <span class="article-num">제36조</span>
+      <span class="article-name">위험성평가의 실시</span>
+      <span class="article-tag chip-amend" style="font-size:8.5px;padding:2px 7px;border-radius:6px;background:rgba(96,165,250,0.15);color:var(--blue2)">2026 강화</span>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>목적 — 건설공사 품질·안전 확보</li>
-          <li>의무주체 — <strong>발주자·감리자·시공자</strong> 모두</li>
-        </ul>
-      </div>
+    <div class="article-body">
+      <div class="article-item">사업주는 유해·위험요인을 찾아내어 <strong>위험성의 크기가 허용 가능한 수준인지 결정</strong>하고, 감소대책을 수립하고 <em>이행</em>하여야 한다</div>
+      <div class="article-item i2">위험성평가 시 고용노동부령으로 정하는 바에 따라 <strong>해당 사업장의 근로자를 참여</strong>시켜야 한다</div>
+      <div class="article-item i3"><strong>근로자대표가 요구하면</strong> 위험성평가 시 근로자대표를 참여시켜야 한다 <span class="newbadge">2026 신설</span></div>
+      <div class="article-item i4">고용노동부령으로 정하는 위험성평가 관련 사항을 근로자에게 <strong>안전보건교육·설명회·게시·서면 또는 전자적 방법</strong>으로 알려야 한다 <span class="newbadge">2026 신설</span></div>
+      <div class="article-divider"></div>
+      <div class="article-point"><strong>⚡ 시험 포인트:</strong> ①근로자 참여 의무(기존) → ②근로자대표 참여권 신설 → ③공유 의무 신설 → ④미실시 과태료(1,000만원 이하). 과태료 시행 시기도 구분해서 암기</div>
     </div>
   </div>
 
-  <!-- 안전관리계획서 -->
-  <div class="section">
-    <div class="sec-header c3" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📋</span>
-        <div><div class="sh-title c3">안전관리계획서 <span class="law-ref">건진법 §62</span></div>
-          <div class="sh-sub">두문자 "공안공비안교"</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="article-card">
+    <div class="article-head">
+      <span class="article-num">제10조의2</span>
+      <span class="article-name">안전보건 현황 공시</span>
+      <span class="article-tag" style="font-size:8.5px;padding:2px 7px;border-radius:6px;background:rgba(248,113,113,0.15);color:var(--red)">신설</span>
     </div>
-    <div class="sec-body open">
-      <div class="num-row">
-        <div class="num-badge n3"><span class="nb-num">500억</span><span class="nb-label">↑ 토목공사</span></div>
-        <div class="num-badge n3"><span class="nb-num">200억</span><span class="nb-label">↑ 건축공사</span></div>
-        <div class="num-badge n3"><span class="nb-num">분기</span><span class="nb-label">1회↑<br>이행점검</span></div>
+    <div class="article-body">
+      <div class="article-item">대통령령으로 정하는 수 이상의 <strong>사업주, 공공기관, 지방공사·지방공단</strong>은 다음 사항을 <em>매년 공시</em>하여야 한다</div>
+      <div style="padding-left: 12px; margin: 6px 0;">
+        <div class="article-item" style="padding-left: 16px;">① 안전보건관리체제</div>
+        <div class="article-item i2" style="padding-left: 16px;">② 산업재해 발생 현황</div>
+        <div class="article-item i3" style="padding-left: 16px;">③ 전년도 안전보건 활동실적·해당연도 계획</div>
+        <div class="article-item i4" style="padding-left: 16px;">④ 안전보건에 관한 투자</div>
+        <div class="article-item" style="padding-left: 16px; margin-top: 2px;">⑤ 산업재해 재발방지 대책과 이행계획</div>
       </div>
-      <div class="memo-block m3">
-        <div class="memo-type m3">🔤 두문자</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char c3">공</span><span class="acro-text"><em>공</em>사개요·현장여건</span></div>
-          <div class="acro-item"><span class="acro-char c3">안</span><span class="acro-text"><em>안</em>전관리 조직·임무</span></div>
-          <div class="acro-item"><span class="acro-char c3">공</span><span class="acro-text"><em>공</em>종별 안전관리대책</span></div>
-          <div class="acro-item"><span class="acro-char c3">비</span><span class="acro-text"><em>비</em>상시 대응체계</span></div>
-          <div class="acro-item"><span class="acro-char c3">안</span><span class="acro-text"><em>안</em>전점검계획</span></div>
-          <div class="acro-item"><span class="acro-char c3">교</span><span class="acro-text"><em>교</em>육·훈련계획</span></div>
-        </div>
-        <div class="acro-key" style="background:rgba(102,187,106,0.12);color:var(--law3);">→ "공안공비안교"</div>
-      </div>
+      <div class="article-divider"></div>
+      <div class="article-point"><strong>⚡ 시행일:</strong> 2026.8.1 시행. <strong>ESG·안전공시 트렌드</strong>와 연계한 서술형 출제 가능. 공시 항목 5가지 암기 필수</div>
     </div>
   </div>
 
-  <!-- 안전관리비 (보강) -->
-  <div class="section">
-    <div class="sec-header c3" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">💰</span>
-        <div><div class="sh-title c3">건설업 산업안전보건관리비 <span class="law-ref">건진법</span></div>
-          <div class="sh-sub">발주자 계상 의무</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="article-card">
+    <div class="article-head">
+      <span class="article-num">제56조의2</span>
+      <span class="article-name">재해조사보고서의 작성·공개</span>
+      <span class="article-tag" style="font-size:8.5px;padding:2px 7px;border-radius:6px;background:rgba(248,113,113,0.15);color:var(--red)">신설</span>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>계상 의무 — <strong>발주자</strong> (설계 시 반영)</li>
-          <li>사용 의무 — <strong>수급인</strong> (원래 목적)</li>
-          <li>적용 — 공사금액 <strong>4천만원↑</strong></li>
-          <li>잔액 미사용 시 <strong>반환 의무</strong></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">계상 요율 (공사 종류별)</div>
-        <ul class="item-list">
-          <li>일반 건설공사(갑) — <strong>2.93%</strong></li>
-          <li>일반 건설공사(을) — <strong>1.86%</strong></li>
-          <li>중건설공사 (터널·댐·교량) — <strong>3.09%</strong> ⚡최고</li>
-          <li>특수 및 기타 — 1.57% 등</li>
-        </ul>
-      </div>
-      <div class="memo-block m3">
-        <div class="memo-type m3">🔤 사용항목 "안보교건스"</div>
-        <div class="acro-key" style="background:rgba(102,187,106,0.12);color:var(--law3);">
-          안전시설·보호구·교육·건강관리·스마트안전장비
+    <div class="article-body">
+      <div class="article-item">공단 또는 관계전문가는 원인조사 실시 시 <strong>발생원인과 재발방지대책</strong>을 포함한 재해조사보고서를 작성하여 장관에게 제출</div>
+      <div class="article-item i2">장관은 동종·유사 재해 예방을 위해 <strong>공소 제기 후 공개</strong>. 수사·재판 대상이 아닌 경우 공소 제기 전에도 공개 가능</div>
+      <div class="article-item i3">개인정보·영업비밀·진행 중인 재판에 관한 사항은 <strong>공개 제외</strong> 가능</div>
+      <div class="article-divider"></div>
+      <div class="article-point"><strong>⚡ 배경:</strong> 이천 물류창고 화재·광주 아파트 붕괴 등 중대재해 사후 투명성 요구 → <strong>국민 알권리 보장</strong>. 원인조사→보고서 작성→공소 제기→공개 흐름 암기</div>
+    </div>
+  </div>
+
+  <!-- 주요 구조 정리 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">안전보건관리체제 구조</span><div class="sec-hdr-line"></div></div>
+
+  <div class="flow-box">
+    <div class="flow-title">📋 안전보건관리체제 (산안법 제2장 제1절)</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-circle">14</div>
+        <div class="flow-content">
+          <div class="flow-name">이사회 보고·승인 (대표이사)</div>
+          <div class="flow-note">주식회사 중 대통령령으로 정하는 회사 — 매년 안전·보건 계획 수립하여 이사회 보고·승인 필요. 과태료 <em>1,000만원</em></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- DFS (NEW) -->
-  <div class="section">
-    <div class="sec-header c3" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🎨</span>
-        <div><div class="sh-title c3 new-item">DFS 설계안전성 검토 <span class="law-ref">건진법 §75조의2</span></div>
-          <div class="sh-sub">Design For Safety — 발주단계 안전</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          설계 단계에서 <strong>위험요소를 사전 도출·제거</strong><br>
-          시공·유지관리 단계의 위험을 <strong>설계 단계에서 차단</strong>
+      <div class="flow-step">
+        <div class="flow-circle">15</div>
+        <div class="flow-content">
+          <div class="flow-name">안전보건관리책임자</div>
+          <div class="flow-note">사업장 총괄 관리. 안전관리자·보건관리자 지휘·감독. 산재예방계획 수립 등 9가지 업무 총괄</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">대상 공사 (안전관리계획서 대상과 동일)</div>
-        <ul class="item-list">
-          <li>토목공사 <strong>500억↑</strong></li>
-          <li>건축공사 <strong>200억↑</strong></li>
-          <li>1종·2종 시설물 등</li>
-        </ul>
+      <div class="flow-step">
+        <div class="flow-circle">16</div>
+        <div class="flow-content">
+          <div class="flow-name">관리감독자</div>
+          <div class="flow-note">생산 관련 직접 지휘·감독 직위. 산안법 의무 + 건진법 안전관리책임자·담당자 겸임 간주</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law1);">DFS 절차</div>
-        <ul class="item-list">
-          <li>① 발주자 — 설계자에게 DFS 의뢰</li>
-          <li>② 설계자 — 위험요소 도출·평가·저감대책 수립</li>
-          <li>③ 발주자 — DFS 보고서 검토·확인</li>
-          <li>④ 시공자에게 위험요소 정보 제공</li>
-        </ul>
+      <div class="flow-step">
+        <div class="flow-circle">17</div>
+        <div class="flow-content">
+          <div class="flow-name">안전관리자</div>
+          <div class="flow-note">안전에 관한 기술적 사항 보좌·지도. 사업 규모별 전담 의무. 전문기관 위탁 가능</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">18</div>
+        <div class="flow-content">
+          <div class="flow-name">보건관리자</div>
+          <div class="flow-note">보건에 관한 기술적 사항 보좌·지도. 의사를 보건관리자로 둔 경우 산업보건의 불필요</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">24</div>
+        <div class="flow-content">
+          <div class="flow-name">산업안전보건위원회</div>
+          <div class="flow-note">근로자위원·사용자위원 동수 구성. 중대재해 포함 산재예방계획 등 심의·의결 필수</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- 정밀안전점검·진단 -->
-  <div class="section">
-    <div class="sec-header c3" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔍</span>
-        <div><div class="sh-title c3">건설안전점검 종류</div>
-          <div class="sh-sub">두문자 "정수정"</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 도급 안전 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">도급 시 산재예방 핵심</span><div class="sec-hdr-line"></div></div>
+
+  <div class="article-card">
+    <div class="article-head">
+      <span class="article-num">제58조</span>
+      <span class="article-name">유해한 작업의 도급금지</span>
+      <span class="article-tag chip-key" style="font-size:8.5px;padding:2px 7px;border-radius:6px;background:rgba(245,200,66,0.15);color:var(--gold)">출제 ★</span>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>정기점검</strong> — 주기적 일반 점검</li>
-          <li><strong>수시점검</strong> — 위험작업 전·후</li>
-          <li><strong>정밀점검</strong> — 구조적 위험 우려 시</li>
-        </ul>
-      </div>
+    <div class="article-body">
+      <div class="article-item"><strong>절대 도급금지 3가지</strong>: ① 도금작업 ② 수은·납·카드뮴 제련·주입·가공·가열 ③ 허가대상물질 제조·사용</div>
+      <div class="article-item i2">예외: 일시·간헐적 작업 / 전문기술로 필수 불가결 + <strong>장관 승인</strong> (유효기간 3년, 연장 가능)</div>
+      <div class="article-item i3">도급금지 위반 시 <strong>과징금 10억원 이하</strong> (제161조)</div>
+      <div class="article-divider"></div>
+      <div class="article-point"><strong>⚡ 적격 수급인 선정 의무 (제61조):</strong> 사업주는 산재예방 조치 능력을 갖춘 사업주에게 도급해야 한다</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ct-icon">🏗️</span> 건설공사 산재예방 핵심 조문</div>
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <tr>
+          <th style="width:22%">조문</th>
+          <th>핵심 내용</th>
+          <th style="width:18%">과태료</th>
+        </tr>
+        <tr>
+          <td>제67조</td>
+          <td>건설공사발주자 계획·설계·시공 단계 안전조치 (기본·설계·공사 안전보건대장)</td>
+          <td class="red">1,000만원↓</td>
+        </tr>
+        <tr>
+          <td>제68조</td>
+          <td>안전보건조정자 — 2개 이상 공사 동일 장소 시 배치</td>
+          <td class="red">500만원↓</td>
+        </tr>
+        <tr>
+          <td>제69조</td>
+          <td>공사기간 단축·위험 공법변경 <strong>금지</strong></td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>제72조</td>
+          <td>산업안전보건관리비 계상 의무 (도급금액 또는 사업비에 포함)</td>
+          <td class="red">1,000만원↓</td>
+        </tr>
+        <tr>
+          <td>제73조</td>
+          <td>재해예방 지도 (건설재해예방전문지도기관과 지도계약 체결)</td>
+          <td class="red">300만원↓</td>
+        </tr>
+      </table>
     </div>
   </div>
 
 </div>
 
+<!-- ══════════════════════════════════════
+     탭3: 중대재해처벌법
+══════════════════════════════════════ -->
+<div id="jungcheo" class="section">
 
-<!-- ══════════════════════
-     TAB 4 : 지안법·시안법 (NEW)
-══════════════════════ -->
-<div id="t4" class="page-section">
+  <div class="sec-hdr"><span class="sec-hdr-label">중대재해처벌법 핵심</span><div class="sec-hdr-line"></div></div>
 
-  <!-- 지안법 -->
-  <div class="section">
-    <div class="sec-header c4" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⛏️</span>
-        <div><div class="sh-title c4 new-item">지안법 (지하안전관리에 관한 특별법)</div>
-          <div class="sh-sub">2018 시행 · 싱크홀 예방 핵심</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 중대재해 정의 -->
+  <div class="card">
+    <div class="card-title"><span class="ct-icon">⚠️</span> 중대재해 정의 (3가지)</div>
+    <div style="display:grid;gap:7px;">
+      <div style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:var(--r-sm);padding:10px 12px;">
+        <div style="font-size:10px;font-weight:800;color:var(--red);margin-bottom:3px;">중대산업재해 ①</div>
+        <div style="font-size:11.5px;font-weight:700;color:var(--text);">사망자 1명 이상 발생</div>
+      </div>
+      <div style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:var(--r-sm);padding:10px 12px;">
+        <div style="font-size:10px;font-weight:800;color:var(--red);margin-bottom:3px;">중대산업재해 ②</div>
+        <div style="font-size:11.5px;font-weight:700;color:var(--text);">동시에 6개월 이상 치료 필요 부상자 2명 이상</div>
+      </div>
+      <div style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:var(--r-sm);padding:10px 12px;">
+        <div style="font-size:10px;font-weight:800;color:var(--red);margin-bottom:3px;">중대산업재해 ③</div>
+        <div style="font-size:11.5px;font-weight:700;color:var(--text);">동일 유해요인 직업성 질병자 1년 내 10명 이상</div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 제정 배경</div>
-        <div class="keyfact-body">
-          서울 석촌동 싱크홀 사고(2014) 등 → <strong>지반침하 사고 예방</strong><br>
-          지하개발사업의 안전관리 강화 목적
+  </div>
+
+  <!-- 경영책임자 의무 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">경영책임자 의무 (제4조)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="flow-box">
+    <div class="flow-title">🔑 안전보건 확보의무 4대 영역</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-circle">①</div>
+        <div class="flow-content">
+          <div class="flow-name">안전보건 관리체계 구축·이행</div>
+          <div class="flow-note">안전보건 목표·경영방침 설정 / 전담조직 구성 / 유해위험요인 확인·개선 절차 마련 / 예산 편성 지원</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law4);">지하안전평가 — 굴착깊이 20m↑</div>
-        <ul class="item-list">
-          <li><strong>굴착깊이 20m↑</strong> 굴착공사</li>
-          <li><strong>터널공사</strong> (산악·수저터널 제외)</li>
-          <li>지하도시·지하상가 신축</li>
-          <li><strong>착공 전</strong> 평가 의무</li>
-        </ul>
+      <div class="flow-step">
+        <div class="flow-circle">②</div>
+        <div class="flow-content">
+          <div class="flow-name">안전보건 관계 법령 의무 이행</div>
+          <div class="flow-note">산안법·건진법 등 법령상 의무사항 이행 여부 <em>반기 1회 이상</em> 점검</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">소규모 지하안전평가 — 굴착깊이 10m↑20m↓</div>
-        <ul class="item-list">
-          <li>굴착깊이 <strong>10m↑20m↓</strong> 굴착공사</li>
-          <li>지하안전영향 평가 간소화</li>
-        </ul>
+      <div class="flow-step">
+        <div class="flow-circle">③</div>
+        <div class="flow-content">
+          <div class="flow-name">도급·용역·위탁 시 안전보건 확보</div>
+          <div class="flow-note">제3자에게 업무 위탁 시 안전보건 비용 반영 / 기준·절차 마련 및 이행 확인</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--orange);">지하안전평가 항목 (5가지)</div>
-        <ul class="item-list">
-          <li>① <strong>지반·지질</strong> 현황 조사</li>
-          <li>② <strong>지하수 변화</strong> 영향</li>
-          <li>③ <strong>지반침하</strong> 영향 검토</li>
-          <li>④ <strong>지하매설물</strong> 안전 검토</li>
-          <li>⑤ <strong>안전 확보</strong> 조치 방안</li>
-        </ul>
-      </div>
-      <div class="memo-block m4">
-        <div class="memo-type m4">🔢 핵심 숫자</div>
-        <div class="story">
-          <strong>"10·20m"</strong> — 소규모 10m / 일반 20m<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 굴착깊이 기준으로 평가 등급 결정</span>
+      <div class="flow-step">
+        <div class="flow-circle">④</div>
+        <div class="flow-content">
+          <div class="flow-name">중대재해 발생 시 재발방지</div>
+          <div class="flow-note">재발방지 대책 수립·이행 / 유사 사업장 전파 / 개선 완료 시까지 확인</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 시안법 -->
-  <div class="section">
-    <div class="sec-header c4" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🏛️</span>
-        <div><div class="sh-title c4 new-item">시안법 (시설물안전법)</div>
-          <div class="sh-sub">시설물의 안전 및 유지관리에 관한 특별법</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 처벌 기준 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">처벌 기준</span><div class="sec-hdr-line"></div></div>
+  <div class="penalty-grid">
+    <div class="penalty-item">
+      <div class="penalty-level pl-1">사망</div>
+      <div class="penalty-body">
+        <div class="penalty-title">경영책임자</div>
+        <div class="penalty-desc"><strong>1년 이상 징역</strong> 또는 <strong>10억원 이하 벌금</strong> 병과 가능. 재범 시 50% 가중</div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심</div>
-        <div class="keyfact-body">
-          시설물의 <strong>안전점검·정밀안전진단</strong> 실시 의무<br>
-          1·2·3종 시설물 등급별 관리
-        </div>
+    <div class="penalty-item">
+      <div class="penalty-level pl-1">사망</div>
+      <div class="penalty-body">
+        <div class="penalty-title">법인·기관</div>
+        <div class="penalty-desc"><strong>50억원 이하 벌금</strong> (양벌규정). 상당한 주의·감독 시 면책</div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law4);">시설물 등급</div>
-        <ul class="item-list">
-          <li><strong>1종 시설물</strong> — 대규모 (대형 교량·터널·댐·고층건물)</li>
-          <li><strong>2종 시설물</strong> — 1종 외 중규모 시설물</li>
-          <li><strong>3종 시설물</strong> — 안전관리 필요 인정 시설물 <span class="law-ref">법§8</span></li>
-        </ul>
+    </div>
+    <div class="penalty-item">
+      <div class="penalty-level pl-2">부상/질병</div>
+      <div class="penalty-body">
+        <div class="penalty-title">경영책임자</div>
+        <div class="penalty-desc">7년 이하 징역 또는 1억원 이하 벌금</div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law3);">안전점검 종류·주기</div>
-        <ul class="item-list">
-          <li><strong>정기안전점검</strong> — A·B·C등급 반기 1회 / D·E등급 1년 3회</li>
-          <li><strong>정밀안전점검</strong> — 1·2종 정기 (2~3년 주기)</li>
-          <li><strong>긴급안전점검</strong> — 사고 우려 시 즉시</li>
-          <li><strong>정밀안전진단</strong> — 1종 시설물 (5~6년 주기)</li>
-        </ul>
+    </div>
+    <div class="penalty-item">
+      <div class="penalty-level pl-2">부상/질병</div>
+      <div class="penalty-body">
+        <div class="penalty-title">법인·기관</div>
+        <div class="penalty-desc">10억원 이하 벌금</div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--orange);">시설물 안전등급 (A~E)</div>
-        <ul class="item-list">
-          <li><strong>A등급</strong> — 우수</li>
-          <li><strong>B등급</strong> — 양호</li>
-          <li><strong>C등급</strong> — 보통</li>
-          <li><strong>D등급</strong> — 미흡 (사용제한 검토)</li>
-          <li><strong>E등급</strong> — 불량 (즉시 사용금지)</li>
-        </ul>
+    </div>
+    <div class="penalty-item">
+      <div class="penalty-level pl-3">징벌적</div>
+      <div class="penalty-body">
+        <div class="penalty-title">손해배상 (제15조)</div>
+        <div class="penalty-desc">손해액의 <strong>5배 이내</strong> 징벌적 손해배상 (고의·중과실)</div>
       </div>
     </div>
   </div>
 
-  <!-- 공정안전보고서 PSM (NEW) -->
-  <div class="section">
-    <div class="sec-header c4" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⚗️</span>
-        <div><div class="sh-title c4 new-item">공정안전보고서 (PSM) <span class="law-ref">산안법 §44~46</span></div>
-          <div class="sh-sub">Process Safety Management</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          <strong>중대산업사고 예방</strong>을 위한 공정안전관리 보고서<br>
-          유해·위험 설비 보유 사업장 의무
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law4);">제출 대상</div>
-        <ul class="item-list">
-          <li>원유 정제·석유화학 등 <strong>7개 업종</strong></li>
-          <li>유해·위험물질 <strong>규정수량 이상</strong> 취급</li>
-          <li>설치·이전·변경 시 <strong>30일 전</strong> 제출</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--law1);">PSM 12대 요소</div>
-        <ul class="item-list">
-          <li>① 공정안전자료 ② 위험성평가</li>
-          <li>③ 안전운전 절차 ④ 설비 점검·정비</li>
-          <li>⑤ 안전작업 허가 ⑥ 도급업체 안전</li>
-          <li>⑦ 근로자 교육 ⑧ 가동전 점검</li>
-          <li>⑨ 변경요소 관리 ⑩ 자체감사</li>
-          <li>⑪ 공정사고 조사 ⑫ 비상조치 계획</li>
-        </ul>
-      </div>
-      <div class="memo-block m4">
-        <div class="memo-type m4">💡 건설현장 연계</div>
-        <div class="story">
-          건설현장 <strong>화학설비 정비·해체</strong> 시 PSM 적용 가능<br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 작업계획서(§38)와 PSM 연계 검토</span>
-        </div>
-      </div>
+  <!-- 산안법과 차이점 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">산안법 vs 중처법 핵심 차이</span><div class="sec-hdr-line"></div></div>
+  <div class="card">
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <tr>
+          <th>구분</th>
+          <th>산안법</th>
+          <th>중처법</th>
+        </tr>
+        <tr><td>처벌대상</td><td>사업주·관리자</td><td class="red">경영책임자(CEO)</td></tr>
+        <tr><td>의무성격</td><td>구체적 안전조치</td><td class="red">체계 구축 의무</td></tr>
+        <tr><td>처벌방식</td><td>결과책임</td><td class="red">의무위반 책임</td></tr>
+        <tr><td>사망 최저형</td><td class="gold">없음 (7년 이하)</td><td class="red">1년 이상 (하한)</td></tr>
+        <tr><td>법인 최고벌금</td><td>10억원↓</td><td class="red">50억원↓</td></tr>
+        <tr><td>징벌배상</td><td>없음</td><td class="red">5배 이내</td></tr>
+      </table>
     </div>
   </div>
 
 </div>
 
+<!-- ══════════════════════════════════════
+     탭4: 건진법·지안법·시안법
+══════════════════════════════════════ -->
+<div id="etc" class="section">
 
-<!-- ══════════════════════
-     TAB 5 : 핵심제도
-══════════════════════ -->
-<div id="tg" class="page-section">
+  <div class="sec-hdr"><span class="sec-hdr-label">건설기술진흥법 핵심</span><div class="sec-hdr-line"></div></div>
 
-  <!-- 사망만인율 (NEW) -->
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📊</span>
-        <div><div class="sh-title cg new-item">사망만인율 (사망사고만인율)</div>
-          <div class="sh-sub">건설업 사망사고 핵심 지표</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--gold);">정의·산식</div>
-        <ul class="item-list">
-          <li>근로자 <strong>1만 명당 사망자 수</strong></li>
-          <li><strong>사망만인율 = (사망자수 / 근로자수) × 10,000</strong></li>
-          <li>건설업 — 전 산업 평균의 <strong>2~3배</strong></li>
-        </ul>
-      </div>
-      <div class="memo-block mg">
-        <div class="memo-type mg">💡 정책 연계</div>
-        <div class="story">
-          <strong>중대재해감축로드맵 핵심 지표</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 2030년까지 사망만인율 0.29‱ → 0.14‱ 목표<br>→ OECD 평균 수준 도달이 정부 목표</span>
+  <div class="card">
+    <div class="card-title"><span class="ct-icon">🏛️</span> DFS (설계안전성검토)</div>
+    <div class="flow-steps" style="margin-bottom:0;">
+      <div class="flow-step">
+        <div class="flow-circle" style="width:24px;height:24px;font-size:10px;">기</div>
+        <div class="flow-content">
+          <div class="flow-name">기본설계 단계</div>
+          <div class="flow-note">안전 위험요소 파악 → 저감방안 수립</div>
         </div>
       </div>
+      <div class="flow-step">
+        <div class="flow-circle" style="width:24px;height:24px;font-size:10px;">실</div>
+        <div class="flow-content">
+          <div class="flow-name">실시설계 단계</div>
+          <div class="flow-note">안전성 검토보고서 작성 → 발주자 제출</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle" style="width:24px;height:24px;font-size:10px;">시</div>
+        <div class="flow-content">
+          <div class="flow-name">시공 단계</div>
+          <div class="flow-note">설계 안전성 검토 내용 반영 여부 확인</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;" class="article-point">
+      <strong>⚡ 핵심:</strong> DFS는 <strong>발주자 의무</strong>. 설계안전성검토 ≠ 유해위험방지계획서 (별개). 산안법 제67조와 연계
     </div>
   </div>
 
-  <!-- CSI (NEW) -->
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">💻</span>
-        <div><div class="sh-title cg new-item">CSI (건설공사 안전관리 종합정보망)</div>
-          <div class="sh-sub">Construction Safety Management Integrated Information</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="card">
+    <div class="card-title"><span class="ct-icon">📋</span> 안전관리계획서</div>
+    <div style="display:grid;gap:6px;">
+      <div class="article-item">수립 대상: <strong>1·2종 시설물, 지하 10m 이상 굴착, 폭발물 사용 공사</strong> 등</div>
+      <div class="article-item i2">제출: 착공 전 발주청 또는 인허가기관에 제출·승인</div>
+      <div class="article-item i3">유해위험방지계획서(산안법)와 중복 시 통합 작성 가능</div>
     </div>
-    <div class="sec-body open">
-      <div class="keyfact">
-        <div class="keyfact-title">⚡ 핵심 개념</div>
-        <div class="keyfact-body">
-          국토교통부 운영 <strong>건설안전 통합 플랫폼</strong><br>
-          안전관리계획서 제출·검토·이행점검 통합 관리
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--gold);">주요 기능</div>
-        <ul class="item-list">
-          <li>안전관리계획서 <strong>전자 제출·검토</strong></li>
-          <li>건설사고 통계·사례 DB</li>
-          <li>설계안전성검토(DFS) 정보 관리</li>
-          <li>현장 점검 결과 등록</li>
-          <li>건설안전 관련 법령·지침 제공</li>
-        </ul>
-      </div>
+    <div style="margin-top:8px;" class="article-point">
+      <strong>⚡ 구분:</strong> 건진법 안전관리계획 = <em>공사 전체 안전</em> / 산안법 유해위험방지계획서 = <em>특정 공사·기계 유해위험</em>
     </div>
   </div>
 
-  <!-- 적극 안전 (NEW) -->
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🛡️</span>
-        <div><div class="sh-title cg new-item">적극 안전 (Active Safety)</div>
-          <div class="sh-sub">안전을 유지하는 방법</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">지하안전관리에 관한 특별법 (지안법)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="display:grid;gap:7px;">
+      <div class="article-item"><strong>목적</strong>: 지하개발·이용 과정에서 지반침하 예방, 안전 확보</div>
+      <div class="article-item i2"><strong>지하안전영향평가</strong>: 굴착 깊이 20m 이상 또는 연면적 3만㎡ 이상 지하시설 설치 시</div>
+      <div class="article-item i3"><strong>소규모 지하안전영향평가</strong>: 굴착 깊이 10m 이상 20m 미만</div>
+      <div class="article-item i4"><strong>지반침하위험도평가</strong>: 지하 굴착공사 중 지반 상태 변화 모니터링</div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--gold);">개념</div>
-        <ul class="item-list">
-          <li>위험을 <strong>사전에 발견·제거</strong>하는 능동적 안전 활동</li>
-          <li>소극안전(사고 후 대응) ↔ <strong>적극안전(사전 예방)</strong></li>
-          <li>안전관리 = 안전교육 + 안전활동 + 안전점검</li>
-        </ul>
-      </div>
-      <div class="memo-block mg">
-        <div class="memo-type mg">💡 핵심 공식</div>
-        <div class="story">
-          <strong>"안전관리 = 교육 + 활동 + 점검"</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 3요소가 모두 작동해야 진정한 안전관리</span>
-        </div>
-      </div>
+    <div style="margin-top:8px;" class="article-point">
+      <strong>⚡ 핵심 수치:</strong> 20m↑ = 지하안전영향평가 / 10~20m = 소규모 / 싱크홀·지반침하 사고 → <em>지안법 연계 서술 가능</em>
     </div>
   </div>
 
-</div>
+  <div class="sec-hdr"><span class="sec-hdr-label">시설물 안전관리에 관한 특별법 (시안법)</span><div class="sec-hdr-line"></div></div>
 
-
-<!-- ══════════════════════
-     TAB 6 : 비교·답안
-══════════════════════ -->
-<div id="tp" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cp" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📊</span>
-        <div><div class="sh-title cp">5대 법령 핵심 비교표</div>
-          <div class="sh-sub">시험 단골 출제</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="card">
+    <div style="display:grid;gap:7px;">
+      <div class="article-item"><strong>1종 시설물</strong>: 교량·터널·댐·건축물·항만 등 대규모 (안전점검 6개월마다)</div>
+      <div class="article-item i2"><strong>2종 시설물</strong>: 1종 제외 교량·터널·건축물 등 (안전점검 1년마다)</div>
+      <div class="article-item i3"><strong>정밀안전진단</strong>: 1종 4~6년마다, 2종 1종 진단 후 6년 이내</div>
+      <div class="article-item i4"><strong>안전등급</strong>: A(우수)·B(양호)·C(보통)·D(미흡)·E(불량) — D·E 등급 정밀안전진단 즉시</div>
     </div>
-    <div class="sec-body open">
-      <div class="card" style="overflow-x:auto;">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th style="color:var(--gold);">구분</th>
-              <th class="v1">산안법</th>
-              <th class="v2">중처법</th>
-              <th class="v3">건진법</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>의무주체</td><td class="v1">사업주</td><td class="v2">경영책임자</td><td class="v3">발주·시공·감리</td></tr>
-            <tr><td>핵심제도</td><td>유해위험방지계획서</td><td>안전보건체계</td><td>안전관리계획서·DFS</td></tr>
-            <tr><td>재해기준</td><td>사망1·3개월부상2·질병10</td><td class="v2">사망1·6개월부상2·1년질병3</td><td>중대건설사고</td></tr>
-            <tr><td>징역</td><td class="v1">7년 이하</td><td class="v2">1년 이상 ⚡</td><td class="v3">3년 이하</td></tr>
-            <tr><td>벌금</td><td class="v1">1억 이하</td><td class="v2">10억 이하</td><td class="v3">3천만 이하</td></tr>
-            <tr><td>법인벌금</td><td class="v1">1억 이하</td><td class="v2">50억 이하 ⚡</td><td class="v3">해당 벌금</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div style="margin-top:8px;" class="article-point">
+      <strong>⚡ 빈출:</strong> 안전등급 5단계 A~E + 1·2종 구분 + 정밀안전진단 주기. 건설기술진흥법과 혼동 주의
     </div>
   </div>
 
-  <div class="section">
-    <div class="sec-header cp" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">✍️</span>
-        <div><div class="sh-title cp">시험 빈출 Q&A</div>
-          <div class="sh-sub">최신 출제 경향</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="qa-item">
-        <div class="qa-q">사전조사·작업계획서 작성 대상 작업 (§38)</div>
-        <div class="qa-a">
-          <span class="key">"타차화밀중전굴터" 8가지 핵심</span><br>
-          타워크레인·차량계기계·화학설비·밀폐공간<br>
-          중량물·전기·굴착(2m↑)·터널·교량(30m↑)
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">화재감시자 배치기준·지급품목·점검사항 (§241조의2)</div>
-        <div class="qa-a">
-          <span class="key">배치 — 가연물 11m 이내</span><br>
-          지급 — 소화설비·안전장구·방연마스크·경보설비<br>
-          점검 — 가연물·소화설비·대피경로·경보장치<br>
-          작업 후 <span class="key">30분↑ 잔불 감시</span>
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">안전보건조정자 선임기준·업무 (§68)</div>
-        <div class="qa-a">
-          선임 — <span class="key">2개 이상 분리발주 + 50억↑</span><br>
-          업무 — ①조정 ②혼재위험 파악 ③이행점검 ④작업변경 조정
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">중대재해 정의 — 산안법 vs 중처법</div>
-        <div class="qa-a">
-          <span class="key">산안법</span> — 사망1·3개월부상2·질병10<br>
-          <span class="key">중처법</span> — 사망1·6개월부상2·1년질병3<br>
-          <span style="font-size:11px;color:var(--muted);">→ 부상기준·질병숫자 차이 주의!</span>
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">지하안전평가 대상 (지안법)</div>
-        <div class="qa-a">
-          <span class="key">굴착깊이 20m↑</span> — 지하안전평가<br>
-          <span class="key">10m↑ 20m↓</span> — 소규모 지하안전평가<br>
-          착공 전 의무 평가
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">안전보건관리체계 6요소 (§14)</div>
-        <div class="qa-a">
-          <span class="key">"목조위교점개"</span><br>
-          목표·조직·위험성평가·교육·점검·개선
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">DFS (설계안전성검토) 절차</div>
-        <div class="qa-a">
-          ①발주자 의뢰 ②설계자 위험요소 도출·저감대책<br>
-          ③발주자 검토 ④시공자에게 위험요소 정보 제공<br>
-          <span class="key">→ 토목 500억↑·건축 200억↑</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- PSM -->
+  <div class="sec-hdr"><span class="sec-hdr-label">공정안전보고서 (PSM)</span><div class="sec-hdr-line"></div></div>
 
-  <!-- 답안 작성 공식 -->
-  <div class="section">
-    <div class="sec-header cp" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📝</span>
-        <div><div class="sh-title cp">법령 문제 답안 공식</div>
-          <div class="sh-sub">모든 법령 문제 공통</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="flow-wrap">
-        <div class="flow-step"><span class="fs-tag tp">①</span><div class="fs-content"><strong>개요·정의</strong> — 용어 정의·법 목적</div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><span class="fs-tag tp">②</span><div class="fs-content"><strong>법적 근거</strong> — 조문번호 명시 (§38, §241조의2 등)</div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><span class="fs-tag tp">③</span><div class="fs-content"><strong>주요 내용</strong> — 의무·기준·절차·숫자</div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><span class="fs-tag tp">④</span><div class="fs-content"><strong>비교·분석</strong> — 타 법령과 차이점</div></div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-step"><span class="fs-tag tp">⑤</span><div class="fs-content"><strong>시사점</strong> — 최신 사례·중대재해감축로드맵</div></div>
+  <div class="card">
+    <div class="card-title"><span class="ct-icon">⚗️</span> PSM (Process Safety Management)</div>
+    <div class="flow-steps" style="margin-bottom:0;">
+      <div class="flow-step">
+        <div class="flow-circle" style="font-size:9px;">작</div>
+        <div class="flow-content">
+          <div class="flow-name">공정안전보고서 작성</div>
+          <div class="flow-note">유해·위험설비가 있는 사업주. 산업안전보건위원회 심의 거쳐 작성</div>
+        </div>
       </div>
+      <div class="flow-step">
+        <div class="flow-circle" style="font-size:9px;">제</div>
+        <div class="flow-content">
+          <div class="flow-name">고용노동부장관에 제출·심사</div>
+          <div class="flow-note">심사 후 <em>적합 통보 전</em> 관련 설비 가동 금지</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle" style="font-size:9px;">확</div>
+        <div class="flow-content">
+          <div class="flow-name">이행상태 정기평가</div>
+          <div class="flow-note">고용노동부장관이 정기적으로 이행 상태 평가</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;" class="article-point">
+      <strong>⚡ PSM vs 위험성평가:</strong> PSM = 법정 의무 (대규모 화학 설비) / 위험성평가 = 모든 사업장. PSM 제출 시 해당 설비의 유해위험방지계획서 <em>제출 면제</em>
     </div>
   </div>
 
 </div>
+
+<!-- ══════════════════════════════════════
+     탭5: 암기법
+══════════════════════════════════════ -->
+<div id="mnemonics" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">D01 핵심 암기법</span><div class="sec-hdr-line"></div></div>
+
+  <div class="mnemonic-card">
+    <div class="mn-domain">산안법 목적 (제1조)</div>
+    <div class="mn-key">기소예쾌유</div>
+    <div class="mn-expand">
+      <span>기</span>준 확립 → <span>소</span>재 명확 → <span>예</span>방 → <span>쾌</span>적한 작업환경 → <span>유</span>지·증진
+    </div>
+    <div class="mn-tip">💡 "기소예쾌유" — 산안법 1조 목적 5단어</div>
+  </div>
+
+  <div class="mnemonic-card mn-red">
+    <div class="mn-domain">중처법 중대산업재해 3유형</div>
+    <div class="mn-key">사부질</div>
+    <div class="mn-expand">
+      <span>사</span>망 1명↑ / <span>부</span>상 6개월↑ 2명↑(동시) / <span>질</span>병 10명↑(1년 내)
+    </div>
+    <div class="mn-tip">💡 "사부질" — 1명·2명·10명 숫자도 함께 암기</div>
+  </div>
+
+  <div class="mnemonic-card mn-red">
+    <div class="mn-domain">중처법 처벌 수치</div>
+    <div class="mn-key">사망: 1년↑ 10억↓ 50억↓</div>
+    <div class="mn-expand">
+      경영책임자: <span>1년 이상 징역·10억 이하 벌금</span> / 법인: <span>50억 이하 벌금</span>
+    </div>
+    <div class="mn-tip">💡 "1-10-50" 세트로 암기. 산안법(7년↓·1억↓·10억↓)과 구분</div>
+  </div>
+
+  <div class="mnemonic-card mn-green">
+    <div class="mn-domain">안전보건관리체제 순서 (산안법 제2장)</div>
+    <div class="mn-key">이책감안보담</div>
+    <div class="mn-expand">
+      <span>이</span>사회·<span>책</span>임자·<span>감</span>독자·<span>안</span>전관리자·<span>보</span>건관리자·<span>담</span>당자 (제14~19조)
+    </div>
+    <div class="mn-tip">💡 조문 순서 그대로 — 서술형 조직 설명 시 이 순서로 전개</div>
+  </div>
+
+  <div class="mnemonic-card mn-gold">
+    <div class="mn-domain">안전보건 현황 공시 항목 (제10조의2) — 2026 신설</div>
+    <div class="mn-key">체재활투재</div>
+    <div class="mn-expand">
+      안전보건 관리<span>체</span>제 / 산<span>재</span>발생 현황 / 안전보건 <span>활</span>동실적·계획 / <span>투</span>자 / <span>재</span>발방지 대책
+    </div>
+    <div class="mn-tip">💡 "체재활투재" 5가지. 2026.8.1 시행 — 서술형 문제 유력</div>
+  </div>
+
+  <div class="mnemonic-card mn-teal">
+    <div class="mn-domain">도급금지 3가지 작업 (제58조)</div>
+    <div class="mn-key">도수허</div>
+    <div class="mn-expand">
+      <span>도</span>금작업 / <span>수</span>은·납·카드뮴 제련 / <span>허</span>가대상물질 제조·사용
+    </div>
+    <div class="mn-tip">💡 "도수허" — 절대 도급금지. 위반 시 과징금 10억원 이하</div>
+  </div>
+
+  <div class="mnemonic-card mn-purple">
+    <div class="mn-domain">서류 보존기간 (제164조)</div>
+    <div class="mn-key">2년·3년·5년·30년</div>
+    <div class="mn-expand">
+      회의록 <span>2년</span> / 안전조치·건강진단·안전인증 등 <span>3년</span> / 지도사 업무 <span>5년</span> / 석면해체 <span>30년</span>
+    </div>
+    <div class="mn-tip">💡 석면 30년은 독보적 — 반드시 별도 암기</div>
+  </div>
+
+  <div class="mnemonic-card mn-green">
+    <div class="mn-domain">건설공사 발주자 안전조치 (제67조) — DFS 단계</div>
+    <div class="mn-key">기설시 → 기본·설계·공사 대장</div>
+    <div class="mn-expand">
+      <span>기</span>본안전보건대장 (계획단계) → <span>설</span>계안전보건대장 (설계단계) → <span>공</span>사안전보건대장 (시공단계)
+    </div>
+    <div class="mn-tip">💡 "기설공 대장" — 산안법 67조 + 건진법 DFS 연계 서술 활용</div>
+  </div>
+
+  <div class="mnemonic-card mn-red">
+    <div class="mn-domain">시설물 안전등급 (시안법)</div>
+    <div class="mn-key">A우 B양 C보 D미 E불</div>
+    <div class="mn-expand">
+      <span>A</span>우수 / <span>B</span>양호 / <span>C</span>보통 / <span>D</span>미흡 / <span>E</span>불량 — D·E는 즉시 정밀안전진단
+    </div>
+    <div class="mn-tip">💡 "A부터 E까지" — D·E 이하 즉시 진단·사용제한 연계</div>
+  </div>
+
+  <div class="mnemonic-card">
+    <div class="mn-domain">지하안전영향평가 기준 (지안법)</div>
+    <div class="mn-key">20m↑ 전체 / 10~20m 소규모</div>
+    <div class="mn-expand">
+      굴착 깊이 <span>20m 이상</span> → 지하안전영향평가 / <span>10m 이상 20m 미만</span> → 소규모 지하안전영향평가
+    </div>
+    <div class="mn-tip">💡 "10·20 기준선" — 싱크홀·지반침하 답안 법적 근거로 활용</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════
+     탭6: 기출문제
+══════════════════════════════════════ -->
+<div id="exams" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">D01 기출 핵심 (10년)</span><div class="sec-hdr-line"></div></div>
+
+  <!-- 서술형 -->
+  <div class="card-title" style="padding:4px 0 8px;font-size:11px;font-weight:800;color:var(--amber);">📝 서술형 (25점) — 출제 패턴</div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제135회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q">산업안전보건법상 <strong>위험성평가의 절차</strong>와 근로자 참여 방법에 대하여 설명하시오. (2026 개정 반영 필수)</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제133회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q"><strong>중대재해처벌법</strong>의 적용범위, 경영책임자 의무, 처벌기준을 산업안전보건법과 비교하여 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제130회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q">건설공사 발주자의 산업재해 예방조치(산안법 제67조)와 <strong>DFS(설계안전성검토)</strong>를 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제128회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q">산업안전보건법상 <strong>도급인의 안전보건조치 의무</strong>(제63~64조)와 안전보건총괄책임자 직무에 대해 설명하시오</div>
+  </div>
+
+  <!-- 단답형 -->
+  <div class="card-title" style="padding:12px 0 8px;font-size:11px;font-weight:800;color:var(--green);">📌 단답형 (10점) — 빈출 용어</div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제136회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q">산업안전보건법 제10조의2에 따른 <strong>안전보건 현황 공시</strong>의 내용을 5가지 쓰시오 (2026 신설)</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제134회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q">산업안전보건법상 <strong>유해한 작업의 도급금지</strong>(제58조) 3가지를 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제132회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q"><strong>중대재해처벌법상 중대산업재해</strong>의 정의 3가지를 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제129회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q">시설물 안전관리에 관한 특별법상 <strong>시설물 안전등급</strong> 5단계를 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제127회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q">산업안전보건법상 <strong>공정안전보고서(PSM)</strong> 작성 절차를 설명하시오</div>
+  </div>
+
+  <!-- 예상문제 -->
+  <div class="sec-hdr" style="margin-top:16px;"><span class="sec-hdr-label">2026 개정 반영 예상문제</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3);">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06);">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red);">8월 예상</span>
+      <span class="exam-type et-long">서술형</span>
+    </div>
+    <div class="exam-q">산업안전보건법 제36조(위험성평가)의 2026년 개정 내용을 설명하고, <strong>근로자대표 참여권 신설의 의의</strong>와 사업주의 공유 의무 이행방법을 논하시오</div>
+  </div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3);">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06);">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red);">8월 예상</span>
+      <span class="exam-type et-short">단답형</span>
+    </div>
+    <div class="exam-q">산업안전보건법 제56조의2(재해조사보고서)의 작성 주체, 공개 원칙, 공개 제외 사항을 설명하시오</div>
+  </div>
+
+</div>
+
+</div><!-- /body -->
 
 <script>
-  function showTab(id,btn){
-    document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function toggleSec(header){
-    const body=header.nextElementSibling;
-    const arrow=header.querySelector('.sh-arrow');
-    const isOpen=body.classList.contains('open');
-    body.classList.toggle('open',!isOpen);
-    arrow.classList.toggle('open',!isOpen);
-  }
-  window.addEventListener('scroll',()=>{
-    const doc=document.documentElement;
-    const pct=doc.scrollTop/(doc.scrollHeight-doc.clientHeight)*100;
-    document.getElementById('prog').style.width=pct+'%';
-  });
+function goTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
