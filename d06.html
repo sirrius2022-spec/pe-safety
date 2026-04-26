@@ -2,964 +2,883 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>건설안전기술사 D06 — 건설기계·양중</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#090c14">
+<title>D06 건설기계·양중 — 건설안전기술사</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-  :root {
-    --bg:#0d1117; --card:#161b27; --card2:#1c2235; --border:#252d42;
-    --a:#ef5350; --b:#ffb74d; --c:#4fc3f7; --d:#66bb6a; --e:#ce93d8;
-    --gold:#ffd54f; --text:#dde3ee; --muted:#6b7a99;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);max-width:600px;margin:0 auto;padding:0 0 40px;}
-  .progress-bar{height:3px;background:var(--border);position:sticky;top:0;z-index:200;}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--d));width:0%;transition:width 0.3s;}
-  .top-header{background:linear-gradient(135deg,#111827,#1a2235);padding:18px 16px 14px;border-bottom:1px solid var(--border);position:sticky;top:3px;z-index:100;}
-  .top-header .badge{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--c);text-transform:uppercase;margin-bottom:4px;}
-  .top-header h1{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
-  .top-header .sub{font-size:11px;color:var(--muted);margin-top:3px;}
-  .law-badge{display:inline-block;margin-top:6px;background:rgba(79,195,247,0.15);border:1px solid rgba(79,195,247,0.4);color:var(--c);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;}
-  .tab-nav{display:flex;gap:6px;margin-top:12px;overflow-x:auto;scrollbar-width:none;}
-  .tab-nav::-webkit-scrollbar{display:none;}
-  .tab-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid;white-space:nowrap;cursor:pointer;background:transparent;transition:all 0.2s;}
-  .tab-btn.ta{color:var(--a);border-color:var(--a);}
-  .tab-btn.tb{color:var(--b);border-color:var(--b);}
-  .tab-btn.tc{color:var(--c);border-color:var(--c);}
-  .tab-btn.td{color:var(--d);border-color:var(--d);}
-  .tab-btn.tg{color:var(--gold);border-color:var(--gold);}
-  .tab-btn.te{color:var(--e);border-color:var(--e);}
-  .tab-btn.active.ta{background:rgba(239,83,80,0.15);}
-  .tab-btn.active.tb{background:rgba(255,183,77,0.15);}
-  .tab-btn.active.tc{background:rgba(79,195,247,0.15);}
-  .tab-btn.active.td{background:rgba(102,187,106,0.15);}
-  .tab-btn.active.te{background:rgba(206,147,216,0.15);}
-  .tab-btn.active.tg{background:rgba(255,213,79,0.15);}
-  .section{padding:0 12px;margin-top:12px;}
-  .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:10px;cursor:pointer;user-select:none;background:var(--card);border-left:4px solid;margin-bottom:2px;}
-  .sec-header.ca{border-color:var(--a);}.sec-header.cb{border-color:var(--b);}.sec-header.cc{border-color:var(--c);}.sec-header.cd{border-color:var(--d);}.sec-header.ce{border-color:var(--e);}.sec-header.cg{border-color:var(--gold);}
-  .sh-left{display:flex;align-items:center;gap:10px;}
-  .sh-icon{font-size:18px;}
-  .sh-title{font-size:14px;font-weight:700;}
-  .sh-title.ca{color:var(--a);}.sh-title.cb{color:var(--b);}.sh-title.cc{color:var(--c);}.sh-title.cd{color:var(--d);}.sh-title.ce{color:var(--e);}.sh-title.cg{color:var(--gold);}
-  .sh-sub{font-size:10px;color:var(--muted);margin-top:1px;}
-  .sh-arrow{font-size:12px;color:var(--muted);transition:transform 0.25s;}
-  .sh-arrow.open{transform:rotate(180deg);}
-  .sec-body{display:none;flex-direction:column;gap:8px;padding:8px 0 4px;}
-  .sec-body.open{display:flex;}
-  .card{background:var(--card);border-radius:10px;padding:13px 14px;}
-  .card-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-  .item-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
-  .item-list li{font-size:13px;color:#b0bec5;padding-left:13px;position:relative;line-height:1.55;}
-  .item-list li::before{content:'▸';position:absolute;left:0;opacity:0.4;}
-  .item-list li strong{color:var(--text);font-weight:700;}
-  .memo-block{border-radius:10px;padding:12px 14px;border:1px solid;}
-  .memo-block.ma{background:rgba(239,83,80,0.06);border-color:rgba(239,83,80,0.28);}
-  .memo-block.mb{background:rgba(255,183,77,0.06);border-color:rgba(255,183,77,0.28);}
-  .memo-block.mc{background:rgba(79,195,247,0.06);border-color:rgba(79,195,247,0.28);}
-  .memo-block.md{background:rgba(102,187,106,0.06);border-color:rgba(102,187,106,0.28);}
-  .memo-block.mg{background:rgba(255,213,79,0.06);border-color:rgba(255,213,79,0.28);}
-  .memo-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:5px;}
-  .memo-type.ma{color:var(--a);}.memo-type.mb{color:var(--b);}.memo-type.mc{color:var(--c);}.memo-type.md{color:var(--d);}.memo-type.mg{color:var(--gold);}
-  .acro-list{display:flex;flex-direction:column;gap:4px;}
-  .acro-item{display:flex;align-items:baseline;gap:8px;}
-  .acro-char{font-size:20px;font-weight:900;min-width:22px;line-height:1;}
-  .acro-char.ca{color:var(--a);}.acro-char.cb{color:var(--b);}.acro-char.cc{color:var(--c);}.acro-char.cd{color:var(--d);}
-  .acro-text{font-size:13px;color:var(--text);line-height:1.4;}
-  .acro-text em{font-style:normal;color:var(--gold);font-weight:700;}
-  .acro-key{margin-top:8px;padding:7px 10px;background:rgba(255,213,79,0.1);border-radius:6px;font-size:13px;font-weight:700;color:var(--gold);text-align:center;letter-spacing:1px;}
-  .story{background:var(--card2);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.7;}
-  .law-ref{font-size:10px;color:rgba(79,195,247,0.7);font-weight:600;margin-left:4px;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@700;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
-  /* 숫자 뱃지 */
-  .num-row{display:flex;flex-wrap:wrap;gap:7px;}
-  .num-badge{display:flex;flex-direction:column;align-items:center;border-radius:9px;padding:9px 10px;min-width:62px;border:1px solid;flex:1;}
-  .nb-num{font-size:18px;font-weight:900;line-height:1;}
-  .nb-label{font-size:10px;color:var(--muted);margin-top:3px;text-align:center;line-height:1.4;}
-  .na{border-color:rgba(239,83,80,0.35);background:rgba(239,83,80,0.07);} .na .nb-num{color:var(--a);}
-  .nb{border-color:rgba(255,183,77,0.35);background:rgba(255,183,77,0.07);} .nb .nb-num{color:var(--b);}
-  .nc{border-color:rgba(79,195,247,0.35);background:rgba(79,195,247,0.07);} .nc .nb-num{color:var(--c);}
-  .nd{border-color:rgba(102,187,106,0.35);background:rgba(102,187,106,0.07);} .nd .nb-num{color:var(--d);}
+:root {
+  --bg:#090c14; --surface:#111827; --border:#1e2a40;
+  --teal:#2dd4bf; --teal2:#5eead4; --teal-d:rgba(45,212,191,0.10);
+  --gold:#f5c842; --gold-d:rgba(245,200,66,0.10);
+  --green:#34d399; --red:#f87171; --amber:#fbbf24;
+  --blue:#60a5fa; --orange:#fb923c; --purple:#a78bfa; --pink:#f472b6;
+  --text:#e2e8f5; --muted:#64748b; --muted2:#94a3b8;
+  --r:13px; --r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);padding-bottom:56px;min-height:100vh}
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:280px;background:radial-gradient(ellipse 70% 50% at 60% -5%,rgba(45,212,191,0.09) 0%,transparent 70%);pointer-events:none;z-index:0}
 
-  /* 안전계수 표 */
-  .safety-table{width:100%;border-collapse:collapse;font-size:12.5px;}
-  .safety-table th{padding:8px 8px;font-weight:700;border-bottom:2px solid var(--border);font-size:11px;text-align:left;}
-  .safety-table td{padding:8px 8px;border-bottom:1px solid var(--border);color:#b0bec5;line-height:1.5;}
-  .safety-table tr:last-child td{border-bottom:none;}
-  .safety-table td:last-child{color:var(--c);font-weight:700;text-align:center;font-size:14px;}
-  .safety-table th:last-child{text-align:center;}
+/* 헤더 */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(9,12,20,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 14px 10px}
+.hdr-row{display:flex;align-items:center;gap:10px}
+.back-btn{display:flex;align-items:center;gap:4px;color:var(--muted2);font-size:12px;font-weight:600;text-decoration:none;padding:5px 10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;flex-shrink:0}
+.back-btn:active{opacity:.7;transform:scale(.95)}
+.hdr-info{flex:1;min-width:0}
+.hdr-code{font-size:9px;font-weight:800;letter-spacing:2.5px;color:var(--teal);text-transform:uppercase;margin-bottom:1px}
+.hdr-title{font-size:15px;font-weight:900;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-  /* 풍속 기준 카드 */
-  .wind-wrap{display:flex;flex-direction:column;gap:6px;}
-  .wind-item{display:flex;align-items:center;gap:10px;border-radius:8px;padding:10px 12px;}
-  .wind-item.w1{background:rgba(255,183,77,0.08);border:1px solid rgba(255,183,77,0.3);}
-  .wind-item.w2{background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.3);}
-  .wind-item.w3{background:rgba(239,83,80,0.15);border:1px solid rgba(239,83,80,0.5);}
-  .wind-spd{font-size:20px;font-weight:900;min-width:70px;text-align:center;flex-shrink:0;}
-  .w1 .wind-spd{color:var(--b);} .w2 .wind-spd{color:var(--a);} .w3 .wind-spd{color:var(--a);}
-  .wind-content{font-size:12.5px;line-height:1.45;}
-  .wind-content .wc-title{font-weight:700;color:var(--text);margin-bottom:2px;}
-  .wind-content .wc-sub{font-size:11px;color:var(--muted);}
+/* 탭 */
+.tab-nav{display:flex;overflow-x:auto;background:rgba(0,0,0,0.25);border-bottom:1px solid var(--border);scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:9px 14px;font-size:11.5px;font-weight:700;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .18s}
+.tab-btn.on{color:var(--teal);border-bottom-color:var(--teal)}
 
-  /* 폐기기준 */
-  .discard-item{background:var(--card2);border-radius:8px;padding:10px 12px;margin-bottom:6px;display:flex;align-items:flex-start;gap:8px;}
-  .di-num{font-size:13px;font-weight:900;color:var(--a);min-width:22px;flex-shrink:0;}
-  .di-content{font-size:12.5px;color:var(--text);line-height:1.5;}
-  .di-content .di-key{color:var(--a);font-weight:700;}
-  .di-content .di-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+/* 본문 */
+.body{padding:14px 14px 0}
+.section{display:none}
+.section.on{display:block}
 
-  /* 두 열 */
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .col-box{background:var(--card2);border-radius:8px;padding:9px 10px;}
-  .col-label{font-size:9px;font-weight:700;letter-spacing:1px;margin-bottom:5px;text-transform:uppercase;}
-  .col-list{list-style:none;}
-  .col-list li{font-size:11.5px;color:#b0bec5;padding-left:10px;position:relative;line-height:1.55;}
-  .col-list li::before{content:'·';position:absolute;left:2px;}
-  .col-list li strong{color:var(--text);}
+/* 공통 */
+.sec-hdr{display:flex;align-items:center;gap:8px;margin:18px 0 10px}
+.sec-hdr:first-child{margin-top:0}
+.sec-hdr-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.sec-hdr-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(45,212,191,0.3),transparent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.card-title{font-size:12px;font-weight:800;color:var(--teal);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 
-  /* 흐름 */
-  .flow-wrap{display:flex;flex-direction:column;gap:5px;}
-  .flow-step{background:var(--card2);border-radius:8px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;}
-  .fs-num{font-size:14px;font-weight:900;min-width:26px;text-align:center;line-height:1.4;flex-shrink:0;}
-  .fs-num.ca{color:var(--a);}.fs-num.cc{color:var(--c);}.fs-num.cd{color:var(--d);}
-  .fs-content{font-size:12.5px;color:var(--text);line-height:1.5;flex:1;}
-  .fs-content .fc-title{font-weight:700;margin-bottom:2px;}
-  .fs-content .fc-sub{font-size:11px;color:var(--muted);}
-  .flow-arrow-down{text-align:center;font-size:13px;color:var(--muted);}
+/* 수치 그리드 */
+.num-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.num-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px 12px;text-align:center}
+.num-val{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;color:var(--teal);margin-bottom:2px;line-height:1}
+.num-unit{font-size:9px;color:var(--muted2);margin-bottom:5px}
+.num-label{font-size:11px;font-weight:800;color:var(--text);margin-bottom:2px}
+.num-desc{font-size:9.5px;color:var(--muted2);line-height:1.5}
 
-  /* 비교표 */
-  .compare-table{width:100%;border-collapse:collapse;font-size:11.5px;}
-  .compare-table th{padding:8px 6px;text-align:center;font-weight:700;border-bottom:2px solid var(--border);font-size:10px;}
-  .compare-table td{padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;line-height:1.5;vertical-align:top;}
-  .compare-table td:first-child{color:var(--muted);font-weight:500;white-space:nowrap;font-size:10px;}
-  .compare-table tr:last-child td{border-bottom:none;}
-  .va{color:var(--a)!important;font-weight:700;}.vb{color:var(--b)!important;font-weight:700;}.vc{color:var(--c)!important;font-weight:700;}.vd{color:var(--d)!important;font-weight:700;}.vg{color:var(--gold)!important;font-weight:700;}
+/* 장비 카드 */
+.equip-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px;border-top:3px solid}
+.ec-tc{border-top-color:var(--teal)} .ec-mc{border-top-color:var(--blue)}
+.ec-lf{border-top-color:var(--amber)} .ec-gon{border-top-color:var(--purple)}
+.ec-exc{border-top-color:var(--green)} .ec-wire{border-top-color:var(--red)}
 
-  .qa-item{margin-bottom:10px;}
-  .qa-q{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:5px;display:flex;gap:6px;}
-  .qa-q::before{content:'Q.';opacity:0.6;}
-  .qa-a{background:var(--card2);border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.65;color:var(--text);border-left:3px solid var(--gold);}
-  .qa-a .key{color:var(--gold);font-weight:700;}
+.equip-head{padding:10px 13px 9px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:9px;background:rgba(255,255,255,0.02)}
+.eh-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eh-meta{flex:1}
+.eh-label{font-size:9px;font-weight:800;letter-spacing:1.5px;margin-bottom:2px}
+.ec-tc .eh-label{color:var(--teal)} .ec-mc .eh-label{color:var(--blue)}
+.ec-lf .eh-label{color:var(--amber)} .ec-gon .eh-label{color:var(--purple)}
+.ec-exc .eh-label{color:var(--green)} .ec-wire .eh-label{color:var(--red)}
+.eh-name{font-size:13px;font-weight:900;color:#fff;margin-bottom:2px}
+.eh-sub{font-size:10px;color:var(--muted2)}
+.eh-badge{font-size:9px;font-weight:800;padding:3px 8px;border-radius:6px;flex-shrink:0;align-self:flex-start;margin-top:2px}
+.badge-star{background:rgba(245,200,66,0.15);color:var(--gold)}
+.badge-hot{background:rgba(248,113,113,0.15);color:var(--red)}
 
-  .page-section{display:none;}
-  .page-section.active{display:block;}
+.equip-body{padding:11px 13px}
+.eq-list{list-style:none;margin-bottom:9px}
+.eq-list li{font-size:10.5px;color:var(--muted2);line-height:1.75;padding-left:12px;position:relative;margin-bottom:1px}
+.eq-list li::before{content:'▸';position:absolute;left:0;opacity:.45;font-size:9px}
+.eq-list li strong{color:var(--text);font-weight:700}
+.eq-list li em{color:var(--gold);font-style:normal;font-weight:700}
+
+/* 키포인트 */
+.kp-box{background:var(--teal-d);border:1px solid rgba(45,212,191,0.2);border-radius:var(--r-sm);padding:9px 11px;margin-top:8px}
+.kp-box.kp-gold{background:var(--gold-d);border-color:rgba(245,200,66,0.2)}
+.kp-box.kp-red{background:rgba(248,113,113,0.06);border-color:rgba(248,113,113,0.18)}
+.kp-box.kp-blue{background:rgba(96,165,250,0.06);border-color:rgba(96,165,250,0.18)}
+.kp-box.kp-amber{background:rgba(251,191,36,0.07);border-color:rgba(251,191,36,0.2)}
+.kp-box.kp-green{background:rgba(52,211,153,0.06);border-color:rgba(52,211,153,0.18)}
+.kp-title{font-size:10px;font-weight:800;color:var(--teal);margin-bottom:4px}
+.kp-box.kp-gold .kp-title{color:var(--gold)} .kp-box.kp-red .kp-title{color:var(--red)}
+.kp-box.kp-blue .kp-title{color:var(--blue)} .kp-box.kp-amber .kp-title{color:var(--amber)}
+.kp-box.kp-green .kp-title{color:var(--green)}
+.kp-desc{font-size:10.5px;color:var(--muted2);line-height:1.7}
+.kp-desc strong{color:var(--text)} .kp-desc em{color:var(--gold);font-style:normal;font-weight:700}
+
+/* 풍속 시각화 */
+.wind-bar{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.wb-row{display:flex;align-items:center;gap:8px}
+.wb-speed{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;width:52px;flex-shrink:0;text-align:right}
+.wb-bar-bg{flex:1;height:20px;background:rgba(255,255,255,0.05);border-radius:5px;overflow:hidden}
+.wb-bar-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding-left:8px}
+.wb-action{font-size:10px;font-weight:700;color:#fff}
+.wb-label{font-size:10px;color:var(--muted2);width:70px;flex-shrink:0}
+
+/* 비교표 */
+.cmp-table{width:100%;border-collapse:collapse;font-size:10.5px}
+.cmp-table th{background:rgba(45,212,191,0.10);color:var(--teal2);font-size:10px;font-weight:800;text-align:center;padding:7px 5px;border-bottom:1px solid rgba(45,212,191,0.2)}
+.cmp-table th:first-child{text-align:left;width:28%}
+.cmp-table td{padding:7px 5px;border-bottom:1px solid var(--border);color:var(--muted2);vertical-align:top;line-height:1.55;text-align:center}
+.cmp-table td:first-child{color:var(--text);font-weight:700;text-align:left}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table .hl{color:var(--text);font-weight:700}
+.cmp-table .rd{color:var(--red);font-weight:700}
+.cmp-table .am{color:var(--amber);font-weight:700}
+.cmp-table .gn{color:var(--green);font-weight:700}
+.cmp-table .tc{color:var(--teal);font-weight:700}
+
+/* 타워크레인 구성요소 그리드 */
+.tc-comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.tc-comp{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--r-sm);padding:8px 10px}
+.tc-comp-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--teal);margin-bottom:2px}
+.tc-comp-name{font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px}
+.tc-comp-desc{font-size:9.5px;color:var(--muted2);line-height:1.5}
+
+/* 암기법 */
+.mn-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;padding:12px 13px;margin-bottom:8px}
+.mn-card.mn-red{border-left-color:var(--red)} .mn-card.mn-amber{border-left-color:var(--amber)}
+.mn-card.mn-blue{border-left-color:var(--blue)} .mn-card.mn-green{border-left-color:var(--green)}
+.mn-card.mn-gold{border-left-color:var(--gold)} .mn-card.mn-purple{border-left-color:var(--purple)}
+.mn-card.mn-orange{border-left-color:var(--orange)} .mn-card.mn-pink{border-left-color:var(--pink)}
+.mn-domain{font-size:9px;font-weight:800;color:var(--teal);letter-spacing:1px;margin-bottom:3px}
+.mn-card.mn-red .mn-domain{color:var(--red)} .mn-card.mn-amber .mn-domain{color:var(--amber)}
+.mn-card.mn-blue .mn-domain{color:var(--blue)} .mn-card.mn-green .mn-domain{color:var(--green)}
+.mn-card.mn-gold .mn-domain{color:var(--gold)} .mn-card.mn-purple .mn-domain{color:var(--purple)}
+.mn-card.mn-orange .mn-domain{color:var(--orange)} .mn-card.mn-pink .mn-domain{color:var(--pink)}
+.mn-key{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:900;color:#fff;margin-bottom:5px;letter-spacing:1px}
+.mn-expand{font-size:10.5px;color:var(--muted2);line-height:1.75;margin-bottom:6px}
+.mn-expand span{color:var(--text);font-weight:700}
+.mn-tip{font-size:10px;color:var(--gold);background:var(--gold-d);border:1px solid rgba(245,200,66,0.2);border-radius:var(--r-sm);padding:5px 9px;line-height:1.6}
+
+/* 기출 */
+.exam-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:8px}
+.exam-head{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.exam-round{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:var(--teal-d);color:var(--teal);border-radius:5px;padding:2px 7px}
+.exam-type{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px}
+.et-short{background:rgba(52,211,153,0.12);color:var(--green)}
+.et-long{background:rgba(251,191,36,0.12);color:var(--amber)}
+.exam-year{font-size:10px;color:var(--muted);margin-left:auto}
+.exam-q{padding:9px 12px;font-size:11px;color:var(--text);line-height:1.65}
+.exam-q strong{color:var(--teal2)}
+
+@media(max-width:360px){.tc-comp-grid{grid-template-columns:1fr 1fr}.num-val{font-size:16px}.mn-key{font-size:17px}}
 </style>
 </head>
 <body>
 
-<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
-
-<div class="top-header">
-  <div class="badge">Domain 06 · 건설기계·양중</div>
-  <h1>건설기계·양중 안전관리 완전정복</h1>
-  <div class="sub">타워크레인·이동식크레인·리프트·차량계기계</div>
-  <span class="law-badge">⚖️ 산안기준규칙 2026.03 기준</span>
-  <div class="tab-nav">
-    <button class="tab-btn ta active" onclick="showTab('ta',this)">🏗️ 양중기 개요</button>
-    <button class="tab-btn tb" onclick="showTab('tb',this)">🗼 타워크레인</button>
-    <button class="tab-btn tc" onclick="showTab('tc',this)">🚛 이동식크레인</button>
-    <button class="tab-btn td" onclick="showTab('td',this)">🚜 차량계기계</button>
-    <button class="tab-btn te" onclick="showTab('te',this)">🦺 안전장구·보강</button>
-    <button class="tab-btn tg" onclick="showTab('tg',this)">✍️ 비교·답안</button>
+<div class="hdr">
+  <div class="hdr-row">
+    <a class="back-btn" href="forest.html">← 숲</a>
+    <div class="hdr-info">
+      <div class="hdr-code">Domain 06</div>
+      <div class="hdr-title">🗼 건설기계·양중</div>
+    </div>
   </div>
 </div>
 
-
-<!-- TAB 1: 양중기 개요 -->
-<div id="ta" class="page-section active">
-
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📋</span>
-        <div><div class="sh-title cc">양중기 종류 <span class="law-ref">§132</span></div>
-          <div class="sh-sub">산안기준규칙 제132조</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>크레인</strong> (호이스트 포함) — 상하·좌우 운반</li>
-          <li><strong>이동식 크레인</strong> — 자체 이동 가능</li>
-          <li><strong>리프트</strong> — 수직 승강 운반</li>
-          <li><strong>곤돌라</strong> — 달아올린 작업대</li>
-          <li><strong>승강기</strong> — 사람·화물 수직 이동</li>
-        </ul>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">🔤 두문자 "크이리곤승"</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char cc">크</span><span class="acro-text"><em>크</em>레인</span></div>
-          <div class="acro-item"><span class="acro-char cc">이</span><span class="acro-text"><em>이</em>동식 크레인</span></div>
-          <div class="acro-item"><span class="acro-char cc">리</span><span class="acro-text"><em>리</em>프트</span></div>
-          <div class="acro-item"><span class="acro-char cc">곤</span><span class="acro-text"><em>곤</em>돌라</span></div>
-          <div class="acro-item"><span class="acro-char cc">승</span><span class="acro-text"><em>승</em>강기</span></div>
-        </div>
-        <div class="acro-key">→ "크이리곤승" 으로 외우자!</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 방호장치 -->
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🛡️</span>
-        <div><div class="sh-title cc">양중기 필수 방호장치 <span class="law-ref">§134</span></div>
-          <div class="sh-sub">크레인·이동식크레인 공통</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>과부하방지장치</strong> — 정격하중 초과 방지</li>
-          <li><strong>권과방지장치</strong> — 훅 과다 권상 방지<br><span style="font-size:11px;color:var(--muted);">→ 달기구 윗면과 권상장치 아랫면 간격 0.25m↑</span></li>
-          <li><strong>비상정지장치</strong> — 긴급 정지</li>
-          <li><strong>제동장치</strong> — 하중 유지</li>
-        </ul>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">🔤 두문자 "과권비제"</div>
-        <div class="acro-key" style="margin-top:0;">과부하 · 권과 · 비상정지 · 제동 → "과권비제"</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 와이어로프 안전계수 -->
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔗</span>
-        <div><div class="sh-title cc">와이어로프 안전계수 <span class="law-ref">§163</span></div>
-          <div class="sh-sub">산안기준규칙 제163조 — 시험 단골!</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <table class="safety-table">
-          <thead>
-            <tr><th>용도</th><th>안전계수</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>근로자 탑승 운반구 지지 달기와이어로프·체인</td><td>10 이상</td></tr>
-            <tr><td>화물 하중 직접 지지 달기와이어로프·체인</td><td>5 이상</td></tr>
-            <tr><td>훅·샤클·클램프·리프팅 빔</td><td>3 이상</td></tr>
-            <tr><td>그 밖의 경우</td><td>4 이상</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">🔢 암기법 "사람10·화물5·훅3·기타4"</div>
-        <div class="story">
-          <strong style="color:var(--c);">탑승=10 / 화물=5 / 훅샤클=3 / 기타=4</strong><br>
-          <span style="color:var(--muted);">→ 사람이 타면 제일 엄격(10)<br>
-          → 훅은 파손 시 교체 쉬우므로 가장 낮음(3)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 와이어로프 폐기기준 -->
-  <div class="section">
-    <div class="sec-header ca" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🗑️</span>
-        <div><div class="sh-title ca">와이어로프 폐기기준 <span class="law-ref">§63준용</span></div>
-          <div class="sh-sub">시험 단골 — 숫자 정확히 암기!</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="discard-item">
-        <div class="di-num">①</div>
-        <div class="di-content">
-          <div><span class="di-key">소선 절단 10%↑</span></div>
-          <div class="di-sub">한 꼬임(스트랜드)에서 끊어진 소선 수가 10% 이상<br>비자전로프 — 6배 길이 이내 소선 10%↑</div>
-        </div>
-      </div>
-      <div class="discard-item">
-        <div class="di-num">②</div>
-        <div class="di-content">
-          <div><span class="di-key">지름 감소 7%↑</span></div>
-          <div class="di-sub">공칭지름 대비 지름 감소가 7% 초과</div>
-        </div>
-      </div>
-      <div class="discard-item">
-        <div class="di-num">③</div>
-        <div class="di-content">
-          <div><span class="di-key">킹크 발생</span></div>
-          <div class="di-sub">꼬임이 풀리거나 심하게 변형된 것</div>
-        </div>
-      </div>
-      <div class="discard-item">
-        <div class="di-num">④</div>
-        <div class="di-content">
-          <div><span class="di-key">심하게 부식·변형</span></div>
-          <div class="di-sub">녹, 이물질로 표면 심하게 손상된 것</div>
-        </div>
-      </div>
-      <div class="discard-item">
-        <div class="di-num">⑤</div>
-        <div class="di-content">
-          <div><span class="di-key">열영향 받은 것</span></div>
-          <div class="di-sub">아크·화염·고온부 접촉으로 손상된 것</div>
-        </div>
-      </div>
-      <div class="memo-block ma">
-        <div class="memo-type ma">🔢 핵심 숫자 암기</div>
-        <div class="story">
-          <strong style="color:var(--a);">소선 10% / 지름 7%</strong><br>
-          <span style="color:var(--muted);">→ "소선은 10, 지름은 7" — 둘 다 퍼센트!<br>
-          → 훅 입구 간격 10% 벌어진 것도 폐기</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<div class="tab-nav">
+  <button class="tab-btn on" onclick="goTab('crane',this)">타워크레인</button>
+  <button class="tab-btn" onclick="goTab('mobile',this)">이동식크레인</button>
+  <button class="tab-btn" onclick="goTab('wire',this)">와이어·줄걸이</button>
+  <button class="tab-btn" onclick="goTab('excavator',this)">건설기계</button>
+  <button class="tab-btn" onclick="goTab('mnemonics',this)">암기법</button>
+  <button class="tab-btn" onclick="goTab('exams',this)">기출문제</button>
 </div>
 
+<div class="body">
 
-<!-- TAB 2: 타워크레인 -->
-<div id="tb" class="page-section">
+<!-- ══════════════════════════
+     탭1: 타워크레인
+══════════════════════════ -->
+<div id="crane" class="section on">
 
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🗼</span>
-        <div><div class="sh-title cb">타워크레인 개요</div>
-          <div class="sh-sub">건설현장 핵심 양중기 — 사고 빈발</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">타워크레인 핵심 수치</span><div class="sec-hdr-line"></div></div>
+
+  <div class="num-grid">
+    <div class="num-card">
+      <div class="num-val" style="color:var(--amber);">10 m/s</div>
+      <div class="num-unit">순간풍속</div>
+      <div class="num-label">작업 주의</div>
+      <div class="num-desc">신호수 배치·작업 속도 감소</div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>건설공사 현장 대표 양중기</li>
-          <li>설치·해체 시 <strong>중대재해 빈발</strong></li>
-          <li>자립고 초과 시 <strong>벽체 지지</strong> 의무</li>
-          <li>전담 신호수·유도원 배치 필수</li>
-        </ul>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--red);">15 m/s</div>
+      <div class="num-unit">순간풍속</div>
+      <div class="num-label">작업 중지</div>
+      <div class="num-desc">안전보건규칙 제37조</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--red);">30 m/s</div>
+      <div class="num-unit">순간풍속</div>
+      <div class="num-label">구조·해체 금지</div>
+      <div class="num-desc">태풍·강풍 시 설치·해체 절대 금지</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--teal);">2년</div>
+      <div class="num-unit">안전검사 주기</div>
+      <div class="num-label">정기 안전검사</div>
+      <div class="num-desc">최초 설치 후 6개월 → 이후 2년마다</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--blue);">3m</div>
+      <div class="num-unit">이상</div>
+      <div class="num-label">설치·해체 신고</div>
+      <div class="num-desc">높이 3m 이상 타워크레인 등록 의무</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val" style="color:var(--green);">등록</div>
+      <div class="num-unit">의무</div>
+      <div class="num-label">설치·해체업</div>
+      <div class="num-desc">산안법 제82조 등록 후 작업</div>
+    </div>
+  </div>
+
+  <!-- 풍속 시각화 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">풍속별 조치기준</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div class="wind-bar">
+      <div class="wb-row">
+        <div class="wb-speed" style="color:var(--green);">10 m/s</div>
+        <div class="wb-bar-bg"><div class="wb-bar-fill" style="width:33%;background:var(--green)"><span class="wb-action">작업 주의 · 신호수 배치</span></div></div>
+        <div class="wb-label" style="color:var(--green);">타워크레인</div>
+      </div>
+      <div class="wb-row">
+        <div class="wb-speed" style="color:var(--amber);">10 m/s</div>
+        <div class="wb-bar-bg"><div class="wb-bar-fill" style="width:33%;background:var(--amber)"><span class="wb-action">작업 주의</span></div></div>
+        <div class="wb-label" style="color:var(--amber);">이동식크레인</div>
+      </div>
+      <div class="wb-row">
+        <div class="wb-speed" style="color:var(--red);">15 m/s</div>
+        <div class="wb-bar-bg"><div class="wb-bar-fill" style="width:50%;background:var(--red)"><span class="wb-action">작업 중지 (공통)</span></div></div>
+        <div class="wb-label" style="color:var(--red);">전 양중기</div>
+      </div>
+      <div class="wb-row">
+        <div class="wb-speed" style="color:var(--red);">30 m/s</div>
+        <div class="wb-bar-bg"><div class="wb-bar-fill" style="width:100%;background:linear-gradient(90deg,var(--red),#7f0000)"><span class="wb-action">설치·해체 절대 금지 (태풍)</span></div></div>
+        <div class="wb-label" style="color:var(--red);">타워크레인</div>
+      </div>
+    </div>
+    <div class="kp-box kp-gold">
+      <div class="kp-title">💡 암기: 10·15·30 세트</div>
+      <div class="kp-desc"><em>10</em>m/s 작업주의 / <em>15</em>m/s 작업중지 / <em>30</em>m/s 구조해체금지. <strong>철골공사는 10m/s에서 작업중지</strong> — 타워크레인(15m/s)과 구분 필수</div>
+    </div>
+  </div>
+
+  <!-- 타워크레인 18가지 구성요소 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">타워크레인 주요 구성요소 18가지</span><div class="sec-hdr-line"></div></div>
+
+  <div class="tc-comp-grid">
+    <div class="tc-comp"><div class="tc-comp-num">①</div><div class="tc-comp-name">마스트(Mast)</div><div class="tc-comp-desc">수직 주탑 — 높이 지지</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">②</div><div class="tc-comp-name">지브(Jib)</div><div class="tc-comp-desc">수평 붐 — 하중 이동 범위</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">③</div><div class="tc-comp-name">카운터지브</div><div class="tc-comp-desc">균형추 장착 반대편 붐</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">④</div><div class="tc-comp-name">균형추(카운터웨이트)</div><div class="tc-comp-desc">전도 방지 균형 추</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑤</div><div class="tc-comp-name">운전실(캐빈)</div><div class="tc-comp-desc">운전자 조종 공간</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑥</div><div class="tc-comp-name">선회장치</div><div class="tc-comp-desc">360° 회전 구동부</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑦</div><div class="tc-comp-name">권상장치(호이스트)</div><div class="tc-comp-desc">와이어로프 감아올리기</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑧</div><div class="tc-comp-name">트롤리</div><div class="tc-comp-desc">지브 위 수평 이동 대차</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑨</div><div class="tc-comp-name">훅(Hook)</div><div class="tc-comp-desc">하중 걸기용 갈고리</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑩</div><div class="tc-comp-name">과부하방지장치</div><div class="tc-comp-desc">정격하중 초과 시 자동 정지</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑪</div><div class="tc-comp-name">권과방지장치</div><div class="tc-comp-desc">와이어 과도 감김 방지</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑫</div><div class="tc-comp-name">비상정지장치</div><div class="tc-comp-desc">긴급 전원 차단 버튼</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑬</div><div class="tc-comp-name">선회제한장치</div><div class="tc-comp-desc">회전 범위 제한</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑭</div><div class="tc-comp-name">트롤리정지장치</div><div class="tc-comp-desc">트롤리 이탈 방지</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑮</div><div class="tc-comp-name">지브정지장치</div><div class="tc-comp-desc">지브 기복 범위 제한</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑯</div><div class="tc-comp-name">앵커(기초)</div><div class="tc-comp-desc">지면 고정부 — 전도 방지</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑰</div><div class="tc-comp-name">벽체 고정부</div><div class="tc-comp-desc">마스트 건물 연결 지지</div></div>
+    <div class="tc-comp"><div class="tc-comp-num">⑱</div><div class="tc-comp-name">풍속계·신호장치</div><div class="tc-comp-desc">풍속 측정·신호수 통신</div></div>
+  </div>
+
+  <div class="kp-box kp-red">
+    <div class="kp-title">⚡ 안전장치 5대 — 단답형 빈출</div>
+    <div class="kp-desc"><strong>① 과부하방지장치</strong>(정격하중 초과 시 정지) <strong>② 권과방지장치</strong>(과도 권상 방지) <strong>③ 비상정지</strong> <strong>④ 선회제한</strong> <strong>⑤ 트롤리정지</strong>. 서술형에서 '안전장치 종류' 질문 시 이 5개 우선</div>
+  </div>
+
+  <!-- 타워크레인 설치·해체 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">타워크레인 설치·해체 안전 (산안법 제82조)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="equip-card ec-tc">
+    <div class="equip-head">
+      <span class="eh-icon">🗼</span>
+      <div class="eh-meta">
+        <div class="eh-label">TOWER CRANE ERECTION</div>
+        <div class="eh-name">설치·해체 안전관리</div>
+        <div class="eh-sub">등록업체 의무·작업계획서·신호수 배치</div>
+      </div>
+      <span class="eh-badge badge-star">★★★★★</span>
+    </div>
+    <div class="equip-body">
+      <ul class="eq-list">
+        <li><strong>등록 의무</strong>: 타워크레인 설치·해체업 <em>고용노동부장관 등록</em> 후 작업 (제82조①)</li>
+        <li><strong>작업계획서</strong>: 설치·해체 전 작업계획서 작성 → 근로자 주지</li>
+        <li><strong>신호수 배치</strong>: 설치·해체 작업 시 신호수 1명 이상 전담 배치</li>
+        <li><strong>작업반경 통제</strong>: 설치·해체 중 작업반경 내 관계자 외 출입금지</li>
+        <li><strong>클라이밍 절차</strong>: 클라이밍 프레임 사용 마스트 증설 — 구조검토 후 실시</li>
+        <li><strong>앵커볼트</strong>: 기초 앵커볼트 토크 확인. 벽체 고정부 연결 확인</li>
+        <li><strong>해체 순서</strong>: 지브 → 카운터지브 → 마스트 순 (역순 설치)</li>
+      </ul>
+      <div class="kp-box">
+        <div class="kp-title">⚡ 타워크레인 사고 주요 원인</div>
+        <div class="kp-desc">① 과부하(정격하중 초과) ② 강풍(풍속 기준 미준수) ③ <strong>설치·해체 불량</strong>(등록 미필·절차 위반) ④ 충돌(인접 크레인). <em>최근 중대재해: 인천 크레인 붕괴 연계 출제 가능</em></div>
       </div>
     </div>
   </div>
 
-  <!-- 풍속 기준 -->
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">💨</span>
-        <div><div class="sh-title cb">풍속별 작업중지 기준 <span class="law-ref">§37</span></div>
-          <div class="sh-sub">시험 단골 — 숫자 정확히 암기!</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="wind-wrap">
-        <div class="wind-item w1">
-          <div class="wind-spd">10m/s↑</div>
-          <div class="wind-content">
-            <div class="wc-title">타워크레인 설치·수리·점검·해체 작업 중지</div>
-            <div class="wc-sub">산안기준규칙 제37조 ② — 순간풍속</div>
-          </div>
-        </div>
-        <div class="wind-item w2">
-          <div class="wind-spd">15m/s↑</div>
-          <div class="wind-content">
-            <div class="wc-title">타워크레인 운전작업 중지</div>
-            <div class="wc-sub">산안기준규칙 제37조 ②</div>
-          </div>
-        </div>
-        <div class="wind-item w3">
-          <div class="wind-spd">30m/s↑</div>
-          <div class="wind-content">
-            <div class="wc-title">옥외 주행 크레인 이탈방지 조치</div>
-            <div class="wc-sub">산안기준규칙 제140조</div>
-          </div>
-        </div>
-      </div>
-      <div class="memo-block mb">
-        <div class="memo-type mb">🔢 풍속 암기 "10·15·30"</div>
-        <div class="story">
-          <strong style="color:var(--b);">설치해체=10 / 운전=15 / 이탈=30</strong><br>
-          <span style="color:var(--muted);">→ "십오삼십" 순서대로 올라간다<br>
-          → 철골 작업중지는 별도 기준(10m/s) — 구별!</span>
-        </div>
-      </div>
-    </div>
-  </div>
+</div><!-- /crane -->
 
-  <!-- 타워크레인 지지 -->
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔩</span>
-        <div><div class="sh-title cb">타워크레인 벽체지지 <span class="law-ref">§142</span></div>
-          <div class="sh-sub">와이어로프 지지 시 핵심 기준</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--b);">와이어로프 지지 시 준수사항</div>
-        <ul class="item-list">
-          <li>설치각도 — 수평면에서 <strong>60도 이내</strong></li>
-          <li>지지점 — <strong>4개소 이상</strong>, 같은 각도</li>
-          <li>클립·샤클 — <strong>한국산업표준(KS)</strong> 제품</li>
-          <li>가공전선 근접 금지</li>
-        </ul>
-      </div>
-      <div class="memo-block mb">
-        <div class="memo-type mb">🔢 숫자 "60도·4개소"</div>
-        <div class="story">
-          <strong style="color:var(--b);">각도 60도↓ / 지지점 4개소↑</strong><br>
-          <span style="color:var(--muted);">→ "육십도 네 곳" — 두 숫자 세트 암기</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- ══════════════════════════
+     탭2: 이동식크레인·리프트
+══════════════════════════ -->
+<div id="mobile" class="section">
 
-  <!-- 설치·해체 작업계획서 -->
-  <div class="section">
-    <div class="sec-header cb" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📋</span>
-        <div><div class="sh-title cb">설치·해체 작업계획서 <span class="law-ref">§38</span></div>
-          <div class="sh-sub">착공 전 작성 의무</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li>설치·조립·해체 <strong>작업 전 작업계획서</strong> 작성</li>
-          <li>작업지휘자 지정 — <strong>작업 감독</strong></li>
-          <li>작업구역 내 관계자 외 <strong>출입금지</strong></li>
-          <li>기상불량 시 작업 중지</li>
-          <li>들어올리거나 내릴 때 <strong>균형 유지</strong></li>
-          <li>기초 — 충분한 응력의 구조로 <strong>침하 방지</strong></li>
-        </ul>
-      </div>
-      <div class="memo-block mb">
-        <div class="memo-type mb">💡 시험 포인트</div>
-        <div class="story">
-          <strong style="color:var(--b);">타워크레인 전도 사고 = 설치·해체 중 최다</strong><br>
-          <span style="color:var(--muted);">→ 작업계획서·자격자·신호수 3가지 강조<br>
-          → 풍속 10m/s 초과 시 즉시 중지 반드시 언급</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="sec-hdr"><span class="sec-hdr-label">이동식크레인 안전</span><div class="sec-hdr-line"></div></div>
 
-</div>
-
-
-<!-- TAB 3: 이동식 크레인 -->
-<div id="tc" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🚛</span>
-        <div><div class="sh-title cc">이동식 크레인 안전관리</div>
-          <div class="sh-sub">아웃리거·신호수·정격하중 핵심</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="equip-card ec-mc">
+    <div class="equip-head">
+      <span class="eh-icon">🏗️</span>
+      <div class="eh-meta">
+        <div class="eh-label">MOBILE CRANE</div>
+        <div class="eh-name">이동식크레인 (트럭·크롤러)</div>
+        <div class="eh-sub">아웃리거·작업반경·신호 3대 핵심</div>
+      </div>
+      <span class="eh-badge badge-star">★★★★</span>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">주요 위험요인</div>
-        <ul class="item-list">
-          <li><strong>전도</strong> — 아웃리거 미설치·지반 불량</li>
-          <li><strong>낙하</strong> — 슬링 불량·과부하</li>
-          <li><strong>충돌</strong> — 신호 불량·작업반경 내 접근</li>
-          <li><strong>끼임</strong> — 선회 시 구조물 사이</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">핵심 예방대책</div>
-        <ul class="item-list">
-          <li><strong>아웃리거</strong> 완전 펼침 — 지반 지내력 확인</li>
-          <li><strong>신호수</strong> 배치 — 1명 전담</li>
-          <li><strong>정격하중</strong> 표시·준수</li>
-          <li>작업반경 내 <strong>출입 통제</strong></li>
-          <li>해지장치 사용 <span class="law-ref">§137</span></li>
-          <li>근로자 탑승 원칙적 <strong>금지</strong> <span class="law-ref">§86</span></li>
-        </ul>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">🔢 이동식 크레인 핵심 수치</div>
-        <div class="num-row">
-          <div class="num-badge nc"><span class="nb-num">정격</span><span class="nb-label">하중<br>초과 금지</span></div>
-          <div class="num-badge nc"><span class="nb-num">4곳</span><span class="nb-label">아웃리거<br>완전 펼침</span></div>
-          <div class="num-badge nc"><span class="nb-num">1명</span><span class="nb-label">전담<br>신호수</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 줄걸이 작업 -->
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🔗</span>
-        <div><div class="sh-title cc">줄걸이 (슬링) 작업 안전</div>
-          <div class="sh-sub">인양 중 낙하사고 예방 핵심</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">줄걸이 금지 사항</div>
-        <ul class="item-list">
-          <li>이음매 있는 와이어로프 사용 금지 <span class="law-ref">§166</span></li>
-          <li>킹크·변형·부식 와이어로프 사용 금지</li>
-          <li>열영향 받은 와이어로프 사용 금지 <span class="law-ref">§165</span></li>
-          <li>정격하중 초과 인양 금지</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">줄걸이 각도 — 핵심!</div>
-        <ul class="item-list">
-          <li>줄걸이 각도 <strong>60도 이하</strong> 권장</li>
-          <li>각도 증가 → 장력 급격히 증가</li>
-          <li>120도 초과 시 하중의 2배 이상 장력</li>
-        </ul>
-      </div>
-      <div class="memo-block mc">
-        <div class="memo-type mc">💡 줄걸이 각도 연상</div>
-        <div class="story">
-          <strong style="color:var(--c);">"벌어질수록 터진다"</strong><br>
-          <span style="color:var(--muted);">각도 ↑ → 와이어 장력 ↑ → 파단 위험 ↑<br>
-          → 60도 이하 유지 = 안전의 기본</span>
-        </div>
+    <div class="equip-body">
+      <ul class="eq-list">
+        <li><strong>아웃리거 완전 전개</strong>: 4개 아웃리거 <em>최대 전개</em> 후 수평 유지 확인. 지반 지지력 검토</li>
+        <li><strong>정격하중 초과 금지</strong>: 작업반경·붐 각도에 따른 정격하중표(하중선도) 확인</li>
+        <li><strong>작업반경 내 출입금지</strong>: 선회 반경 + 하중 낙하 범위 내 근로자 접근 금지</li>
+        <li><strong>신호수 배치</strong>: 운전자 시야 밖 작업 시 신호수 배치 의무</li>
+        <li><strong>풍속 기준</strong>: 순간풍속 <em>10m/s</em> 주의 / <em>15m/s</em> 작업중지</li>
+        <li><strong>지반 확인</strong>: 연약지반 → 철판 깔기·매트 설치. 매설물 위 작업 금지</li>
+        <li><strong>인양물 선회</strong>: 인양 중 급선회·급정지 금지. 관성 제어</li>
+      </ul>
+      <div class="kp-box kp-amber">
+        <div class="kp-title">⚡ 이동식크레인 전도 원인</div>
+        <div class="kp-desc">① 아웃리거 미전개·부분 전개 ② 지반 지지력 부족 ③ <strong>정격하중 초과</strong> ④ 편하중(비균형 인양) ⑤ 급선회. 전도 방지 = <em>아웃리거 완전전개 + 지반 검토</em></div>
       </div>
     </div>
   </div>
 
   <!-- 리프트 -->
-  <div class="section">
-    <div class="sec-header cc" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🛗</span>
-        <div><div class="sh-title cc">건설용 리프트 안전관리</div>
-          <div class="sh-sub">추락·협착 빈발 — 출입문 연동 핵심</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">건설용 리프트·곤돌라</span><div class="sec-hdr-line"></div></div>
+
+  <div class="equip-card ec-lf">
+    <div class="equip-head">
+      <span class="eh-icon">🛗</span>
+      <div class="eh-meta">
+        <div class="eh-label">CONSTRUCTION LIFT</div>
+        <div class="eh-name">건설용 리프트</div>
+        <div class="eh-sub">수직 자재·인원 운반 — 추락·끼임 위험</div>
+      </div>
+      <span class="eh-badge badge-star">★★★☆</span>
     </div>
-    <div class="sec-body open">
-      <div class="two-col">
-        <div class="col-box">
-          <div class="col-label" style="color:var(--a);">주요 위험</div>
-          <ul class="col-list">
-            <li>탑승 중 추락</li>
-            <li>출입문 열린 채 운행</li>
-            <li>과부하 운행</li>
-            <li>와이어로프 절단</li>
-          </ul>
-        </div>
-        <div class="col-box">
-          <div class="col-label" style="color:var(--d);">예방대책</div>
-          <ul class="col-list">
-            <li>출입문 <strong>인터록</strong></li>
-            <li>과부하방지장치</li>
-            <li>정격속도 준수</li>
-            <li>와이어 주기 점검</li>
-          </ul>
-        </div>
+    <div class="equip-body">
+      <ul class="eq-list">
+        <li><strong>안전검사</strong>: 최초 설치 후 → 매 <em>6개월</em>마다 정기 안전검사</li>
+        <li><strong>과부하방지장치</strong>: 정격하중 초과 시 자동 정지</li>
+        <li><strong>출입문 연동장치</strong>: 리프트 가동 중 출입구 자동 잠금</li>
+        <li><strong>비상정지장치</strong>: 각 층 및 리프트 케이지 내 비상정지 버튼</li>
+        <li><strong>조작자 자격</strong>: 리프트 운전 자격(운전면허 또는 기능사) 보유</li>
+        <li><strong>정원·적재하중 표시</strong>: 케이지 내부에 정원·적재하중 표시 의무</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="equip-card ec-gon">
+    <div class="equip-head">
+      <span class="eh-icon">🪝</span>
+      <div class="eh-meta">
+        <div class="eh-label">GONDOLA</div>
+        <div class="eh-name">곤돌라</div>
+        <div class="eh-sub">외벽·고소 작업용 달비계형 승강장치</div>
+      </div>
+      <span class="eh-badge badge-star">★★★☆</span>
+    </div>
+    <div class="equip-body">
+      <ul class="eq-list">
+        <li><strong>와이어로프</strong>: 2줄 이상 사용. 안전계수 <em>10 이상</em></li>
+        <li><strong>안전대 착용</strong>: 탑승자 전원 안전대 착용 + 구명줄 별도 설치</li>
+        <li><strong>풍속 기준</strong>: 순간풍속 <em>14m/s</em> 이상 시 작업 중지</li>
+        <li><strong>안전검사</strong>: 최초·정기(6개월마다)</li>
+        <li><strong>지지로프</strong>: 외벽 구조물에 견고하게 고정. 이탈방지 조치</li>
+      </ul>
+      <div class="kp-box kp-blue">
+        <div class="kp-title">⚡ 곤돌라 vs 달비계 차이</div>
+        <div class="kp-desc">곤돌라 = <strong>기계식 승강</strong>(전동·수동 권상기) / 달비계 = <strong>와이어로프 매달기</strong>. 둘 다 안전계수 10 이상 와이어 사용</div>
       </div>
     </div>
   </div>
 
-</div>
+  <!-- 양중기 비교표 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">양중기 안전검사 주기 비교</span><div class="sec-hdr-line"></div></div>
 
-
-<!-- TAB 4: 차량계 기계 -->
-<div id="td" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🚜</span>
-        <div><div class="sh-title cd">차량계 건설기계 종류</div>
-          <div class="sh-sub">덤프·굴삭기·불도저·로더·스크레이퍼</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="card">
+    <div style="overflow-x:auto;">
+      <table class="cmp-table">
+        <tr><th>양중기</th><th>최초검사</th><th>정기검사</th><th>풍속중지</th></tr>
+        <tr><td>타워크레인</td><td>설치 후 6개월</td><td class="tc">2년마다</td><td class="rd">15 m/s</td></tr>
+        <tr><td>이동식크레인</td><td>제조 후 3년</td><td class="tc">2년마다</td><td class="rd">15 m/s</td></tr>
+        <tr><td>리프트</td><td>설치 즉시</td><td class="am">6개월마다</td><td>-</td></tr>
+        <tr><td>곤돌라</td><td>설치 즉시</td><td class="am">6개월마다</td><td class="rd">14 m/s</td></tr>
+        <tr><td>승강기</td><td>설치 즉시</td><td class="am">6개월마다</td><td>-</td></tr>
+      </table>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>굴삭기</strong> (굴착기) — 토사 굴착·적재</li>
-          <li><strong>덤프트럭</strong> — 토사 운반</li>
-          <li><strong>불도저</strong> — 토사 정리·압토</li>
-          <li><strong>로더</strong> — 토사 퍼올리기</li>
-          <li><strong>스크레이퍼</strong> — 토사 절삭·운반·고르기</li>
-          <li><strong>모터그레이더</strong> — 노면 정지</li>
-        </ul>
+    <div class="kp-box kp-gold" style="margin-top:8px;">
+      <div class="kp-title">💡 핵심 구분: 크레인 2년 / 리프트·곤돌라 6개월</div>
+      <div class="kp-desc">타워·이동식크레인 = <em>2년마다</em> / 리프트·곤돌라·승강기 = <em>6개월마다</em>. <strong>안전검사 주기 단답형 빈출</strong></div>
+    </div>
+  </div>
+
+</div><!-- /mobile -->
+
+<!-- ══════════════════════════
+     탭3: 와이어로프·줄걸이
+══════════════════════════ -->
+<div id="wire" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">와이어로프 안전계수</span><div class="sec-hdr-line"></div></div>
+
+  <div class="equip-card ec-wire">
+    <div class="equip-head">
+      <span class="eh-icon">🪢</span>
+      <div class="eh-meta">
+        <div class="eh-label">WIRE ROPE</div>
+        <div class="eh-name">와이어로프 안전계수 기준</div>
+        <div class="eh-sub">안전계수 = 절단하중 / 최대사용하중</div>
+      </div>
+      <span class="eh-badge badge-star">★★★★★</span>
+    </div>
+    <div class="equip-body">
+      <div style="display:grid;gap:7px;margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.22);border-radius:var(--r-sm);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--red);flex-shrink:0;width:28px;text-align:center;">6</div>
+          <div>
+            <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px;">근로자가 탑승하는 운반구</div>
+            <div style="font-size:10px;color:var(--muted2);">리프트 탑승용·승강기 — 안전계수 6 이상</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.22);border-radius:var(--r-sm);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--red);flex-shrink:0;width:28px;text-align:center;">5</div>
+          <div>
+            <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px;">화물용 운반구·달기체인·섬유슬링</div>
+            <div style="font-size:10px;color:var(--muted2);">양중 와이어·달기와이어·달기체인·섬유슬링 — 안전계수 5 이상</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:var(--r-sm);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--amber);flex-shrink:0;width:28px;text-align:center;">4</div>
+          <div>
+            <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px;">훅·샤클·링크·클램프</div>
+            <div style="font-size:10px;color:var(--muted2);">금속 달기구류 — 안전계수 4 이상</div>
+          </div>
+        </div>
+      </div>
+      <div class="kp-box kp-gold">
+        <div class="kp-title">💡 암기: 탑승6 / 양중·체인·슬링5 / 금속달기구4</div>
+        <div class="kp-desc">숫자 크면 더 안전. <em>탑승(6) > 양중(5) > 금속(4)</em>. 곤돌라 와이어는 <strong>안전계수 10 이상</strong> — 별도 암기</div>
       </div>
     </div>
   </div>
 
-  <!-- 굴삭기 신규 규정 -->
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⛏️</span>
-        <div><div class="sh-title cd">굴삭기 안전 신규 규정 <span class="law-ref">§221조의2~5</span></div>
-          <div class="sh-sub">2022.10 신설 — 최신 출제 포인트!</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 와이어로프 폐기기준 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">와이어로프 폐기기준</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div class="card-title"><span>🚫</span> 사용 금지 기준 (안전보건규칙 제63조)</div>
+    <div style="display:grid;gap:6px;margin-bottom:10px;">
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--red);flex-shrink:0;width:40px;">①</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.65;"><strong style="color:var(--text);">소선 수 10% 이상 끊어진 것</strong> — 꼬임 피치 길이 기준</div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--red);flex-shrink:0;width:40px;">②</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.65;"><strong style="color:var(--text);">지름 감소가 공칭 지름의 7% 초과</strong></div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--red);flex-shrink:0;width:40px;">③</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.65;"><strong style="color:var(--text);">킹크(심한 꼬임)가 생긴 것</strong></div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--red);flex-shrink:0;width:40px;">④</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.65;"><strong style="color:var(--text);">현저한 형상 변형 또는 부식</strong></div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--red);flex-shrink:0;width:40px;">⑤</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.65;"><strong style="color:var(--text);">열 또는 아크에 의해 손상된 것</strong></div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">신설 규정 4가지</div>
-        <ul class="item-list">
-          <li><strong>충돌위험 방지</strong> — 후사경·후방영상표시장치 의무 장착 <span class="law-ref">§221조의2</span></li>
-          <li><strong>좌석안전띠</strong> 착용 의무 — 운전자 <span class="law-ref">§221조의3</span></li>
-          <li><strong>퀵커플러 잠금장치</strong> 체결 의무 <span class="law-ref">§221조의4</span></li>
-          <li><strong>인양작업</strong> 시 — 정격하중 확인·제조사 규정 준수 <span class="law-ref">§221조의5</span></li>
-        </ul>
-      </div>
-      <div class="memo-block md">
-        <div class="memo-type md">💡 시험 최신 포인트</div>
-        <div class="story">
-          <strong style="color:var(--d);">굴삭기 = 건설현장 부딪힘 1위 원인</strong><br>
-          <span style="color:var(--muted);">→ 8대 위험요인 ⑥ 차량·중장비 부딪힘과 연계<br>
-          → 후방카메라·안전띠·잠금장치 3가지 핵심<br>
-          → 유도원 배치 의무 <span style="color:var(--d);">§344</span></span>
-        </div>
-      </div>
+    <div class="kp-box kp-red">
+      <div class="kp-title">⚡ 핵심 수치: 10% / 7% / 킹크</div>
+      <div class="kp-desc">소선 끊김 <em>10%</em> / 지름 감소 <em>7%</em> 초과 → 즉시 폐기. <strong>킹크(꼬임), 부식, 열손상</strong>도 폐기. 단답형 수치 빈출</div>
     </div>
   </div>
 
-  <!-- 차량계 공통 안전 -->
-  <div class="section">
-    <div class="sec-header cd" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🚧</span>
-        <div><div class="sh-title cd">차량계 기계 공통 안전기준</div>
-          <div class="sh-sub">§171~174 — 전도·접촉 방지</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <ul class="item-list">
-          <li><strong>유도자 배치</strong> — 전도·굴러떨어짐 우려 시 <span class="law-ref">§171</span></li>
-          <li><strong>작업반경 내 출입 통제</strong> — 하역·운반 중 <span class="law-ref">§172</span></li>
-          <li>화물 적재 — <strong>편하중 금지</strong>, 최대적재량 준수 <span class="law-ref">§173</span></li>
-          <li>운전석 이탈 시 — <strong>버킷 지면 내림</strong>, 원동기 정지</li>
-          <li>경사지 작업 — 갓길 붕괴 방지 조치</li>
-        </ul>
+  <!-- 줄걸이 작업 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">줄걸이(슬링) 작업 안전</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div class="card-title"><span>⛓️</span> 줄걸이 각도와 하중 증가</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;">
+      <div style="background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2);border-radius:var(--r-sm);padding:9px;text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--green);">0°</div>
+        <div style="font-size:9px;color:var(--muted2);margin-top:3px;">하중 = 기준</div>
+        <div style="font-size:9px;color:var(--green);font-weight:700;margin-top:2px;">안전</div>
       </div>
-      <div class="memo-block md">
-        <div class="memo-type md">🔤 두문자 "유통편버경"</div>
-        <div class="acro-list">
-          <div class="acro-item"><span class="acro-char cd">유</span><span class="acro-text"><em>유</em>도자 배치</span></div>
-          <div class="acro-item"><span class="acro-char cd">통</span><span class="acro-text"><em>통</em>제 — 작업반경 내 출입통제</span></div>
-          <div class="acro-item"><span class="acro-char cd">편</span><span class="acro-text"><em>편</em>하중 금지</span></div>
-          <div class="acro-item"><span class="acro-char cd">버</span><span class="acro-text"><em>버</em>킷 내림 — 이탈 시</span></div>
-          <div class="acro-item"><span class="acro-char cd">경</span><span class="acro-text"><em>경</em>사지 갓길 붕괴 방지</span></div>
-        </div>
-        <div class="acro-key">→ "유통편버경" 으로 외우자!</div>
+      <div style="background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.2);border-radius:var(--r-sm);padding:9px;text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--amber);">60°</div>
+        <div style="font-size:9px;color:var(--muted2);margin-top:3px;">하중 ×1.15</div>
+        <div style="font-size:9px;color:var(--amber);font-weight:700;margin-top:2px;">주의</div>
+      </div>
+      <div style="background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);border-radius:var(--r-sm);padding:9px;text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--red);">120°</div>
+        <div style="font-size:9px;color:var(--muted2);margin-top:3px;">하중 ×2.0</div>
+        <div style="font-size:9px;color:var(--red);font-weight:700;margin-top:2px;">위험</div>
       </div>
     </div>
-  </div>
-
-</div>
-
-
-<!-- TAB 5: 안전장구·보강 -->
-<div id="te" class="page-section">
-
-  <!-- 타워크레인 구성요소 18가지 -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🗼</span>
-        <div><div class="sh-title ce">타워크레인 구성요소 18가지</div>
-          <div class="sh-sub">★ 시험 단골 — 전체 구조 파악</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--b);">[상부구조] 작업 부분</div>
-        <ul class="item-list">
-          <li>① <strong>지브 (Main Jib)</strong> — 화물 인양 붐대</li>
-          <li>② <strong>카운터지브</strong> — 균형 유지 반대쪽 붐</li>
-          <li>③ <strong>카운터웨이트</strong> — 균형추</li>
-          <li>④ <strong>운전실 (Cab)</strong> — 조종 공간</li>
-          <li>⑤ <strong>선회장치</strong> — 360° 회전 구동부</li>
-          <li>⑥ <strong>기계실</strong> — 권상·선회 모터</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--c);">[하부구조] 지지 부분</div>
-        <ul class="item-list">
-          <li>⑦ <strong>마스트 (Mast)</strong> — 수직 타워 본체</li>
-          <li>⑧ <strong>텔레스코핑 케이지</strong> — 마스트 연장 장치</li>
-          <li>⑨ <strong>기초앵커</strong> — 마스트 지반 고정</li>
-          <li>⑩ <strong>벽체지지 (클라이밍 프레임)</strong> — 건물 본체 고정</li>
-          <li>⑪ <strong>고정볼트·체결부</strong></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">[권상·이동 장치]</div>
-        <ul class="item-list">
-          <li>⑫ <strong>권상장치 (호이스트)</strong> — 와이어로프 감아올림</li>
-          <li>⑬ <strong>트롤리</strong> — 지브 위 수평 이동 대차</li>
-          <li>⑭ <strong>훅 (Hook)</strong> — 달기구 연결</li>
-          <li>⑮ <strong>와이어로프</strong> — 하중 지지</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">[안전장치]</div>
-        <ul class="item-list">
-          <li>⑯ <strong>과부하방지장치</strong> — 정격하중 초과 차단</li>
-          <li>⑰ <strong>권과방지장치</strong> — 훅 과다 권상 방지</li>
-          <li>⑱ <strong>풍속계 (아네모미터)</strong> — 풍속 측정·경보</li>
-        </ul>
-      </div>
-      <div class="memo-block" style="background:rgba(206,147,216,0.06);border-color:rgba(206,147,216,0.28);">
-        <div class="memo-type" style="color:var(--e);">💡 시험 포인트</div>
-        <div class="story">
-          <strong>"상부6 + 하부5 + 권상4 + 안전3 = 18가지"</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 모두 외울 필요 없이 그룹별로 기억<br>
-          → 풍속계·과부하·권과방지 안전장치 3개 필수 암기</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 건설기계 재해유형 -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🚧</span>
-        <div><div class="sh-title ce">건설기계 재해유형</div>
-          <div class="sh-sub">8대 위험요인 ④⑤⑥과 연계</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card" style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:11.5px;">
-          <thead>
-            <tr>
-              <th style="padding:8px 6px;border-bottom:2px solid var(--border);color:var(--muted);font-size:10px;text-align:left;">기계 종류</th>
-              <th style="padding:8px 6px;border-bottom:2px solid var(--border);color:var(--a);">주요 재해유형</th>
-              <th style="padding:8px 6px;border-bottom:2px solid var(--border);color:var(--d);">핵심 예방</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;font-weight:500;">타워크레인</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">전도·낙하·협착</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">풍속·과부하·신호수</td>
-            </tr>
-            <tr>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;font-weight:500;">이동식크레인</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">전도·낙하·끼임</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">아웃리거·지반·신호수</td>
-            </tr>
-            <tr>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;font-weight:500;">굴삭기</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">부딪힘·전도·끼임</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">후방카메라·유도원</td>
-            </tr>
-            <tr>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;font-weight:500;">덤프트럭</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">부딪힘·전도·협착</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">유도원·적재량</td>
-            </tr>
-            <tr>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;font-weight:500;">불도저</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">전도·매몰</td>
-              <td style="padding:7px 6px;border-bottom:1px solid var(--border);color:#b0bec5;">경사지 주의</td>
-            </tr>
-            <tr>
-              <td style="padding:7px 6px;color:#b0bec5;font-weight:500;">리프트</td>
-              <td style="padding:7px 6px;color:#b0bec5;">추락·협착·낙하</td>
-              <td style="padding:7px 6px;color:#b0bec5;">인터록·과부하</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="memo-block" style="background:rgba(206,147,216,0.06);border-color:rgba(206,147,216,0.28);">
-        <div class="memo-type" style="color:var(--e);">💡 공통 사항</div>
-        <div class="story">
-          <strong>모든 건설기계 공통 — 작업계획서 작성 의무 (§38)</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 차량계 건설기계 = 작업계획서 필수 대상<br>
-          → 유도원 배치 + 작업반경 내 출입 통제</span>
-        </div>
-      </div>
+    <ul class="eq-list" style="margin-bottom:0;">
+      <li><strong>슬링 각도 60° 이하</strong> 권장 — 각도 클수록 슬링 장력 기하급수 증가</li>
+      <li><strong>2줄 걸기</strong>: 무게중심 파악 후 균형 인양</li>
+      <li><strong>훅 이탈방지</strong>: 훅 해지장치(혀) 정상 작동 확인</li>
+      <li><strong>섬유슬링</strong>: 화학약품·자외선 노출 금지. 날카로운 모서리 직접 접촉 금지</li>
+    </ul>
+    <div class="kp-box kp-amber" style="margin-top:10px;">
+      <div class="kp-title">⚡ 슬링 각도 60° 이하 원칙</div>
+      <div class="kp-desc">줄걸이 각도(사이각) <em>60° 이하</em> 권장. 90° 초과 금지 권고. 각도 커질수록 하중 → 슬링 장력 폭발적 증가 → 파단 위험</div>
     </div>
   </div>
 
   <!-- 안전대 폐기기준 -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">🦺</span>
-        <div><div class="sh-title ce">안전대 폐기기준</div>
-          <div class="sh-sub">★ 시험 단골 — 숫자 정확히 암기</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <div class="sec-hdr"><span class="sec-hdr-label">안전대 폐기기준</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="display:grid;gap:6px;">
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-size:18px;flex-shrink:0;">⚠️</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.7;"><strong style="color:var(--text);">추락 충격을 받은 것</strong> — 외관상 이상 없어도 즉시 폐기</div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-size:18px;flex-shrink:0;">⚠️</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.7;"><strong style="color:var(--text);">제조일부터 3년</strong> 경과 시 (사용 기간 아님 — 보관 포함)</div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-size:18px;flex-shrink:0;">⚠️</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.7;"><strong style="color:var(--text);">버클·D링·카라비너 변형·파손·부식</strong></div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-size:18px;flex-shrink:0;">⚠️</div>
+        <div style="font-size:10.5px;color:var(--muted2);line-height:1.7;"><strong style="color:var(--text);">벨트·로프 절단·마모·열화</strong> (화학·자외선·마찰)</div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">즉시 폐기 기준 (6가지)</div>
-        <ul class="item-list">
-          <li>① 추락 충격을 받은 것 — <strong>1회 충격 후 즉시 폐기</strong></li>
-          <li>② 벨트·스트랩 — <strong>절단·심한 마모</strong>·변형</li>
-          <li>③ 버클·D링 — <strong>균열·변형·부식</strong></li>
-          <li>④ 봉제부 — <strong>풀림·절단</strong></li>
-          <li>⑤ 로프 — <strong>킹크·절단·심한 마모</strong></li>
-          <li>⑥ 충격흡수장치 — <strong>전개된 것</strong></li>
-        </ul>
+    <div class="kp-box kp-red" style="margin-top:8px;">
+      <div class="kp-title">⚡ 핵심: 추락충격 = 즉시 폐기 / 제조 3년 경과 = 폐기</div>
+      <div class="kp-desc"><em>추락 충격 후 외관 정상이어도 내부 손상</em> → 절대 재사용 금지. 제조일 기준 3년 = 사용하지 않아도 폐기</div>
+    </div>
+  </div>
+
+</div><!-- /wire -->
+
+<!-- ══════════════════════════
+     탭4: 건설기계
+══════════════════════════ -->
+<div id="excavator" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">굴삭기 안전 (2022 개정 규정)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="equip-card ec-exc">
+    <div class="equip-head">
+      <span class="eh-icon">🚜</span>
+      <div class="eh-meta">
+        <div class="eh-label">EXCAVATOR · 2022 신규규정</div>
+        <div class="eh-name">굴삭기 안전관리</div>
+        <div class="eh-sub">후방카메라·작업반경·신호수</div>
       </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--b);">사용연한 기준 (참고)</div>
-        <ul class="item-list">
-          <li>합성섬유 로프·웨빙 — <strong>사용 3년↑</strong> 또는 제조 5년↑ 교체 권고</li>
-          <li>금속 부품 — 부식·변형 시 즉시 교체</li>
-          <li>보관 — 직사광선·열·습기 차단</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-label" style="color:var(--d);">안전대 사용·점검 기준</div>
-        <ul class="item-list">
-          <li>착용 기준 — 높이 <strong>2m 이상</strong> 고소작업</li>
-          <li>부착설비 — <strong>1인당 1개소↑</strong> 확보</li>
-          <li>D링 — 추락 시 상방으로 당겨져야 함</li>
-          <li>훅 — 로프 연결 후 <strong>잠금 확인</strong></li>
-          <li>작업 전 — 매일 점검 후 사용</li>
-        </ul>
-      </div>
-      <div class="memo-block" style="background:rgba(206,147,216,0.06);border-color:rgba(206,147,216,0.28);">
-        <div class="memo-type" style="color:var(--e);">🔢 핵심 암기</div>
-        <div class="story">
-          <strong>"충격 1회 → 즉시 폐기" — 절대 원칙!</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ 외관상 이상 없어도 내부 손상으로 강도 저하<br>
-          → 착용 기준 2m + 폐기 기준 충격 1회 세트 암기</span>
-        </div>
+      <span class="eh-badge badge-hot">2022 개정</span>
+    </div>
+    <div class="equip-body">
+      <ul class="eq-list">
+        <li><strong>후방카메라 의무화</strong> (2022): 1톤 이상 굴삭기 → <em>후방카메라 또는 후방감지기</em> 장착 의무</li>
+        <li><strong>작업반경 내 접근 금지</strong>: 굴삭기 선회·이동 반경 내 근로자 절대 접근 금지</li>
+        <li><strong>신호수 배치</strong>: 운전자 시야 사각지대 있는 경우 신호수 전담 배치</li>
+        <li><strong>버킷 인양 금지</strong>: 굴삭기 버킷으로 근로자 탑승 또는 인양 절대 금지</li>
+        <li><strong>경사지 주의</strong>: 급경사 작업 시 굴삭기 전도 위험 → 아웃리거·보조지지대</li>
+        <li><strong>이동 시</strong>: 버킷 지면으로부터 40cm 이하 높이 유지. 급출발·급제동 금지</li>
+      </ul>
+      <div class="kp-box kp-green">
+        <div class="kp-title">⚡ 2022 개정 핵심: 후방카메라 1톤↑ 의무화</div>
+        <div class="kp-desc">2022년 1월부터 <strong>총 중량 1톤 이상 굴삭기</strong>에 후방카메라 또는 후방감지기 장착 의무. <em>단답형 출제 포인트</em></div>
       </div>
     </div>
   </div>
 
-  <!-- 안전모 폐기기준 (추가) -->
-  <div class="section">
-    <div class="sec-header ce" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">⛑️</span>
-        <div><div class="sh-title ce">안전모 폐기기준</div>
-          <div class="sh-sub">추락·낙하물 1차 방어</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 건설기계 재해 유형 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">건설기계 재해 유형 및 원인</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="overflow-x:auto;">
+      <table class="cmp-table">
+        <tr><th>재해유형</th><th>주요 원인</th><th>핵심 대책</th></tr>
+        <tr>
+          <td>전도·전복</td>
+          <td style="text-align:left;">경사지·연약지반·과부하</td>
+          <td style="text-align:left;" class="gn">지반 확인·아웃리거</td>
+        </tr>
+        <tr>
+          <td>충돌·협착</td>
+          <td style="text-align:left;">작업반경 내 근로자</td>
+          <td style="text-align:left;" class="gn">신호수·접근금지</td>
+        </tr>
+        <tr>
+          <td>낙하·비래</td>
+          <td style="text-align:left;">하중 이탈·버킷 낙하</td>
+          <td style="text-align:left;" class="gn">훅 이탈방지·안전모</td>
+        </tr>
+        <tr>
+          <td>화재·폭발</td>
+          <td style="text-align:left;">유압오일 누출·고온부</td>
+          <td style="text-align:left;" class="gn">소화기 비치·점검</td>
+        </tr>
+        <tr>
+          <td>감전</td>
+          <td style="text-align:left;">고압선 근접 작업</td>
+          <td style="text-align:left;" class="rd">이격거리 확보 필수</td>
+        </tr>
+      </table>
     </div>
-    <div class="sec-body open">
-      <div class="card">
-        <div class="card-label" style="color:var(--a);">즉시 폐기 기준</div>
-        <ul class="item-list">
-          <li>① <strong>충격 받은 것</strong> — 외관 이상 없어도 즉시 교체</li>
-          <li>② 모체 <strong>균열·변형·파손</strong></li>
-          <li>③ 착장체 <strong>손상·변형</strong></li>
-          <li>④ 턱끈 <strong>절단·기능 불량</strong></li>
-          <li>⑤ 제조일로부터 <strong>3년 이상</strong> 경과 (ABS 수지)</li>
-          <li>⑥ 제조일로부터 <strong>5년 이상</strong> 경과 (FRP)</li>
-        </ul>
-      </div>
-      <div class="memo-block" style="background:rgba(206,147,216,0.06);border-color:rgba(206,147,216,0.28);">
-        <div class="memo-type" style="color:var(--e);">🔢 핵심 숫자</div>
-        <div class="story">
-          <strong>ABS 3년 / FRP 5년</strong><br>
-          <span style="color:var(--muted);font-size:11.5px;">→ "ABS(아빠)는 3년, FRP는 5년" 으로 암기<br>
-          → 충격 1회 = 즉시 교체 (안전대와 동일)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- TAB 6: 비교·답안 -->
-<div id="tg" class="page-section">
-
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">📊</span>
-        <div><div class="sh-title cg">양중기 종류별 비교표</div>
-          <div class="sh-sub">시험 단골</div></div>
-      </div><span class="sh-arrow open">▼</span>
-    </div>
-    <div class="sec-body open">
-      <div class="card" style="overflow-x:auto;">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th style="color:var(--muted);">구분</th>
-              <th class="vb">타워크레인</th>
-              <th class="vc">이동식크레인</th>
-              <th class="vd">리프트</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>특성</td><td>고정형·고층</td><td>이동형·현장</td><td>수직승강</td></tr>
-            <tr><td>주요사고</td><td class="va">전도·낙하</td><td class="va">전도·협착</td><td class="va">추락·협착</td></tr>
-            <tr><td>풍속기준</td><td class="vb">설해10/운전15</td><td>별도기준</td><td>—</td></tr>
-            <tr><td>핵심장치</td><td>벽체지지</td><td>아웃리거</td><td>인터록</td></tr>
-            <tr><td>신호수</td><td class="vb">필수</td><td class="vc">필수</td><td>—</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="kp-box kp-red" style="margin-top:8px;">
+      <div class="kp-title">⚡ 고압선 이격거리 — 절대 암기</div>
+      <div class="kp-desc">22.9kV 이하: <strong>2m 이상</strong> / 66kV: <strong>3m 이상</strong> / 154kV: <strong>5m 이상</strong> 이격. <em>이격거리 내 접근 시 즉시 작업중지</em></div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="sec-header cg" onclick="toggleSec(this)">
-      <div class="sh-left"><span class="sh-icon">✍️</span>
-        <div><div class="sh-title cg">시험 빈출 Q&A</div>
-          <div class="sh-sub">법령 근거 포함 최신 답안</div></div>
-      </div><span class="sh-arrow open">▼</span>
+  <!-- 유도원 -->
+  <div class="sec-hdr"><span class="sec-hdr-label">유도원(신호수) 배치 기준</span><div class="sec-hdr-line"></div></div>
+
+  <div class="card">
+    <div style="display:grid;gap:6px;margin-bottom:10px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-size:20px;flex-shrink:0;">👷</div>
+        <div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">운전자 시야 확보 불가 시</div>
+          <div style="font-size:10px;color:var(--muted2);">작업반경 내 또는 이동 경로에 유도원 1명 이상 전담 배치</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-size:20px;flex-shrink:0;">📻</div>
+        <div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">신호 체계 사전 협의</div>
+          <div style="font-size:10px;color:var(--muted2);">음성·수신호·무전기 방식 사전 합의. 신호 혼선 방지</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px;background:rgba(255,255,255,0.03);border-radius:var(--r-sm);">
+        <div style="font-size:20px;flex-shrink:0;">🦺</div>
+        <div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--text);margin-bottom:2px;">식별 가능한 복장</div>
+          <div style="font-size:10px;color:var(--muted2);">야광 조끼·안전모 착용. 운전자가 쉽게 식별 가능</div>
+        </div>
+      </div>
     </div>
-    <div class="sec-body open">
-      <div class="qa-item">
-        <div class="qa-q">양중기 종류 5가지 (§132)</div>
-        <div class="qa-a">
-          <span class="key">"크이리곤승"</span><br>
-          크레인·이동식크레인·리프트·곤돌라·승강기
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">와이어로프 달기구 안전계수 (§163)</div>
-        <div class="qa-a">
-          <span class="key">탑승=10 / 화물=5 / 훅샤클=3 / 기타=4</span><br>
-          근로자 탑승 10↑ / 화물 직접 지지 5↑<br>훅·샤클·클램프 3↑ / 기타 4↑
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">타워크레인 풍속별 작업중지 기준 (§37)</div>
-        <div class="qa-a">
-          <span class="key">10m/s↑ 설치해체중지 / 15m/s↑ 운전중지</span><br>
-          30m/s↑ — 옥외 주행크레인 이탈방지 조치
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">와이어로프 폐기기준</div>
-        <div class="qa-a">
-          <span class="key">소선 10% / 지름 7%</span><br>
-          ①소선 절단 10%↑ ②지름 감소 7%↑<br>③킹크 ④심한 부식·변형 ⑤열영향
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">굴삭기 신규 안전규정 4가지 (2022 신설)</div>
-        <div class="qa-a">
-          ①<span class="key">충돌방지</span> — 후방카메라 의무 장착<br>
-          ②<span class="key">좌석안전띠</span> 착용<br>
-          ③<span class="key">퀵커플러 잠금장치</span> 체결<br>
-          ④<span class="key">인양작업</span> 시 정격하중 확인
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-q">타워크레인 와이어로프 지지 시 기준 (§142)</div>
-        <div class="qa-a">
-          <span class="key">각도 60도↓ / 지지점 4개소↑</span><br>
-          수평면에서 60도 이내, 동일 각도 4개소 이상<br>KS 규격 클립·샤클 사용
-        </div>
-      </div>
+    <div class="kp-box kp-blue">
+      <div class="kp-title">⚡ 유도원 ≠ 신호수 구분</div>
+      <div class="kp-desc">유도원(유도): 기계의 이동·작업을 안내 / 신호수(양중): 양중 작업의 신호 전담. <strong>법령상 명칭 혼용 사용</strong>되나 기능은 구분</div>
     </div>
   </div>
 
-</div>
+</div><!-- /excavator -->
+
+<!-- ══════════════════════════
+     탭5: 암기법
+══════════════════════════ -->
+<div id="mnemonics" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">D06 핵심 암기법</span><div class="sec-hdr-line"></div></div>
+
+  <div class="mn-card">
+    <div class="mn-domain">풍속 기준 3단계 (타워크레인)</div>
+    <div class="mn-key">10 · 15 · 30 m/s</div>
+    <div class="mn-expand">
+      <span>10</span>m/s 작업주의 · <span>15</span>m/s 작업중지 · <span>30</span>m/s 설치해체금지(태풍)
+    </div>
+    <div class="mn-tip">💡 철골공사(10m/s 작업중지)와 구분. 곤돌라는 14m/s 작업중지 — 별도 암기</div>
+  </div>
+
+  <div class="mn-card mn-red">
+    <div class="mn-domain">와이어로프 안전계수</div>
+    <div class="mn-key">탑승6 · 양중5 · 금속4</div>
+    <div class="mn-expand">
+      근로자 탑승: <span>6</span>↑ / 화물양중·달기체인·섬유슬링: <span>5</span>↑ / 훅·샤클 등 금속달기구: <span>4</span>↑
+    </div>
+    <div class="mn-tip">💡 곤돌라 와이어 = 10↑ (별도). 숫자 클수록 더 안전</div>
+  </div>
+
+  <div class="mn-card mn-red">
+    <div class="mn-domain">와이어로프 폐기기준</div>
+    <div class="mn-key">소10% · 지름7% · 킹크</div>
+    <div class="mn-expand">
+      소선 끊김 <span>10%</span>↑ · 지름 감소 <span>7%</span>↑ · <span>킹크</span>(꼬임) · 부식 · 열손상
+    </div>
+    <div class="mn-tip">💡 "10-7-킹크" 세트. 안전대 폐기: 추락충격 즉시·제조 후 3년</div>
+  </div>
+
+  <div class="mn-card mn-amber">
+    <div class="mn-domain">양중기 안전검사 주기</div>
+    <div class="mn-key">크레인 2년 · 리프트·곤돌라 6개월</div>
+    <div class="mn-expand">
+      타워·이동식크레인: <span>2년</span>마다 / 리프트·곤돌라·승강기: <span>6개월</span>마다
+    </div>
+    <div class="mn-tip">💡 타워크레인 최초검사 = 설치 후 6개월 → 이후 2년마다</div>
+  </div>
+
+  <div class="mn-card mn-blue">
+    <div class="mn-domain">타워크레인 5대 안전장치</div>
+    <div class="mn-key">과권비선트</div>
+    <div class="mn-expand">
+      <span>과</span>부하방지 · <span>권</span>과방지 · <span>비</span>상정지 · <span>선</span>회제한 · <span>트</span>롤리정지
+    </div>
+    <div class="mn-tip">💡 서술형 타워크레인 안전장치 문제 = 이 5개 우선 서술</div>
+  </div>
+
+  <div class="mn-card mn-green">
+    <div class="mn-domain">굴삭기 2022 개정</div>
+    <div class="mn-key">1톤↑ 후방카메라 의무</div>
+    <div class="mn-expand">
+      총 중량 <span>1톤 이상</span> 굴삭기 → 후방카메라 또는 후방감지기 장착 의무 (2022.1 시행)
+    </div>
+    <div class="mn-tip">💡 단답형 빈출. 버킷 이동 높이 40cm 이하 유지도 함께 암기</div>
+  </div>
+
+  <div class="mn-card mn-gold">
+    <div class="mn-domain">고압선 이격거리</div>
+    <div class="mn-key">22.9kV=2m / 66kV=3m / 154kV=5m</div>
+    <div class="mn-expand">
+      22.9kV 이하: <span>2m</span> / 66kV: <span>3m</span> / 154kV: <span>5m</span> — 건설기계·크레인 공통
+    </div>
+    <div class="mn-tip">💡 전압 높을수록 이격거리 증가. 감전재해 예방의 핵심 수치</div>
+  </div>
+
+  <div class="mn-card mn-orange">
+    <div class="mn-domain">이동식크레인 전도 원인</div>
+    <div class="mn-key">아지정편급</div>
+    <div class="mn-expand">
+      <span>아</span>웃리거 미전개 · <span>지</span>반 지지력 부족 · <span>정</span>격하중 초과 · <span>편</span>하중 · <span>급</span>선회
+    </div>
+    <div class="mn-tip">💡 서술형 이동식크레인 전도 원인 5가지로 구성</div>
+  </div>
+
+  <div class="mn-card mn-purple">
+    <div class="mn-domain">줄걸이 각도와 장력</div>
+    <div class="mn-key">60° 이하 권장 · 120° 위험</div>
+    <div class="mn-expand">
+      사이각 <span>60°</span> 이하 권장 / <span>120°</span> = 하중 2배 증가 → 파단 위험
+    </div>
+    <div class="mn-tip">💡 각도 클수록 슬링 장력 기하급수 증가. 60° 이하 원칙 암기</div>
+  </div>
+
+</div><!-- /mnemonics -->
+
+<!-- ══════════════════════════
+     탭6: 기출문제
+══════════════════════════ -->
+<div id="exams" class="section">
+
+  <div class="sec-hdr"><span class="sec-hdr-label">서술형 기출 (25점)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제135회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q"><strong>타워크레인 설치·해체 작업</strong>의 안전관리 절차와 주요 재해 유형 및 방지대책을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제133회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q"><strong>이동식크레인 전도 원인</strong>과 방지대책을 설명하고, 아웃리거 설치 기준을 기술하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제130회</span>
+      <span class="exam-type et-long">서술형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q"><strong>타워크레인 풍속별 조치기준</strong>을 설명하고 강풍 시 타워크레인 사고 예방 방법을 기술하시오</div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">단답형 기출 (10점)</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제136회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2025</span>
+    </div>
+    <div class="exam-q"><strong>와이어로프 폐기기준</strong> 5가지를 쓰시오 (소선·지름·킹크·부식·열손상)</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제134회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2024</span>
+    </div>
+    <div class="exam-q"><strong>와이어로프 안전계수</strong>(탑승용·양중용·금속달기구)를 구분하여 쓰시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제132회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q"><strong>타워크레인 안전장치</strong> 5가지를 쓰고 각각의 기능을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제131회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2023</span>
+    </div>
+    <div class="exam-q"><strong>굴삭기 2022년 개정</strong> 후방카메라 의무화 기준과 적용 대상을 설명하시오</div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-head">
+      <span class="exam-round">제129회</span>
+      <span class="exam-type et-short">단답형</span>
+      <span class="exam-year">2022</span>
+    </div>
+    <div class="exam-q">건설기계 작업 시 <strong>고압선 이격거리 기준</strong>(22.9kV·66kV·154kV)을 쓰시오</div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-hdr-label">8월 시험 예상문제</span><div class="sec-hdr-line"></div></div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3);">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06);">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red);">8월 예상</span>
+      <span class="exam-type et-long">서술형</span>
+    </div>
+    <div class="exam-q"><strong>타워크레인 주요 구성요소</strong>와 안전장치를 설명하고, 설치·해체 시 안전관리 절차 및 풍속별 조치기준을 기술하시오</div>
+  </div>
+
+  <div class="exam-card" style="border-color:rgba(248,113,113,0.3);">
+    <div class="exam-head" style="background:rgba(248,113,113,0.06);">
+      <span class="exam-round" style="background:rgba(248,113,113,0.15);color:var(--red);">8월 예상</span>
+      <span class="exam-type et-short">단답형</span>
+    </div>
+    <div class="exam-q"><strong>안전대 폐기기준</strong>(추락충격·제조연한·재료이상)과 안전대 착용 의무 대상 작업을 설명하시오</div>
+  </div>
+
+</div><!-- /exams -->
+
+</div><!-- /body -->
 
 <script>
-  function showTab(id,btn){
-    document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function toggleSec(header){
-    const body=header.nextElementSibling;
-    const arrow=header.querySelector('.sh-arrow');
-    const isOpen=body.classList.contains('open');
-    body.classList.toggle('open',!isOpen);
-    arrow.classList.toggle('open',!isOpen);
-  }
-  window.addEventListener('scroll',()=>{
-    const doc=document.documentElement;
-    const pct=doc.scrollTop/(doc.scrollHeight-doc.clientHeight)*100;
-    document.getElementById('prog').style.width=pct+'%';
-  });
+function goTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
