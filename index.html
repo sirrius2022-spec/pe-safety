@@ -664,27 +664,6 @@ function goTab(id,btn){
 
 <script src="law_db.js"></script>
 <script src="law-api.js"></script>
-<script>
-/* ===== 법령 패널 컨트롤러 ===== */
 
-
-
-
-
-
-
-// law-link.js가 없을 때 fallback
-
-/* [data-law] 클릭 이벤트 — 페이지 로드 후 바인딩 */
-document.addEventListener('DOMContentLoaded', function(){
-  document.body.addEventListener('click', function(e){
-    var el = e.target.closest('[data-law]');
-    if(!el) return;
-    e.preventDefault();
-    var kw = el.getAttribute('data-law');
-    if(kw) openLawPanel(kw);
-  });
-});
-</script>
 </body>
 </html>
